@@ -187,16 +187,20 @@ export const menuItems = [{
   }, {
     title: 'Lock Screen',
     href: '/lock'
-  }, {
+  }
+  ]
+}, {
+  title: 'Aires',
+  icon: <PersonIcon style={iconStyle}/>,
+  children: [{
     title: 'Launch ICO',
     href: '/launch'
   }, {
     title: 'Investor KYC',
-    href: '/investorKYC'
+    href: '/InvestorKYC'
   }
-
   ]
-}, {
+  }, {
   title: 'Errors',
   icon: <InfoIcon style={iconStyle} />,
   children: [{

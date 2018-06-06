@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d397b36-a0a3-4ea7-a72a-56d8bf6a0c3b" name="Default" comment="" />
+    <list default="true" id="7d397b36-a0a3-4ea7-a72a-56d8bf6a0c3b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.theme.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.theme.style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.theme.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.theme.style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -15,10 +27,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="launchICO.component.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.component.js">
+        <entry file="file://$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="50" selection-end-line="116" />
+            <state relative-caret-position="-30">
+              <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -26,44 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collectKYC.component.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.component.js">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text-field.component.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/elements/text-field/text-field.component.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="43" column="86" selection-start-line="43" selection-start-column="86" selection-end-line="43" selection-end-column="86" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="launchICO.theme.style.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.theme.style.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text-field-example.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/elements/text-field/examples/text-field-example.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="521">
+              <caret line="248" column="50" selection-start-line="248" selection-start-column="50" selection-end-line="248" selection-end-column="50" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -74,29 +53,11 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2958">
-              <caret line="197" column="3" selection-start-line="197" selection-start-column="3" selection-end-line="197" selection-end-column="3" />
+            <state relative-caret-position="491">
+              <caret line="200" column="3" lean-forward="true" selection-start-line="200" selection-start-column="3" selection-end-line="200" selection-end-column="3" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collectKYC.module.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.module.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collectKYC.theme.style.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.theme.style.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -129,10 +90,11 @@
         <option value="$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.component.js" />
         <option value="$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.theme.style.js" />
         <option value="$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.module.scss" />
-        <option value="$PROJECT_DIR$/src/routes.js" />
         <option value="$PROJECT_DIR$/src/layouts/components/content-footer/content-footer.component.js" />
-        <option value="$PROJECT_DIR$/src/config.js" />
         <option value="$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.component.js" />
+        <option value="$PROJECT_DIR$/src/containers/aires/ico-admin/launch-ico/launchICO.component.js" />
+        <option value="$PROJECT_DIR$/src/config.js" />
+        <option value="$PROJECT_DIR$/src/routes.js" />
       </list>
     </option>
   </component>
@@ -156,7 +118,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="230" />
     <option name="y" value="14" />
     <option name="width" value="1634" />
@@ -167,6 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,65 +159,25 @@
               <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
+              <item name="aires" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aires v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="text-field" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aires v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="text-field" type="462c0819:PsiDirectoryNode" />
-              <item name="examples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aires v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="ico-admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aires v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="ico-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="launch-ico" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aires v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="investor-kyc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aires v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aires v2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="investor-kyc" type="462c0819:PsiDirectoryNode" />
-              <item name="collect-kyc" type="462c0819:PsiDirectoryNode" />
+              <item name="aires" type="462c0819:PsiDirectoryNode" />
+              <item name="site-admin-pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OS Dashboard" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -269,6 +192,15 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\Projects\Aires v2\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/containers/aires/client-pages" />
+      <recent name="$PROJECT_DIR$/src/containers/aires/ico-admin-pages" />
+      <recent name="$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc" />
+      <recent name="$PROJECT_DIR$/src/containers/aires/client-pages/ico-list" />
+      <recent name="$PROJECT_DIR$/src/containers/aires" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -294,34 +226,36 @@
       <updated>1527114136994</updated>
       <workItem from="1527114143859" duration="13904000" />
       <workItem from="1527196562686" duration="2185000" />
+      <workItem from="1528051779365" duration="1804000" />
+      <workItem from="1528321209302" duration="7506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16089000" />
+    <option name="totallyTimeSpent" value="25399000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20969442" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17304583" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5008086" side_tool="true" visible="true" weight="0.1659836" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25058275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.30827886" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49919137" visible="true" weight="0.1659836" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Version Control" order="4" />
@@ -351,21 +285,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.module.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.theme.style.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.theme.style.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.component.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
           <caret line="79" column="31" lean-forward="true" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
@@ -455,13 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -571,26 +491,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="50" selection-end-line="116" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.module.scss">
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.module.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="33" lean-forward="true" selection-end-line="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.theme.style.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.theme.style.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="180">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
@@ -602,37 +512,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2958">
-          <caret line="197" column="3" selection-start-line="197" selection-start-column="3" selection-end-line="197" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.module.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/layouts/components/content-toolbar/content-toolbar.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -662,9 +545,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/themes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/elements/text-field/examples/text-field-example.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="645">
           <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -672,9 +571,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.theme.style.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/elements/text-field/text-field.component.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="360">
           <caret line="43" column="86" selection-start-line="43" selection-start-column="86" selection-end-line="43" selection-end-column="86" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -682,17 +588,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ico-admin/launch-ico/launchICO.theme.style.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/client-pages/invest-kyc/collectKYC.component.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="435">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/investor-kyc/collect-kyc/collectKYC.component.js">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        <state relative-caret-position="195">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="200" column="3" lean-forward="true" selection-start-line="200" selection-start-column="3" selection-end-line="200" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/aires/ico-admin-pages/launch-ico/launchICO.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="248" column="50" selection-start-line="248" selection-start-column="50" selection-end-line="248" selection-end-column="50" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

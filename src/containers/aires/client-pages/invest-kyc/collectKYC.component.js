@@ -17,8 +17,8 @@ import { withStyles } from '@material-ui/core/styles';
 import themeStyles from './collectKYC.theme.style';
 import scss from './collectKYC.module.scss';
 
-import logoImage from '../../../assets/images/portal-logo.png';
-import Divider from "../../elements/divider/divider.component";
+import logoImage from '../../../../assets/images/portal-logo.png';
+import Divider from "../../../elements/divider/divider.component";
 
 const CollectKYC = (props) => {
   const {
