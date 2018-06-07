@@ -15,6 +15,8 @@ class GdaxTickerWidget extends React.Component {
     this.speed = 0.60;
     this.animationCallback = null;
 
+    this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
+
     this.state = {
       products: null
     };
@@ -29,7 +31,22 @@ class GdaxTickerWidget extends React.Component {
   }
 
   async componentDidMount() {
+    const request = require('request');
+
+    const options = {
+      url: `https://api.bitfinex.com/v2/calc/fx`,
+      body: {
+        ccy1: 'BTC',
+        ccy2: 'USD'
+      },
+      json: true
+    };
+    request.post(options, (error, response, body) => {
+      console.log(body)
+    });
+
     const res = await fetch('https://api.gdax.com/products');
+    // const res = await fetch('https://api.gdax.com/products');
     const data = await res.json();
     if (data) {
       this.setState({ products: data });
@@ -51,14 +68,25 @@ class GdaxTickerWidget extends React.Component {
       ]
     };
 
+    const hello =  {
+      "type": "hello",
+      "apikey": this.coinApiKey,
+      "heartbeat": false,
+      "subscribe_data_type": ["trade"],
+      "subscribe_filter_asset_id": ["BTC", "BCH", "ETH", "LTC"]
+    };
+
     this.ws = new WebSocket('wss://ws-feed.gdax.com');
+    // this.ws = new WebSocket('wss://ws.coinapi.io/v1/');
 
     this.ws.onopen = () => {
       this.ws.send(JSON.stringify(subscribe));
+      // this.ws.send(JSON.stringify(hello));
     };
 
     this.ws.onmessage = (e) => {
       const value = JSON.parse(e.data);
+      // console.log(value);
       if (value.type !== 'ticker') {
         return;
       }

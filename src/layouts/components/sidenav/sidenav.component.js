@@ -52,7 +52,7 @@ const Sidenav = (props) => {
             <img src={logoImage} className={scss['portal-toolbar-brand']} alt="logo" />
             {layout.currentLayout !== 'compact' && layout.currentLayout !== 'funky' &&
               <Typography variant="title" color="inherit" noWrap>
-                Portal
+                Aires Portal
               </Typography>
             }
           </Toolbar>

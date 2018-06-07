@@ -19,6 +19,9 @@ const Crypto = (props) => {
 
   return (
     [
+
+      /* -- Control grid layout, spacing, and breakpoints here -- */
+
       <Grid key={1} item><Paper key={1} className={classes.portalWidgetContent}><GdaxTickerWidget /></Paper></Grid>,
       <div key={2} className={classes.portalDashboardPageWrapper}>
 

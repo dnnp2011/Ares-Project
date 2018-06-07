@@ -208,7 +208,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/pages/colors" exact component={AsyncColors} props={childProps} layout={activeLayout} />
       <AppRoute path="/launch" exact component={AsyncLaunchICO} props={childProps} layout={activeLayout} />
       <AppRoute path="/investorKYC" exact component={AsyncCollectKYC} props={childProps} layout={activeLayout} />
-      <AppRoute component={AsyncNotFound} layout={activeLayout} />
+
 
       /* --- Aires Project Paths --- */
       /* ------------------------------------------------------------------------------------------------------------------------------------- */
@@ -249,6 +249,6 @@ export default ({ childProps, layout }) => {
       {/*<AppRoute path="/admin/analytics/site" exact component={AsyncSiteAnalytics} props={childProps} layout={activeLayout}/>*/}
 
       /* ------------------------------------------------------------------------------------------------------------------------------------- */
-
+      <AppRoute component={AsyncNotFound} layout={activeLayout} />
     </Switch>);
 };
