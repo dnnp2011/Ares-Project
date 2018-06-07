@@ -197,9 +197,11 @@ export const menuItems = [{
     href: '/launch'
   }, {
     title: 'Investor KYC',
-    href: '/InvestorKYC'
-  }
-  ]
+    href: '/investorKYC'
+  }, {
+    title: 'Crypto Market Dashboard',
+    href: '/dashboard/crypto-market'
+  }]
   }, {
   title: 'Errors',
   icon: <InfoIcon style={iconStyle} />,
