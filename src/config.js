@@ -199,8 +199,30 @@ export const menuItems = [{
     title: 'Investor KYC',
     href: '/investorKYC'
   }, {
+    title: 'Shared Pages',
+    icon: <PersonIcon style={iconStyle}/>,
+    children: [{
+    title: 'Login',
+    href: '/login'
+  }, {
+    title: 'Forgot Password',
+    href: '/forgot-password'
+  }, {
+    title: 'Register',
+    href: '/register'
+  }, {
+    title: 'Registration Complete',
+    href: '/register/registration-complete'
+  }, {
+    title: 'Invite Friend',
+    href: '/invite-friend'
+  }, {
     title: 'Crypto Market Dashboard',
     href: '/dashboard/crypto-market'
+  }, {
+    title: 'Local Crypto Market Dashboard',
+    href: '/dashboard/crypto-market-local'
+  }]
   }]
   }, {
   title: 'Errors',
