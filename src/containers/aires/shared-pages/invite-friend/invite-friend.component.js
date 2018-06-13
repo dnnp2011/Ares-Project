@@ -11,6 +11,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -20,18 +26,29 @@ import scss from './invite-friend.module.scss';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
-const InviteFriend = (props) => {
-  const {
-    classes,
-    width
-  } = props;
+class InviteFriend extends React.Component {
+  state = {
+    ico: 'None',
+  }
 
-  // Flip container to column on mobile screens.
-  const panelDirection = width === 'xs' ? 'column' : 'row';
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-  return (
+  render() {
+    const {
+      classes,
+      width
+    } = this.props;
+
+    // Flip container to column on mobile screens.
+    const panelDirection = width === 'xs' ? 'column' : 'row';
+
+    return(
     <Grid
       container
+      direction="row"
+      spacing={0}
       justify="center"
       alignItems="center"
       className={classes.background}
@@ -46,9 +63,10 @@ const InviteFriend = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['invite-friend-content']}>
                 <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />
+                <Typography variant="headline" component="h4" gutterBottom>
+                  Invite a friend
+                </Typography>
                 <br/>
-                <Typography gutterBottom>Enter your friend's name and email to invite your friend to register and invest in ICO's</Typography>
-
                   <Grid>
                     <TextField
                       label="Friend Name"
@@ -68,16 +86,53 @@ const InviteFriend = (props) => {
 
 
               </CardContent>
-              <CardActions>
-                <Button fullWidth href="/" color="secondary" variant="raised">Invite Friend</Button>
+              <CardActions className={scss['invite-friend-actions']}>
+                <Button href="/" color="secondary" variant="raised">Invite Friend</Button>
               </CardActions>
+            </Card>
+          </Grid>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+          >
+            <Card className={scss.card}>
+              <CardContent>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="ico">ICO</InputLabel>
+                  <Select
+                    value={this.state.ico}
+                    onChange={this.handleChange}
+                    ico="ico"
+                    renderValue={value => `${value}`}
+                    input={<Input id="ico" />}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    // TODO: Populate with relevant ICOs
+                    <MenuItem value="Bitcoin">Bitcoin</MenuItem>
+                    <MenuItem value="Litecoin">Litecoin</MenuItem>
+                    <MenuItem value="Dogecoin">Dogecoin</MenuItem>
+                  </Select>
+                </FormControl>
+
+                <TextField
+                  label="Personal Message"
+                  type="text"
+                  fullWidth
+                  multiline
+                />
+
+              </CardContent>
             </Card>
           </Grid>
         </Grid>
       </Grid>
     </Grid>
   );
-};
+  }
+}
 
 InviteFriend.propTypes = {
   classes: PropTypes.shape({}).isRequired,
