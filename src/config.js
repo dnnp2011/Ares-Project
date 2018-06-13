@@ -195,6 +195,9 @@ export const menuItems = [{
   children: [{
     title: 'Launch ICO',
     href: '/launch'
+  },{
+    title: 'Forgot Password',
+    href: '/forgot-password'
   }, {
     title: 'Investor KYC',
     href: '/investorKYC'
