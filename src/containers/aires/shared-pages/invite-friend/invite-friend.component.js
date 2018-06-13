@@ -14,13 +14,13 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import themeStyles from './launchICO.theme.style';
-import scss from './launchICO.module.scss';
+import themeStyles from './invite-friend.theme.style';
+import scss from './invite-friend.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
-const LaunchICO = (props) => {
+const InviteFriend = (props) => {
   const {
     classes,
     width
@@ -44,8 +44,8 @@ const LaunchICO = (props) => {
             xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['launch-content']}>
-                <img src={logoImage} className={scss['launch-logo']} alt="logo" />
+              <CardContent className={scss['invite-friend-content']}>
+                <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />
                 <br/>
                 <Typography gutterBottom>Enter your friend's name and email to invite your friend to register and invest in ICO's</Typography>
 
@@ -79,9 +79,9 @@ const LaunchICO = (props) => {
   );
 };
 
-LaunchICO.propTypes = {
+InviteFriend.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(LaunchICO);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(InviteFriend);

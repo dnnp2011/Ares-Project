@@ -12,7 +12,7 @@ import MostPopularWidget from './components/most-popular-widget/most-popular-wid
 import MarketCapWidget from './components/market-cap-widget/market-cap-widget.component';
 
 
-import styles from './crypto-market-dashboard.style';
+import styles from './crypto-local-dashboard.style';
 
 const Crypto = (props) => {
   const { classes } = props;
