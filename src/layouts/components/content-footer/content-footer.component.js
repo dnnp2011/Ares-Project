@@ -26,11 +26,12 @@ const ContentFooter = (props) => {
           color="inherit"
           noWrap
         >
-          <small>&copy; 2018 Citidex</small>
+        <a href="http://www.citdex.com" target='_blank' style={{textDecoration:'none', color:'inherit', cursor:'inherit'}}><small>&copy; 2018 Citdex</small></a>
         </Typography>
         <span className="portal-flex" />
-        <FontAwesome name="facebook" className={classes.coloredIcon} />
-        <FontAwesome name="twitter" className={classes.coloredIcon} />
+        <a href="https://www.facebook.com" target='_blank'><FontAwesome name="facebook" className={classes.coloredIcon} /></a>
+        <a href="https://www.twitter.com" target='_blank'><FontAwesome name="twitter" className={classes.coloredIcon} /></a>
+        <a href="http://www.citdex.com" target='_blank'><FontAwesome name="globe" className={classes.coloredIcon} /></a>
       </Toolbar>
     </AppBar>
   );
