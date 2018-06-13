@@ -50,7 +50,7 @@ const Forgot = (props) => {
             </Card>
             <Card className={scss.card}>
               <CardActions className={scss['lock-actions']}>
-                <Button fullWidth href="/dashboard/crypto-market" color="secondary" variant="raised">Visit the Dashboard</Button>
+                <Button fullWidth href="/login" color="secondary" variant="raised">Login With Your Account</Button>
               </CardActions>
             </Card>
           </Grid>
