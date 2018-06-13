@@ -50,7 +50,7 @@ const RegisterComplete = (props) => {
             </Card>
             <Card className={scss.card}>
               <CardActions className={scss['lock-actions']}>
-                <Button fullWidth href="login" color="secondary" variant="raised">Return To Login</Button>
+                <Button fullWidth href="/login" color="secondary" variant="raised">Return To Login</Button>
               </CardActions>
             </Card>
           </Grid>
