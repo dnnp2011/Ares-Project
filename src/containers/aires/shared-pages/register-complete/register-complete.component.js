@@ -12,8 +12,8 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import themeStyles from './forgot-password.theme.style';
-import scss from './forgot-password.module.scss';
+import themeStyles from './register-complete.theme.style';
+import scss from './register-complete.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';//modified
 
