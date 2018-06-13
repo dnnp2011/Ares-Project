@@ -38,8 +38,8 @@ const Forgot = (props) => {
             xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['signup-content']}>
-                <img src={logoImage} className={scss['signup-logo']} alt="logo" />
+              <CardContent className={scss['forgot-password-content']}>
+                <img src={logoImage} className={scss['forgot-password-logo']} alt="logo" />
                 <Typography variant="headline" component="h2" gutterBottom>
                   Password Revovery
                 </Typography>

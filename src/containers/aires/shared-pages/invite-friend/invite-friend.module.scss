@@ -1,5 +1,5 @@
 .panel {
-  animation: launch-ico 1s forwards 1;
+  animation: invite-friend 1s forwards 1;
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
@@ -13,19 +13,19 @@
   padding: 24px;
 }
 
-.collectkyc-actions {
+.invite-friend-actions {
   justify-content: center;
 }
 
-.collectkyc-content {
+.invite-friend-content {
   text-align: center;
 }
 
-.collectkyc-logo {
+.invite-friend-logo {
   height: 64px;
 }
 
-@keyframes launch-ico {
+@keyframes invite-friend {
   0% {
     transform: translateY(20px);
     opacity: 0;

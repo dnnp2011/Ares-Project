@@ -17,7 +17,7 @@ import scss from './register-complete.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';//modified
 
-const Forgot = (props) => {
+const RegisterComplete = (props) => {
   const {
     classes
   } = props;
@@ -38,8 +38,8 @@ const Forgot = (props) => {
             xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['signup-content']}>
-                <img src={logoImage} className={scss['signup-logo']} alt="logo" />
+              <CardContent className={scss['register-complete-content']}>
+                <img src={logoImage} className={scss['register-complete-logo']} alt="logo" />
                 <Typography variant="headline" component="h2" gutterBottom>
                   Registration Complete
                 </Typography>
@@ -50,7 +50,7 @@ const Forgot = (props) => {
             </Card>
             <Card className={scss.card}>
               <CardActions className={scss['lock-actions']}>
-                <Button fullWidth href="/dashboard/crypto-market" color="secondary" variant="raised">Visit the Dashboard</Button>
+                <Button fullWidth href="/dashboard/crypto-market" color="secondary" variant="raised">Return To Login</Button>
               </CardActions>
             </Card>
           </Grid>
@@ -60,8 +60,8 @@ const Forgot = (props) => {
   );
 };
 
-Forgot.propTypes = {
+RegisterComplete.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(Forgot);
+export default withStyles(themeStyles, { withTheme: true })(RegisterComplete);

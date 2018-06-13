@@ -45,8 +45,8 @@ const Register = (props) => {
             xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['signup-content']}>
-                <img src={logoImage} className={scss['signup-logo']} alt="logo" />
+              <CardContent className={scss['register-content']}>
+                <img src={logoImage} className={scss['register-logo']} alt="logo" />
                 <Typography variant="headline" component="h2" gutterBottom>
                   Register
                 </Typography>
