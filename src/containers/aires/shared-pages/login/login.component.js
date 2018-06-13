@@ -57,7 +57,7 @@ const Login = (props) => {
                   With Aires Dashboard, you can gain access to people looking to invest in your ICO, and manage your funds every step of the way.
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  As an investor, you can quickly and easily identify ICO's that are right for you, and get in on the ground floor by investing in the next game changer! Keep track of your various coin wallets, as well as your investments, all in one elegant dashboard.
+                  As an investor, you can quickly and easily identify ICOs that are right for you, and get in on the ground floor by investing in the next game changer! Keep track of your various coin wallets, as well as your investments, all in one elegant dashboard.
                 </Typography>
               </CardContent>
               <CardActions>
