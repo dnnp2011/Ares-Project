@@ -18,7 +18,7 @@ class GdaxTickerWidget extends React.Component {
     this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
 
     this.state = {
-      products: null
+      products: []
     };
 
     this.setMarqueeRef = (element) => {
@@ -31,26 +31,34 @@ class GdaxTickerWidget extends React.Component {
   }
 
   async componentDidMount() {
-    const request = require('request');
+    // const request = require('request');
 
-    const options = {
-      url: `https://api.bitfinex.com/v2/calc/fx`,
-      body: {
-        ccy1: 'BTC',
-        ccy2: 'USD'
-      },
-      json: true
-    };
-    request.post(options, (error, response, body) => {
-      console.log(body)
-    });
+    // const options = {
+    //   url: `https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,DASH&tsyms=BTC,USD,EUR`,
 
-    const res = await fetch('https://api.gdax.com/products');
+    //   json: true
+    // };
+    // request.post(options, (error, response, body) => {
+    //   console.log(body)
+    //   this.setState({ products: body });
+
+    // });
+    // https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD,EUR,BTC
+    const res = await fetch('https://api.coingecko.com/api/v3/coins?per_page=10');
     // const res = await fetch('https://api.gdax.com/products');
     const data = await res.json();
-    if (data) {
-      this.setState({ products: data });
+
+
+    if(data)
+    {
+      console.log("hello",data)
+      // let myData = Object.keys(data).map(key => {
+      //     return data[key];
+      // })
+
+      this.setState({ products:  data})
     }
+    console.log(this.state.products)
 
     setTimeout(() => {
       const startPosition = this.strip.getBoundingClientRect();
@@ -58,51 +66,51 @@ class GdaxTickerWidget extends React.Component {
       this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
     }, 1000);
 
-    const subscribe = {
-      type: 'subscribe',
-      channels: [
-        {
-          name: 'ticker',
-          product_ids: data.map(product => product.id)
-        }
-      ]
-    };
+  //   const subscribe = {
+  //     type: 'subscribe',
+  //     channels: [
+  //       {
+  //         name: 'ticker',
+  //         product_ids: data.map(product => product.id)
+  //       }
+  //     ]
+  //   };
 
-    const hello =  {
-      "type": "hello",
-      "apikey": this.coinApiKey,
-      "heartbeat": false,
-      "subscribe_data_type": ["trade"],
-      "subscribe_filter_asset_id": ["BTC", "BCH", "ETH", "LTC"]
-    };
+  //   const hello =  {
+  //     "type": "hello",
+  //     "apikey": this.coinApiKey,
+  //     "heartbeat": false,
+  //     "subscribe_data_type": ["trade"],
+  //     "subscribe_filter_asset_id": ["BTC", "BCH", "ETH", "LTC"]
+  //   };
 
-    this.ws = new WebSocket('wss://ws-feed.gdax.com');
-    // this.ws = new WebSocket('wss://ws.coinapi.io/v1/');
+  //   this.ws = new WebSocket('wss://ws-feed.gdax.com');
+  //   // this.ws = new WebSocket('wss://ws.coinapi.io/v1/');
 
-    this.ws.onopen = () => {
-      this.ws.send(JSON.stringify(subscribe));
-      // this.ws.send(JSON.stringify(hello));
-    };
+  //   this.ws.onopen = () => {
+  //     this.ws.send(JSON.stringify(subscribe));
+  //     // this.ws.send(JSON.stringify(hello));
+  //   };
 
-    this.ws.onmessage = (e) => {
-      const value = JSON.parse(e.data);
-      // console.log(value);
-      if (value.type !== 'ticker') {
-        return;
-      }
+  //   this.ws.onmessage = (e) => {
+  //     const value = JSON.parse(e.data);
+  //     // console.log(value);
+  //     if (value.type !== 'ticker') {
+  //       return;
+  //     }
 
-      const index = this.state.products.findIndex(product => product.id === value.product_id);
-      if (index !== -1) {
-        const { products } = this.state;
-        products[index].socket = value;
-        this.setState({ products });
-      }
-    };
+  //     const index = this.state.products.findIndex(product => product.id === value.product_id);
+  //     if (index !== -1) {
+  //       const { products } = this.state;
+  //       products[index].socket = value;
+  //       this.setState({ products });
+  //     }
+  //   };
   }
 
   componentWillUnmount() {
     window.cancelAnimationFrame(this.animationCallback);
-    this.ws.close();
+    // this.ws.close();
   }
 
   animate = () => {
@@ -118,44 +126,72 @@ class GdaxTickerWidget extends React.Component {
   render() {
     const { classes } = this.props;
 
+    let tickerItem = this.state.products && this.state.products.map((x,i) => {
+                   return <div className={classes['ticker-item']} key={i}>
+                      <div className={classes['ticker-item__name']}>
+                        <img src={x.image.thumb} alt="coin" />
+                        <Typography component="h1">{x.symbol}</Typography>
+                        <Typography component="h5">USD ${parseFloat(x.market_data.current_price.usd).toFixed(2)}</Typography>
+                        <Typography component="h5">EUR ${parseFloat(x.market_data.current_price.eur).toFixed(2)}</Typography>
+                        <Typography component="h5">BTC ${parseFloat(x.market_data.current_price.btc).toFixed(2)}</Typography>
+
+                      </div>
+                    </div>
+              })
+
+
     return (
       <div className={classes['portal-gdx-ticket-widget']}>
         <div className={classes['ticker-container']}>
           <div ref={this.setMarqueeRef} className={classes['ticker-content']}>
             <div ref={this.setStripRef} className={classes['ticker-strip']} key="original">
-              {this.state.products && this.state.products.map(product => (
-                <div className={classes['ticker-item']} key={product.id}>
-                  <div className={classes['ticker-item__name']}>
-                    <img
-                      alt={product.display_name}
-                      src={`${process.env.PUBLIC_URL}/assets/images/dashboards/crypto/${product.base_currency}.svg`}
-                    />
-                    <Typography component="h2">{product.display_name}</Typography>
+              {tickerItem}
+
+
+              {/*{this.state.products &&
+                this.state.products.map((x, i) => {
+                return (
+                  <div>
+
+                  <h6>{ x.symbol}</h6>
+                  <p>{ x.market_data.current_price.usd}</p>
+                  <p>{ x.market_data.current_price.eur}</p>
+                  <p>{ x.market_data.current_price.gdp}</p>
+
+                  <p>{ x.BTC}</p>
+
                   </div>
-                  {product.socket ?
-                    <Typography component="h4">${parseFloat(product.socket.price).toFixed(2)}</Typography> : ''}
-                </div>
-              ))}
-            </div>
-            <div className={classes['ticker-strip']} key="copy">
-              {this.state.products && this.state.products.map(product => (
-                <div className={classes['ticker-item']} key={product.id}>
-                  <div className={classes['ticker-item__name']}>
-                    <img
-                      alt={product.display_name}
-                      src={`${process.env.PUBLIC_URL}/assets/images/dashboards/crypto/${product.base_currency}.svg`}
-                    />
-                    <Typography component="h2">{product.display_name}</Typography>
-                  </div>
-                  {product.socket ?
-                    <Typography component="h4">${parseFloat(product.socket.price).toFixed(2)}</Typography> : ''}
-                </div>
-              ))}
+                  )
+              })
+            }*/}
             </div>
           </div>
+
+          <div className={classes['ticker-strip']} key="copy">
+              {tickerItem}
+
+
+              {/*{this.state.products &&
+                this.state.products.map((x, i) => {
+                return (
+                  <div>
+
+                  <h6>{ x.symbol}</h6>
+                  <p>{ x.market_data.current_price.usd}</p>
+                  <p>{ x.market_data.current_price.eur}</p>
+                  <p>{ x.market_data.current_price.gdp}</p>
+
+                  <p>{ x.BTC}</p>
+
+                  </div>
+                  )
+              })
+            }*/}
+            </div>
         </div>
       </div>
-    );
+    )
+
   }
 }
 
