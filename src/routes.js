@@ -68,8 +68,6 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 /* -------------------------------------------------------------------------------------------------------------------------- */
 
 // CUSTOM AIRES ROUTES
-// const AsyncLaunchICO = asyncComponent(() => import('./containers/aires/ico-admin-pages/launch-ico/launchICO.component'));
-// const AsyncCollectKYC = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/collectKYC.component'));
 
 /* --- Shared Pages --- */
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
