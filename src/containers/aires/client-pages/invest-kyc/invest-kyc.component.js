@@ -14,8 +14,8 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import themeStyles from './collectKYC.theme.style';
-import scss from './collectKYC.module.scss';
+import themeStyles from './invest-kyc.theme.style';
+import scss from './invest-kyc.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";

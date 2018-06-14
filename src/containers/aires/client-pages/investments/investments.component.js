@@ -2,6 +2,7 @@ import React from 'react';
 
 import themeStyles from './investments.theme.style';
 import scss from './investments.module.scss';
+import { withStyles } from '@material-ui/core/styles';
 
 const Forgot = (props) => {
   const {
