@@ -12,7 +12,7 @@ class GdaxTickerWidget extends React.Component {
     this.strip = null;
     this.startOffsetX = 0;
     this.offsetX = 0;
-    this.speed = 0.60;
+    this.speed = 1;
     this.animationCallback = null;
 
     this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
@@ -146,11 +146,8 @@ class GdaxTickerWidget extends React.Component {
           <div ref={this.setMarqueeRef} className={classes['ticker-content']}>
             <div ref={this.setStripRef} className={classes['ticker-strip']} key="original">
               {tickerItem}
-
             </div>
-          </div>
-
-          <div className={classes['ticker-strip']} key="copy">
+             <div className={classes['ticker-strip']} key="copy">
               {tickerItem}
 
 
@@ -171,6 +168,7 @@ class GdaxTickerWidget extends React.Component {
               })
             }*/}
             </div>
+          </div>
         </div>
       </div>
     )
