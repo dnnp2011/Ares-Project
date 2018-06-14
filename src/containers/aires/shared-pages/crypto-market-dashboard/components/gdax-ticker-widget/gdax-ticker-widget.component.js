@@ -66,15 +66,15 @@ class GdaxTickerWidget extends React.Component {
       this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
     }, 1000);
 
-  //   const subscribe = {
-  //     type: 'subscribe',
-  //     channels: [
-  //       {
-  //         name: 'ticker',
-  //         product_ids: data.map(product => product.id)
-  //       }
-  //     ]
-  //   };
+    const subscribe = {
+      type: 'subscribe',
+      channels: [
+        {
+          name: 'ticker',
+          product_ids: data.map(product => product.id)
+        }
+      ]
+    };
 
   //   const hello =  {
   //     "type": "hello",
@@ -84,28 +84,28 @@ class GdaxTickerWidget extends React.Component {
   //     "subscribe_filter_asset_id": ["BTC", "BCH", "ETH", "LTC"]
   //   };
 
-  //   this.ws = new WebSocket('wss://ws-feed.gdax.com');
+    this.ws = new WebSocket('wss://api.coingecko.com/api/v3');
   //   // this.ws = new WebSocket('wss://ws.coinapi.io/v1/');
 
-  //   this.ws.onopen = () => {
-  //     this.ws.send(JSON.stringify(subscribe));
-  //     // this.ws.send(JSON.stringify(hello));
-  //   };
+    this.ws.onopen = () => {
+      this.ws.send(JSON.stringify(subscribe));
+      // this.ws.send(JSON.stringify(hello));
+    };
 
-  //   this.ws.onmessage = (e) => {
-  //     const value = JSON.parse(e.data);
-  //     // console.log(value);
-  //     if (value.type !== 'ticker') {
-  //       return;
-  //     }
+    this.ws.onmessage = (e) => {
+      const value = JSON.parse(e.data);
+      // console.log(value);
+      if (value.type !== 'ticker') {
+        return;
+      }
 
-  //     const index = this.state.products.findIndex(product => product.id === value.product_id);
-  //     if (index !== -1) {
-  //       const { products } = this.state;
-  //       products[index].socket = value;
-  //       this.setState({ products });
-  //     }
-  //   };
+      const index = this.state.products.findIndex(product => product.id === value.product_id);
+      if (index !== -1) {
+        const { products } = this.state;
+        products[index].socket = value;
+        this.setState({ products });
+      }
+    };
   }
 
   componentWillUnmount() {
@@ -133,7 +133,7 @@ class GdaxTickerWidget extends React.Component {
                         <Typography component="h1">{x.symbol}</Typography>
                         <Typography component="h5">USD ${parseFloat(x.market_data.current_price.usd).toFixed(2)}</Typography>
                         <Typography component="h5">EUR ${parseFloat(x.market_data.current_price.eur).toFixed(2)}</Typography>
-                        <Typography component="h5">BTC ${parseFloat(x.market_data.current_price.btc).toFixed(2)}</Typography>
+                        <Typography component="h5">BTC {parseFloat(x.market_data.current_price.btc).toFixed(2)}</Typography>
 
                       </div>
                     </div>
