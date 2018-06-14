@@ -73,7 +73,7 @@ const AsyncCollectKYC = asyncComponent(() => import('./containers/aires/client-p
 
 /* --- Shared Pages --- */
 // const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
-// const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
+ const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
 // const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/shared-pages/register/register.component'));
 // const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
 // const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
@@ -81,15 +81,15 @@ const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/air
 // const AsyncCryptoLocalDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-local-dashboard/crypto-local-dashboard.component'));
 
 /* --- User Pages --- */
-// const AsyncWallet = asyncComponent(() => import('./containers/aires/client-pages/wallet/wallet.component'));
-// const AsyncNewFundSource = asyncComponent(() => import('./containers/aires/client-pages/new-fund-source/new-fund-source.component'));
-// const AsyncInvestments = asyncComponent(() => import('./containers/aires/client-pages/investments/investments.component');
-// const AsyncInvestmentDetail = asyncComponent(() => import('./containers/aires/client-pages/investment-detail/investment-detail.component'));
-// const AsyncIcoList = asyncComponent(() => import('./containers/aires/client-pages/ico-list/ico-list.component'));
-// const AsyncIcoDetail = asyncComponent(() => import('./containers/aires/client-pages/ico-detail/ico-detail.component'));
-// const AsyncInvest = asyncComponent(() => import('./containers/aires/client-pages/invest/invest.component'));
-// const AsyncInvestKyc = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/invest-kyc.component'));
-// const AsyncInvestConfirm = asyncComponent(() => import('./containers/aires/client-pages/invest-confirm/invest-confirm.component'));
+ const AsyncWallet = asyncComponent(() => import('./containers/aires/client-pages/wallet/wallet.component'));
+ const AsyncNewFundSource = asyncComponent(() => import('./containers/aires/client-pages/new-fund-source/new-fund-source.component'));
+ const AsyncInvestments = asyncComponent(() => import('./containers/aires/client-pages/investments/investments.component'));
+ const AsyncInvestmentDetail = asyncComponent(() => import('./containers/aires/client-pages/investment-detail/investment-detail.component'));
+ const AsyncIcoList = asyncComponent(() => import('./containers/aires/client-pages/ico-list/ico-list.component'));
+ const AsyncIcoDetail = asyncComponent(() => import('./containers/aires/client-pages/ico-detail/ico-detail.component'));
+ const AsyncInvest = asyncComponent(() => import('./containers/aires/client-pages/invest/invest.component'));
+ const AsyncInvestKyc = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/invest-kyc.component'));
+ const AsyncInvestConfirm = asyncComponent(() => import('./containers/aires/client-pages/invest-confirm/invest-confirm.component'));
 
 /* --- ICO Admin Pages --- */
 // const AsyncIcoProjectDashboard = asyncComponent(() => import('./containers/aires/ico-admin-pages/ico-project-dash/ico-project-dash.component'));
@@ -215,7 +215,7 @@ export default ({ childProps, layout }) => {
 
       /* --- Shared Pages --- */
       {/*<AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>*/}
+      {<AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>}
       {/*<AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/register/registration-complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/invite-friend" exact component={AsyncInviteFriend} props={childProps} layout={activeLayout}/>*/}
@@ -223,15 +223,15 @@ export default ({ childProps, layout }) => {
       {/*<AppRoute path="/dashboard/crypto-market-local" exact component={AsyncCryptoLocalDashboard} props={childProps} layout={activeLayout}/>*/}
 
       /* --- Client Pages --- */
-      {/*<AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/my-wallet/new-fund-source" exact component={AsyncNewFundSource} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/my-investments" exact component={AsyncInvestments} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/my-investments/details" exact component={AsyncInvestmentDetail} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/browse-icos" exact component={AsyncIcoList} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/browse-icos/details" exact component={AsyncIcoDetail} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/browse-icos/invest" exact component={AsyncInvest} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/browse-icos/invest/kyc" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/browse-icos/invest/confirm" exact component={AsyncInvestConfirm} props={childProps} layout={activeLayout}/>*/}
+      {<AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/my-wallet/new-fund-source" exact component={AsyncNewFundSource} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/my-investments" exact component={AsyncInvestments} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/my-investments/details" exact component={AsyncInvestmentDetail} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/browse-icos" exact component={AsyncIcoList} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/browse-icos/details" exact component={AsyncIcoDetail} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/browse-icos/invest" exact component={AsyncInvest} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/browse-icos/invest/kyc" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>}
+      {<AppRoute path="/browse-icos/invest/confirm" exact component={AsyncInvestConfirm} props={childProps} layout={activeLayout}/>}
 
       /* --- ICO Admin Pages --- */
       {/*<AppRoute path="/dashboard/ico/project" exact component={AsyncIcoProjectDashboard} props={childProps} layout={activeLayout}/>*/}

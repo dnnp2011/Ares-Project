@@ -201,7 +201,10 @@ export const menuItems = [{
   }, {
     title: 'Crypto Market Dashboard',
     href: '/dashboard/crypto-market'
-  }]
+  }, {
+    title: 'Forgot Password',
+    href: '/forgot-password'
+  }, ]
   }, {
   title: 'Errors',
   icon: <InfoIcon style={iconStyle} />,
@@ -212,4 +215,48 @@ export const menuItems = [{
     title: '500',
     href: '/errors/500'
   }]
+}, {
+title: 'Client Pages',
+icon: <PersonIcon style={iconStyle}/>,
+children: [{
+  title: 'ICO Detail',
+  href: '/ico-detail'
+}, {
+  title: 'ICO List',
+  href: '/ico-list'
+}, {
+  title: 'ICO List Item',
+  href: '/ico-list-item'
+}, {
+  title: 'Invest',
+  href: '/invest'
+}, {
+  title: 'Invest Confirm',
+  href: '/invest-confirm'
+}, {
+  title: 'Invest KYC',
+  href: '/invest-kyc'
+}, {
+  title: 'Investment Detail',
+  href: '/investment-detail'
+}, {
+  title: 'Investments',
+  href: '/investments'
+}, {
+  title: 'New Fund Source',
+  href: '/new-fund-source'
+}, {
+  title: 'Wallet',
+  href: '/wallet'
+},]
+}, {
+title: 'Errors',
+icon: <InfoIcon style={iconStyle} />,
+children: [{
+  title: '404',
+  href: '/errors/404'
+}, {
+  title: '500',
+  href: '/errors/500'
+}]
 }];
