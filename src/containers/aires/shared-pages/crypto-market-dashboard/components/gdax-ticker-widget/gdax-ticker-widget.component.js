@@ -147,23 +147,6 @@ class GdaxTickerWidget extends React.Component {
             <div ref={this.setStripRef} className={classes['ticker-strip']} key="original">
               {tickerItem}
 
-
-              {/*{this.state.products &&
-                this.state.products.map((x, i) => {
-                return (
-                  <div>
-
-                  <h6>{ x.symbol}</h6>
-                  <p>{ x.market_data.current_price.usd}</p>
-                  <p>{ x.market_data.current_price.eur}</p>
-                  <p>{ x.market_data.current_price.gdp}</p>
-
-                  <p>{ x.BTC}</p>
-
-                  </div>
-                  )
-              })
-            }*/}
             </div>
           </div>
 
