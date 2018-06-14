@@ -2,6 +2,7 @@ import React from 'react';
 
 import themeStyles from './ico-list.theme.style';
 import scss from './ico-list.module.scss';
+import { withStyles } from '@material-ui/core/styles';
 
 const Forgot = (props) => {
   const {

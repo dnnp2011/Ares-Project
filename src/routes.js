@@ -68,8 +68,8 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 /* -------------------------------------------------------------------------------------------------------------------------- */
 
 // CUSTOM AIRES ROUTES
-const AsyncLaunchICO = asyncComponent(() => import('./containers/aires/ico-admin-pages/launch-ico/launchICO.component'));
-const AsyncCollectKYC = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/collectKYC.component'));
+// const AsyncLaunchICO = asyncComponent(() => import('./containers/aires/ico-admin-pages/launch-ico/launchICO.component'));
+// const AsyncCollectKYC = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/collectKYC.component'));
 
 /* --- Shared Pages --- */
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
@@ -206,8 +206,6 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/errors/500" exact component={AsyncError500} props={childProps} layout={NoLayout} />
       <AppRoute path="/pages/typography" exact component={AsyncTypography} props={childProps} layout={activeLayout} />
       <AppRoute path="/pages/colors" exact component={AsyncColors} props={childProps} layout={activeLayout} />
-      <AppRoute path="/launch" exact component={AsyncLaunchICO} props={childProps} layout={activeLayout} />
-      <AppRoute path="/investorKYC" exact component={AsyncCollectKYC} props={childProps} layout={activeLayout} />
 
 
       /* --- Aires Project Paths --- */
