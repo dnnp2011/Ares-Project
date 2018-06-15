@@ -7,98 +7,67 @@ import socketIOClient from "socket.io-client";
 import themeStyles from './gdax-ticker-widget.theme.style';
 
 class GdaxTickerWidget extends React.Component {
-  constructor(props) {
-    super(props);
-    this.marquee = null;
-    this.strip = null;
-    this.startOffsetX = 0;
-    this.offsetX = 0;
-    this.speed = 1;
-    this.animationCallback = null;
+    constructor(props) {
+        super(props);
 
-    this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
+        this.marquee = null;
+        this.strip = null;
+        this.startOffsetX = 0;
+        this.offsetX = 0;
+        this.speed = 1;
+        this.animationCallback = null;
 
-    this.state = {
-      products: [],
-      endpoint: "http://127.0.0.1:4001"
+        this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
 
-    };
-
-    this.setMarqueeRef = (element) => {
-      this.marquee = element;
-    };
-
-    this.setStripRef = (element) => {
-      this.strip = element;
-    };
-  }
-
-  async componentDidMount() {
-  const { endpoint } = this.state;
-    const socket = socketIOClient(endpoint);
-    socket.on("FromAPI", data => {
-        if(data)
-        {
-          console.log("hello",data)
-          let myData = Object.keys(data).map(key => {
-              return data[key];
-          })
-
-          this.setState({ products:  myData})
+        this.state = {
+            products: [],
+            endpoint: "http://127.0.0.1:4001"
         }
-    })
-    // const request = require('request');
 
-    // const options = {
-    //   url: `https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,BCH,ETH,DASH&tsyms=BTC,USD,EUR`,
+        this.setMarqueeRef = (element) => {
+            this.marquee = element;
+        }
 
-    //   json: true
-    // };
-    // request.post(options, (error, response, body) => {
-    //   console.log(body)
-    //   this.setState({ products: body });
-
-    // });
-    // https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD,EUR,BTC
-    // const res = await fetch('https://api.coingecko.com/api/v3/coins?per_page=10');
-    // // const res = await fetch('https://api.gdax.com/products');
-    // const data = await res.json();
-
-
-    // if(data)
-    // {
-    //   console.log("hello",data)
-    //   // let myData = Object.keys(data).map(key => {
-    //   //     return data[key];
-    //   // })
-
-    //   this.setState({ products:  data})
-    // }
-    console.log(this.state.products)
-
-    setTimeout(() => {
-      const startPosition = this.strip.getBoundingClientRect();
-      this.startOffsetX = startPosition.x;
-      this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
-    }, 1000);
-
-
-  }
-
-  componentWillUnmount() {
-    window.cancelAnimationFrame(this.animationCallback);
-    // this.ws.close();
-  }
-
-  animate = () => {
-    this.offsetX -= 1 * this.speed;
-    this.marquee.style.transform = `translate(${this.offsetX}px, 0) translateZ(0)`;
-    const stripPos = this.strip.getBoundingClientRect();
-    if (stripPos.x < (-stripPos.width + this.startOffsetX)) {
-      this.offsetX = 0;
+        this.setStripRef = (element) => {
+            this.strip = element;
+        }
     }
-    this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
-  }
+
+    async componentDidMount() {
+
+        const socket = socketIOClient(this.state.endpoint);
+        socket.on("FromAPI", data => {
+            if(data)
+            {
+              let myData = Object.keys(data).map(key => {
+                  return data[key];
+              })
+
+              this.setState({ products:  myData})
+            }
+        })
+
+        setTimeout(() => {
+            const startPosition = this.strip.getBoundingClientRect();
+            this.startOffsetX = startPosition.x;
+            this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        window.cancelAnimationFrame(this.animationCallback);
+        // this.ws.close();
+    }
+
+    animate = () => {
+        this.offsetX -= 1 * this.speed;
+        this.marquee.style.transform = `translate(${this.offsetX}px, 0) translateZ(0)`;
+
+        const stripPos = this.strip.getBoundingClientRect();
+        if(stripPos.x < (-stripPos.width + this.startOffsetX)) {this.offsetX = 0}
+
+        this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
+    }
 
   render() {
     const { classes } = this.props;
@@ -123,26 +92,8 @@ class GdaxTickerWidget extends React.Component {
             <div ref={this.setStripRef} className={classes['ticker-strip']} key="original">
               {tickerItem}
             </div>
-             <div className={classes['ticker-strip']} key="copy">
+            <div className={classes['ticker-strip']} key="copy">
               {tickerItem}
-
-
-              {/*{this.state.products &&
-                this.state.products.map((x, i) => {
-                return (
-                  <div>
-
-                  <h6>{ x.symbol}</h6>
-                  <p>{ x.market_data.current_price.usd}</p>
-                  <p>{ x.market_data.current_price.eur}</p>
-                  <p>{ x.market_data.current_price.gdp}</p>
-
-                  <p>{ x.BTC}</p>
-
-                  </div>
-                  )
-              })
-            }*/}
             </div>
           </div>
         </div>
