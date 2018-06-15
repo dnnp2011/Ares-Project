@@ -201,8 +201,32 @@ export const menuItems = [{
   }, {
     title: 'Crypto Market Dashboard',
     href: '/dashboard/crypto-market'
+  }, {
+    title: 'Forgot Password',
+    href: '/forgot-password'
   }]
   }, {
+    title: 'Site Admin Pages',
+    icon: <HomeIcon style={iconStyle} />,
+    children: [{
+      title: 'ICO Master Dashboard ',
+      href: '/admin/dashboard/icos',
+      icon: <DashboardIcon style={iconStyle} />
+    }, {
+      title: 'Investor Master Dashboard ',
+      href: '/admin/dashboard/investors',
+      icon: <DashboardIcon style={iconStyle} />
+    }, {
+      title: 'Site-Wide Analytics',
+      href: '/admin/analytics/site',
+      icon: <DashboardIcon style={iconStyle} />
+    }, {
+      title: 'Transactions Master Dashboard',
+      href: '/admin/dashboard/transactions',
+      icon: <DashboardIcon style={iconStyle} />
+    }
+  ]
+}, {
   title: 'Errors',
   icon: <InfoIcon style={iconStyle} />,
   children: [{
