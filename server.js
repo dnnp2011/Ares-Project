@@ -16,29 +16,26 @@ let interval;
 
 //open connection
 io.on("connection", socket => {
-  console.log("New client connected")
+    console.log("New client connected")
 
-  //if there is an interval running then clear
-  if(interval) {clearInterval(interval)}
+    //clear running interval so we don't have too many connections open
+    if(interval) {clearInterval(interval)}
 
-  interval = setInterval(() => getApiAndEmit(socket), 10000)
+    interval = setInterval(() => getApiAndEmit(socket), 10000)
 
-  socket.on("disconnect", () => {
-    console.log("Client disconnected")
-  })
+    socket.on("disconnect", () => {
+        console.log("Client disconnected")
+    })
 })
 
 //fetch api
 const getApiAndEmit = async socket => {
-  try {
-    const res = await axios.get("https://api.coingecko.com/api/v3/coins?per_page=10")
+    try {
+        const res = await axios.get("https://api.coingecko.com/api/v3/coins?per_page=10")
 
-    //send data to client
-    socket.emit("FromAPI", res.data)
-    console.log(res.data)
-  } catch(error) {
-    console.error(`Error: ${error.code}`)
-  }
+        //send data to client
+        socket.emit("FromAPI", res.data)
+    } catch(error) {console.error(`Error: ${error.code}`)}
 }
 
 //listening(open)
