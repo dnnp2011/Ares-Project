@@ -134,7 +134,6 @@ class GdaxTickerWidget extends React.Component {
                         <Typography component="h5">USD ${parseFloat(x.market_data.current_price.usd).toFixed(2)}</Typography>
                         <Typography component="h5">EUR ${parseFloat(x.market_data.current_price.eur).toFixed(2)}</Typography>
                         <Typography component="h5">BTC {parseFloat(x.market_data.current_price.btc).toFixed(2)}</Typography>
-
                       </div>
                     </div>
               })
