@@ -27,8 +27,8 @@ const getApiAndEmit = async socket => {
       "https://api.coingecko.com/api/v3/coins?per_page=10"
     )
 
-    socket.emit("FromAPI", res)
-    console.log(res)
+    socket.emit("FromAPI", res.data)
+    console.log(res.data)
   } catch(error) {
     console.error(`Error: ${error.code}`);
   }

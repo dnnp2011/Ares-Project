@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import socketIOClient from "socket.io-client";
 
 import themeStyles from './gdax-ticker-widget.theme.style';
 
@@ -18,7 +19,9 @@ class GdaxTickerWidget extends React.Component {
     this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
 
     this.state = {
-      products: []
+      products: [],
+      endpoint: "http://127.0.0.1:4001"
+
     };
 
     this.setMarqueeRef = (element) => {
@@ -31,6 +34,19 @@ class GdaxTickerWidget extends React.Component {
   }
 
   async componentDidMount() {
+  const { endpoint } = this.state;
+    const socket = socketIOClient(endpoint);
+    socket.on("FromAPI", data => {
+        if(data)
+        {
+          console.log("hello",data)
+          let myData = Object.keys(data).map(key => {
+              return data[key];
+          })
+
+          this.setState({ products:  myData})
+        }
+    })
     // const request = require('request');
 
     // const options = {
@@ -44,20 +60,20 @@ class GdaxTickerWidget extends React.Component {
 
     // });
     // https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD,EUR,BTC
-    const res = await fetch('https://api.coingecko.com/api/v3/coins?per_page=10');
-    // const res = await fetch('https://api.gdax.com/products');
-    const data = await res.json();
+    // const res = await fetch('https://api.coingecko.com/api/v3/coins?per_page=10');
+    // // const res = await fetch('https://api.gdax.com/products');
+    // const data = await res.json();
 
 
-    if(data)
-    {
-      console.log("hello",data)
-      // let myData = Object.keys(data).map(key => {
-      //     return data[key];
-      // })
+    // if(data)
+    // {
+    //   console.log("hello",data)
+    //   // let myData = Object.keys(data).map(key => {
+    //   //     return data[key];
+    //   // })
 
-      this.setState({ products:  data})
-    }
+    //   this.setState({ products:  data})
+    // }
     console.log(this.state.products)
 
     setTimeout(() => {
@@ -66,46 +82,7 @@ class GdaxTickerWidget extends React.Component {
       this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
     }, 1000);
 
-    const subscribe = {
-      type: 'subscribe',
-      channels: [
-        {
-          name: 'ticker',
-          product_ids: data.map(product => product.id)
-        }
-      ]
-    };
 
-  //   const hello =  {
-  //     "type": "hello",
-  //     "apikey": this.coinApiKey,
-  //     "heartbeat": false,
-  //     "subscribe_data_type": ["trade"],
-  //     "subscribe_filter_asset_id": ["BTC", "BCH", "ETH", "LTC"]
-  //   };
-
-    this.ws = new WebSocket('wss://api.coingecko.com/api/v3');
-  //   // this.ws = new WebSocket('wss://ws.coinapi.io/v1/');
-
-    this.ws.onopen = () => {
-      this.ws.send(JSON.stringify(subscribe));
-      // this.ws.send(JSON.stringify(hello));
-    };
-
-    this.ws.onmessage = (e) => {
-      const value = JSON.parse(e.data);
-      // console.log(value);
-      if (value.type !== 'ticker') {
-        return;
-      }
-
-      const index = this.state.products.findIndex(product => product.id === value.product_id);
-      if (index !== -1) {
-        const { products } = this.state;
-        products[index].socket = value;
-        this.setState({ products });
-      }
-    };
   }
 
   componentWillUnmount() {
