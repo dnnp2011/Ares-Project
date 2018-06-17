@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -10,48 +10,80 @@ import DailyPerformanceWidget from './components/daily-performance-widget/daily-
 import AnnualPerformanceWidget from './components/annual-performance-widget/annual-performance-widget.component';
 import MostPopularWidget from './components/most-popular-widget/most-popular-widget.component';
 import MarketCapWidget from './components/market-cap-widget/market-cap-widget.component';
-
+import socketIOClient from "socket.io-client";
 
 import styles from './crypto-market-dashboard.style';
 
-const Crypto = (props) => {
-  const { classes } = props;
 
-  return (
-    [
+class Crypto extends Component {
+    constructor(props) {
+        super(props)
 
-      /* -- Control grid layout, spacing, and breakpoints here -- */
+        this.state = {
+            tickerData: null,
+            dailyPerformanceData: null,
+            annualPerformanceData: null,
+            dailyPerformanceData: null,
+            mostPopularData: null,
+            marketCapData: null,
+            endpoint: "http://127.0.0.1:4001"
+        }
+    }
 
-      <Grid key={1} item><Paper key={1} className={classes.portalWidgetContent}><GdaxTickerWidget /></Paper></Grid>,
-      <div key={2} className={classes.portalDashboardPageWrapper}>
+    async componentDidMount() {
 
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={16}>
+        const socket = socketIOClient(this.state.endpoint);
+        socket.on("FromAPI", data => {
+            if(data)
+            {
+              let myData = Object.keys(data).map(key => {
+                  return data[key];
+              })
 
-            <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-              <Paper className={classes.portalWidgetContent}>
-                <DailyPerformanceWidget />
-              </Paper>
-            </Grid>
+              this.setState({ tickerData:  myData})
+            }
+        })
+    }
 
-            <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-              <AnnualPerformanceWidget />
-            </Grid>
+    render() {
+        const { classes } = this.props;
 
-            <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-              <MostPopularWidget />
-            </Grid>
+        return (
+            [
 
-            <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-              <MarketCapWidget />
-            </Grid>
+              /* -- Control grid layout, spacing, and breakpoints here -- */
 
-          </Grid>
-        </Grid>
-      </div>
-    ]
-  );
-};
+              <Grid key={1} item><Paper key={1} className={classes.portalWidgetContent}><GdaxTickerWidget products={this.state.tickerData} /></Paper></Grid>,
+              <div key={2} className={classes.portalDashboardPageWrapper}>
+
+                <Grid item xs={12}>
+                  <Grid container justify="center" spacing={16}>
+
+                    <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
+                      <Paper className={classes.portalWidgetContent}>
+                        <DailyPerformanceWidget />
+                      </Paper>
+                    </Grid>
+
+                    <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
+                      <AnnualPerformanceWidget />
+                    </Grid>
+
+                    <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
+                      <MostPopularWidget />
+                    </Grid>
+
+                    <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>
+                      <MarketCapWidget />
+                    </Grid>
+
+                  </Grid>
+                </Grid>
+              </div>
+            ]
+        )
+    }
+}
 
 Crypto.propTypes = {
   classes: PropTypes.shape({}).isRequired

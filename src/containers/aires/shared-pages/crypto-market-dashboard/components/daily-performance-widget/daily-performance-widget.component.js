@@ -184,9 +184,9 @@ class DailySalesWidget extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem key={1} onClick={this.onItemClick}>Day</MenuItem>
-          <MenuItem key={2} onClick={this.onItemClick}>Annual</MenuItem>
+          <MenuItem key={2} onClick={this.onItemClick}>Week</MenuItem>
           <MenuItem key={3} onClick={this.onItemClick}>Month</MenuItem>
-          <MenuItem key={4} onClick={this.onItemClick}>Week</MenuItem>
+          <MenuItem key={4} onClick={this.onItemClick}>Annual</MenuItem>
         </Menu>
       </Card>
     );
