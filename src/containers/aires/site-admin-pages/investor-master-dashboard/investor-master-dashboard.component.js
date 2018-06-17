@@ -12,7 +12,9 @@ const InvestorDash = (props) => {
   const { classes } = props;
 
   return (
+    <div>
 
+    </div>
   );
 };
 
