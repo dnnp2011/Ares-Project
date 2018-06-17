@@ -220,14 +220,9 @@ export const menuItems = [{
     title: 'Crypto Market Dashboard',
     href: '/dashboard/crypto-market'
   }, {
-<<<<<<< HEAD
     title: 'Local Crypto Market Dashboard',
     href: '/dashboard/crypto-market-local'
   }]
-=======
-    title: 'Forgot Password',
-    href: '/forgot-password'
->>>>>>> cb80edcffe9874ff7ffa3a02f6269ddcaba4dd8c
   }]
   }, {
     title: 'Site Admin Pages',
