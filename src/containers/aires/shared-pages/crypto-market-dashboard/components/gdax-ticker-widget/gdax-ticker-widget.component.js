@@ -20,7 +20,7 @@ class GdaxTickerWidget extends React.Component {
         this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
 
         this.state = {
-            products: [],
+            products: null,
             endpoint: "http://127.0.0.1:4001"
         }
 
@@ -35,17 +35,17 @@ class GdaxTickerWidget extends React.Component {
 
     async componentDidMount() {
 
-        // const socket = socketIOClient(this.state.endpoint);
-        // socket.on("FromAPI", data => {
-        //     if(data)
-        //     {
-        //       let myData = Object.keys(data).map(key => {
-        //           return data[key];
-        //       })
+        const socket = socketIOClient(this.state.endpoint);
+        socket.on("FromAPI", data => {
+            if(data)
+            {
+              let myData = Object.keys(data).map(key => {
+                  return data[key];
+              })
 
-        //       this.setState({ products:  myData})
-        //     }
-        // })
+              this.setState({ products:  myData})
+            }
+        })
 
         setTimeout(() => {
             const startPosition = this.strip.getBoundingClientRect();
@@ -72,7 +72,8 @@ class GdaxTickerWidget extends React.Component {
   render() {
     const { classes } = this.props;
 
-    let tickerItem = this.state.products && this.state.products.map((x,i) => {
+    let tickerItem = this.state.products?
+                this.state.products.map((x,i) => {
                    return <div className={classes['ticker-item']} key={i}>
                       <div className={classes['ticker-item__name']}>
                         <img src={x.image.thumb} alt="coin" />
@@ -82,7 +83,8 @@ class GdaxTickerWidget extends React.Component {
                         <Typography component="h5">BTC {parseFloat(x.market_data.current_price.btc).toFixed(2)}</Typography>
                       </div>
                     </div>
-              })
+                })
+                :<h1>loading...</h1>
 
 
     return (
