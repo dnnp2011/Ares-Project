@@ -198,6 +198,9 @@ export const menuItems = [{
   }, {
     title: 'Investor KYC',
     href: '/investorKYC'
+  },{
+    title: 'Forgot Password',
+    href: '/forgot-password'
   }, {
     title: 'Crypto Market Dashboard',
     href: '/dashboard/crypto-market'
