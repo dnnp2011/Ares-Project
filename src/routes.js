@@ -70,11 +70,19 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 // CUSTOM AIRES ROUTES
 
 /* --- Shared Pages --- */
+<<<<<<< HEAD
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
 const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
 const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/shared-pages/register/register.component'));
 const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
 const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
+=======
+// const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
+const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
+// const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/shared-pages/register/register.component'));
+// const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
+// const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
+>>>>>>> b8294f64e309ff87334b959a26e85ae09925fd5c
 const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-market-dashboard/crypto-market-dashboard.component'));
 const AsyncCryptoLocalDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-local-dashboard/crypto-local-dashboard.component'));
 
@@ -210,11 +218,19 @@ export default ({ childProps, layout }) => {
       /* ------------------------------------------------------------------------------------------------------------------------------------- */
 
       /* --- Shared Pages --- */
+<<<<<<< HEAD
       <AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>
       <AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register/registration-complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>
       <AppRoute path="/invite-friend" exact component={AsyncInviteFriend} props={childProps} layout={activeLayout}/>
+=======
+      {/*<AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>*/}
+      <AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>
+      {/*<AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>*/}
+      {/*<AppRoute path="/register/registration-complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>*/}
+      {/*<AppRoute path="/invite-friend" exact component={AsyncInviteFriend} props={childProps} layout={activeLayout}/>*/}
+>>>>>>> b8294f64e309ff87334b959a26e85ae09925fd5c
       <AppRoute path="/dashboard/crypto-market" exact component={AsyncCryptoMarketDashboard} props={childProps} layout={activeLayout} />
       <AppRoute path="/dashboard/crypto-market-local" exact component={AsyncCryptoLocalDashboard} props={childProps} layout={activeLayout}/>
 

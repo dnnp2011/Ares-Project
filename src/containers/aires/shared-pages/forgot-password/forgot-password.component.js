@@ -15,7 +15,11 @@ import { withStyles } from '@material-ui/core/styles';
 import themeStyles from './forgot-password.theme.style';
 import scss from './forgot-password.module.scss';
 
+<<<<<<< HEAD
 import logoImage from '../../../../assets/images/portal-logo.png';//modified
+=======
+import logoImage from '../../../../assets/images/portal-logo.png';
+>>>>>>> b8294f64e309ff87334b959a26e85ae09925fd5c
 
 const Forgot = (props) => {
   const {
@@ -38,8 +42,13 @@ const Forgot = (props) => {
             xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
+<<<<<<< HEAD
               <CardContent className={scss['forgot-password-content']}>
                 <img src={logoImage} className={scss['forgot-password-logo']} alt="logo" />
+=======
+              <CardContent className={scss['signup-content']}>
+                <img src={logoImage} className={scss['signup-logo']} alt="logo" />
+>>>>>>> b8294f64e309ff87334b959a26e85ae09925fd5c
                 <Typography variant="headline" component="h2" gutterBottom>
                   Password Revovery
                 </Typography>
