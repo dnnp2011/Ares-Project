@@ -10,7 +10,7 @@ import DailyPerformanceWidget from './components/daily-performance-widget/daily-
 import AnnualPerformanceWidget from './components/annual-performance-widget/annual-performance-widget.component';
 import MostPopularWidget from './components/most-popular-widget/most-popular-widget.component';
 import MarketCapWidget from './components/market-cap-widget/market-cap-widget.component';
-import socketIOClient from "socket.io-client";
+import socketIOClient from 'socket.io-client';
 
 import styles from './crypto-market-dashboard.style';
 
@@ -33,16 +33,27 @@ class Crypto extends Component {
     async componentDidMount() {
 
         const socket = socketIOClient(this.state.endpoint);
-        socket.on("FromAPI", data => {
-            if(data)
+        socket.on("FromAPI", (data, data2) => {
+            if(data || data2)
             {
-              let myData = Object.keys(data).map(key => {
-                  return data[key];
-              })
+                // console.log(data2)
+                // let myData = Object.keys(data).map(key => {
+                //   return data[key];
+                // })
 
-              this.setState({ tickerData:  myData})
+                // let myData2 = Object.keys(data2).map(key => {
+                //   return data2[key];
+                // })
+
+                this.setState({
+                    tickerData:  data,
+                    dailyPerformanceData: data2
+                })
             }
         })
+
+                console.log(this.state.tickerData)
+
     }
 
     render() {

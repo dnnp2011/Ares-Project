@@ -28,13 +28,15 @@ io.on("connection", socket => {
     })
 })
 
+
 //fetch api
 const getApiAndEmit = async socket => {
     try {
         const res = await axios.get("https://api.coingecko.com/api/v3/coins?per_page=10")
+        const res2 = await axios.get("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1")
 
         //send data to client
-        socket.emit("FromAPI", res.data)
+        socket.emit("FromAPI", res.data, res2.data)
     } catch(error) {console.error(`Error: ${error.code}`)}
 }
 

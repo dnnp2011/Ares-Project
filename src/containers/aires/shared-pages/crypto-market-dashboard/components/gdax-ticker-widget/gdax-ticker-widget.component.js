@@ -10,15 +10,6 @@ class GdaxTickerWidget extends React.Component {
     constructor(props) {
         super(props);
 
-        this.marquee = null;
-        this.strip = null;
-        this.startOffsetX = 0;
-        this.offsetX = 0;
-        this.speed = 1;
-        this.animationCallback = null;
-
-        this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
-
         this.state = {
             // products: null,
             endpoint: "http://127.0.0.1:4001"
@@ -31,6 +22,15 @@ class GdaxTickerWidget extends React.Component {
         this.setStripRef = (element) => {
             this.strip = element;
         }
+
+        this.marquee = null;
+        this.strip = null;
+        this.startOffsetX = 0;
+        this.offsetX = 0;
+        this.speed = 1;
+        this.animationCallback = null;
+
+        this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
     }
 
     async componentDidMount() {
