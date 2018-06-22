@@ -33,19 +33,7 @@ class GdaxTickerWidget extends React.Component {
         this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
     }
 
-    async componentDidMount() {
-
-        // const socket = socketIOClient(this.state.endpoint);
-        // socket.on("FromAPI", data => {
-        //     if(data)
-        //     {
-        //       let myData = Object.keys(data).map(key => {
-        //           return data[key];
-        //       })
-
-        //       this.setState({ products:  myData})
-        //     }
-        // })
+    componentDidMount() {
 
         setTimeout(() => {
             const startPosition = this.strip.getBoundingClientRect();

@@ -22,21 +22,24 @@ const legendOptions = {
 };
 
 class DailySalesWidget extends React.Component {
-  state = {
-    intervalId: null,
-    lineChartData: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
-      datasets: [{
-        type: 'line',
-        label: 'ETH',
-        backgroundColor: this.props.theme.palette.primary.light,
-        borderColor: this.props.theme.palette.primary.light,
-        borderWidth: '2',
-        lineTension: 0.5,
-        pointRadius: 0,
-        fill: true,
-        data: [...new Array(10)].map(() => Math.floor(Math.random() * 30))
-      }, {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      intervalId: null,
+      lineChartData: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
+        datasets: [{
+          type: 'line',
+          label: 'ETH',
+          backgroundColor: this.props.theme.palette.primary.light,
+          borderColor: this.props.theme.palette.primary.light,
+          borderWidth: '2',
+          lineTension: 0.5,
+          pointRadius: 0,
+          fill: true,
+          data: [...new Array(10)].map(() => Math.floor(Math.random() * 30))
+    }, {
         type: 'line',
         label: 'BTC',
         backgroundColor: this.props.theme.palette.primary.main,
@@ -45,8 +48,8 @@ class DailySalesWidget extends React.Component {
         lineTension: 0.5,
         pointRadius: 0,
         fill: true,
-        data: [...new Array(10)].map(() => 40 + Math.floor(Math.random() * 30))
-      }, {
+        data: this.props.dailydata
+    }, {
         type: 'line',
         label: 'MSC',
         backgroundColor: this.props.theme.palette.primary.dark,
@@ -70,18 +73,28 @@ class DailySalesWidget extends React.Component {
         }]
       }
     }
-  };
+  }
+}
+
+
 
   componentWillMount() {
-    const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
-    const intervalId = setInterval(() => {
-      this.randomizeCharts();
-    }, randomInterval);
 
-    this.setState({ intervalId });
+    // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
+
+    // const intervalId = setInterval(() => {
+    //     this.randomizeCharts();
+    // }, randomInterval);
+
+    // this.setState({ intervalId })
+
+
   }
 
   componentWillReceiveProps(props) {
+        console.log("PASSED props", this.props.dailydata)
+
+
     const oldEthDataSet = this.state.lineChartData.datasets[0];
     const newEthDataSet = { ...oldEthDataSet };
     newEthDataSet.borderColor = props.theme.palette.primary.light;
@@ -113,35 +126,34 @@ class DailySalesWidget extends React.Component {
     this.randomizeCharts();
   };
 
-  randomizeCharts = () => {
-    const ethDataSet = this.state.lineChartData.datasets[0];
-    const newEthData = [...ethDataSet.data];
-    newEthData.push(Math.floor(Math.random() * 30));
-    newEthData.splice(0, 1);
-    const newEthDataSet = { ...ethDataSet };
-    newEthDataSet.data = newEthData;
+  // randomizeCharts = () => {
+  //   const ethDataSet = this.state.lineChartData.datasets[0];
+  //   const newEthData = [...ethDataSet.data];
+  //   newEthData.push(Math.floor(Math.random() * 30));
+  //   newEthData.splice(0, 1);
+  //   const newEthDataSet = { ...ethDataSet };
+  //   newEthDataSet.data = newEthData;
 
-    const oldBtcDataSet = this.state.lineChartData.datasets[1];
-    const newBtcData = [...oldBtcDataSet.data];
-    newBtcData.push(40 + Math.floor(Math.random() * 30));
-    newBtcData.splice(0, 1);
-    const newBtcDataSet = { ...oldBtcDataSet };
-    newBtcDataSet.data = newBtcData;
+  //   const oldBtcDataSet = this.state.lineChartData.datasets[1];
+  //   const newBtcData = [...oldBtcDataSet.data];
 
-    const oldMscDataSet = this.state.lineChartData.datasets[2];
-    const newMscData = [...oldMscDataSet.data];
-    newMscData.push(70 + Math.floor(Math.random() * 30));
-    newMscData.splice(0, 1);
-    const newMscDataSet = { ...oldMscDataSet };
-    newMscDataSet.data = newMscData;
+  //   const newBtcDataSet = { ...oldBtcDataSet };
+  //   newBtcDataSet.data = newBtcData;
 
-    const newChartData = {
-      ...this.state.lineChartData,
-      datasets: [newEthDataSet, newBtcDataSet, newMscDataSet]
-    };
+  //   const oldMscDataSet = this.state.lineChartData.datasets[2];
+  //   const newMscData = [...oldMscDataSet.data];
+  //   newMscData.push(70 + Math.floor(Math.random() * 30));
+  //   newMscData.splice(0, 1);
+  //   const newMscDataSet = { ...oldMscDataSet };
+  //   newMscDataSet.data = newMscData;
 
-    this.setState({ lineChartData: newChartData });
-  }
+  //   const newChartData = {
+  //     ...this.state.lineChartData,
+  //     datasets: [newEthDataSet, newBtcDataSet, newMscDataSet]
+  //   };
+
+  //   this.setState({ lineChartData: newChartData });
+  // }
 
   handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });

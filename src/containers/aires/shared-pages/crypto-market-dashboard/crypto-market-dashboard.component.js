@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -15,7 +15,7 @@ import socketIOClient from 'socket.io-client';
 import styles from './crypto-market-dashboard.style';
 
 
-class Crypto extends Component {
+class Crypto extends React.Component {
     constructor(props) {
         super(props)
 
@@ -23,7 +23,6 @@ class Crypto extends Component {
             tickerData: null,
             dailyPerformanceData: null,
             annualPerformanceData: null,
-            dailyPerformanceData: null,
             mostPopularData: null,
             marketCapData: null,
             endpoint: "http://127.0.0.1:4001"
@@ -34,34 +33,39 @@ class Crypto extends Component {
 
         const socket = socketIOClient(this.state.endpoint);
         socket.on("FromAPI", (data, data2) => {
-            if(data || data2)
+            if(data && data2)
             {
                 // console.log(data2)
                 // let myData = Object.keys(data).map(key => {
                 //   return data[key];
                 // })
+                let arr = []
 
-                // let myData2 = Object.keys(data2).map(key => {
-                //   return data2[key];
-                // })
+                data2.prices.map(x => {
+                    if(arr.length === 10) {return}
+                     arr.push(Math.round(x[1]))
+                })
 
                 this.setState({
                     tickerData:  data,
-                    dailyPerformanceData: data2
+                    dailyPerformanceData: arr
                 })
+
+                 console.log("found!!!", this.state.dailyPerformanceData)
             }
         })
-
-                console.log(this.state.tickerData)
-
     }
 
     render() {
         const { classes } = this.props;
 
+        var DailyPerformance = this.state.dailyPerformanceData?
+                                        <DailyPerformanceWidget dailydata={this.state.dailyPerformanceData} />
+                                        :
+                                        <p>loading..</p>
+
         return (
             [
-
               /* -- Control grid layout, spacing, and breakpoints here -- */
 
               <Grid key={1} item><Paper key={1} className={classes.portalWidgetContent}><GdaxTickerWidget products={this.state.tickerData} /></Paper></Grid>,
@@ -72,7 +76,7 @@ class Crypto extends Component {
 
                     <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
                       <Paper className={classes.portalWidgetContent}>
-                        <DailyPerformanceWidget />
+                        {DailyPerformance}
                       </Paper>
                     </Grid>
 
