@@ -38,27 +38,27 @@ class DailySalesWidget extends React.Component {
           lineTension: 0.5,
           pointRadius: 0,
           fill: true,
-          data: [...new Array(10)].map(() => Math.floor(Math.random() * 30))
+          data: this.props.dailydata.splice(10,19)
     }, {
         type: 'line',
         label: 'BTC',
         backgroundColor: this.props.theme.palette.primary.main,
         borderColor: this.props.theme.palette.primary.main,
         borderWidth: '2',
-        lineTension: 0.5,
+        lineTension: 3.5,
         pointRadius: 0,
         fill: true,
-        data: this.props.dailydata
+        data: this.props.dailydata.splice(0,9)
     }, {
         type: 'line',
-        label: 'MSC',
+        label: 'EOS',
         backgroundColor: this.props.theme.palette.primary.dark,
         borderColor: this.props.theme.palette.primary.dark,
         borderWidth: '2',
         lineTension: 0.5,
         pointRadius: 0,
         fill: true,
-        data: [...new Array(10)].map(() => 70 + Math.floor(Math.random() * 30))
+        data: this.props.dailydata.splice(20,29)
       }]
     },
     lineChartOptions: {

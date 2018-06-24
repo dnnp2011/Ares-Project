@@ -32,8 +32,8 @@ class Crypto extends React.Component {
     async componentDidMount() {
 
         const socket = socketIOClient(this.state.endpoint);
-        socket.on("FromAPI", (data, data2) => {
-            if(data && data2)
+        socket.on("FromAPI", (data, bitcoin, ether, eos) => {
+            if(data || bitcoin || ether || eos)
             {
                 // console.log(data2)
                 // let myData = Object.keys(data).map(key => {
@@ -41,8 +41,18 @@ class Crypto extends React.Component {
                 // })
                 let arr = []
 
-                data2.prices.map(x => {
+                bitcoin.prices.map(x => {
                     if(arr.length === 10) {return}
+                     arr.push(Math.round(x[1]))
+                })
+
+                ether.prices.map(x => {
+                    if(arr.length === 20) {return}
+                     arr.push(Math.round(x[1]))
+                })
+
+                eos.prices.map(x => {
+                    if(arr.length === 30) {return}
                      arr.push(Math.round(x[1]))
                 })
 
