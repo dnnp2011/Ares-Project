@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import themeStyles from './daily-performance-widget.theme.style';
+import socketIOClient from "socket.io-client";
 
 const legendOptions = {
   display: true,
@@ -26,6 +27,7 @@ class DailySalesWidget extends React.Component {
     super(props)
 
     this.state = {
+      dailyFilter: 1,
       intervalId: null,
       lineChartData: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
@@ -45,7 +47,7 @@ class DailySalesWidget extends React.Component {
         backgroundColor: this.props.theme.palette.primary.main,
         borderColor: this.props.theme.palette.primary.main,
         borderWidth: '2',
-        lineTension: 3.5,
+        lineTension: 0.5,
         pointRadius: 0,
         fill: true,
         data: this.props.dailydata.splice(0,9)
@@ -77,54 +79,62 @@ class DailySalesWidget extends React.Component {
 }
 
 
-
-  componentWillMount() {
-
-    // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
-
-    // const intervalId = setInterval(() => {
-    //     this.randomizeCharts();
-    // }, randomInterval);
-
-    // this.setState({ intervalId })
+    componentDidMount() {
 
 
-  }
+        // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
 
-  componentWillReceiveProps(props) {
+        // const intervalId = setInterval(() => {
+        //     this.randomizeCharts();
+        // }, randomInterval);
+
+        // this.setState({ intervalId })
+    }
+
+    componentWillReceiveProps(props) {
         console.log("PASSED props", this.props.dailydata)
 
 
-    const oldEthDataSet = this.state.lineChartData.datasets[0];
-    const newEthDataSet = { ...oldEthDataSet };
-    newEthDataSet.borderColor = props.theme.palette.primary.light;
-    newEthDataSet.backgroundColor = props.theme.palette.primary.light;
+        const oldEthDataSet = this.state.lineChartData.datasets[0];
+        const newEthDataSet = { ...oldEthDataSet };
+        newEthDataSet.borderColor = props.theme.palette.primary.light;
+        newEthDataSet.backgroundColor = props.theme.palette.primary.light;
 
-    const oldBtcDataSet = this.state.lineChartData.datasets[1];
-    const newBtcDataSet = { ...oldBtcDataSet };
-    newBtcDataSet.borderColor = props.theme.palette.primary.main;
-    newBtcDataSet.backgroundColor = props.theme.palette.primary.main;
+        const oldBtcDataSet = this.state.lineChartData.datasets[1];
+        const newBtcDataSet = { ...oldBtcDataSet };
+        newBtcDataSet.borderColor = props.theme.palette.primary.main;
+        newBtcDataSet.backgroundColor = props.theme.palette.primary.main;
 
-    const oldMscDataSet = this.state.lineChartData.datasets[2];
-    const newMscDataSet = { ...oldMscDataSet };
-    newMscDataSet.borderColor = props.theme.palette.primary.dark;
-    newMscDataSet.backgroundColor = props.theme.palette.primary.dark;
+        const oldMscDataSet = this.state.lineChartData.datasets[2];
+        const newMscDataSet = { ...oldMscDataSet };
+        newMscDataSet.borderColor = props.theme.palette.primary.dark;
+        newMscDataSet.backgroundColor = props.theme.palette.primary.dark;
 
-    const newChartData = {
-      ...this.state.lineChartData,
-      datasets: [newEthDataSet, newBtcDataSet, newMscDataSet]
-    };
+        const newChartData = {
+        ...this.state.lineChartData,
+        datasets: [newEthDataSet, newBtcDataSet, newMscDataSet]
+        };
 
-    this.setState({ lineChartData: newChartData });
-  }
+        this.setState({ lineChartData: newChartData });
+    }
 
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-  }
+    componentWillUnmount() {
+        clearInterval(this.state.intervalId);
+    }
 
-  onItemClick = () => {
-    this.randomizeCharts();
-  };
+
+    filterData = number => {
+        // this.randomizeCharts();
+        const socket = socketIOClient(this.props.endpoint);
+
+        this.setState({dailyFilter: number})
+        socket.emit('filterReq', this.state.dailyFilter)
+        console.log(this.state.dailyFilter)
+    }
+
+
+  // socket.on('filterRequest',() => {socket.emit('filterRequest', this.state.dailyFilter)})
+
 
   // randomizeCharts = () => {
   //   const ethDataSet = this.state.lineChartData.datasets[0];
@@ -195,10 +205,10 @@ class DailySalesWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={this.onItemClick}>Day</MenuItem>
-          <MenuItem key={2} onClick={this.onItemClick}>Week</MenuItem>
-          <MenuItem key={3} onClick={this.onItemClick}>Month</MenuItem>
-          <MenuItem key={4} onClick={this.onItemClick}>Annual</MenuItem>
+          <MenuItem key={1} onClick={e => this.filterData(1)}>Day</MenuItem>
+          <MenuItem key={2} onClick={e => this.filterData(7)}>Week</MenuItem>
+          <MenuItem key={3} onClick={e => this.filterData(30)}>Month</MenuItem>
+          <MenuItem key={4} onClick={e => this.filterData(365)}>Annual</MenuItem>
         </Menu>
       </Card>
     );

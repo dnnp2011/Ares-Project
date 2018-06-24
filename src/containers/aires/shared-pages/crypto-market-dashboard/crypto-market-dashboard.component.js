@@ -56,6 +56,8 @@ class Crypto extends React.Component {
                      arr.push(Math.round(x[1]))
                 })
 
+                console.log(arr)
+
                 this.setState({
                     tickerData:  data,
                     dailyPerformanceData: arr
@@ -70,7 +72,7 @@ class Crypto extends React.Component {
         const { classes } = this.props;
 
         var DailyPerformance = this.state.dailyPerformanceData?
-                                        <DailyPerformanceWidget dailydata={this.state.dailyPerformanceData} />
+                                        <DailyPerformanceWidget dailydata={this.state.dailyPerformanceData} endpoint={this.state.endpoint}/>
                                         :
                                         <p>loading..</p>
 
