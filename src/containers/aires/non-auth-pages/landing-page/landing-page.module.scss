@@ -1,11 +1,11 @@
 .panel {
-  animation: forgot-password 1s forwards 1;
+  animation: landing-page 1s forwards 1;
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
 }
 
-.card {
+.paper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,15 +16,15 @@
   justify-content: space-between;
 }
 
-.forgot-password-content {
+.landing-page-content {
   text-align: center;
 }
 
-.forgot-password-logo {
+.landing-page-logo {
   height: 64px;
 }
 
-@keyframes forgot-password {
+@keyframes landing-page {
   0% {
     transform: translateY(20px);
     opacity: 0;

@@ -42,6 +42,9 @@ const AsyncSteppersExample = asyncComponent(() => import('./containers/elements/
 const AsyncButtonExample = asyncComponent(() => import('./containers/elements/button/button.component'));
 const AsyncProgressExample = asyncComponent(() => import('./containers/elements/progress/progress.component'));
 
+// NON-AUTH ROUTES
+const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-auth-pages/landing-page/landing-page.component'));
+
 // AUTHENTICATION ROUTES
 const AsyncLogin = asyncComponent(() => import('./containers/authentication/login/login.component'));
 const AsyncRegister = asyncComponent(() => import('./containers/authentication/register/register.component'));
@@ -70,9 +73,9 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 // CUSTOM AIRES ROUTES
 
 /* --- Shared Pages --- */
-const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
-const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
-const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/shared-pages/register/register.component'));
+const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/non-auth-pages/login/login.component'));
+const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/non-auth-pages/forgot-password/forgot-password.component'));
+const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/non-auth-pages/register/register.component'));
 const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
 const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
 const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-market-dashboard/crypto-market-dashboard.component'));
@@ -169,7 +172,7 @@ export default ({ childProps, layout }) => {
 
   return (
     <Switch>
-      <AppRoute path="/" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />
+      <AppRoute path="/dashboards/analytics" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />
       <AppRoute path="/dashboards/ecommerce" exact component={AsyncEcommerceDashboard} props={childProps} layout={activeLayout} />
       <AppRoute path="/dashboards/crypto" exact component={AsyncCryptoDashboard} props={childProps} layout={activeLayout} />
       <AppRoute path="/dashboards/project" exact component={AsyncProjectDashboard} props={childProps} layout={activeLayout} />
@@ -208,6 +211,9 @@ export default ({ childProps, layout }) => {
 
       /* --- Aires Project Paths --- */
       /* ------------------------------------------------------------------------------------------------------------------------------------- */
+
+      /* --- Non-Auth Pages --- */
+      <AppRoute path="/" exact component={AsyncLandingPage} props={childProps} layout={activeLayout} />
 
       /* --- Shared Pages --- */
       <AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>

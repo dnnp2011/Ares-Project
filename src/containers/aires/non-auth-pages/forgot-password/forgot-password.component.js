@@ -15,7 +15,7 @@ import { withStyles } from '@material-ui/core/styles';
 import themeStyles from './forgot-password.theme.style';
 import scss from './forgot-password.module.scss';
 
-import logoImage from '../../../../assets/images/portal-logo.png';//modified
+import logoImage from '../../../../assets/images/ares-logo.png';//modified
 
 const Forgot = (props) => {
   const {

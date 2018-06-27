@@ -39,7 +39,7 @@ export const menuItems = [{
   icon: <HomeIcon style={iconStyle} />,
   children: [{
     title: 'Analytics',
-    href: '/',
+    href: '/dashboards/analytics',
     icon: <DashboardIcon style={iconStyle} />
   }, {
     title: 'Ecommerce',
@@ -192,19 +192,14 @@ export const menuItems = [{
 }, {
   title: 'Aires',
   icon: <PersonIcon style={iconStyle}/>,
+children: [{
+  title: 'Non Auth Pages',
+  icon: <HomeIcon style={iconStyle} />,
   children: [{
-    title: 'Launch ICO',
-    href: '/launch'
-  },{
-    title: 'Forgot Password',
-    href: '/forgot-password'
-  }, {
-    title: 'Investor KYC',
-    href: '/investorKYC'
-  },{
-    title: 'Forgot Password',
-    href: '/forgot-password'
-  }, {
+    title: 'Landing Page',
+    href: '/'
+  }],
+},{
     title: 'Shared Pages',
     icon: <PersonIcon style={iconStyle}/>,
     children: [{
@@ -229,39 +224,46 @@ export const menuItems = [{
     title: 'Local Crypto Market Dashboard',
     href: '/dashboard/crypto-market-local'
   }]
-  }]
-  }, {
-    title: 'Site Admin Pages',
-    icon: <HomeIcon style={iconStyle} />,
-    children: [{
-      title: 'ICO Master Dashboard ',
-      href: '/admin/dashboard/icos',
-      icon: <DashboardIcon style={iconStyle} />
-    }, {
-      title: 'Investor Master Dashboard ',
-      href: '/admin/dashboard/investors',
-      icon: <DashboardIcon style={iconStyle} />
-    }, {
-      title: 'Site-Wide Analytics',
-      href: '/admin/analytics/site',
-      icon: <DashboardIcon style={iconStyle} />
-    }, {
-      title: 'Transactions Master Dashboard',
-      href: '/admin/dashboard/transactions',
-      icon: <DashboardIcon style={iconStyle} />
-    }
-  ]
-}, {
-  title: 'Errors',
-  icon: <InfoIcon style={iconStyle} />,
+},
+{
+  title: 'ICO Admin Pages',
+  icon: <HomeIcon style={iconStyle} />,
   children: [{
-    title: '404',
-    href: '/errors/404'
+    title: 'Launch ICO',
+    href: '/launch'
+  },{
+    title: 'Forgot Password',
+    href: '/forgot-password'
   }, {
-    title: '500',
-    href: '/errors/500'
-  }]
-}, {
+    title: 'Investor KYC',
+    href: '/investorKYC'
+  },{
+    title: 'Forgot Password',
+    href: '/forgot-password'
+  }]},
+{
+  title: 'Site Admin Pages',
+  icon: <HomeIcon style={iconStyle} />,
+  children: [{
+    title: 'ICO Master Dashboard ',
+    href: '/admin/dashboard/icos',
+    icon: <DashboardIcon style={iconStyle} />
+  }, {
+    title: 'Investor Master Dashboard ',
+    href: '/admin/dashboard/investors',
+    icon: <DashboardIcon style={iconStyle} />
+  }, {
+    title: 'Site-Wide Analytics',
+    href: '/admin/analytics/site',
+    icon: <DashboardIcon style={iconStyle} />
+  }, {
+    title: 'Transactions Master Dashboard',
+    href: '/admin/dashboard/transactions',
+    icon: <DashboardIcon style={iconStyle} />
+  }
+]
+},
+{
 title: 'Client Pages',
 icon: <PersonIcon style={iconStyle}/>,
 children: [{
@@ -295,7 +297,8 @@ children: [{
   title: 'Wallet',
   href: '/wallet'
 },]
-}, {
+},]
+},{
 title: 'Errors',
 icon: <InfoIcon style={iconStyle} />,
 children: [{
