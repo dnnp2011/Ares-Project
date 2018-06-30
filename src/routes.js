@@ -218,6 +218,10 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/dashboard/crypto-market" exact component={AsyncCryptoMarketDashboard} props={childProps} layout={activeLayout} />
       <AppRoute path="/dashboard/crypto-market-local" exact component={AsyncCryptoLocalDashboard} props={childProps} layout={activeLayout}/>
 
+            // -----  by Fady -----
+      <AppRoute path="/investorKYC" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>
+
+
       /* --- Client Pages --- */
       {<AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>}
       {<AppRoute path="/my-wallet/new-fund-source" exact component={AsyncNewFundSource} props={childProps} layout={activeLayout}/>}
