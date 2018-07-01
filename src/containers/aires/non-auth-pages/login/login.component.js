@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
 
 import themeStyles from './login.theme.style';
 import scss from './login.module.scss';
@@ -101,4 +100,4 @@ Login.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }), withStyles(Login));
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Login);
