@@ -268,31 +268,31 @@ title: 'Client Pages',
 icon: <PersonIcon style={iconStyle}/>,
 children: [{
   title: 'ICO Detail',
-  href: '/ico-detail'
+  href: '/browse-icos/details'
 }, {
   title: 'ICO List',
-  href: '/ico-list'
+  href: '/browse-icos'
 }, {
   title: 'ICO List Item',
   href: '/ico-list-item'
 }, {
   title: 'Invest',
-  href: '/invest'
+  href: 'browse-icos/invest'
 }, {
   title: 'Invest Confirm',
-  href: '/invest-confirm'
+  href: '/browse-icos/invest/confirm'
 }, {
   title: 'Invest KYC',
-  href: '/invest-kyc'
+  href: '/browse-icos/invest/kyc'
 }, {
   title: 'Investment Detail',
-  href: '/investment-detail'
+  href: '/my-investments/details'
 }, {
   title: 'Investments',
-  href: '/investments'
+  href: '/my-investments'
 }, {
   title: 'New Fund Source',
-  href: '/new-fund-source'
+  href: '/my-wallet/new-fund-source'
 }, {
   title: 'Wallet',
   href: '/wallet'
