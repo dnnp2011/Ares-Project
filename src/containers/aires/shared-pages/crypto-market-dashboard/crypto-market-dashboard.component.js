@@ -72,8 +72,8 @@ class Crypto extends React.Component {
         const socket = socketIOClient(this.state.endpoint)
         // socket.emit('filterReq', '1')
 
-        socket.on("FromAPI", data => {
-            if(data)
+        socket.on("FromAPI", (data, data2) => {
+            if(data && data2)
             {
                 console.log('incoming!')
                 // console.log(data2)
@@ -82,7 +82,8 @@ class Crypto extends React.Component {
                 // })
 
                 this.setState({
-                    tickerData:  data
+                    tickerData:  data,
+                    marketCapData: data2
 
                     // dailyPerformanceData: arr
                 })
@@ -146,11 +147,11 @@ class Crypto extends React.Component {
                     </Grid>
 
                     <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                      <MostPopularWidget popularData={this.state.tickerData}/>
+                      <MostPopularWidget popularData={this.state.tickerData} filterStats={this.filterStats} />
                     </Grid>
 
                     <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-                      <MarketCapWidget />
+                      <MarketCapWidget marketCapData={this.state.marketCapData} />
                     </Grid>
 
                   </Grid>

@@ -18,66 +18,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import themeStyles from './market-cap-widget.theme.style';
 
 class MarketCapWidget extends React.Component {
-  state = {
-    data: [{
-      index: 1,
-      name: 'Bitcoin',
-      symbol: 'BTC',
-      marketCap: '$137,411,608,131',
-      price: '$8,121.70',
-      supply: '16,940,700',
-      change: '-0.25%'
-    }, {
-      index: 2,
-      name: 'Ethereum',
-      symbol: 'ETH',
-      marketCap: '$47,733,845,131',
-      price: '$484.95',
-      supply: '98,428',
-      change: '-0.43%'
-    }, {
-      index: 3,
-      name: 'Ripple',
-      symbol: 'XRP',
-      marketCap: '$23,453,455,131',
-      price: '$0.4345395',
-      supply: '39,940,700',
-      change: '-0.12%'
-    }, {
-      index: 4,
-      name: 'Bitcoin Cash',
-      symbol: 'BCH',
-      marketCap: '$15,573,674,661',
-      price: '$914.00',
-      supply: '17,039,050',
-      change: '-0.31%'
-    }, {
-      index: 5,
-      name: 'Litecoin',
-      symbol: 'LTC',
-      marketCap: '$8,222,510,375',
-      price: '$147.37',
-      supply: '55.749',
-      change: '-0.43%'
-    }, {
-      index: 6,
-      name: 'EOS',
-      symbol: 'EOS',
-      marketCap: '$4,468,745,596',
-      price: '$5.96',
-      supply: '752,544,651',
-      change: '-0.73%'
-    }, {
-      index: 7,
-      name: 'Cardano',
-      symbol: 'ADA',
-      marketCap: '$4,304,745,416',
-      price: '$0.166033	',
-      supply: '25,927,070,538',
-      change: '-0.40%'
-    }],
-    anchorEl: null
-  };
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            anchorEl: null
+        }
+    }
+
 
   onItemClick = () => {
     this.setState({ data: this.state.data.reverse(), anchorEl: null });
@@ -124,16 +72,17 @@ class MarketCapWidget extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map(item => (
-                <TableRow key={item.index}>
+              {this.props.marketCapData?
+                this.props.marketCapData.map((item,i) => (
+                <TableRow key={i}>
                   <TableCell className={classes['table-cell']}>{item.index}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.name}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.symbol}</TableCell>
-                  <TableCell className={classes['table-cell']}>{item.marketCap}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.price}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.supply}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.change}</TableCell>
-                </TableRow>))
+                  <TableCell className={classes['table-cell']}>{item.market_data.market_cap.usd}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>{item.market_data.current_price.usd.toFixed(2)}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>{item.market_data.circulating_supply}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>{Number.parseFloat(item.market_data.price_change_percentage_24h).toPrecision(3)}</TableCell>
+                </TableRow>)):<p>incoming</p>
               }
             </TableBody>
           </Table>
