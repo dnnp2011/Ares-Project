@@ -22,7 +22,7 @@ class Crypto extends React.Component {
 
         this.state = {
             tickerData: null,
-            dailyPerformanceData: null,
+            // dailyPerformanceData: null,
             dailyFilter: null,
             annualPerformanceData: null,
             mostPopularData: null,
@@ -42,6 +42,7 @@ class Crypto extends React.Component {
         const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
         const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${num}`)
         const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${num}`)
+
         let arr = []
 
         bitcoin.data.prices.map(x => {
@@ -60,7 +61,7 @@ class Crypto extends React.Component {
         })
 
         this.setState({
-          dailyFilter: arr
+            dailyFilter: arr
         })
 
                 console.log('yup', this.state.dailyFilter)
@@ -68,78 +69,67 @@ class Crypto extends React.Component {
     }
 
     socketListener = () => {
-
-
-        // this.setState({dailyFilter: num})
-
         const socket = socketIOClient(this.state.endpoint)
         // socket.emit('filterReq', '1')
 
         socket.on("FromAPI", data => {
-                if(data)
-                {
-                    console.log('incoming!')
-                    // console.log(data2)
-                    // let myData = Object.keys(data).map(key => {
-                    //   return data[key];
-                    // })
-                    // let arr = []
+            if(data)
+            {
+                console.log('incoming!')
+                // console.log(data2)
+                // let myData = Object.keys(data).map(key => {
+                //   return data[key];
+                // })
 
-                    // bitcoin.prices.map(x => {
-                    //     if(arr.length === 10) {return}
-                    //      arr.push(Math.round(x[1]))
-                    // })
+                this.setState({
+                    tickerData:  data
 
-                    // ether.prices.map(x => {
-                    //     if(arr.length === 20) {return}
-                    //      arr.push(Math.round(x[1]))
-                    // })
+                    // dailyPerformanceData: arr
+                })
 
-                    // eos.prices.map(x => {
-                    //     if(arr.length === 30) {return}
-                    //      arr.push(Math.round(x[1]))
-                    // })
-
-                    this.setState({
-                        tickerData:  data
-                        // dailyPerformanceData: arr
-                    })
-
-                console.log("found!!!", this.state.tickerData)
-                }
-            })
+            }
+        })
     }
 
 
-    filterData = number => {
-        // this.randomizeCharts();
-        const socket = socketIOClient(this.state.endpoint)
+    // filterData = number => {
+    //     // this.randomizeCharts();
+    //     const socket = socketIOClient(this.state.endpoint)
 
-        let num = number
-        // this.setState({dailyFilter: num})
-        socket.emit('filterReq', num)
-        console.log(num)
-    }
+    //     let num = number
+    //     // this.setState({dailyFilter: num})
+    //     socket.emit('filterReq', num)
+    //     console.log(num)
+    // }
 
 
     render() {
         const { classes } = this.props;
 
-        var DailyPerformance = this.state.dailyFilter?
+        let DailyPerformance = this.state.dailyFilter?
                                         <DailyPerformanceWidget
                                             dailyFilter={this.state.dailyFilter}
                                             endpoint={this.state.endpoint}
                                             filterData={this.filterData}
-                                            filterStats={this.filterStats}
-                                             />
+                                            filterStats={this.filterStats} />
                                         :
                                         <p>loading..</p>
+
+        // let MostPopularWidget = this.state.tickerData?
+        //                                 <MostPopularWidget
+        //                                     popularData={this.state.tickerData}
+        //                                      />
+        //                                 :
+        //                                 <p>loading..</p>
 
         return (
             [
               /* -- Control grid layout, spacing, and breakpoints here -- */
 
-              <Grid key={1} item><Paper key={1} className={classes.portalWidgetContent}><GdaxTickerWidget products={this.state.tickerData} /></Paper></Grid>,
+              <Grid key={1} item>
+              <Paper key={1} className={classes.portalWidgetContent}>
+                <GdaxTickerWidget products={this.state.tickerData} />
+              </Paper></Grid>,
               <div key={2} className={classes.portalDashboardPageWrapper}>
 
                 <Grid item xs={12}>
@@ -156,7 +146,7 @@ class Crypto extends React.Component {
                     </Grid>
 
                     <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                      <MostPopularWidget />
+                      <MostPopularWidget popularData={this.state.tickerData}/>
                     </Grid>
 
                     <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>

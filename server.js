@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 let interval;
-let filterRequest2;
+// let filterRequest2;
 
 //open connection
 io.on("connection", socket => {

@@ -18,57 +18,26 @@ import MenuItem from '@material-ui/core/MenuItem';
 import themeStyles from './most-popular-widget.theme.style';
 
 class MostPopularWidget extends React.Component {
-  state = {
-    data: [{
-      name: 'Bitcoin',
-      symbol: 'BTC',
-      price: '$8,121.70',
-      supply: 16.940
-    }, {
-      name: 'Ethereum',
-      symbol: 'ETH',
-      price: '$484.95',
-      supply: 98.428
-    }, {
-      name: 'Ripple',
-      symbol: 'XRP',
-      price: '$411.95',
-      supply: 39.094
-    }, {
-      name: 'Bitcoin Cash',
-      symbol: 'BCH',
-      price: '$914.00',
-      supply: 17.039
-    }, {
-      name: 'Litecoin',
-      symbol: 'LTC',
-      price: '$147.37',
-      supply: 55.749
-    }, {
-      name: 'EOS',
-      symbol: 'EOS',
-      price: '$5.96',
-      supply: 52.544
-    }, {
-      name: 'Cardano',
-      symbol: 'ADA',
-      price: '$0.166',
-      supply: 25.927
-    }],
-    anchorEl: null
-  };
+    constructor(props) {
+        super(props)
 
-  onItemClick = () => {
-    this.setState({ data: this.state.data.reverse(), anchorEl: null });
-  };
+        this.state = {
+            anchorEl: null
+        }
+    }
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+    onItemClick = () => {
+        this.setState({ data: this.state.data.reverse(), anchorEl: null });
+    };
+
+    handleClick = (event) => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
 
   render() {
     const { data, anchorEl } = this.state;
@@ -100,13 +69,14 @@ class MostPopularWidget extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map(item => (
-                <TableRow key={item.name}>
-                  <TableCell className={classes['table-cell']}>{item.name}</TableCell>
-                  <TableCell className={classes['table-cell']}>{item.symbol}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.price}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.supply}</TableCell>
-                </TableRow>))
+              {this.props.popularData?
+                this.props.popularData.map((x,i) => (
+                <TableRow key={i}>
+                  <TableCell className={classes['table-cell']}>{x.name}</TableCell>
+                  <TableCell className={classes['table-cell']}>{x.symbol}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>{x.market_data.current_price.usd.toFixed(2)}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>{x.market_data.circulating_supply}</TableCell>
+                </TableRow>)): <p>incoming!!!</p>
               }
             </TableBody>
           </Table>
