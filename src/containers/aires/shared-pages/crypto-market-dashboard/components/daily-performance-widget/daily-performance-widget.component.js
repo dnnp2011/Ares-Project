@@ -27,7 +27,7 @@ class DailySalesWidget extends React.Component {
     super(props)
 
     this.state = {
-      dailyFilter: 1,
+      // dailyFilter: null,
       intervalId: null,
       lineChartData: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
@@ -40,7 +40,7 @@ class DailySalesWidget extends React.Component {
           lineTension: 0.5,
           pointRadius: 0,
           fill: true,
-          data: this.props.dailydata.splice(10,19)
+          data: this.props.dailyFilter.splice(9,19)
     }, {
         type: 'line',
         label: 'BTC',
@@ -50,7 +50,7 @@ class DailySalesWidget extends React.Component {
         lineTension: 0.5,
         pointRadius: 0,
         fill: true,
-        data: this.props.dailydata.splice(0,9)
+        data: this.props.dailyFilter.splice(0,9)
     }, {
         type: 'line',
         label: 'EOS',
@@ -60,7 +60,7 @@ class DailySalesWidget extends React.Component {
         lineTension: 0.5,
         pointRadius: 0,
         fill: true,
-        data: this.props.dailydata.splice(20,29)
+        data: this.props.dailyFilter.splice(19,29)
       }]
     },
     lineChartOptions: {
@@ -74,12 +74,22 @@ class DailySalesWidget extends React.Component {
           display: false
         }]
       }
-    }
+    },
+
   }
 }
 
 
     componentDidMount() {
+     console.log(this.props.dailyFilter)
+              // this.props.filterStats(1)
+
+        // const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10`)
+        // const bitcoinData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${request}`)
+        // const etherData = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${request}`)
+        // const eosData = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${request}`)
+
+      // fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${request}`)
 
 
         // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
@@ -91,8 +101,19 @@ class DailySalesWidget extends React.Component {
         // this.setState({ intervalId })
     }
 
+    // filterStats = (num) => {
+
+    //     const bitcoinData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
+    //     const etherData = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${num}`)
+    //     const eosData = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${num}`)
+    //     this.setState({
+    //       dailyFilter:
+
+    //     })
+    // }
+
     componentWillReceiveProps(props) {
-        console.log("PASSED props", this.props.dailydata)
+      console.log('props',props.dailyFilter)
 
 
         const oldEthDataSet = this.state.lineChartData.datasets[0];
@@ -118,19 +139,20 @@ class DailySalesWidget extends React.Component {
         this.setState({ lineChartData: newChartData });
     }
 
-    componentWillUnmount() {
-        clearInterval(this.state.intervalId);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.state.intervalId);
+    // }
 
 
-    filterData = number => {
-        // this.randomizeCharts();
-        const socket = socketIOClient(this.props.endpoint);
+    // filterData = number => {
+    //     // this.randomizeCharts();
+    //     // const socket = socketIOClient(this.props.endpoint);
 
-        this.setState({dailyFilter: number})
-        socket.emit('filterReq', this.state.dailyFilter)
-        console.log(this.state.dailyFilter)
-    }
+    //     // let num = number
+    //     // // this.setState({dailyFilter: num})
+    //     // socket.emit('filterReq', num)
+    //     // console.log(num)
+    // }
 
 
   // socket.on('filterRequest',() => {socket.emit('filterRequest', this.state.dailyFilter)})
@@ -205,13 +227,13 @@ class DailySalesWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={e => this.filterData(1)}>Day</MenuItem>
-          <MenuItem key={2} onClick={e => this.filterData(7)}>Week</MenuItem>
-          <MenuItem key={3} onClick={e => this.filterData(30)}>Month</MenuItem>
-          <MenuItem key={4} onClick={e => this.filterData(365)}>Annual</MenuItem>
+          <MenuItem key={1} onClick={e => this.props.filterStats('1')}>Day</MenuItem>
+          <MenuItem key={2} onClick={e => this.props.filterStats('7')}>Week</MenuItem>
+          <MenuItem key={3} onClick={e => this.props.filterStats('30')}>Month</MenuItem>
+          <MenuItem key={4} onClick={e => this.props.filterStats('365')}>Annual</MenuItem>
         </Menu>
       </Card>
-    );
+    )
   }
 }
 

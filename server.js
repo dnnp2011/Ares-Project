@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 let interval;
-    let filterRequest2;
+let filterRequest2;
 
 //open connection
 io.on("connection", socket => {
@@ -26,37 +26,39 @@ io.on("connection", socket => {
     if(interval) {clearInterval(interval)}
 
     //upon receiving request data from client, store the request
-    socket.on('filterReq', req => {
-        filterRequest2 = req
+    // socket.on('filterReq', req => {
+    //     filterRequest2 = req
 
-        console.log('req', filterRequest2)
-    })
 
-        console.log('state', filterRequest2)
+    //     console.log('req', filterRequest2)
+    // })
 
+    // console.log('state', filterRequest2)
 
     //poll
-    interval = setInterval(() => {console.log(filterRequest2), getApiAndEmit(socket, filterRequest2 )}, 10000)
-
+    interval = setInterval(() => getApiAndEmit(socket), 10000)
 
     socket.on("disconnect", () => {
         console.log("Client disconnected")
-  })
+    })
 })
 
 
 //fetch api
-const getApiAndEmit = async (socket, request) => {
+const getApiAndEmit = async (socket) => {
     try {
         const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10`)
-        const bitcoinData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${request}`)
-        const etherData = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${request}`)
-        const eosData = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${request}`)
+        // const bitcoinData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${request}`)
+        // const etherData = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${request}`)
+        // const eosData = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${request}`)
+
+        // console.log(bitcoinData.data.prices.slice(0, 5))
 
         //send data to client
-        socket.emit("FromAPI", res.data, bitcoinData.data, etherData.data, eosData.data )
+        socket.emit("FromAPI", res.data)
     } catch(error) {console.error(`Error: ${error.code}`)}
 }
+        // socket.emit("FromAPI", res.data, bitcoinData.data, etherData.data, eosData.data)
 
 //listening(open)
 server.listen(port, () => console.log(`Listening on port ${port}`))

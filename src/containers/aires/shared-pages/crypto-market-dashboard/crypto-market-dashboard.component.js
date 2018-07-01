@@ -11,6 +11,7 @@ import AnnualPerformanceWidget from './components/annual-performance-widget/annu
 import MostPopularWidget from './components/most-popular-widget/most-popular-widget.component';
 import MarketCapWidget from './components/market-cap-widget/market-cap-widget.component';
 import socketIOClient from 'socket.io-client';
+import axios from "axios";
 
 import styles from './crypto-market-dashboard.style';
 
@@ -22,6 +23,7 @@ class Crypto extends React.Component {
         this.state = {
             tickerData: null,
             dailyPerformanceData: null,
+            dailyFilter: null,
             annualPerformanceData: null,
             mostPopularData: null,
             marketCapData: null,
@@ -30,49 +32,106 @@ class Crypto extends React.Component {
     }
 
     async componentDidMount() {
+        this.socketListener()
+        this.filterStats(1)
 
-        const socket = socketIOClient(this.state.endpoint);
-        socket.on("FromAPI", (data, bitcoin, ether, eos) => {
-            if(data || bitcoin || ether || eos)
-            {
-                // console.log(data2)
-                // let myData = Object.keys(data).map(key => {
-                //   return data[key];
-                // })
-                let arr = []
-
-                bitcoin.prices.map(x => {
-                    if(arr.length === 10) {return}
-                     arr.push(Math.round(x[1]))
-                })
-
-                ether.prices.map(x => {
-                    if(arr.length === 20) {return}
-                     arr.push(Math.round(x[1]))
-                })
-
-                eos.prices.map(x => {
-                    if(arr.length === 30) {return}
-                     arr.push(Math.round(x[1]))
-                })
-
-                console.log(arr)
-
-                this.setState({
-                    tickerData:  data,
-                    dailyPerformanceData: arr
-                })
-
-                 console.log("found!!!", this.state.dailyPerformanceData)
-            }
-        })
     }
+
+    filterStats = async num => {
+
+        const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
+        const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${num}`)
+        const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${num}`)
+        let arr = []
+
+        bitcoin.data.prices.map(x => {
+            if(arr.length === 10) {return}
+             arr.push(Math.round(x[1]))
+        })
+
+        ether.data.prices.map(x => {
+            if(arr.length === 20) {return}
+             arr.push(Math.round(x[1]))
+        })
+
+        eos.data.prices.map(x => {
+            if(arr.length === 30) {return}
+             arr.push(Math.round(x[1]))
+        })
+
+        this.setState({
+          dailyFilter: arr
+        })
+
+                console.log('yup', this.state.dailyFilter)
+
+    }
+
+    socketListener = () => {
+
+
+        // this.setState({dailyFilter: num})
+
+        const socket = socketIOClient(this.state.endpoint)
+        // socket.emit('filterReq', '1')
+
+        socket.on("FromAPI", data => {
+                if(data)
+                {
+                    console.log('incoming!')
+                    // console.log(data2)
+                    // let myData = Object.keys(data).map(key => {
+                    //   return data[key];
+                    // })
+                    // let arr = []
+
+                    // bitcoin.prices.map(x => {
+                    //     if(arr.length === 10) {return}
+                    //      arr.push(Math.round(x[1]))
+                    // })
+
+                    // ether.prices.map(x => {
+                    //     if(arr.length === 20) {return}
+                    //      arr.push(Math.round(x[1]))
+                    // })
+
+                    // eos.prices.map(x => {
+                    //     if(arr.length === 30) {return}
+                    //      arr.push(Math.round(x[1]))
+                    // })
+
+                    this.setState({
+                        tickerData:  data
+                        // dailyPerformanceData: arr
+                    })
+
+                console.log("found!!!", this.state.tickerData)
+                }
+            })
+    }
+
+
+    filterData = number => {
+        // this.randomizeCharts();
+        const socket = socketIOClient(this.state.endpoint)
+
+        let num = number
+        // this.setState({dailyFilter: num})
+        socket.emit('filterReq', num)
+        console.log(num)
+    }
+
 
     render() {
         const { classes } = this.props;
 
-        var DailyPerformance = this.state.dailyPerformanceData?
-                                        <DailyPerformanceWidget dailydata={this.state.dailyPerformanceData} endpoint={this.state.endpoint}/>
+        var DailyPerformance = this.state.dailyFilter?
+                                        <DailyPerformanceWidget
+                                            dailyFilter={this.state.dailyFilter}
+                                            endpoint={this.state.endpoint}
+                                            filterData={this.filterData}
+                                            filterStats={this.filterStats}
+                                             />
                                         :
                                         <p>loading..</p>
 
