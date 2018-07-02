@@ -53,14 +53,12 @@ const getApiAndEmit = async (socket) => {
 
         //for market cap sort
         const res2 = await axios.get('https://api.coingecko.com/api/v3/coins?order=market_cap_desc&per_page=10')
-        // const bitcoinData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${request}`)
-        // const etherData = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${request}`)
-        // const eosData = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${request}`)
 
-        // console.log(bitcoinData.data.prices.slice(0, 5))
+        //for market share sort
+        const res3 = await axios.get('https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10')
 
         //send data to client
-        socket.emit("FromAPI", res.data, res2.data)
+        socket.emit("FromAPI", res.data, res2.data, res3.data)
     } catch(error) {console.error(`Error: ${error.code}`)}
 }
         // socket.emit("FromAPI", res.data, bitcoinData.data, etherData.data, eosData.data)

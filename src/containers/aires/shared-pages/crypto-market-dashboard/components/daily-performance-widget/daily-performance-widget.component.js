@@ -81,7 +81,7 @@ class DailySalesWidget extends React.Component {
 
 
     componentDidMount() {
-     console.log(this.props.dailyFilter)
+     // console.log(this.props.dailyFilter)
               // this.props.filterStats(1)
 
         // const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10`)
@@ -113,7 +113,7 @@ class DailySalesWidget extends React.Component {
     // }
 
     componentWillReceiveProps(props) {
-      console.log('props',props.dailyFilter)
+      // console.log('props',props.dailyFilter)
 
 
         const oldEthDataSet = this.state.lineChartData.datasets[0];
@@ -227,10 +227,10 @@ class DailySalesWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={e => this.props.filterStats('1')}>Day</MenuItem>
-          <MenuItem key={2} onClick={e => this.props.filterStats('7')}>Week</MenuItem>
-          <MenuItem key={3} onClick={e => this.props.filterStats('30')}>Month</MenuItem>
-          <MenuItem key={4} onClick={e => this.props.filterStats('365')}>Annual</MenuItem>
+          <MenuItem key={1} onClick={e => this.props.filterStats(1)}>Day</MenuItem>
+          <MenuItem key={2} onClick={e => this.props.filterStats(7)}>Week</MenuItem>
+          <MenuItem key={3} onClick={e => this.props.filterStats(30)}>Month</MenuItem>
+          <MenuItem key={4} onClick={e => this.props.filterStats(365)}>Annual</MenuItem>
         </Menu>
       </Card>
     )

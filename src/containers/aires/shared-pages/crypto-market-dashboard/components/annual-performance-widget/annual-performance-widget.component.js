@@ -18,7 +18,10 @@ const legendOptions = {
 };
 
 class AnnualPerformanceWidget extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+
+     this.state = {
     intervalId: null,
     barChartData: {
       labels: ['BTC', 'ETH', 'MAT', 'ATN', 'JLG', 'AFT', 'KOL', 'JNH', 'AAG', 'JSG', 'LLK', 'GRE'],
@@ -26,7 +29,7 @@ class AnnualPerformanceWidget extends React.Component {
         backgroundColor: this.props.theme.palette.primary.light,
         borderColor: this.props.theme.palette.primary.light,
         borderWidth: '1',
-        data: [...new Array(10)].map(() => 20 + Math.floor(Math.random() * 30))
+        data: this.props.marketShareData
       }]
     },
     barChartOptions: {
@@ -51,14 +54,16 @@ class AnnualPerformanceWidget extends React.Component {
       }
     }
   };
+  }
+
 
   componentWillMount() {
-    const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
-    const intervalId = setInterval(() => {
-      this.randomizeCharts();
-    }, randomInterval);
+    // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
+    // const intervalId = setInterval(() => {
+    //   this.randomizeCharts();
+    // }, randomInterval);
 
-    this.setState({ intervalId });
+    // this.setState({ intervalId });
   }
 
   componentWillReceiveProps(props) {
@@ -80,24 +85,24 @@ class AnnualPerformanceWidget extends React.Component {
   }
 
   onItemClick = () => {
-    this.randomizeCharts();
+    // this.randomizeCharts();
   };
 
-  randomizeCharts = () => {
-    const ethDataSet = this.state.barChartData.datasets[0];
-    const newEthData = [...ethDataSet.data];
-    newEthData.push(20 + Math.floor(Math.random() * 30));
-    newEthData.splice(0, 1);
-    const newEthDataSet = { ...ethDataSet };
-    newEthDataSet.data = newEthData;
+  // randomizeCharts = () => {
+  //   const ethDataSet = this.state.barChartData.datasets[0];
+  //   const newEthData = [...ethDataSet.data];
+  //   newEthData.push(20 + Math.floor(Math.random() * 30));
+  //   newEthData.splice(0, 1);
+  //   const newEthDataSet = { ...ethDataSet };
+  //   newEthDataSet.data = newEthData;
 
-    const newChartData = {
-      ...this.state.barChartData,
-      datasets: [newEthDataSet]
-    };
+  //   const newChartData = {
+  //     ...this.state.barChartData,
+  //     datasets: [newEthDataSet]
+  //   };
 
-    this.setState({ barChartData: newChartData });
-  }
+  //   this.setState({ barChartData: newChartData });
+  // }
 
   handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });

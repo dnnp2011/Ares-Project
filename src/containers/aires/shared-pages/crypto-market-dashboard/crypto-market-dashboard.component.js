@@ -22,8 +22,8 @@ class Crypto extends React.Component {
 
         this.state = {
             tickerData: null,
-            // dailyPerformanceData: null,
-            dailyFilter: null,
+            dailyPerformanceData: null,
+            // dailyFilter: null,
             annualPerformanceData: null,
             mostPopularData: null,
             marketCapData: null,
@@ -61,29 +61,39 @@ class Crypto extends React.Component {
         })
 
         this.setState({
-            dailyFilter: arr
+            dailyPerformanceData: arr
         })
 
-                console.log('yup', this.state.dailyFilter)
+                console.log('daily', this.state.dailyPerformanceData)
 
     }
 
+    //watches for data from server in order to set state
     socketListener = () => {
         const socket = socketIOClient(this.state.endpoint)
         // socket.emit('filterReq', '1')
 
-        socket.on("FromAPI", (data, data2) => {
-            if(data && data2)
+        socket.on("FromAPI", (data, data2, data3) => {
+            if(data && data2 && data3)
             {
-                console.log('incoming!')
                 // console.log(data2)
                 // let myData = Object.keys(data).map(key => {
                 //   return data[key];
                 // })
 
+                let arr1 = []
+
+                data3.map(x => {
+                    arr1.push(x.market_data.total_volume.usd)
+                })
+
+                console.log('incoming!', arr1)
+
+
                 this.setState({
                     tickerData:  data,
-                    marketCapData: data2
+                    marketCapData: data2,
+                    annualPerformanceData: arr1
 
                     // dailyPerformanceData: arr
                 })
@@ -107,21 +117,19 @@ class Crypto extends React.Component {
     render() {
         const { classes } = this.props;
 
-        let DailyPerformance = this.state.dailyFilter?
+        let DailyPerformance = this.state.dailyPerformanceData?
                                         <DailyPerformanceWidget
-                                            dailyFilter={this.state.dailyFilter}
+                                            dailyFilter={this.state.dailyPerformanceData}
                                             endpoint={this.state.endpoint}
                                             filterData={this.filterData}
                                             filterStats={this.filterStats} />
                                         :
                                         <p>loading..</p>
 
-        // let MostPopularWidget = this.state.tickerData?
-        //                                 <MostPopularWidget
-        //                                     popularData={this.state.tickerData}
-        //                                      />
-        //                                 :
-        //                                 <p>loading..</p>
+        let AnnualPerformance = this.state.annualPerformanceData?
+                                    <AnnualPerformanceWidget marketShareData={this.state.annualPerformanceData} />
+                                    :
+                                    <p>loading..</p>
 
         return (
             [
@@ -143,7 +151,7 @@ class Crypto extends React.Component {
                     </Grid>
 
                     <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                      <AnnualPerformanceWidget />
+                     {AnnualPerformance}
                     </Grid>
 
                     <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
