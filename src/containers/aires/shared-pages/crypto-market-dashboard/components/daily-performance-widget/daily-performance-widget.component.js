@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import themeStyles from './daily-performance-widget.theme.style';
-import socketIOClient from "socket.io-client";
+// import socketIOClient from "socket.io-client";
 
 const legendOptions = {
   display: true,

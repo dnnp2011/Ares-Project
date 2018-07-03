@@ -48,28 +48,68 @@ class Crypto extends React.Component {
 
         let arr = []
 
-        bitcoin.data.prices.map(x => {
+        bitcoin.data.prices.forEach(x => {
             if(arr.length === 10) {return}
-             arr.push(Math.round(x[1]))
+            arr.push(Math.round(x[1]))
         })
 
-        ether.data.prices.map(x => {
+        ether.data.prices.forEach(x => {
             if(arr.length === 20) {return}
-             arr.push(Math.round(x[1]))
+             return arr.push(Math.round(x[1]))
         })
 
-        eos.data.prices.map(x => {
+        eos.data.prices.forEach(x => {
             if(arr.length === 30) {return}
-             arr.push(Math.round(x[1]))
+             return arr.push(Math.round(x[1]))
         })
 
         this.setState({
             dailyPerformanceData: arr
         })
-
-                console.log('daily', this.state.dailyPerformanceData)
-
+        // console.log('daily', this.state.dailyPerformanceData)
     }
+
+
+    filter2 = async num => {
+
+        let date = new Date()
+        date.setDate(date.getDate() - num)
+
+        let time = date.toLocaleDateString().replace(/\//g,'-')
+
+
+        const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${time}&localization=false`)
+        const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/history?date=${time}&localization=false`)
+        const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/history?date=${time}&localization=false`)
+        const ripple = await axios.get(`https://api.coingecko.com/api/v3/coins/ripple/history?date=${time}&localization=false`)
+        const litecoin = await axios.get(`https://api.coingecko.com/api/v3/coins/litecoin/history?date=${time}&localization=false`)
+        const monero = await axios.get(`https://api.coingecko.com/api/v3/coins/monero/history?date=${time}&localization=false`)
+        const neo = await axios.get(`https://api.coingecko.com/api/v3/coins/neo/history?date=${time}&localization=false`)
+        const cardano = await axios.get(`https://api.coingecko.com/api/v3/coins/cardano/history?date=${time}&localization=false`)
+        const dash = await axios.get(`https://api.coingecko.com/api/v3/coins/dash/history?date=${time}&localization=false`)
+        const tron = await axios.get(`https://api.coingecko.com/api/v3/coins/tron/history?date=${time}&localization=false`)
+
+
+
+        if(bitcoin && ether && eos && ripple && litecoin && monero && neo && cardano && dash && tron)
+        {
+             let mainData = []
+                let targetData = []
+
+          //gather all data
+            mainData.push(bitcoin.data, ether.data, eos.data, ripple.data, litecoin.data, monero.data, neo.data, cardano.data, dash.data, tron.data)
+
+            //grab target -> total volume for each coin
+            mainData.map(x => {
+                return targetData.push(x.market_data.total_volume.usd)
+            })
+
+            this.setState({
+                annualPerformanceData: targetData
+            })
+        }           console.log('annual', this.state.annualPerformanceData)
+    }
+
 
     //watches for data from server in order to set state with sent data
     socketListener = () => {
@@ -84,10 +124,10 @@ class Crypto extends React.Component {
                 let arr1 = []
 
                 data3.map(x => {
-                    arr1.push(x.market_data.total_volume.usd)
+                    return arr1.push(x.market_data.total_volume.usd)
                 })
 
-                console.log('incoming!', arr1)
+                // console.log('incoming!', arr1)
 
                 this.setState({
                     tickerData:  data,
@@ -115,16 +155,18 @@ class Crypto extends React.Component {
         const { classes } = this.props;
 
         let DailyPerformance = this.state.dailyPerformanceData?
-                                        <DailyPerformanceWidget
-                                            dailyFilter={this.state.dailyPerformanceData}
-                                            endpoint={this.state.endpoint}
-                                            filterData={this.filterData}
-                                            filterStats={this.filterStats} />
-                                        :
-                                        <p>loading..</p>
+                                    <DailyPerformanceWidget
+                                        dailyFilter={this.state.dailyPerformanceData}
+                                        endpoint={this.state.endpoint}
+                                        filterData={this.filterData}
+                                        filterStats={this.filterStats} />
+                                    :
+                                    <p>loading..</p>
 
         let AnnualPerformance = this.state.annualPerformanceData?
-                                    <AnnualPerformanceWidget marketShareData={this.state.annualPerformanceData} />
+                                    <AnnualPerformanceWidget
+                                        marketShareData={this.state.annualPerformanceData}
+                                        filter2={this.filter2} />
                                     :
                                     <p>loading..</p>
 

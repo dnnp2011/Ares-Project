@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import socketIOClient from "socket.io-client";
+// import socketIOClient from "socket.io-client";
 
 import themeStyles from './gdax-ticker-widget.theme.style';
 

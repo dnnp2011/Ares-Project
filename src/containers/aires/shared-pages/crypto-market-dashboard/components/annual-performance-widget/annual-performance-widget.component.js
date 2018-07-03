@@ -67,6 +67,7 @@ class AnnualPerformanceWidget extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    console.log('props', props.marketShareData)
     const oldEthDataSet = this.state.barChartData.datasets[0];
     const newEthDataSet = { ...oldEthDataSet };
     newEthDataSet.borderColor = props.theme.palette.primary.light;
@@ -144,10 +145,10 @@ class AnnualPerformanceWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={this.onItemClick}>Day</MenuItem>
-          <MenuItem key={2} onClick={this.onItemClick}>Annual</MenuItem>
-          <MenuItem key={3} onClick={this.onItemClick}>Month</MenuItem>
-          <MenuItem key={4} onClick={this.onItemClick}>Week</MenuItem>
+          <MenuItem key={1} onClick={e => this.props.filter2(0)}>Day</MenuItem>
+          <MenuItem key={2} onClick={e => this.props.filter2(7)}>Week</MenuItem>
+          <MenuItem key={3} onClick={e => this.props.filter2(30)}>Month</MenuItem>
+          <MenuItem key={4} onClick={e => this.props.filter2(365)}>Annual</MenuItem>
         </Menu>
       </Card>
     );

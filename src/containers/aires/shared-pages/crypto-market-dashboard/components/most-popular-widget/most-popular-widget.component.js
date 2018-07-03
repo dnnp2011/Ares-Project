@@ -39,7 +39,7 @@ class MostPopularWidget extends React.Component {
     };
 
   render() {
-    const { data, anchorEl } = this.state;
+    const { anchorEl } = this.state;
     const { classes } = this.props;
 
     return (
