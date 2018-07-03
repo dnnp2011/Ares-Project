@@ -101,30 +101,101 @@ class DailySalesWidget extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-      console.log('props',props.dailyFilter)
+      // console.log('props',props.dailyFilter)
 
 
-        const oldEthDataSet = this.state.lineChartData.datasets[0];
-        const newEthDataSet = { ...oldEthDataSet };
-        newEthDataSet.borderColor = props.theme.palette.primary.light;
-        newEthDataSet.backgroundColor = props.theme.palette.primary.light;
+        this.setState({
+              intervalId: null,
+              lineChartData: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
+                datasets: [{
+                  type: 'line',
+                  label: 'ETH',
+                  backgroundColor: this.props.theme.palette.primary.light,
+                  borderColor: this.props.theme.palette.primary.light,
+                  borderWidth: '2',
+                  lineTension: 0.5,
+                  pointRadius: 0,
+                  fill: true,
+                  data: this.props.dailyFilter.splice(9,19)
+            }, {
+                type: 'line',
+                label: 'BTC',
+                backgroundColor: this.props.theme.palette.primary.main,
+                borderColor: this.props.theme.palette.primary.main,
+                borderWidth: '2',
+                lineTension: 0.5,
+                pointRadius: 0,
+                fill: true,
+                data: this.props.dailyFilter.splice(0,9)
+            }, {
+                type: 'line',
+                label: 'EOS',
+                backgroundColor: this.props.theme.palette.primary.dark,
+                borderColor: this.props.theme.palette.primary.dark,
+                borderWidth: '2',
+                lineTension: 0.5,
+                pointRadius: 0,
+                fill: true,
+                data: this.props.dailyFilter.splice(19,29)
+              }]
+            },
+            lineChartOptions: {
+              responsive: true,
+              maintainAspectRatio: false,
+              tooltips: {
+                enabled: false
+              },
+              scales: {
+                xAxes: [{
+                  display: false
+                }]
+              }
+            },
 
-        const oldBtcDataSet = this.state.lineChartData.datasets[1];
-        const newBtcDataSet = { ...oldBtcDataSet };
-        newBtcDataSet.borderColor = props.theme.palette.primary.main;
-        newBtcDataSet.backgroundColor = props.theme.palette.primary.main;
+         })
+        // this.setState({
+        //     lineChartData: {
+        //         datasets: [
+        //             {
 
-        const oldMscDataSet = this.state.lineChartData.datasets[2];
-        const newMscDataSet = { ...oldMscDataSet };
-        newMscDataSet.borderColor = props.theme.palette.primary.dark;
-        newMscDataSet.backgroundColor = props.theme.palette.primary.dark;
+        //                 data: this.props.dailyFilter.splice(9,19)
+        //             },
+        //             {
 
-        const newChartData = {
-        ...this.state.lineChartData,
-        datasets: [newEthDataSet, newBtcDataSet, newMscDataSet]
-        };
+        //                 data: this.props.dailyFilter.splice(0,9)
+        //             },
+        //             {
 
-        this.setState({ lineChartData: newChartData });
+        //                 data: this.props.dailyFilter.splice(19,29)
+        //             }
+        //         ]
+        //     }
+        // })
+
+
+
+        // const oldEthDataSet = this.state.lineChartData.datasets[0];
+        // const newEthDataSet = { ...oldEthDataSet };
+        // newEthDataSet.borderColor = props.theme.palette.primary.light;
+        // newEthDataSet.backgroundColor = props.theme.palette.primary.light;
+
+        // const oldBtcDataSet = this.state.lineChartData.datasets[1];
+        // const newBtcDataSet = { ...oldBtcDataSet };
+        // newBtcDataSet.borderColor = props.theme.palette.primary.main;
+        // newBtcDataSet.backgroundColor = props.theme.palette.primary.main;
+
+        // const oldMscDataSet = this.state.lineChartData.datasets[2];
+        // const newMscDataSet = { ...oldMscDataSet };
+        // newMscDataSet.borderColor = props.theme.palette.primary.dark;
+        // newMscDataSet.backgroundColor = props.theme.palette.primary.dark;
+
+        // const newChartData = {
+        // ...this.state.lineChartData,
+        // datasets:  [props.dailyFilter.splice(9,19), props.dailyFilter.splice(0,9), props.dailyFilter.splice(19,29)]
+        // };
+
+        // this.setState({ lineChartData: newChartData });
     }
 
     // componentWillUnmount() {
@@ -175,8 +246,8 @@ class DailySalesWidget extends React.Component {
   //   this.setState({ lineChartData: newChartData });
   // }
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
+  handleClick = (e) => {
+    this.setState({ anchorEl: e.currentTarget });
   };
 
   handleClose = () => {
