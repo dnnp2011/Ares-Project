@@ -45,7 +45,7 @@ io.on("connection", socket => {
 
 
 //fetch api
-const getApiAndEmit = async (socket) => {
+const getApiAndEmit = async socket => {
     try {
 
         //general sort
@@ -61,7 +61,8 @@ const getApiAndEmit = async (socket) => {
         socket.emit("FromAPI", res.data, res2.data, res3.data)
     } catch(error) {console.error(`Error: ${error.code}`)}
 }
-        // socket.emit("FromAPI", res.data, bitcoinData.data, etherData.data, eosData.data)
+
+// socket.emit("FromAPI", res.data, bitcoinData.data, etherData.data, eosData.data)
 
 //listening(open)
 server.listen(port, () => console.log(`Listening on port ${port}`))

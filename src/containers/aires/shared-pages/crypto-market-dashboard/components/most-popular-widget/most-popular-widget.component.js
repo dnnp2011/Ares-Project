@@ -26,7 +26,6 @@ class MostPopularWidget extends React.Component {
         }
     }
 
-
     onItemClick = () => {
         this.setState({ data: this.state.data.reverse(), anchorEl: null });
     };
@@ -74,7 +73,7 @@ class MostPopularWidget extends React.Component {
                 <TableRow key={i}>
                   <TableCell className={classes['table-cell']}>{x.name}</TableCell>
                   <TableCell className={classes['table-cell']}>{x.symbol}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{x.market_data.current_price.usd.toFixed(2)}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>${x.market_data.current_price.usd.toFixed(2)}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{x.market_data.circulating_supply}</TableCell>
                 </TableRow>)): <p>incoming!!!</p>
               }

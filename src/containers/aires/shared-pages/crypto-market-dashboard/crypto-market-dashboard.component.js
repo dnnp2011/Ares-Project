@@ -23,7 +23,6 @@ class Crypto extends React.Component {
         this.state = {
             tickerData: null,
             dailyPerformanceData: null,
-            // dailyFilter: null,
             annualPerformanceData: null,
             mostPopularData: null,
             marketCapData: null,
@@ -31,12 +30,16 @@ class Crypto extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        //open up socket
         this.socketListener()
+
+        //send default filter value for daily performance data prices
         this.filterStats(1)
 
     }
 
+    //daily performance widget filter function
     filterStats = async num => {
 
         const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
@@ -68,19 +71,16 @@ class Crypto extends React.Component {
 
     }
 
-    //watches for data from server in order to set state
+    //watches for data from server in order to set state with sent data
     socketListener = () => {
         const socket = socketIOClient(this.state.endpoint)
         // socket.emit('filterReq', '1')
 
         socket.on("FromAPI", (data, data2, data3) => {
+
+            //if all data is found push into array and set the state
             if(data && data2 && data3)
             {
-                // console.log(data2)
-                // let myData = Object.keys(data).map(key => {
-                //   return data[key];
-                // })
-
                 let arr1 = []
 
                 data3.map(x => {
@@ -89,20 +89,17 @@ class Crypto extends React.Component {
 
                 console.log('incoming!', arr1)
 
-
                 this.setState({
                     tickerData:  data,
                     marketCapData: data2,
                     annualPerformanceData: arr1
-
-                    // dailyPerformanceData: arr
                 })
-
             }
         })
     }
 
 
+    //----------for sockets disregard
     // filterData = number => {
     //     // this.randomizeCharts();
     //     const socket = socketIOClient(this.state.endpoint)
@@ -151,7 +148,7 @@ class Crypto extends React.Component {
                     </Grid>
 
                     <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                     {AnnualPerformance}
+                        {AnnualPerformance}
                     </Grid>
 
                     <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>

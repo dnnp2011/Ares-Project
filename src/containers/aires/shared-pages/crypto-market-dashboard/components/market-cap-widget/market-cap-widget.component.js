@@ -73,15 +73,15 @@ class MarketCapWidget extends React.Component {
             </TableHead>
             <TableBody>
               {this.props.marketCapData?
-                this.props.marketCapData.map((item,i) => (
+                this.props.marketCapData.map((item, i) => (
                 <TableRow key={i}>
-                  <TableCell className={classes['table-cell']}>{item.index}</TableCell>
+                  <TableCell className={classes['table-cell']}>{i+1}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.name}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.symbol}</TableCell>
-                  <TableCell className={classes['table-cell']}>{item.market_data.market_cap.usd}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{item.market_data.current_price.usd.toFixed(2)}</TableCell>
+                  <TableCell className={classes['table-cell']}>{item.market_data.market_cap.usd.toFixed(2)}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>${item.market_data.current_price.usd.toFixed(2)}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{item.market_data.circulating_supply}</TableCell>
-                  <TableCell className={classes['table-cell']} numeric>{Number.parseFloat(item.market_data.price_change_percentage_24h).toPrecision(3)}</TableCell>
+                  <TableCell className={classes['table-cell']} numeric>{Number.parseFloat(item.market_data.price_change_percentage_24h).toPrecision(3)}%</TableCell>
                 </TableRow>)):<p>incoming</p>
               }
             </TableBody>

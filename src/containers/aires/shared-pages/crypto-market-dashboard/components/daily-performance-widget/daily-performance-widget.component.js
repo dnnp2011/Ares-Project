@@ -27,7 +27,6 @@ class DailySalesWidget extends React.Component {
     super(props)
 
     this.state = {
-      // dailyFilter: null,
       intervalId: null,
       lineChartData: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
@@ -101,19 +100,8 @@ class DailySalesWidget extends React.Component {
         // this.setState({ intervalId })
     }
 
-    // filterStats = (num) => {
-
-    //     const bitcoinData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
-    //     const etherData = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${num}`)
-    //     const eosData = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${num}`)
-    //     this.setState({
-    //       dailyFilter:
-
-    //     })
-    // }
-
     componentWillReceiveProps(props) {
-      // console.log('props',props.dailyFilter)
+      console.log('props',props.dailyFilter)
 
 
         const oldEthDataSet = this.state.lineChartData.datasets[0];
