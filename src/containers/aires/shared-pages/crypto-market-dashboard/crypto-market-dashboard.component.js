@@ -91,23 +91,28 @@ class Crypto extends React.Component {
 
 
 
-        if(bitcoin && ether && eos && ripple && litecoin && monero && neo && cardano && dash && tron)
+        if(bitcoin && ether && eos && ripple && litecoin &&
+           monero && neo && cardano && dash && tron)
         {
-             let mainData = []
-                let targetData = []
+            let mainData = []
+            let targetData = []
 
-          //gather all data
-            mainData.push(bitcoin.data, ether.data, eos.data, ripple.data, litecoin.data, monero.data, neo.data, cardano.data, dash.data, tron.data)
+            //gather all data
+            mainData.push(bitcoin.data, ether.data, eos.data,
+                          ripple.data, litecoin.data, monero.data,
+                          neo.data, cardano.data, dash.data, tron.data)
+            console.log('main', mainData)
 
             //grab target -> total volume for each coin
-            mainData.map(x => {
-                return targetData.push(x.market_data.total_volume.usd)
+            mainData.forEach(x => {
+                x.market_data?
+                    targetData.push(x.market_data.total_volume.usd) : targetData.push(0)
             })
 
             this.setState({
                 annualPerformanceData: targetData
             })
-        }           console.log('annual', this.state.annualPerformanceData)
+        }   console.log('annual', this.state.annualPerformanceData)
     }
 
 
@@ -123,8 +128,8 @@ class Crypto extends React.Component {
             {
                 let arr1 = []
 
-                data3.map(x => {
-                    return arr1.push(x.market_data.total_volume.usd)
+                data3.forEach(x => {
+                    arr1.push(x.market_data.total_volume.usd)
                 })
 
                 // console.log('incoming!', arr1)
