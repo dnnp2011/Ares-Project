@@ -1,0 +1,41 @@
+.coin{
+  color: #000000;
+  font-weight: 600;
+  margin-top: -30px;
+}
+.first{
+
+  display:inline-block;
+  float: left;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.center{
+text-align: center;
+font-weight: 600;
+font-size: 40px;
+color: #000000;
+}
+.second{
+float:right;
+  display:inline-block;
+font-size: 18px;
+font-weight: 400;
+}
+
+.parent{
+ white-space: nowrap;
+ overflow-x: visible;
+ bottom: -500px;
+}
+
+.card {
+  height: 140px;
+  width: 70%;
+  display: block;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}

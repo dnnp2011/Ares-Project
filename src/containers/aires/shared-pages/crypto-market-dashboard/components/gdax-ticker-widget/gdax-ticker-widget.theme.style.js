@@ -7,7 +7,7 @@ const styles = theme => ({
     maxWidth: '100%',
     overflow: 'hidden',
     position: 'relative',
-    height: 112
+    height: 130
   },
   'ticker-container': {
     width: '100%',
@@ -15,7 +15,7 @@ const styles = theme => ({
     position: 'absolute',
     top: 0,
     left: 0,
-    height: 112
+    height: 130
   },
   'ticker-content': {
     display: 'flex',
@@ -28,7 +28,7 @@ const styles = theme => ({
     margin: '0px 16px',
     minWidth: 96,
     height: 112,
-    padding: 24,
+    padding: 15,
     borderLeft: '1px solid rgba(0, 0, 0, 0.075)',
     '& img': {
       width: 24,
@@ -41,17 +41,17 @@ const styles = theme => ({
     },
     '& h4': {
       margin: '8px 0 0 0',
-      fontSize: 27,
+      // fontSize: 27,
       '&::first-letter': {
-        fontSize: 16,
+        // fontSize: 16,
         display: 'inline-block',
-        paddingRight: '.2em',
+        // paddingRight: '.2em',
         opacity: 0.5
       }
     }
   },
   'ticker-item__name': {
-    display: 'flex',
+    // display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
   }
