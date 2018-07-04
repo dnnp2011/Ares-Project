@@ -22,27 +22,24 @@ import Divider from "../../../elements/divider/divider.component";
 
 const InviteFriend = (props) => {
   const {
-    classes,
-    width
+    classes
   } = props;
-
-  // Flip container to column on mobile screens.
-  const panelDirection = width === 'xs' ? 'column' : 'row';
 
   return (
     <Grid
-      container
-      justify="center"
-      alignItems="center"
-      className={classes.background}
+    container
+    direction="row"
+    spacing={0}
+    justify="center"
+    alignItems="center"
+    className={classes.background}
     >
-      <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-          >
+    <Grid item sm={6} xs={12} className={scss.panel}>
+      <Grid direction="column" container spacing={0}>
+        <Grid
+          item
+          xs={12}
+        >
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['invite-friend-content']}>
                 <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />

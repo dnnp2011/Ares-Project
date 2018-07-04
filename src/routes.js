@@ -73,6 +73,8 @@ const AsyncCollectKYC = asyncComponent(() => import('./containers/aires/client-p
 
 /* --- Shared Pages --- */
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/shared-pages/login/login.component'));
+const AsyncAiresSiteAdminLogin = asyncComponent(() => import('./containers/aires/shared-pages/login-site-admin/login-site-admin.component'));
+const AsyncAiresICOAdminLogin = asyncComponent(() => import('./containers/aires/shared-pages/login-ico-admin/login-ico-admin.component'));
 const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
 const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/shared-pages/register/register.component'));
 const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
@@ -215,6 +217,8 @@ export default ({ childProps, layout }) => {
 
       /* --- Shared Pages --- */
       <AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/login-site-admin" exact component={AsyncAiresSiteAdminLogin} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/login-ico-admin" exact component={AsyncAiresICOAdminLogin} props={childProps} layout={activeLayout}/>
       <AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register/registration-complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>

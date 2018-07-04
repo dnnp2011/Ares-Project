@@ -202,8 +202,14 @@ export const menuItems = [{
     title: 'Shared Pages',
     icon: <PersonIcon style={iconStyle}/>,
     children: [{
-    title: 'Login',
+    title: 'User Login',
     href: '/login'
+  }, {
+    title: 'Site Admin Login',
+    href: '/login-site-admin'
+  }, {
+    title: 'ICO Admin Login',
+    href: '/login-ico-admin'
   }, {
     title: 'Forgot Password',
     href: '/forgot-password'
