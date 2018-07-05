@@ -51,10 +51,9 @@ const LandingPage = (props) => {
       <Grid item sm={6} xs={12}>
             <Paper className={scss.paper}>
             
-              <CardContent>
+              <CardContent inline className={{display: "block"}} >
                 <Typography component="p" gutterBottom>Looking to join us?</Typography>
-                <a href="/register">Sign Up</a>
-                <Typography component="p" >today</Typography>
+                <a href="/register">Sign Up</a> <span>today</span>
               </CardContent>
 
               <CardContent>
