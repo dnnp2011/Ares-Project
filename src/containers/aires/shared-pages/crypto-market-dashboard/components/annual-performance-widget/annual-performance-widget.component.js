@@ -18,7 +18,10 @@ const legendOptions = {
 };
 
 class AnnualPerformanceWidget extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+
+     this.state = {
     intervalId: null,
     barChartData: {
       labels: ['BTC', 'ETH', 'MAT', 'ATN', 'JLG', 'AFT', 'KOL', 'JNH', 'AAG', 'JSG', 'LLK', 'GRE'],
@@ -26,7 +29,7 @@ class AnnualPerformanceWidget extends React.Component {
         backgroundColor: this.props.theme.palette.primary.light,
         borderColor: this.props.theme.palette.primary.light,
         borderWidth: '1',
-        data: [...new Array(10)].map(() => 20 + Math.floor(Math.random() * 30))
+        data: this.props.marketShareData
       }]
     },
     barChartOptions: {
@@ -51,17 +54,20 @@ class AnnualPerformanceWidget extends React.Component {
       }
     }
   };
+  }
+
 
   componentWillMount() {
-    const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
-    const intervalId = setInterval(() => {
-      this.randomizeCharts();
-    }, randomInterval);
+    // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
+    // const intervalId = setInterval(() => {
+    //   this.randomizeCharts();
+    // }, randomInterval);
 
-    this.setState({ intervalId });
+    // this.setState({ intervalId });
   }
 
   componentWillReceiveProps(props) {
+    console.log('props', props.marketShareData)
     const oldEthDataSet = this.state.barChartData.datasets[0];
     const newEthDataSet = { ...oldEthDataSet };
     newEthDataSet.borderColor = props.theme.palette.primary.light;
@@ -80,24 +86,24 @@ class AnnualPerformanceWidget extends React.Component {
   }
 
   onItemClick = () => {
-    this.randomizeCharts();
+    // this.randomizeCharts();
   };
 
-  randomizeCharts = () => {
-    const ethDataSet = this.state.barChartData.datasets[0];
-    const newEthData = [...ethDataSet.data];
-    newEthData.push(20 + Math.floor(Math.random() * 30));
-    newEthData.splice(0, 1);
-    const newEthDataSet = { ...ethDataSet };
-    newEthDataSet.data = newEthData;
+  // randomizeCharts = () => {
+  //   const ethDataSet = this.state.barChartData.datasets[0];
+  //   const newEthData = [...ethDataSet.data];
+  //   newEthData.push(20 + Math.floor(Math.random() * 30));
+  //   newEthData.splice(0, 1);
+  //   const newEthDataSet = { ...ethDataSet };
+  //   newEthDataSet.data = newEthData;
 
-    const newChartData = {
-      ...this.state.barChartData,
-      datasets: [newEthDataSet]
-    };
+  //   const newChartData = {
+  //     ...this.state.barChartData,
+  //     datasets: [newEthDataSet]
+  //   };
 
-    this.setState({ barChartData: newChartData });
-  }
+  //   this.setState({ barChartData: newChartData });
+  // }
 
   handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
@@ -139,10 +145,10 @@ class AnnualPerformanceWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={this.onItemClick}>Day</MenuItem>
-          <MenuItem key={2} onClick={this.onItemClick}>Annual</MenuItem>
-          <MenuItem key={3} onClick={this.onItemClick}>Month</MenuItem>
-          <MenuItem key={4} onClick={this.onItemClick}>Week</MenuItem>
+          <MenuItem key={1} onClick={e => this.props.filter2(0)}>Day</MenuItem>
+          <MenuItem key={2} onClick={e => this.props.filter2(7)}>Week</MenuItem>
+          <MenuItem key={3} onClick={e => this.props.filter2(30)}>Month</MenuItem>
+          <MenuItem key={4} onClick={e => this.props.filter2(365)}>Annual</MenuItem>
         </Menu>
       </Card>
     );
