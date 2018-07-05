@@ -1,7 +1,4 @@
-.word {
-    font-weight: 400;
-    font-family: Barlow;
-}
+
 
 .panel {
   animation: landing-page 1s forwards 1;
@@ -21,7 +18,15 @@
 a {
   color: #1dabea;
   text-decoration: none;
-  font-size: 15px;
+  font-weight: 400;
+  font-family: Barlow;
+  font-size: 0.875rem;
+}
+
+span {
+  font-weight: 400;
+  font-family: Barlow;
+  font-size: 0.875rem;
 }
 
 .lock-actions {
