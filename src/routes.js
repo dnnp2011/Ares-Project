@@ -76,8 +76,8 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/non-auth-pages/login/login.component'));
 const AsyncAiresSiteAdminLogin = asyncComponent(() => import('./containers/aires/shared-pages/login-site-admin/login-site-admin.component'));
 const AsyncAiresICOAdminLogin = asyncComponent(() => import('./containers/aires/shared-pages/login-ico-admin/login-ico-admin.component'));
-const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/shared-pages/forgot-password/forgot-password.component'));
-const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/shared-pages/register/register.component'));
+const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/non-auth-pages/forgot-password/forgot-password.component'));
+const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/non-auth-pages/register/register.component'));
 const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
 const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
 const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-market-dashboard/crypto-market-dashboard.component'));

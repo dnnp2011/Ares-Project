@@ -44,7 +44,7 @@ const Login = (props) => {
                   Aires Dashboard
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  Welcome to Aires Dashboard. Please login using the form below.
+                  Welcome to Aires Dashboard. Please use the form below to login as a site administrator.
                 </Typography>
               </CardContent>
             </Card>

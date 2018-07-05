@@ -44,7 +44,7 @@ const Login = (props) => {
                   Aires Dashboard
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  Welcome to Aires Dashboard. Please login using the form below.
+                  Welcome to Aires Dashboard. Please login using the form below to add ICOs to the system or to edit info about previously added ICOs.
                 </Typography>
               </CardContent>
             </Card>

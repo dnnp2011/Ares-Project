@@ -1,11 +1,11 @@
 const styles = theme => ({
   background: {
-    background: theme.palette.secondary.main,
+    background: "#673AB7",
     width: '100%',
     height: '100%',
   },
   'primary-card': {
-    background: theme.palette.primary.light,
+    background: "#2196F3",
   }
 });
 
