@@ -36,17 +36,44 @@ const LandingPage = (props) => {
       alignItems="center"
       className={classes.background}>
       <Grid item sm={10} xs={12} className={scss.panel}>
-        <Paper className={{textAlign: 'center', justify: 'center', alignItems: 'center', margin: 'auto'}}>
-          <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-          <Typography variant='headline' gutterBottom>Ares Portal</Typography>
+        <Grid direction={panelDirection} container spacing={0}>
+          <Grid item sm={6} xs={12}>
+
+        <Paper className={classNames(scss.paper, classes['primary-paper'])}>
+          <CardContent className={scss['landing-page-content']}>
+            <img src={logoImage} className={scss['landing-page-logo']} alt="logo" />
+            <Typography variant='headline' gutterBottom>Welcome!</Typography>
+            <Typography>Aires Dashboard is a tool to connect sovg investors with oppotunities to invest in the next big crypto revolution!</Typography>
+          </CardContent>
         </Paper>
+      </Grid>
+
+      <Grid item sm={6} xs={12}>
+            <Paper className={scss.paper}>
+            
+              <CardContent>
+                <Typography component="p" gutterBottom>Looking to join us?</Typography>
+                <a href="/register">Sign Up</a>
+                <Typography component="p" >today</Typography>
+              </CardContent>
+
+              <CardContent>
+                <Typography component="p" gutterBottom>Already a member?</Typography>
+                <a href="/login">Login here</a>
+              </CardContent>
+
+              
+            </Paper>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
 }
 
 LandingPage.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired
 };
 
 export default withStyles(themeStyles, { withTheme: true })(LandingPage);
