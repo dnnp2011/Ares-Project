@@ -67,7 +67,7 @@ class AnnualPerformanceWidget extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log('props', props.marketShareData)
+    // console.log('props', props.marketShareData)
     const oldEthDataSet = this.state.barChartData.datasets[0];
     const newEthDataSet = { ...oldEthDataSet };
     newEthDataSet.borderColor = props.theme.palette.primary.light;

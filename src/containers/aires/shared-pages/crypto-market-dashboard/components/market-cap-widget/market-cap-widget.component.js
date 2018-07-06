@@ -82,7 +82,8 @@ class MarketCapWidget extends React.Component {
                   <TableCell className={classes['table-cell']} numeric>${item.market_data.current_price.usd.toFixed(2)}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{item.market_data.circulating_supply}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{Number.parseFloat(item.market_data.price_change_percentage_24h).toPrecision(3)}%</TableCell>
-                </TableRow>)):<p>incoming</p>
+                </TableRow>))
+                :<p>incoming</p>
               }
             </TableBody>
           </Table>

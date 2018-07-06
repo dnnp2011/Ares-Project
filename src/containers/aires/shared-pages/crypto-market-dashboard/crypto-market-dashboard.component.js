@@ -44,7 +44,7 @@ class Crypto extends React.Component {
 
         const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
         const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${num}`)
-        const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${num}`)
+        const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=usd&days=${num}`)
 
         let arr = []
 
@@ -55,18 +55,18 @@ class Crypto extends React.Component {
 
         ether.data.prices.forEach(x => {
             if(arr.length === 20) {return}
-             return arr.push(Math.round(x[1]))
+            arr.push(Math.round(x[1]))
         })
 
         eos.data.prices.forEach(x => {
             if(arr.length === 30) {return}
-             return arr.push(Math.round(x[1]))
+            arr.push(Math.round(x[1]))
         })
 
         this.setState({
             dailyPerformanceData: arr
         })
-        // console.log('daily', this.state.dailyPerformanceData)
+        console.log('daily', arr)
     }
 
 
@@ -163,7 +163,6 @@ class Crypto extends React.Component {
                                     <DailyPerformanceWidget
                                         dailyFilter={this.state.dailyPerformanceData}
                                         endpoint={this.state.endpoint}
-                                        filterData={this.filterData}
                                         filterStats={this.filterStats} />
                                     :
                                     <p>loading..</p>

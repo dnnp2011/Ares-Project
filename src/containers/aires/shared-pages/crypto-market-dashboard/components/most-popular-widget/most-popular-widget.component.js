@@ -75,7 +75,9 @@ class MostPopularWidget extends React.Component {
                   <TableCell className={classes['table-cell']}>{x.symbol}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>${x.market_data.current_price.usd.toFixed(2)}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{x.market_data.circulating_supply}</TableCell>
-                </TableRow>)): <p>incoming!!!</p>
+                </TableRow>))
+                :
+                <p>incoming!!!</p>
               }
             </TableBody>
           </Table>
