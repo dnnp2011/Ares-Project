@@ -118,7 +118,11 @@ class DailySalesWidget extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-      console.log('props', props.dailyFilter)
+
+      if(props.dailyFilter == []){return}
+      if(props.dailyFilter.length == 2){return}
+
+      console.log('dailyfilter', props.dailyFilter)
 
         //when new props are received, set the new state with the props
         const newChartData = {
@@ -198,7 +202,7 @@ class DailySalesWidget extends React.Component {
         />
         <CardContent className={classes['portal-daily-performance-widget__chart']}>
           <Line
-            data={this.update()}
+            data={this.update}
             options={this.state.lineChartOptions}
             legend={legendOptions}
           />

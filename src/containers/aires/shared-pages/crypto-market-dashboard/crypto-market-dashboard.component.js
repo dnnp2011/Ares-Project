@@ -22,7 +22,7 @@ class Crypto extends React.Component {
 
         this.state = {
             tickerData: null,
-            dailyPerformanceData: null,
+            dailyPerformanceData: [],
             annualPerformanceData: null,
             mostPopularData: null,
             marketCapData: null,
@@ -33,9 +33,9 @@ class Crypto extends React.Component {
     componentDidMount() {
         //open up socket
         this.socketListener()
+        this.filterStats(1)
 
         //send default filter value for daily performance data prices
-        this.filterStats(1)
 
     }
 
@@ -44,29 +44,30 @@ class Crypto extends React.Component {
 
         const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${num}`)
         const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${num}`)
-        const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=usd&days=${num}`)
+        const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/market_chart?vs_currency=usd&days=${num}`)
 
         let arr = []
 
-        bitcoin.data.prices.forEach(x => {
+        bitcoin.data.prices.map(x => {
             if(arr.length === 10) {return}
-            arr.push(Math.round(x[1]))
+            else{arr.push(Math.round(x[1]))}
+
         })
 
-        ether.data.prices.forEach(x => {
+        ether.data.prices.map(x => {
             if(arr.length === 20) {return}
-            arr.push(Math.round(x[1]))
+            else{arr.push(Math.round(x[1]))}
         })
 
-        eos.data.prices.forEach(x => {
+        eos.data.prices.map(x => {
             if(arr.length === 30) {return}
-            arr.push(Math.round(x[1]))
+            else{arr.push(Math.round(x[1]))}
         })
 
         this.setState({
             dailyPerformanceData: arr
         })
-        console.log('daily', arr)
+        console.log('daily', this.state.dailyPerformanceData)
     }
 
 

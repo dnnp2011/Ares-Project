@@ -56,47 +56,45 @@ class AnnualPerformanceWidget extends React.Component {
   };
   }
 
-   update = () => {
+    update = () => {
         return {
                 labels: ['BTC', 'ETH', 'MAT', 'ATN', 'JLG', 'AFT', 'KOL', 'JNH', 'AAG', 'JSG', 'LLK', 'GRE'],
-      datasets: [{
-        backgroundColor: this.props.theme.palette.primary.light,
-        borderColor: this.props.theme.palette.primary.light,
-        borderWidth: '1',
-        data: this.props.marketShareData
-      }]
+          datasets: [{
+            backgroundColor: this.props.theme.palette.primary.light,
+            borderColor: this.props.theme.palette.primary.light,
+            borderWidth: '1',
+            data: this.props.marketShareData
+          }]
+        }
     }
-  }
 
 
 
-  componentWillMount() {
+    componentWillMount() {
     // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
     // const intervalId = setInterval(() => {
     //   this.randomizeCharts();
     // }, randomInterval);
 
     // this.setState({ intervalId });
-  }
-
-  componentWillReceiveProps(props) {
-    // console.log('props', props.marketShareData)
-    const oldEthDataSet = this.state.barChartData.datasets[0];
-    const newEthDataSet = { ...oldEthDataSet };
-    newEthDataSet.borderColor = props.theme.palette.primary.light;
-    newEthDataSet.backgroundColor = props.theme.palette.primary.light;
-
-    const newChartData = {
-      ...this.state.barChartData,
-      datasets: this.props.marketShareData
     }
 
+  componentWillReceiveProps(props) {
+    console.log('annualperformance', props.marketShareData)
+
+    //set new props
+    const newChartData = {
+      ...this.state.barChartData,
+      datasets: props.marketShareData
+    }
+
+    //set new state
     this.setState({ barChartData: newChartData })
   }
 
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.state.intervalId);
+  // }
 
   onItemClick = () => {
     // this.randomizeCharts();
@@ -118,8 +116,8 @@ class AnnualPerformanceWidget extends React.Component {
   //   this.setState({ barChartData: newChartData });
   // }
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
+  handleClick = (e) => {
+    this.setState({ anchorEl: e.currentTarget });
   };
 
   handleClose = () => {
@@ -158,7 +156,7 @@ class AnnualPerformanceWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={e => this.props.filter2(0)}>Day</MenuItem>
+          <MenuItem key={1} onClick={e => this.props.filter2(0)}>Today</MenuItem>
           <MenuItem key={2} onClick={e => this.props.filter2(7)}>Week</MenuItem>
           <MenuItem key={3} onClick={e => this.props.filter2(30)}>Month</MenuItem>
           <MenuItem key={4} onClick={e => this.props.filter2(365)}>Annual</MenuItem>
