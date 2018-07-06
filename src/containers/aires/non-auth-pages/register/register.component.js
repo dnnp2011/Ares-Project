@@ -30,10 +30,7 @@ const INIT_STATE = {
   error: null,
 };
 
-const {
-  classes,
-  width
-} = this.props;
+
 
 const byPropKey = (propName, value) => () => ({
   [propName]: value,
@@ -69,6 +66,10 @@ this.setState(byPropKey(event.target.name, event.target.value))
 }
 
 render() {
+  const {
+    classes,
+    width
+  } = this.props;
 
   const { username, email, passOne, passTwo, error, firstName, lastName } = this.state;
   const userNameValid = username !== '';
@@ -184,11 +185,13 @@ render() {
                         id='passwordTwo'
                         placeholder='Repeat Password'
                       />
+                    <br />
+                    { error && <p style={{textAlign: 'center'}}>{error.message}</p> }
                     </Grid>
                   </Grid>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth href="/register" color="primary" variant="raised">Register</Button>
+                  <Button fullWidth href="/register" color="primary" variant="raised" onClick={event => this.onSubmit(event)}>Register</Button>
                 </CardActions>
               </Card>
             </Grid>

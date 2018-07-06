@@ -190,7 +190,7 @@ export const menuItems = [{
   }
   ]
 }, {
-  title: 'Aires',
+  title: 'Ares',
   icon: <PersonIcon style={iconStyle}/>,
 children: [{
   title: 'Non Auth Pages',
