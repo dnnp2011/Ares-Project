@@ -79,24 +79,48 @@ class DailySalesWidget extends React.Component {
   }
 }
 
+    //After the props come through and set as new state, return the new data
+    update = () => {
+        return {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'October', 'November'],
+                datasets: [{
+                  type: 'line',
+                  label: 'ETH',
+                  backgroundColor: this.props.theme.palette.primary.light,
+                  borderColor: this.props.theme.palette.primary.light,
+                  borderWidth: '2',
+                  lineTension: 0.5,
+                  pointRadius: 0,
+                  fill: true,
+                  data: this.state.lineChartData.datasets[0].data
+            }, {
+                type: 'line',
+                label: 'BTC',
+                backgroundColor: this.props.theme.palette.primary.main,
+                borderColor: this.props.theme.palette.primary.main,
+                borderWidth: '2',
+                lineTension: 0.5,
+                pointRadius: 0,
+                fill: true,
+                data: this.state.lineChartData.datasets[1].data
+            }, {
+                type: 'line',
+                label: 'EOS',
+                backgroundColor: this.props.theme.palette.primary.dark,
+                borderColor: this.props.theme.palette.primary.dark,
+                borderWidth: '2',
+                lineTension: 0.5,
+                pointRadius: 0,
+                fill: true,
+                data: this.state.lineChartData.datasets[2].data
+              }]
+        }
+    }
+
     componentWillReceiveProps(props) {
       console.log('props', props.dailyFilter)
 
-        const oldEthDataSet = this.state.lineChartData.datasets[0];
-        const newEthDataSet = { ...oldEthDataSet };
-        newEthDataSet.borderColor = props.theme.palette.primary.light;
-        newEthDataSet.backgroundColor = props.theme.palette.primary.light;
-
-        const oldBtcDataSet = this.state.lineChartData.datasets[1];
-        const newBtcDataSet = { ...oldBtcDataSet };
-        newBtcDataSet.borderColor = props.theme.palette.primary.main;
-        newBtcDataSet.backgroundColor = props.theme.palette.primary.main;
-
-        const oldMscDataSet = this.state.lineChartData.datasets[2];
-        const newMscDataSet = { ...oldMscDataSet };
-        newMscDataSet.borderColor = props.theme.palette.primary.dark;
-        newMscDataSet.backgroundColor = props.theme.palette.primary.dark;
-
+        //when new props are received, set the new state with the props
         const newChartData = {
             ...this.state.lineChartData,
             datasets: [{data: props.dailyFilter.splice(9,19)},

@@ -56,6 +56,19 @@ class AnnualPerformanceWidget extends React.Component {
   };
   }
 
+   update = () => {
+        return {
+                labels: ['BTC', 'ETH', 'MAT', 'ATN', 'JLG', 'AFT', 'KOL', 'JNH', 'AAG', 'JSG', 'LLK', 'GRE'],
+      datasets: [{
+        backgroundColor: this.props.theme.palette.primary.light,
+        borderColor: this.props.theme.palette.primary.light,
+        borderWidth: '1',
+        data: this.props.marketShareData
+      }]
+    }
+  }
+
+
 
   componentWillMount() {
     // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
@@ -75,10 +88,10 @@ class AnnualPerformanceWidget extends React.Component {
 
     const newChartData = {
       ...this.state.barChartData,
-      datasets: [newEthDataSet]
-    };
+      datasets: this.props.marketShareData
+    }
 
-    this.setState({ barChartData: newChartData });
+    this.setState({ barChartData: newChartData })
   }
 
   componentWillUnmount() {
@@ -134,7 +147,7 @@ class AnnualPerformanceWidget extends React.Component {
         />
         <CardContent className={classes['portal-annual-performance-widget__chart']}>
           <HorizontalBar
-            data={this.state.barChartData}
+            data={this.update()}
             options={this.state.barChartOptions}
             legend={legendOptions}
           />
