@@ -198,23 +198,23 @@ children: [{
   children: [{
     title: 'Landing Page',
     href: '/'
-  }],
+  },{
+  title: 'Login',
+  href: '/login'
+}, {
+  title: 'Forgot Password',
+  href: '/forgot-password'
+}, {
+  title: 'Register',
+  href: '/register'
+}, {
+  title: 'Registration Complete',
+  href: '/register/registration-complete'
+},],
 },{
     title: 'Shared Pages',
     icon: <PersonIcon style={iconStyle}/>,
-    children: [{
-    title: 'Login',
-    href: '/login'
-  }, {
-    title: 'Forgot Password',
-    href: '/forgot-password'
-  }, {
-    title: 'Register',
-    href: '/register'
-  }, {
-    title: 'Registration Complete',
-    href: '/register/registration-complete'
-  }, {
+    children: [ {
     title: 'Invite Friend',
     href: '/invite-friend'
   }, {
