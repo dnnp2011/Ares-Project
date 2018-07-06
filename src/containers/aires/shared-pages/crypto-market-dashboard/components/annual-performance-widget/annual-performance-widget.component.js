@@ -71,17 +71,12 @@ class AnnualPerformanceWidget extends React.Component {
 
 
     componentWillMount() {
-    // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
-    // const intervalId = setInterval(() => {
-    //   this.randomizeCharts();
-    // }, randomInterval);
 
-    // this.setState({ intervalId });
     }
 
   componentWillReceiveProps(props) {
     console.log('annualperformance', props.marketShareData)
-
+    if(props.marketShareData !== this.state.barChartData){return}
     //set new props
     const newChartData = {
       ...this.state.barChartData,

@@ -120,7 +120,7 @@ class DailySalesWidget extends React.Component {
     componentWillReceiveProps(props) {
 
       if(props.dailyFilter == []){return}
-      if(props.dailyFilter.length == 2){return}
+      if(props.dailyFilter.length !== 30){return}
 
       console.log('dailyfilter', props.dailyFilter)
 

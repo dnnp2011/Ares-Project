@@ -34,6 +34,7 @@ class Crypto extends React.Component {
         //open up socket
         this.socketListener()
         this.filterStats(1)
+        this.filter2(0)
 
         //send default filter value for daily performance data prices
 
@@ -91,7 +92,6 @@ class Crypto extends React.Component {
         const tron = await axios.get(`https://api.coingecko.com/api/v3/coins/tron/history?date=${time}&localization=false`)
 
 
-
         if(bitcoin && ether && eos && ripple && litecoin &&
            monero && neo && cardano && dash && tron)
         {
@@ -113,7 +113,7 @@ class Crypto extends React.Component {
             this.setState({
                 annualPerformanceData: targetData
             })
-        }   console.log('annual', this.state.annualPerformanceData)
+        }   console.log('before pass', this.state.annualPerformanceData)
     }
 
 
@@ -122,23 +122,22 @@ class Crypto extends React.Component {
         const socket = socketIOClient(this.state.endpoint)
         // socket.emit('filterReq', '1')
 
-        socket.on("FromAPI", (data, data2, data3) => {
+        socket.on("FromAPI", (data, data2) => {
 
             //if all data is found push into array and set the state
-            if(data && data2 && data3)
+            if(data && data2)
             {
-                let arr1 = []
+                // let arr1 = []
 
-                data3.forEach(x => {
-                    arr1.push(x.market_data.total_volume.usd)
-                })
+                // data3.forEach(x => {
+                //     arr1.push(x.market_data.total_volume.usd)
+                // })
 
                 // console.log('incoming!', arr1)
 
                 this.setState({
                     tickerData:  data,
-                    marketCapData: data2,
-                    annualPerformanceData: arr1
+                    marketCapData: data2
                 })
             }
         })
