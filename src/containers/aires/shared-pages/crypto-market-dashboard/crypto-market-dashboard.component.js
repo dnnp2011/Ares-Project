@@ -33,11 +33,10 @@ class Crypto extends React.Component {
     componentDidMount() {
         //open up socket
         this.socketListener()
+
+        //emit default values
         this.filterStats(1)
         this.filter2(0)
-
-        //send default filter value for daily performance data prices
-
     }
 
     //daily performance widget filter function
@@ -120,41 +119,29 @@ class Crypto extends React.Component {
     //watches for data from server in order to set state with sent data
     socketListener = () => {
         const socket = socketIOClient(this.state.endpoint)
-        // socket.emit('filterReq', '1')
 
-        socket.on("FromAPI", (data, data2) => {
+        socket.on("FromAPI", (data, data2, data3) => {
 
             //if all data is found push into array and set the state
-            if(data && data2)
+            if(data || data2 || data3)
             {
-                // let arr1 = []
+                let arr1 = []
 
-                // data3.forEach(x => {
-                //     arr1.push(x.market_data.total_volume.usd)
-                // })
-
-                // console.log('incoming!', arr1)
+                data3.forEach(x => {
+                    arr1.push(x.market_data.total_volume.usd)
+                })
 
                 this.setState({
                     tickerData:  data,
                     marketCapData: data2
                 })
+
+                setTimeout(() => {
+                    this.setState({annualPerformanceData: arr1})
+                },20000)
             }
         })
     }
-
-
-    //----------for sockets disregard
-    // filterData = number => {
-    //     // this.randomizeCharts();
-    //     const socket = socketIOClient(this.state.endpoint)
-
-    //     let num = number
-    //     // this.setState({dailyFilter: num})
-    //     socket.emit('filterReq', num)
-    //     console.log(num)
-    // }
-
 
     render() {
         const { classes } = this.props;

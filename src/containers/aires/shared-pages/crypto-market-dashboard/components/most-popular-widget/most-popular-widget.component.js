@@ -14,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import axios from 'axios'
 import themeStyles from './most-popular-widget.theme.style';
 
 class MostPopularWidget extends React.Component {
@@ -22,17 +22,50 @@ class MostPopularWidget extends React.Component {
         super(props)
 
         this.state = {
-            anchorEl: null
+            anchorEl: null,
+            page: 1,
+            result: null
         }
     }
 
-    onItemClick = () => {
-        this.setState({ data: this.state.data.reverse(), anchorEl: null });
-    };
+    componentDidMount() {
 
-    handleClick = (event) => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
+        this.getData()
+
+
+    }
+
+    async getData() {
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=${this.state.page}`)
+
+            console.log(res)
+            this.setState({result: res.data})
+    }
+
+    // async getApi = () => {
+
+    //         //general sort for cointicker
+    //         const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=xx${this.state.page}`)
+
+    //         console.log(res)
+    //         this.setState({result: res.data})
+    // }
+
+    nextPage = (e) => {
+        this.setState({ page: this.state.page + 1}, this.getData)
+    }
+
+    prevPage = (e) => {
+        this.setState({ page: this.state.page - 1}, this.getData)
+    }
+
+    firstPage = (e) => {
+        this.setState({page: 1}, this.getData)
+    }
+
+    handleClick = (e) => {
+        this.setState({ anchorEl: e.currentTarget });
+    }
 
     handleClose = () => {
         this.setState({ anchorEl: null });
@@ -68,8 +101,8 @@ class MostPopularWidget extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.popularData?
-                this.props.popularData.map((x,i) => (
+              {this.state.result?
+                this.state.result.map((x,i) => (
                 <TableRow key={i}>
                   <TableCell className={classes['table-cell']}>{x.name}</TableCell>
                   <TableCell className={classes['table-cell']}>{x.symbol}</TableCell>
@@ -88,9 +121,9 @@ class MostPopularWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={this.onItemClick}>Month</MenuItem>
-          <MenuItem key={2} onClick={this.onItemClick}>Week</MenuItem>
-          <MenuItem key={3} onClick={this.onItemClick}>Day</MenuItem>
+          <MenuItem key={1} onClick={(e) => this.nextPage()}>Next</MenuItem>
+          <MenuItem key={2} onClick={(e) => this.prevPage()}>Prev</MenuItem>
+          <MenuItem key={3} onClick={(e) => this.firstPage()}>First Page</MenuItem>
         </Menu>
       </Card>
     );

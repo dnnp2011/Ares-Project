@@ -68,15 +68,10 @@ class AnnualPerformanceWidget extends React.Component {
         }
     }
 
-
-
-    componentWillMount() {
-
-    }
-
   componentWillReceiveProps(props) {
     console.log('annualperformance', props.marketShareData)
-    if(props.marketShareData !== this.state.barChartData){return}
+    // if(props.marketShareData !== this.state.barChartData){return}
+
     //set new props
     const newChartData = {
       ...this.state.barChartData,
@@ -86,30 +81,6 @@ class AnnualPerformanceWidget extends React.Component {
     //set new state
     this.setState({ barChartData: newChartData })
   }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.state.intervalId);
-  // }
-
-  onItemClick = () => {
-    // this.randomizeCharts();
-  };
-
-  // randomizeCharts = () => {
-  //   const ethDataSet = this.state.barChartData.datasets[0];
-  //   const newEthData = [...ethDataSet.data];
-  //   newEthData.push(20 + Math.floor(Math.random() * 30));
-  //   newEthData.splice(0, 1);
-  //   const newEthDataSet = { ...ethDataSet };
-  //   newEthDataSet.data = newEthData;
-
-  //   const newChartData = {
-  //     ...this.state.barChartData,
-  //     datasets: [newEthDataSet]
-  //   };
-
-  //   this.setState({ barChartData: newChartData });
-  // }
 
   handleClick = (e) => {
     this.setState({ anchorEl: e.currentTarget });

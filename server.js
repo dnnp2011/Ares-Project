@@ -36,7 +36,7 @@ io.on("connection", socket => {
     // console.log('state', filterRequest2)
 
     //poll
-    interval = setInterval(() => getApiAndEmit(socket), 10000)
+    interval = setInterval(() => getApiAndEmit(socket), 20000)
 
     socket.on("disconnect", () => {
         console.log("Client disconnected")
@@ -48,17 +48,17 @@ io.on("connection", socket => {
 const getApiAndEmit = async socket => {
     try {
 
-        //general sort for ticker
-        const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10`)
+        //general sort for cointicker
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=1`)
 
         //for market cap sort
         const res2 = await axios.get('https://api.coingecko.com/api/v3/coins?order=market_cap_desc&per_page=10')
 
         //for market share sort
-        // const res3 = await axios.get('https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10')
+        const res3 = await axios.get('https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10')
 
         //send data to client
-        socket.emit("FromAPI", res.data, res2.data)
+        socket.emit("FromAPI", res.data, res2.data, res3.data)
     } catch(error) {console.error(`Error: ${error.code}`)}
 }
 
