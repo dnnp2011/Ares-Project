@@ -21,18 +21,22 @@ import Toolbar from '@material-ui/core/Toolbar';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
-const Forgot = props => {
-  return (
-      <div>
-      <AppBar position="static">
-      <Toolbar>
-        <Typography variant="title" color="inherit">
-          ICO Detail
-        </Typography>
-      </Toolbar>
-    </AppBar>
-      </div>
-  )
+class Detail extends React.Component {
+
+  render() {
+    return (
+        <div>
+        <AppBar position="static">
+        <Toolbar>
+          <Typography variant="title" color="inherit">
+            ICO Detail
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      Name: {this.props.match.name}
+        </div>
+    );
+  }
 }
 /*
 Forgot.propTypes = {
@@ -40,5 +44,5 @@ Forgot.propTypes = {
 };
 */
 
-export default withStyles(themeStyles, { withTheme: true })(Forgot)
+export default withStyles(themeStyles, { withTheme: true })(Detail)
 /* this will be th emain display page*/

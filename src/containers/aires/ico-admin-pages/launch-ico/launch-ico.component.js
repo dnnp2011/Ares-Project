@@ -14,8 +14,8 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import themeStyles from './launchICO.theme.style';
-import scss from './launchICO.module.scss';
+import themeStyles from './launch-ico.theme.style';
+import scss from './launch-ico.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
@@ -94,7 +94,13 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-
+                  <Grid>
+                    <TextField
+                      label="Country of Origin"
+                      type="dropdown"
+                      fullWidth
+                    />
+                  </Grid>
 
               </CardContent>
               <CardActions>

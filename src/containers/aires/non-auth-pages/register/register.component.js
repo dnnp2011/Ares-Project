@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { auth } from '../../../../firebase';
 
@@ -53,6 +54,8 @@ auth.doCreateUserWithEmailAndPassword(email, passOne)
   this.setState(() => ({...INIT_STATE}));
   // Push to client dashboard if login successful
   // history.push(routes.HOME);
+  // withRouter(Register);
+  // history.push()
 })
 .catch(error => {
   this.setState(byPropKey('error', error));
@@ -71,13 +74,12 @@ render() {
     width
   } = this.props;
 
-  const { username, email, passOne, passTwo, error, firstName, lastName } = this.state;
-  const userNameValid = username !== '';
+  const { email, passOne, passTwo, error, firstName, lastName } = this.state;
   const emailValid = email !== '' && email.includes('@');
   const passwordValid = passOne !== '' && passOne === passTwo;
   const firstNameValid = firstName !== '';
   const lastNameValid = lastName !== '';
-  const isInvalid = !userNameValid || !emailValid || !passwordValid || !firstNameValid || !lastNameValid;
+  const isInvalid = !emailValid || !passwordValid || !firstNameValid || !lastNameValid;
 
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
@@ -191,7 +193,7 @@ render() {
                   </Grid>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth href="/register" color="primary" variant="raised" onClick={event => this.onSubmit(event)}>Register</Button>
+                  <Button disabled={isInvalid} fullWidth href="/register" color="primary" variant="raised" onClick={event => this.onSubmit(event)}>Register</Button>
                 </CardActions>
               </Card>
             </Grid>
