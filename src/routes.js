@@ -220,7 +220,7 @@ export default ({ childProps, layout }) => {
 
             // -----  by Fady -----
       <AppRoute path="/investorKYC" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>
-
+      // <AppRoute path="/investorKYC/confirm" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>
 
       /* --- Client Pages --- */
       {<AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>}

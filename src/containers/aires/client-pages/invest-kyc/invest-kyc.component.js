@@ -67,13 +67,24 @@ const CollectKYC = (props) => {
       alignItems="center"
       className={classes.background}
     >
-      <Grid item sm={10} xs={12} className={scss.panel}>
+      <Grid item sm={10} xs={12} className='panel'>
         <Grid direction={panelDirection} container spacing={100}>
           <Grid
             item
             sm={8}
             xs={10}
           >
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['collectkyc-content']}>
 
@@ -81,18 +92,21 @@ const CollectKYC = (props) => {
 
                 <Typography gutterBottom>Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).</Typography>
 
-                <Grid>
-                  <TextField
-                    label="First Name"
-                    type="text"
-                    fullwidth
-                  />
-                  <TextField
-                    label="Last Name"
-                    type="text"
-                    fullwidth
-                  />
-                </Grid>
+                  <Grid>
+                      <TextField
+                      label="First Name"
+                      type="text"
+                      
+                    />
+                  </Grid>
+                  <Grid>
+                    <TextField
+                      label="Last Name"
+                      type="text"
+                      fullwidth
+                    />
+                  </Grid>
+
                 <br/>
                 <Grid>
                   <TextField
@@ -113,7 +127,7 @@ const CollectKYC = (props) => {
                 </Grid>
                 <br/>
                 <Grid>
-                <Typography gutterBottom>For Identity verification purposes, please upload a supporting docunt as passport,state ID or a utility bill</Typography>
+                <Typography gutterBottom>For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill</Typography>
                 <br/>
                   <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
                     Upload Supporting Documents
@@ -136,7 +150,7 @@ const CollectKYC = (props) => {
                 </Grid>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/browse-icos/invest/confirm" color="secondary" variant="raised">Submit KYC</Button>
+                <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>
               </CardActions>
             </Card>
           </Grid>
