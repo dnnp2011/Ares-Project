@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { auth } from '../../../../firebase';
 
@@ -38,11 +39,15 @@ class Forgot extends React.Component {
 
   onSubmit = event => {
   const { email } = this.state;
+  const { history } = this.props;
 
   auth.doPasswordReset(email)
   .then(() => {
     this.setState(() => ({ ...INIT_STATE }));
-    this.setState(byPropKey('error', 'Password recovery email successfully sent'));
+    this.setState(byPropKey('error', 'Password recovery email successfully sent. Redirecting to login...'));
+    setTimeout(() => {
+      history.push('/login');
+    }, 3000);
   })
   .catch(error => {
     this.setState(byPropKey('error', error));

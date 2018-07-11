@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
 import themeStyles from './login.theme.style';
 import scss from './login.module.scss';
@@ -40,12 +41,13 @@ class Login extends React.Component {
 
   onSubmit = (event) => {
     const { email, password } = this.state;
-    // const { history } = this.props;
+    const { history } = this.props;
 
     auth.doSignInWithEmailAndPassword(email, password)
         .then(authUser => {
           this.setState(() => ({...INIT_STATE}));
           // Push to home
+          history.push('/');
         })
         .catch(error => {
           this.setState(byPropKey('error', error));
@@ -157,5 +159,5 @@ Login.propTypes = {
 };
 
 
-
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Login);
+const LoginWithRouter = withRouter(Login);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(LoginWithRouter);

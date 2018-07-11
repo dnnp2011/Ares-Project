@@ -31,8 +31,6 @@ const INIT_STATE = {
   error: null,
 };
 
-
-
 const byPropKey = (propName, value) => () => ({
   [propName]: value,
 });
@@ -41,9 +39,9 @@ class Register extends React.Component {
 state = {...INIT_STATE};
 
 onSubmit = (event) => {
-// const {
-//   history,
-// } = this.props;
+const {
+  history,
+} = this.props;
 const {
   username,
   email,
@@ -52,10 +50,8 @@ const {
 auth.doCreateUserWithEmailAndPassword(email, passOne)
 .then(authUser => {
   this.setState(() => ({...INIT_STATE}));
-  // Push to client dashboard if login successful
-  // history.push(routes.HOME);
-  // withRouter(Register);
-  // history.push()
+  // Push to login page if registration successful
+  history.push('/login')
 })
 .catch(error => {
   this.setState(byPropKey('error', error));
@@ -209,4 +205,5 @@ Register.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Register);
+const RegisterWithRouter = withRouter(Register);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(RegisterWithRouter);
