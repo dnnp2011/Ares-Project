@@ -20,6 +20,10 @@ import scss from './invest-kyc.module.scss';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
+import Dropdown from "./components/DropdownList/DropdownList";
+import NumberInput from './components/NumberInput/NumberInput';
+import DropdownInput from './components/DropdownInput/DropdownInput';
+
 const CollectKYC = (props) => {
   const {
     classes,
@@ -32,21 +36,21 @@ const CollectKYC = (props) => {
 
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
-
-  const icos = [
-    {
-      value: 'SolarCity',
-      label: '$'
-    },
-    {
-      value: 'Bitcoin',
-      label: '€'
-    },
-    {
-      value: 'Ethereum',
-      label: '฿'
-    },
-  ];
+  //
+  // const icos = [
+  //   {
+  //     value: 'SolarCity',
+  //     label: '$'
+  //   },
+  //   {
+  //     value: 'Bitcoin',
+  //     label: '€'
+  //   },
+  //   {
+  //     value: 'Ethereum',
+  //     label: '฿'
+  //   },
+  // ];
 
   // handleChange = name => (event) => {
   //   this.setState({
@@ -57,21 +61,24 @@ const CollectKYC = (props) => {
   return (
     <Grid
       container
+      direction="row"
+      spacing={0}
       justify="center"
       alignItems="center"
       className={classes.background}
     >
       <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
+        <Grid direction={panelDirection} container spacing={100}>
           <Grid
             item
-            sm={6}
-            xs={12}
+            sm={8}
+            xs={10}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['collectkyc-content']}>
+
                 <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
-                <br/>
+
                 <Typography gutterBottom>Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).</Typography>
 
                 <Grid>
@@ -106,50 +113,30 @@ const CollectKYC = (props) => {
                 </Grid>
                 <br/>
                 <Grid>
-                  <TextField
-                    label="Company Name"
-                    type="text"
-                    fullWidth
-                  />
-                </Grid>
+                <Typography gutterBottom>For Identity verification purposes, please upload a supporting docunt as passport,state ID or a utility bill</Typography>
                 <br/>
-                <Grid>
-                  <TextField
-                    label="Country of Residence"
-                    type="dropdown"
+                  <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
+                    Upload Supporting Documents
+                  </Button>
+                  <input
+                    style={{display:'none'}}
+                    ref={fileInput => this.fileInput =fileInput}
+                    label="Supporting Document"
+                    type="file"
                     fullWidth
                   />
                 </Grid>
-                <br/>
+
                 <Grid>
-                  <TextField
-                    label="Select ICO"
-                    type="dropdown"
-                    fullWidth
-                  />
+                  <DropdownInput/>
                 </Grid>
+                <NumberInput />
                 <Grid>
-                  <TextField
-                    id="select-ico"
-                    select
-                    label="Select ICO"
-                    className={classes.icos}
-                    value={icos}
-                    // onChange={this.handleChange('ico')}
-                    SelectProps={{
-                      native: true,
-                      MenuProps: {
-                        className: classes.menu
-                      }
-                    }}
-                    helperText="Select the desired ICO"
-                    margin="normal"
-                    fullwidth
-                  />
+                  <Dropdown />
                 </Grid>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="secondary" variant="raised">Submit KYC</Button>
+                <Button fullWidth href="/browse-icos/invest/confirm" color="secondary" variant="raised">Submit KYC</Button>
               </CardActions>
             </Card>
           </Grid>
