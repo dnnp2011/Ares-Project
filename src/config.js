@@ -187,9 +187,8 @@ export const menuItems = [{
   }, {
     title: 'Lock Screen',
     href: '/lock'
-  }
-  ]
-}, {
+  }]}
+  , {
   title: 'Ares',
   icon: <PersonIcon style={iconStyle}/>,
 children: [{
@@ -237,9 +236,6 @@ children: [{
   }, {
     title: 'Investor KYC',
     href: '/investorKYC'
-  },{
-    title: 'Forgot Password',
-    href: '/forgot-password'
   }]},
 {
   title: 'Site Admin Pages',
@@ -260,9 +256,7 @@ children: [{
     title: 'Transactions Master Dashboard',
     href: '/admin/dashboard/transactions',
     icon: <DashboardIcon style={iconStyle} />
-  }
-]
-},
+  }]},
 {
 title: 'Client Pages',
 icon: <PersonIcon style={iconStyle}/>,
@@ -272,9 +266,6 @@ children: [{
 }, {
   title: 'ICO List',
   href: '/browse-icos'
-}, {
-  title: 'ICO List Item',
-  href: '/ico-list-item'
 }, {
   title: 'Invest',
   href: 'browse-icos/invest'
@@ -296,9 +287,8 @@ children: [{
 }, {
   title: 'Wallet',
   href: '/wallet'
-},]
-},]
-},{
+}]}]}
+,{
 title: 'Errors',
 icon: <InfoIcon style={iconStyle} />,
 children: [{
