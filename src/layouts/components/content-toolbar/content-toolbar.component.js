@@ -95,6 +95,7 @@ class ContentToolbar extends React.Component {
   }
 
   handleOpenProfile = () => {
+    const { history } = this.props;
     history.push('/profile:user'); // TODO: Fetch user name from profile and append to url
   };
 
