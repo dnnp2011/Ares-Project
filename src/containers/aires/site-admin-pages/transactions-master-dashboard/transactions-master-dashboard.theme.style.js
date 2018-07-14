@@ -1,4 +1,5 @@
 const styles = theme => ({
+<<<<<<< HEAD
   portalDashboardPageWrapper: {
     padding: 16,
     minHeight: '100%',
@@ -30,6 +31,15 @@ const styles = theme => ({
   },
   portalWidgetContent: {
     flex: '1 1 100%'
+=======
+  background: {
+    background: theme.palette.secondary.main,
+    width: '100%',
+    height: '100%',
+  },
+  'primary-card': {
+    background: theme.palette.primary.light,
+>>>>>>> master
   }
 });
 

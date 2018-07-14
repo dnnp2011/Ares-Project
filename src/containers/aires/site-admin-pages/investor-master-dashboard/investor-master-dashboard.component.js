@@ -13,56 +13,8 @@ const INVDash = (props) => {
   const { classes } = props;
 
   return (
-    <div className={classes.portalDashboardPageWrapper}>
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-        <Grid container justify="center" spacing={16}>
+    <div>
 
-          <Grid key={1} item xs={12} sm={12} md={9} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
-              Investor Dashboard
-            </Typography>
-            <Paper className={classes.portalWidgetContent}>xs=12
-              <br />
-              Activity 1
-              <br />
-              Activity 2
-              <br />
-              Activity 3
-              <br />
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6} md={6} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
-              Header 2
-            </Typography>
-            <Paper className={classes.portalWidgetContent}>xs=6
-            <br />
-            Activity 1
-            <br />
-            Activity 2
-            <br />
-            Activity 3
-            <br />
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6} md={6} className={classes.portalWidget}>
-            <Typography variant="subheading" className={classes.portalWidgetHeading}>
-              Header 3
-            </Typography>
-            <Paper className={classes.portalWidgetContent}>xs=6
-            <br />
-            Activity 1
-            <br />
-            Activity 2
-            <br />
-            Activity 3
-            <br />
-            </Paper>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
     </div>
   );
 }
