@@ -20,6 +20,7 @@ import axios from 'axios'
 
 import themeStyles from './market-cap-widget.theme.style';
 import './marketCap.css'
+
 class MarketCapWidget extends React.Component {
     constructor(props) {
         super(props)
@@ -33,8 +34,6 @@ class MarketCapWidget extends React.Component {
     componentDidMount() {
         this.getData()
     }
-
-
 
    async getData() {
         const res = await axios.get(`https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10&page=${this.state.page}`)
@@ -108,15 +107,6 @@ class MarketCapWidget extends React.Component {
             </TableBody>
           </Table>
         </CardContent>
-      {/*  <Menu
-          id="store-menu"
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem key={1} onClick={e => this.nextPage()}><i className="fas fa-arrow-alt-circle-right"></i></MenuItem>
-          <MenuItem key={2} onClick={e => this.prevPage()}><i className="fas fa-arrow-alt-circle-left"></i></MenuItem>
-          <MenuItem key={3} onClick={e => this.firstPage()}>Day</MenuItem>
-        </Menu>*/}
       </Card>
     );
   }

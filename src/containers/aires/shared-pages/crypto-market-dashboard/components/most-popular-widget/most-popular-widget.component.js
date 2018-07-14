@@ -22,7 +22,6 @@ class MostPopularWidget extends React.Component {
         super(props)
 
         this.state = {
-            anchorEl: null,
             page: 1,
             result: null
         }
@@ -50,14 +49,6 @@ class MostPopularWidget extends React.Component {
         this.setState({page: 1}, this.getData)
     }
 
-    handleClick = (e) => {
-        this.setState({ anchorEl: e.currentTarget });
-    }
-
-    handleClose = () => {
-        this.setState({ anchorEl: null });
-    };
-
   render() {
     const { anchorEl } = this.state;
     const { classes } = this.props;
@@ -66,13 +57,17 @@ class MostPopularWidget extends React.Component {
       <Card className={classes['portal-most-popular-widget']}>
         <CardHeader
           action={
-            <IconButton
-              aria-owns={anchorEl ? 'store-menu' : null}
-              aria-haspopup="true"
-              onClick={this.handleClick}
-            >
-              <MoreVertIcon />
-            </IconButton>
+            <div>
+                <IconButton onClick={e => this.firstPage()}>
+                  <i className="fas fa-fast-backward"></i>
+                </IconButton>
+                <IconButton onClick={e => this.prevPage()}>
+                  <i className="fas fa-caret-left"></i>
+                </IconButton>
+                <IconButton onClick={e => this.nextPage()}>
+                  <i className="fas fa-caret-right"></i>
+                </IconButton>
+            </div>
           }
           title="Most Popular"
           subheader="2nd Semester 2018"
@@ -102,16 +97,6 @@ class MostPopularWidget extends React.Component {
             </TableBody>
           </Table>
         </CardContent>
-        <Menu
-          id="store-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem key={1} onClick={(e) => this.nextPage()}>Next</MenuItem>
-          <MenuItem key={2} onClick={(e) => this.prevPage()}>Prev</MenuItem>
-          <MenuItem key={3} onClick={(e) => this.firstPage()}>First Page</MenuItem>
-        </Menu>
       </Card>
     );
   }
