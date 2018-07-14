@@ -182,9 +182,6 @@ export const menuItems = [{
     title: 'Forgot Password',
     href: '/forgot-password'
   }, {
-    title: 'Profile',
-    href: '/profile'
-  }, {
     title: 'Lock Screen',
     href: '/lock'
   }]}
@@ -261,6 +258,9 @@ children: [{
 title: 'Client Pages',
 icon: <PersonIcon style={iconStyle}/>,
 children: [{
+  title: 'Profile',
+  href: '/profile:user'
+},{
   title: 'ICO Detail',
   href: '/browse-icos/details'
 }, {

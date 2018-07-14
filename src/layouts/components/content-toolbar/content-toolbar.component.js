@@ -3,6 +3,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
+import withAuthentication from '../../../containers/authentication/withAuthentication';
+import AuthUserContext from '../../../containers/authentication/AuthUserContext';
+import { withStyles } from '@material-ui/core/styles';
+import handleSignOut from '../../../containers/authentication/SignOut';
 
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,8 +21,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Switch from '@material-ui/core/Switch';
 
+import FontAwesome from 'react-fontawesome';
 import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
 // Actions
@@ -88,8 +94,17 @@ class ContentToolbar extends React.Component {
     this.setState({ themeMenuEl: null, themeMenuOpen: false });
   }
 
+  handleOpenProfile = () => {
+    history.push('/profile:user'); // TODO: Fetch user name from profile and append to url
+  };
+
+  handleSignOut = () => {
+
+  }
+
 
   render() {
+    const { history } = this.props;
     const {
       width,
       layout,
@@ -173,6 +188,39 @@ class ContentToolbar extends React.Component {
         >
           <NotificationsIcon />
         </IconButton>
+
+        <AuthUserContext.Consumer>
+          { authUser => (authUser
+            ? (
+              <div>
+                <IconButton
+                  color="inherit"
+                  aria-label="User Profile"
+                  onClick={this.handleOpenProfile}
+                  >
+                  <PersonIcon />
+                </ IconButton>
+                <IconButton
+                  color="inherit"
+                  aria-label="User Profile"
+                  onClick={() => {
+                    !authUser ?
+                      // Logout successful, route to non-auth login
+                      history.push('/login')
+                    :
+                      // Lout NOT successful, do nothing, or give error message
+                      alert("Logout could not be correctly processed")
+                  }}
+                  >
+                <FontAwesome name="sign-out" />
+                </ IconButton>
+              </div>
+            )
+            :
+              null
+          )}
+
+        </AuthUserContext.Consumer>
       </Toolbar>
     );
   }
@@ -201,6 +249,7 @@ ContentToolbar.propTypes = {
 };
 
 export default compose(
+  withAuthentication,
   withRouter,
   withWidth(),
   withTheme(),
