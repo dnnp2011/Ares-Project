@@ -122,7 +122,7 @@ class DailySalesWidget extends React.Component {
       if(props.dailyFilter == []){return}
       if(props.dailyFilter.length !== 30){return}
 
-      console.log('dailyfilter', props.dailyFilter)
+      // console.log('dailyfilter', props.dailyFilter)
 
         //when new props are received, set the new state with the props
         const newChartData = {
@@ -176,8 +176,6 @@ class DailySalesWidget extends React.Component {
   };
 
   handleClose = () => {
-
-
     this.setState({ anchorEl: null });
   };
 

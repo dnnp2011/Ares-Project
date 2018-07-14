@@ -78,7 +78,36 @@ class Crypto extends React.Component {
 
         let time = date.toLocaleDateString().replace(/\//g,'-')
 
+        // const coins = ['bitcoin','ethereum','eos','ripple','litecoin','monero','neo','cardano','dash','tron']
 
+
+        // let mainData = []
+        // let targetData = []
+
+        // let promises = coins.forEach(async x => {
+        //      fetch(`https://api.coingecko.com/api/v3/coins/${x}/history?date=${time}&localization=false`)
+        // })
+
+        // let response = await Promise.all(promises)
+        // console.log(response)
+
+
+
+        //   if(response)
+        //     {
+        //         //gather all data
+        //         mainData.push(response)
+        //     }
+        // console.log(mainData)
+
+        // mainData.forEach(x => {
+        //     x.data.market_data?
+        //         targetData.push(x.data.market_data.total_volume.usd) : targetData.push(0)
+        // })
+
+        // this.setState({
+        //         annualPerformanceData: targetData
+        // })
         const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${time}&localization=false`)
         const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/history?date=${time}&localization=false`)
         const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/history?date=${time}&localization=false`)
@@ -112,9 +141,9 @@ class Crypto extends React.Component {
             this.setState({
                 annualPerformanceData: targetData
             })
-        }   console.log('before pass', this.state.annualPerformanceData)
-    }
-
+           console.log('before pass', this.state.annualPerformanceData)
+     }
+}
 
     //watches for data from server in order to set state with sent data
     socketListener = () => {
@@ -138,7 +167,7 @@ class Crypto extends React.Component {
 
                 setTimeout(() => {
                     this.setState({annualPerformanceData: arr1})
-                },20000)
+                }, 20000)
             }
         })
     }

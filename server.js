@@ -36,7 +36,7 @@ io.on("connection", socket => {
     // console.log('state', filterRequest2)
 
     //poll
-    interval = setInterval(() => getApiAndEmit(socket), 20000)
+    interval = setInterval(() => getApiAndEmit(socket), 5000)
 
     socket.on("disconnect", () => {
         console.log("Client disconnected")
@@ -55,7 +55,7 @@ const getApiAndEmit = async socket => {
         const res2 = await axios.get('https://api.coingecko.com/api/v3/coins?order=market_cap_desc&per_page=10')
 
         //for market share sort
-        const res3 = await axios.get('https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10')
+        const res3 = await axios.get('https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10&page=1')
 
         //send data to client
         socket.emit("FromAPI", res.data, res2.data, res3.data)

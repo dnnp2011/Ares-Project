@@ -29,27 +29,14 @@ class MostPopularWidget extends React.Component {
     }
 
     componentDidMount() {
-
         this.getData()
-
-
     }
 
     async getData() {
         const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=${this.state.page}`)
 
-            console.log(res)
-            this.setState({result: res.data})
+        this.setState({result: res.data})
     }
-
-    // async getApi = () => {
-
-    //         //general sort for cointicker
-    //         const res = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=xx${this.state.page}`)
-
-    //         console.log(res)
-    //         this.setState({result: res.data})
-    // }
 
     nextPage = (e) => {
         this.setState({ page: this.state.page + 1}, this.getData)
