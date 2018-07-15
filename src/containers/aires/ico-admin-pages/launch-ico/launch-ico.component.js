@@ -58,6 +58,22 @@ const LaunchICO = (props) => {
                   </Grid>
                   <br/>
                   <Grid>
+                    <TextField
+                      label="Password"
+                      type="password"
+                      fullWidth
+                    />
+                  </Grid>
+                  <br/>
+                  <Grid>
+                    <TextField
+                      label="Repeat Password"
+                      type="password"
+                      fullWidth
+                    />
+                  </Grid>
+                  <br/>
+                  <Grid>
                     <Typography gutterBottom>Start Date</Typography>
                     <TextField
                       type="date"
