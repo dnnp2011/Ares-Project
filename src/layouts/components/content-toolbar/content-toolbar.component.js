@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import withAuthentication from '../../../containers/authentication/withAuthentication';
 import AuthUserContext from '../../../containers/authentication/AuthUserContext';
 import { withStyles } from '@material-ui/core/styles';
-import handleSignOut from '../../../containers/authentication/SignOut';
+import { auth } from '../../../firebase';
 
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
@@ -100,8 +100,20 @@ class ContentToolbar extends React.Component {
     history.push('/profile:user'); // TODO: Fetch user name from profile and append to url
   };
 
-  handleSignOut = (authUser) => {
-    console.log(authUser);
+  handleSignOut = () => {
+    auth.doSignOut();
+    const { history } = this.props;
+    <AuthUserContext.Consumer>
+      {
+        authUser =>
+        !authUser ?
+          // Logout successful, route to non-auth login
+          history.push('/login')
+        :
+          // Lout NOT successful, do nothing, or give error message
+          alert("Logout could not be correctly processed")
+      }
+    </AuthUserContext.Consumer>
   }
 
 
@@ -205,15 +217,8 @@ class ContentToolbar extends React.Component {
                 </ IconButton>
                 <IconButton
                   color="inherit"
-                  aria-label="User Profile"
-                  onClick={() => {
-                    !authUser ?
-                      // Logout successful, route to non-auth login
-                      history.push('/login')
-                    :
-                      // Lout NOT successful, do nothing, or give error message
-                      alert("Logout could not be correctly processed")
-                  }}
+                  aria-label="Logout"
+                  onClick={this.handleSignOut}
                   >
                 <FontAwesome name="sign-out" />
                 </ IconButton>

@@ -199,7 +199,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/elements/steppers" exact component={AsyncSteppersExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/buttons" exact component={AsyncButtonExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/progress" exact component={AsyncProgressExample} props={childProps} layout={activeLayout} />
-      // <AppRoute path="/profile" exact component={AsyncProfile} props={childProps} layout={activeLayout} />
+      <AppRoute path="/profile:user" exact component={AsyncProfile} props={childProps} layout={activeLayout} />
       <AppRoute path="/lock" exact component={AsyncLock} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/404" exact component={AsyncError404} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/500" exact component={AsyncError500} props={childProps} layout={NoLayout} />
