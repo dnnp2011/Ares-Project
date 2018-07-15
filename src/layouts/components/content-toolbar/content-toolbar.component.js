@@ -58,7 +58,8 @@ class ContentToolbar extends React.Component {
     layoutMenuEl: null,
     layoutMenuOpen: false,
     themeMenuEl: null,
-    themeMenuOpen: false
+    themeMenuOpen: false,
+    authUser: null,
   };
 
   handleOpenLayoutClick = (event) => {
@@ -99,8 +100,8 @@ class ContentToolbar extends React.Component {
     history.push('/profile:user'); // TODO: Fetch user name from profile and append to url
   };
 
-  handleSignOut = () => {
-
+  handleSignOut = (authUser) => {
+    console.log(authUser);
   }
 
 
@@ -191,7 +192,8 @@ class ContentToolbar extends React.Component {
         </IconButton>
 
         <AuthUserContext.Consumer>
-          { authUser => (authUser
+          { authUser =>
+             (authUser
             ? (
               <div>
                 <IconButton
@@ -220,7 +222,6 @@ class ContentToolbar extends React.Component {
             :
               null
           )}
-
         </AuthUserContext.Consumer>
       </Toolbar>
     );
