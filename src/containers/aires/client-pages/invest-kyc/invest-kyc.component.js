@@ -30,33 +30,8 @@ const CollectKYC = (props) => {
     width
   } = props;
 
-  // state = {
-  //   ico: 'SolarCity',
-  // };
-
-  // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
-  //
-  // const icos = [
-  //   {
-  //     value: 'SolarCity',
-  //     label: '$'
-  //   },
-  //   {
-  //     value: 'Bitcoin',
-  //     label: '€'
-  //   },
-  //   {
-  //     value: 'Ethereum',
-  //     label: '฿'
-  //   },
-  // ];
 
-  // handleChange = name => (event) => {
-  //   this.setState({
-  //     [name]: event.target.value
-  //   });
-  // };
 
   return (
     <Grid
@@ -69,16 +44,10 @@ const CollectKYC = (props) => {
     >
       <Grid item sm={8} xs={12} className='panel'>
         <Grid direction={panelDirection} container spacing={0}>
-          <Grid
-            item
-          >
-            <Card
-            className={classNames(scss.card, classes['primary-card'])}
-            >
+          <Grid item>
+            <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['collectkyc-content']}>
-
                 <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
-
                 <Typography gutterBottom>Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).</Typography>
                 <Grid container>
                   <Grid item sm={6} xs={12}>
@@ -117,10 +86,9 @@ const CollectKYC = (props) => {
                   </Grid>
                 </Grid>
                 <br/>
-
                 <Grid>
-                <Typography gutterBottom>For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill</Typography>
-                <br/>
+                  <Typography gutterBottom>For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill</Typography>
+                  <br/>
                   <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
                     Upload Supporting Documents
                   </Button>
@@ -141,9 +109,9 @@ const CollectKYC = (props) => {
                 </Grid>
               </CardContent>
               <CardActions>
-              <Grid>
-                <Button href="/investorKYC/confirm" color="secondary" variant="raised" className={classes.button}>Submit KYC</Button>
-              </Grid>
+                <Grid>
+                  <Button href="/browse-icos/invest/payment" color="secondary" variant="raised" className={classes.button}>Submit KYC</Button>
+                </Grid>
               </CardActions>
             </Card>
           </Grid>

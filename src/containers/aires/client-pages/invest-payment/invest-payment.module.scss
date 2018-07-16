@@ -1,0 +1,42 @@
+.panel {
+  animation: collect-kyc 1s forwards 1;
+  animation-delay: 0.6s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.Button{
+  display:inline-block;
+  self-align: center;
+}
+.card {
+  height: auto;
+  width: auto;
+  display: inline-block;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 24px;
+}
+
+.collectkyc-actions {
+  justify-content: center;
+}
+
+.collectkyc-content {
+  text-align: center;
+}
+
+.collectkyc-logo {
+  height: 64px;
+}
+
+@keyframes collect-kyc {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
