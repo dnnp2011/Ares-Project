@@ -3,6 +3,7 @@ const styles = theme => ({
     background: theme.palette.secondary.main,
     width: '100%',
     height: '100%',
+    display: 'flex',
   },
   'primary-card': {
     background: theme.palette.primary.light,

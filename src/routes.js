@@ -48,7 +48,7 @@ const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-aut
 // AUTHENTICATION ROUTES
 const AsyncLogin = asyncComponent(() => import('./containers/authentication/login/login.component'));
 const AsyncRegister = asyncComponent(() => import('./containers/authentication/register/register.component'));
-const AsyncProfile = asyncComponent(() => import('./containers/authentication/profile/profile.component'));
+// const AsyncProfile = asyncComponent(() => import('./containers/authentication/profile/profile.component'));
 const AsyncLock = asyncComponent(() => import('./containers/authentication/lock/lock.component'));
 // const AsyncForgot = asyncComponent(() => import('./containers/authentication/forgot-password/forgot-password.component'));
 
@@ -72,25 +72,28 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 
 // CUSTOM AIRES ROUTES
 
-/* --- Shared Pages --- */
+/* --- Non Authenticated Pages --- */
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/non-auth-pages/login/login.component'));
 const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/non-auth-pages/forgot-password/forgot-password.component'));
 const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/non-auth-pages/register/register.component'));
-const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
+const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/non-auth-pages/register-complete/register-complete.component'));
+
+/* --- Shared Pages --- */
 const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
 const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-market-dashboard/crypto-market-dashboard.component'));
 const AsyncCryptoLocalDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-local-dashboard/crypto-local-dashboard.component'));
 
-/* --- User Pages --- */
- const AsyncWallet = asyncComponent(() => import('./containers/aires/client-pages/wallet/wallet.component'));
- const AsyncNewFundSource = asyncComponent(() => import('./containers/aires/client-pages/new-fund-source/new-fund-source.component'));
- const AsyncInvestments = asyncComponent(() => import('./containers/aires/client-pages/investments/investments.component'));
- const AsyncInvestmentDetail = asyncComponent(() => import('./containers/aires/client-pages/investment-detail/investment-detail.component'));
- const AsyncIcoList = asyncComponent(() => import('./containers/aires/client-pages/ico-list/ico-list.component'));
- const AsyncIcoDetail = asyncComponent(() => import('./containers/aires/client-pages/ico-detail/ico-detail.component'));
- const AsyncInvest = asyncComponent(() => import('./containers/aires/client-pages/invest/invest.component'));
- const AsyncInvestKyc = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/invest-kyc.component'));
- const AsyncInvestConfirm = asyncComponent(() => import('./containers/aires/client-pages/invest-confirm/invest-confirm.component'));
+/* --- Client Pages --- */
+const AsyncProfile = asyncComponent(() => import('./containers/aires/client-pages/profile/profile.component'));
+const AsyncWallet = asyncComponent(() => import('./containers/aires/client-pages/wallet/wallet.component'));
+const AsyncNewFundSource = asyncComponent(() => import('./containers/aires/client-pages/new-fund-source/new-fund-source.component'));
+const AsyncInvestments = asyncComponent(() => import('./containers/aires/client-pages/investments/investments.component'));
+const AsyncInvestmentDetail = asyncComponent(() => import('./containers/aires/client-pages/investment-detail/investment-detail.component'));
+const AsyncIcoList = asyncComponent(() => import('./containers/aires/client-pages/ico-list/ico-list.component'));
+const AsyncIcoDetail = asyncComponent(() => import('./containers/aires/client-pages/ico-detail/ico-detail.component'));
+const AsyncInvest = asyncComponent(() => import('./containers/aires/client-pages/invest/invest.component'));
+const AsyncInvestKyc = asyncComponent(() => import('./containers/aires/client-pages/invest-kyc/invest-kyc.component'));
+const AsyncInvestConfirm = asyncComponent(() => import('./containers/aires/client-pages/invest-confirm/invest-confirm.component'));
 
 /* --- ICO Admin Pages --- */
 const AsyncIcoProjectDashboard = asyncComponent(() => import('./containers/aires/ico-admin-pages/ico-project-dash/ico-project-dash.component'));
@@ -198,7 +201,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/elements/steppers" exact component={AsyncSteppersExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/buttons" exact component={AsyncButtonExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/progress" exact component={AsyncProgressExample} props={childProps} layout={activeLayout} />
-      <AppRoute path="/profile" exact component={AsyncProfile} props={childProps} layout={activeLayout} />
+      <AppRoute path="/profile:user" exact component={AsyncProfile} props={childProps} layout={activeLayout} />
       <AppRoute path="/lock" exact component={AsyncLock} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/404" exact component={AsyncError404} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/500" exact component={AsyncError500} props={childProps} layout={NoLayout} />
@@ -214,14 +217,19 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>
       <AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>
-      <AppRoute path="/register/registration-complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/register/complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>
 
       /* --- Shared Pages --- */
       <AppRoute path="/invite-friend" exact component={AsyncInviteFriend} props={childProps} layout={activeLayout}/>
       <AppRoute path="/dashboard/crypto-market" exact component={AsyncCryptoMarketDashboard} props={childProps} layout={activeLayout} />
       <AppRoute path="/dashboard/crypto-market-local" exact component={AsyncCryptoLocalDashboard} props={childProps} layout={activeLayout}/>
 
+            // -----  by Fady -----
+      <AppRoute path="/investorKYC" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>
+      // <AppRoute path="/investorKYC/confirm" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>
+
       /* --- Client Pages --- */
+      <AppRoute path="/profile:user" exact component={AsyncProfile} props={childProps} layout={activeLayout}/>
       <AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>
       <AppRoute path="/my-wallet/new-fund-source" exact component={AsyncNewFundSource} props={childProps} layout={activeLayout}/>
       <AppRoute path="/my-investments" exact component={AsyncInvestments} props={childProps} layout={activeLayout}/>
@@ -239,8 +247,8 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/ico/investors" exact component={AsyncIcoProjectInvestorList} props={childProps} layout={activeLayout}/>
       <AppRoute path="/ico/investors/detail" exact component={AsyncInvestorDetail} props={childProps} layout={activeLayout}/>
       <AppRoute path="/ico/project/wallet" exact component={AsyncIcoProjectWallet} props={childProps} layout={activeLayout}/>
-
       {/*<AppRoute path="/my-icos" exact component={AsyncMyIcos} props={childProps} layout={activeLayout}/>*/}
+
 
       /* --- Site Admin Pages --- */
       <AppRoute path="/admin/dashboard/icos" exact component={AsyncIcoMasterDashboard} props={childProps} layout={activeLayout}/>

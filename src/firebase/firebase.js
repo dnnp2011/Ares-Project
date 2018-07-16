@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
+// Personal Account
 // // Initialize firebase
 // const config = {
 //     apiKey: "AIzaSyDosKgFpKWfmDMVhO3cQLFcrSq7EZmfQ3g",
@@ -11,6 +13,7 @@ import 'firebase/auth';
 //     messagingSenderId: "414528145445"
 //   };
 
+// Work Account
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",
@@ -25,5 +28,6 @@ if (!firebase.apps.length)
   firebase.initializeApp(config);
 
 const auth = firebase.auth();
+const db = firebase.database();
 
-export { auth, };
+export { auth, db };

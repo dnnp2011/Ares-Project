@@ -43,14 +43,14 @@ const LandingPage = (props) => {
           <CardContent className={scss['landing-page-content']}>
             <img src={logoImage} className={scss['landing-page-logo']} alt="logo" />
             <Typography variant='headline' gutterBottom>Welcome!</Typography>
-            <Typography>Aires Dashboard is a tool to connect sovg investors with oppotunities to invest in the next big crypto revolution!</Typography>
+            <Typography>Aires Dashboard is a tool to connect investors with opportunities to invest in the next big crypto revolution!</Typography>
           </CardContent>
         </Paper>
       </Grid>
 
       <Grid item sm={6} xs={12}>
             <Paper className={scss.paper}>
-            
+
               <CardContent inline className={{display: "block"}} >
                 <Typography component="p" gutterBottom>Looking to join us?</Typography>
                 <a href="/register">Sign Up</a> <span>today</span>
@@ -61,7 +61,7 @@ const LandingPage = (props) => {
                 <a href="/login">Login here</a>
               </CardContent>
 
-              
+
             </Paper>
           </Grid>
         </Grid>

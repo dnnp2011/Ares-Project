@@ -94,13 +94,6 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-                  <Grid>
-                    <TextField
-                      label="Country of Origin"
-                      type="dropdown"
-                      fullWidth
-                    />
-                  </Grid>
 
               </CardContent>
               <CardActions>
