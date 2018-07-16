@@ -10,9 +10,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import AuthUserContext from '../../../authentication/AuthUserContext';
 import { withStyles } from '@material-ui/core/styles';
 import withAuthorization from '../../../authentication/withAuthorization';
+import AuthUserContext from '../../../authentication/AuthUserContext';
 
 import themeStyles from './profile.theme.style';
 import scss from './profile.module.scss';
@@ -65,71 +65,73 @@ class Profile extends React.Component {
 
       return (
         <AuthUserContext.Consumer>
-          <Grid
-            container
-            direction="row"
-            spacing={0}
-            justify="center"
-            alignItems="center"
-            className={classNames(
-              scss['portal-profile'],
-              classes.background
-            )}
-          >
-            <Grid item sm={10} xs={12} className={scss.panel}>
-              <Grid direction='column' container spacing={16}>
-                <Grid
-                  item
-                  xs={12}
-                >
+          {authUser =>
+            <Grid
+              container
+              direction="row"
+              spacing={0}
+              justify="center"
+              alignItems="center"
+              className={classNames(
+                scss['portal-profile'],
+                classes.background
+              )}
+            >
+              <Grid item sm={10} xs={12} className={scss.panel}>
+                <Grid direction='column' container spacing={16}>
                   <Grid
-                    container
-                    direction='row'
-                    spacing={0}
-                    justify="center"
-                    alignItems="center"
+                    item
+                    xs={12}
                   >
                     <Grid
-                      item
-                      xs={12}
+                      container
+                      direction='row'
+                      spacing={0}
+                      justify="center"
+                      alignItems="center"
                     >
-                      <div className={scss['portal-profile__header']}>
-                        <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
-                        <div>
-                          <Typography variant="headline" gutterBottom>
-                            Profile / Christos
-                          </Typography>
-                          <Typography variant="subheading" gutterBottom>
-                            Edit your perfonal information, change your password and set your privacy settings here.
-                          </Typography>
+                      <Grid
+                        item
+                        xs={12}
+                      >
+                        <div className={scss['portal-profile__header']}>
+                          <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
+                          <div>
+                              <Typography variant="headline" gutterBottom>
+                                Profile / {authUser ? authUser.email : ''}
+                              </Typography>
+                            <Typography variant="subheading" gutterBottom>
+                              Edit your perfonal information, change your password and set your privacy settings here.
+                            </Typography>
+                          </div>
                         </div>
-                      </div>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <div className={scss['portal-profile__content']}>
-                    <Card className={scss.card}>
-                      <CardContent className={scss['card-content']}>
-                        <Grid container>
-                          <ProfileTabs isEnabled={this.checkIfEnabled}/>
-                        </Grid>
-                      </CardContent>
-                      <CardActions className={scss['card-actions']}>
-                        <Button disabled={!isEnabled} variant="raised" color="secondary" onClick={() => this.onSnackbarOpen()}>
-                          Update Settings
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </div>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <div className={scss['portal-profile__content']}>
+                      <Card className={scss.card}>
+                        <CardContent className={scss['card-content']}>
+                          <Grid container>
+                            <ProfileTabs isEnabled={this.checkIfEnabled} />
+                          </Grid>
+                        </CardContent>
+                        <CardActions className={scss['card-actions']}>
+                          <Button disabled={!isEnabled} variant="raised" color="secondary" onClick={() => this.onSnackbarOpen()}>
+                            Update Settings
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    </div>
+                  </Grid>
                 </Grid>
               </Grid>
+              {snackbar}
             </Grid>
-            {snackbar}
-          </Grid>
+          }
         </AuthUserContext.Consumer>
     );
   }
@@ -140,6 +142,5 @@ Profile.propTypes = {
 };
 
 const authCondition = (authUser) => !!authUser;
-const ProfileWithAuthorization = withAuthorization(authCondition);
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(ProfileWithAuthorization);
+export default compose(withAuthorization(authCondition), withWidth(), withStyles(themeStyles, { withTheme: true }))(Profile);

@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { auth } from '../../../../firebase';
+import { auth, db } from '../../../../firebase';
 
 import themeStyles from './register.theme.style';
 import scss from './register.module.scss';
@@ -43,15 +43,22 @@ const {
   history,
 } = this.props;
 const {
-  username,
   email,
+  firstName,
+  lastName,
   passOne,
 } = this.state;
 auth.doCreateUserWithEmailAndPassword(email, passOne)
 .then(authUser => {
-  this.setState(() => ({...INIT_STATE}));
-  // Push to login page if registration successful
-  history.push('/login')
+  db.doCreateUser(authUser.user.uid, firstName, lastName, email)
+  .then(() => {
+    this.setState(() => ({...INIT_STATE}));
+    // Push to login page if registration successful
+    history.push('/profile:user')
+  })
+  .catch(error => {
+    this.setState(byPropKey('error', error));
+  });
 })
 .catch(error => {
   this.setState(byPropKey('error', error));

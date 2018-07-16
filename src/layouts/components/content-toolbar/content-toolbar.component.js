@@ -256,7 +256,6 @@ ContentToolbar.propTypes = {
 };
 
 export default compose(
-  withAuthentication,
   withRouter,
   withWidth(),
   withTheme(),

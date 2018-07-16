@@ -6,6 +6,7 @@ import { JssProvider } from 'react-jss';//package
 import { withRouter } from 'react-router-dom';//package
 import { connect } from 'react-redux';//package
 import compose from 'recompose/compose';//package
+import withAuthentication from './containers/authentication/withAuthentication';
 
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
@@ -66,6 +67,7 @@ App.propTypes = {
 };
 
 export default compose(
+  withAuthentication,
   withRouter,
   connect(mapStateToProps)
 )(App);

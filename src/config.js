@@ -173,15 +173,6 @@ export const menuItems = [{
   title: 'Authentication',
   icon: <PersonIcon style={iconStyle} />,
   children: [{
-    title: 'Login',
-    href: '/login'
-  }, {
-    title: 'Register',
-    href: '/register'
-  }, {
-    title: 'Forgot Password',
-    href: '/forgot-password'
-  }, {
     title: 'Lock Screen',
     href: '/lock'
   }]}
@@ -205,7 +196,7 @@ children: [{
   href: '/register'
 }, {
   title: 'Registration Complete',
-  href: '/register/registration-complete'
+  href: '/register/complete'
 },],
 },{
     title: 'Shared Pages',
