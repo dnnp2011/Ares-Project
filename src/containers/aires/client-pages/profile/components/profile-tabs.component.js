@@ -153,7 +153,7 @@ class ProfileTabs extends React.Component {
                       className={classes.textField}
                       error={errors.name}
                       value={name}
-                      onChange={this.handleChange('name')}
+                      onChange={this.handleChange('name', this.props.isEnabled)}
                       fullWidth
                       required
                       margin="normal"
@@ -342,10 +342,10 @@ class ProfileTabs extends React.Component {
   }
 }
 
-ProfileTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-};
+// ProfileTabs.propTypes = {
+//   classes: PropTypes.object.isRequired,
+//   theme: PropTypes.object.isRequired,
+// };
 
 const authCondition = (authUser) => !!authUser;
 

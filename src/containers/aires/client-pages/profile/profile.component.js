@@ -137,9 +137,9 @@ class Profile extends React.Component {
   }
 }
 
-Profile.propTypes = {
-  classes: PropTypes.shape({}).isRequired
-};
+// Profile.propTypes = {
+//   classes: PropTypes.shape({}).isRequired
+// };
 
 const authCondition = (authUser) => !!authUser;
 
