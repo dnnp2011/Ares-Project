@@ -19,11 +19,21 @@ import scss from './profile.module.scss';
 
 import ProfileTabs from './components/profile-tabs.component';
 
+const getIsEnabled = () => {
+    return  Profile.checkIfEnabled;
+  }
+
 class Profile extends React.Component {
-  state = {
-    isEnabled: true,
-    snackbarOpen: false,
-    snackbarMessage: ''
+  constructor(props) {
+    super(props);
+
+    this.checkIfEnabled.bind(this);
+
+    this.state = {
+      isEnabled: true,
+      snackbarOpen: false,
+      snackbarMessage: ''
+    }
   }
 
   onSnackbarOpen = () => {
@@ -116,7 +126,7 @@ class Profile extends React.Component {
                       <Card className={scss.card}>
                         <CardContent className={scss['card-content']}>
                           <Grid container>
-                            <ProfileTabs isEnabled={this.checkIfEnabled} />
+                            <ProfileTabs isEnabled={this.getIsEnabled} />
                           </Grid>
                         </CardContent>
                         <CardActions className={scss['card-actions']}>
@@ -144,3 +154,5 @@ Profile.propTypes = {
 const authCondition = (authUser) => !!authUser;
 
 export default compose(withAuthorization(authCondition), withWidth(), withStyles(themeStyles, { withTheme: true }))(Profile);
+
+export { getIsEnabled };
