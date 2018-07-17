@@ -42,15 +42,8 @@ const AsyncSteppersExample = asyncComponent(() => import('./containers/elements/
 const AsyncButtonExample = asyncComponent(() => import('./containers/elements/button/button.component'));
 const AsyncProgressExample = asyncComponent(() => import('./containers/elements/progress/progress.component'));
 
-// NON-AUTH ROUTES
-const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-auth-pages/landing-page/landing-page.component'));
-
 // AUTHENTICATION ROUTES
-const AsyncLogin = asyncComponent(() => import('./containers/authentication/login/login.component'));
-const AsyncRegister = asyncComponent(() => import('./containers/authentication/register/register.component'));
-// const AsyncProfile = asyncComponent(() => import('./containers/authentication/profile/profile.component'));
 const AsyncLock = asyncComponent(() => import('./containers/authentication/lock/lock.component'));
-// const AsyncForgot = asyncComponent(() => import('./containers/authentication/forgot-password/forgot-password.component'));
 
 // ERROR ROUTES
 const AsyncError404 = asyncComponent(() => import('./containers/errors/404.component'));
@@ -73,6 +66,7 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 // CUSTOM AIRES ROUTES
 
 /* --- Non Authenticated Pages --- */
+const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-auth-pages/landing-page/landing-page.component'));
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/non-auth-pages/login/login.component'));
 const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/non-auth-pages/forgot-password/forgot-password.component'));
 const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/non-auth-pages/register/register.component'));
