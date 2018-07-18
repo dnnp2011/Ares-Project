@@ -1,0 +1,25 @@
+LaunchICO.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/ico-admin-pages/launch-ico/launch-ico.component.js	/^LaunchICO.propTypes = {$/;"	property	line:112
+CollectKYC.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.component.js	/^CollectKYC.propTypes = {$/;"	property	line:152
+.panel	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.panel {$/;"	function	line:1
+.card	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.card {$/;"	function	line:11
+.collectkyc-actions	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.collectkyc-actions {$/;"	function	line:17
+.collectkyc-content	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.collectkyc-content {$/;"	function	line:21
+.collectkyc-logo	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.collectkyc-logo {$/;"	function	line:25
+@keyframes collect-kyc	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^@keyframes collect-kyc {$/;"	function	line:29
+0%	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^  0% {$/;"	function	line:30
+100%	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^  100% {$/;"	function	line:34
+switch	/home/drowsy/Projects/aires/src/routes.js	/^  switch (layout.currentLayout) {$/;"	function	line:150
+TabContainer	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^function TabContainer({ children, dir, message }) {$/;"	function	line:30
+TabContainer	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^function TabContainer({ children, dir, message }) {$/;"	function	line:30
+TabContainer.propTypes.children	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^TabContainer.propTypes = {$/;"	property	line:39
+class.Component.value	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  state = {$/;"	property	line:67
+class.Component.name	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    value: 0,$/;"	property	line:68
+class.Component.lastname	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    name: 'Christos',$/;"	property	line:69
+class.Component.email	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    lastname: 'Pantazis',$/;"	property	line:70
+class.Component.password	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    email: 'info@oxygenna.com',$/;"	property	line:71
+class.Component.newpassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    password: '',$/;"	property	line:72
+class.Component.confirmpassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    newpassword: '',$/;"	property	line:73
+validate	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  validate(name, lastname, email) {$/;"	function	line:77
+validatePassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  validatePassword(password, newPassword, confirmPassword) {$/;"	function	line:85
+render	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  render() {$/;"	function	line:110
+ProfileTabs.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^ProfileTabs.propTypes = {$/;"	property	line:337

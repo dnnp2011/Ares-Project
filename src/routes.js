@@ -104,6 +104,9 @@ const AsyncInvestorMasterDashboard = asyncComponent(() => import('./containers/a
 const AsyncSiteAnalytics = asyncComponent(() => import('./containers/aires/site-admin-pages/site-wide-analytics/site-wide-analytics.component'));
 const AsyncTransactionsMasterDashboard = asyncComponent('./containers/aires/site-admin-pages/transactions-master-dashboard/transactions-master-dashboard.component');
 
+
+const AsyncParent = asyncComponent(() => import('./containers/props-test/Parent'));
+const AsyncChild = asyncComponent(() => import('./containers/props-test/Child'));
 /* --------------------------------------------------------------------------------------------------------------------------- */
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
@@ -195,7 +198,6 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/elements/steppers" exact component={AsyncSteppersExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/buttons" exact component={AsyncButtonExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/progress" exact component={AsyncProgressExample} props={childProps} layout={activeLayout} />
-      <AppRoute path="/profile:user" exact component={AsyncProfile} props={childProps} layout={activeLayout} />
       <AppRoute path="/lock" exact component={AsyncLock} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/404" exact component={AsyncError404} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/500" exact component={AsyncError500} props={childProps} layout={NoLayout} />
@@ -250,6 +252,9 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/admin/dashboard/transactions" exact component={AsyncTransactionsMasterDashboard} props={childProps} layout={activeLayout}/>
       <AppRoute path="/admin/analytics/site" exact component={AsyncSiteAnalytics} props={childProps} layout={activeLayout}/>
 
+
+      <AppRoute path="/child" exact component={AsyncChild} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/parent" exact component={AsyncParent} props={childProps} layout={activeLayout}/>
       /* ------------------------------------------------------------------------------------------------------------------------------------- */
       <AppRoute component={AsyncNotFound} layout={activeLayout} />
     </Switch>);

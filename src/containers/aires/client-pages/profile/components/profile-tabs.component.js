@@ -27,9 +27,10 @@ import withAuthorization from '../../../../authentication/withAuthorization';
 
 import { getIsEnabled } from '../profile.component';
 
-function TabContainer({ children, dir }) {
+function TabContainer({ children, dir, message }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+      {console.log(`Tab Container Prop: ${message}`)}
       {children}
     </Typography>
   );
@@ -63,22 +64,15 @@ const styles = theme => ({
 });
 
 class ProfileTabs extends React.Component {
-  constructor(props, {isEnabled}) {
-    super(props)
-
-    console.log("is enabled" + props.isEnabled);
-
-    this.state = {
-      isEnabled: props.isEnabled,
-      value: 0,
-      name: 'Christos',
-      lastname: 'Pantazis',
-      email: 'info@oxygenna.com',
-      password: '',
-      newpassword: '',
-      confirmpassword: ''
-    };
-  }
+  state = {
+    value: 0,
+    name: 'Christos',
+    lastname: 'Pantazis',
+    email: 'info@oxygenna.com',
+    password: '',
+    newpassword: '',
+    confirmpassword: ''
+  };
 
   validate(name, lastname, email) {
     // true means invalid, so our conditions got reversed
@@ -113,24 +107,16 @@ class ProfileTabs extends React.Component {
     this.setState({ value: index });
   };
 
-  componentDidMount() {
-    // const currentUser = db.onceGetUser(authUser.user.uid);
-    // console.log(`Props: ${props.children}`);
-
-  }
-
   render() {
 
     const { classes, theme, isEnabled } = this.props;
-
-    console.log(`Classes: ${classes} Theme: ${theme} Enabled: ${isEnabled}`);
-    console.log(`Callback: ${getIsEnabled()}`);
     const { name, lastname, email, password, newpassword, confirmpassword } = this.state;
     const errors = this.validate(name, lastname, email);
     const pwdErrors = this.validatePassword(password, newpassword, confirmpassword);
 
     return (
         <div className={classes.root}>
+          {console.log(`M1: ${this.props.callback}`)}
           <AppBar position="static" color="default">
             <Tabs
               value={this.state.value}
@@ -149,7 +135,7 @@ class ProfileTabs extends React.Component {
             index={this.state.value}
             onChangeIndex={this.handleChangeIndex}
           >
-            <TabContainer dir={theme.direction}>
+            <TabContainer dir={theme.direction} message="Message 1">
               <form className={classes.container} autoComplete="off">
                 <Grid container>
                   <Grid item sm={6} xs={12}>
@@ -236,7 +222,7 @@ class ProfileTabs extends React.Component {
                 </Grid>
               </form>
             </TabContainer>
-            <TabContainer dir={theme.direction}>
+            <TabContainer dir={theme.direction} message="Message 2">
               <form className={classes.container} autoComplete="off">
                 <Grid container>
                   <Grid item xs={12}>
@@ -293,7 +279,7 @@ class ProfileTabs extends React.Component {
                 </Grid>
               </form>
             </TabContainer>
-            <TabContainer dir={theme.direction}>
+            <TabContainer dir={theme.direction} message="Message 3">
               <Grid
                 container
                 direction="row"

@@ -53,9 +53,15 @@ class Profile extends React.Component {
     }
   }
 
+  callbackFromParent(message) {
+    console.log(`Message: ${message}`);
+  }
+
   render() {
     const { classes } = this.props;
     const { isEnabled } = this.state;
+
+    console.log(`Prop Test: ${this.props.message}`)
 
     const snackbar = (
         <Snackbar
@@ -74,8 +80,8 @@ class Profile extends React.Component {
       );
 
       return (
-        <AuthUserContext.Consumer>
-          {authUser =>
+        // <AuthUserContext.Consumer>
+
             <Grid
               container
               direction="row"
@@ -108,7 +114,7 @@ class Profile extends React.Component {
                           <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
                           <div>
                               <Typography variant="headline" gutterBottom>
-                                Profile / {authUser ? authUser.email : ''}
+                                Profile /
                               </Typography>
                             <Typography variant="subheading" gutterBottom>
                               Edit your perfonal information, change your password and set your privacy settings here.
@@ -126,7 +132,7 @@ class Profile extends React.Component {
                       <Card className={scss.card}>
                         <CardContent className={scss['card-content']}>
                           <Grid container>
-                            <ProfileTabs isEnabled={this.getIsEnabled} />
+                            <ProfileTabs callback="my Message" />
                           </Grid>
                         </CardContent>
                         <CardActions className={scss['card-actions']}>
@@ -141,14 +147,14 @@ class Profile extends React.Component {
               </Grid>
               {snackbar}
             </Grid>
-          }
-        </AuthUserContext.Consumer>
+
+        // </AuthUserContext.Consumer>
     );
   }
 }
 
 Profile.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({}).isRequired,
 };
 
 const authCondition = (authUser) => !!authUser;

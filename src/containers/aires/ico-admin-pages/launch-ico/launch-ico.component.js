@@ -32,6 +32,8 @@ const LaunchICO = (props) => {
   return (
     <Grid
       container
+      direction="row"
+      spacing={0}
       justify="center"
       alignItems="center"
       className={classes.background}
