@@ -36,7 +36,7 @@ class Crypto extends React.Component {
 
         //emit default values
         this.filterStats(1)
-        this.filter2(0)
+        this.filter2(1)
     }
 
     //daily performance widget filter function
@@ -154,11 +154,11 @@ class Crypto extends React.Component {
             //if all data is found push into array and set the state
             if(data || data2 || data3)
             {
-                let arr1 = []
+               let arr1 = []
 
-                data3.forEach(x => {
+               data3.forEach(x => {
                     arr1.push(x.market_data.total_volume.usd)
-                })
+               })
 
                 this.setState({
                     tickerData:  data,
@@ -170,7 +170,7 @@ class Crypto extends React.Component {
                 }, 20000)
             }
         })
-    }
+     }
 
     render() {
         const { classes } = this.props;

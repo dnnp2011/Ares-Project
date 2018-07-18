@@ -204,6 +204,10 @@ export const menuItems = [{
   }, {
     title: 'Crypto Market Dashboard',
     href: '/dashboard/crypto-market'
+  },
+  {
+    title: 'client dashboard',
+    href: '/my-dashboard'
   }]
   }, {
   title: 'Errors',

@@ -81,6 +81,7 @@ const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/air
 // const AsyncCryptoLocalDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-local-dashboard/crypto-local-dashboard.component'));
 
 /* --- User Pages --- */
+const AsyncClientDashboard = asyncComponent(() => import('./containers/aires/client-pages/client-dashboard/clientDashboard.component'));
 // const AsyncWallet = asyncComponent(() => import('./containers/aires/client-pages/wallet/wallet.component'));
 // const AsyncNewFundSource = asyncComponent(() => import('./containers/aires/client-pages/new-fund-source/new-fund-source.component'));
 // const AsyncInvestments = asyncComponent(() => import('./containers/aires/client-pages/investments/investments.component');
@@ -223,6 +224,7 @@ export default ({ childProps, layout }) => {
       {/*<AppRoute path="/dashboard/crypto-market-local" exact component={AsyncCryptoLocalDashboard} props={childProps} layout={activeLayout}/>*/}
 
       /* --- Client Pages --- */
+      {<AppRoute path="/my-dashboard" exact component={AsyncClientDashboard} props={childProps} layout={activeLayout}/>}
       {/*<AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/my-wallet/new-fund-source" exact component={AsyncNewFundSource} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/my-investments" exact component={AsyncInvestments} props={childProps} layout={activeLayout}/>*/}

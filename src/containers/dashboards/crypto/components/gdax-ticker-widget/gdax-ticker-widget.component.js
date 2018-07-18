@@ -31,7 +31,8 @@ class GdaxTickerWidget extends React.Component {
   async componentDidMount() {
     const res = await fetch('https://api.gdax.com/products');
     const data = await res.json();
-    if (data) {
+
+    if(data) {
       this.setState({ products: data });
     }
 
