@@ -1,6 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/database/firestore';
+
+const admin = require('firebase-admin');
+const functions = require('firebase-functions');
 
 // Personal Account
 // // Initialize firebase
@@ -27,7 +31,10 @@ var config = {
 if (!firebase.apps.length)
   firebase.initializeApp(config);
 
+admin.initializeApp(functions.config().firebase);
+
 const auth = firebase.auth();
 const db = firebase.database();
+const fs = admin.firestore();
 
-export { auth, db };
+export { auth, db, fs };

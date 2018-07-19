@@ -4,4 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-switch	/home/drowsy/Projects/aires/src/routes.js	/^  switch (layout.currentLayout) {$/;"	function	line:149
+config.apiKey	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^var config = {$/;"	property	line:22
+config.authDomain	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",$/;"	property	line:23
+config.databaseURL	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  authDomain: "ares-project-orchardblockchain.firebaseapp.com",$/;"	property	line:24
+config.projectId	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  databaseURL: "https:\/\/ares-project-orchardblockchain.firebaseio.com",$/;"	property	line:25
+config.storageBucket	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  projectId: "ares-project-orchardblockchain",$/;"	property	line:26
+config.messagingSenderId	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  storageBucket: "",$/;"	property	line:27
