@@ -101,7 +101,8 @@ const LaunchICO = (props) => {
 
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="secondary" variant="raised">Launch ICO</Button>
+                <Button fullWidth onClick={() => fs.doSetData({name: "LiteCoin", ticker: "LTC"})} color="secondary" variant="raised">Launch ICO</Button>
+                
               </CardActions>
             </Card>
           </Grid>

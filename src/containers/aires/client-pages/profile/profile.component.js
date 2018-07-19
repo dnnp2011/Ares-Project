@@ -153,9 +153,15 @@ class Profile extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 Profile.propTypes = {
   classes: PropTypes.shape({}).isRequired,
 };
+=======
+// Profile.propTypes = {
+//   classes: PropTypes.shape({}).isRequired
+// };
+>>>>>>> upgraded-branch
 
 const authCondition = (authUser) => !!authUser;
 

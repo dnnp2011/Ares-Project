@@ -1,6 +1,10 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/database';
+require('firebase/firestore');
+
+// const admin = require('firebase-admin');
+// const functions = require('firebase-functions');
 
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
@@ -22,7 +26,14 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
+// admin.initializeApp(functions.config().firebase);
+
 const auth = firebase.auth();
 const db = firebase.database();
+const fs = firebase.firestore();
 
+<<<<<<< HEAD
 export { auth, db, fs }
+=======
+export { auth, db, fs };
+>>>>>>> upgraded-branch
