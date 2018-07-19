@@ -32,8 +32,4 @@ const auth = firebase.auth();
 const db = firebase.database();
 const fs = firebase.firestore();
 
-<<<<<<< HEAD
-export { auth, db, fs }
-=======
 export { auth, db, fs };
->>>>>>> upgraded-branch

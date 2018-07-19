@@ -4,7 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-<<<<<<< HEAD
 TabContainer	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^function TabContainer({ children, dir, message }) {$/;"	function	line:30
 TabContainer	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^function TabContainer({ children, dir, message }) {$/;"	function	line:30
 TabContainer.propTypes.children	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^TabContainer.propTypes = {$/;"	property	line:39
@@ -19,11 +18,3 @@ validate	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/c
 validatePassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  validatePassword(password, newPassword, confirmPassword) {$/;"	function	line:85
 render	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  render() {$/;"	function	line:110
 ProfileTabs.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^ProfileTabs.propTypes = {$/;"	property	line:337
-=======
-config.apiKey	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^var config = {$/;"	property	line:22
-config.authDomain	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",$/;"	property	line:23
-config.databaseURL	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  authDomain: "ares-project-orchardblockchain.firebaseapp.com",$/;"	property	line:24
-config.projectId	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  databaseURL: "https:\/\/ares-project-orchardblockchain.firebaseio.com",$/;"	property	line:25
-config.storageBucket	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  projectId: "ares-project-orchardblockchain",$/;"	property	line:26
-config.messagingSenderId	/home/drowsy/Projects/aires/src/firebase/firebase.js	/^  storageBucket: "",$/;"	property	line:27
->>>>>>> upgraded-branch
