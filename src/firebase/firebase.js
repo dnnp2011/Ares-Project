@@ -3,16 +3,6 @@ import 'firebase/auth';
 import 'firebase/database';
 require('firebase/firestore');
 
-// const admin = require('firebase-admin');
-// const functions = require('firebase-functions');
-
-const admin = require('firebase-admin');
-const functions = require('firebase-functions');
-
-admin.initializeApp(functions.config().firebase);
-
-var fs = admin.firestore();
-
 const config = {
   apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",
   authDomain: "ares-project-orchardblockchain.firebaseapp.com",

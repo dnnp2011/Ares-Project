@@ -8,5 +8,4 @@ export {
   db,
   fs,
   firebase,
-  fs,
 };
