@@ -236,7 +236,7 @@ children: [{
   icon: <HomeIcon style={iconStyle} />,
   children: [{
     title: 'Launch ICO',
-    href: '/launch'
+    href: '/launch-ico'
   },{
     title: 'Forgot Password',
     href: '/forgot-password'

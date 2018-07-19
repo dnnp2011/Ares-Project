@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
+import { db } from '../../../../firebase';
 
 import withWidth from '@material-ui/core/withWidth';
 import Grid from '@material-ui/core/Grid';
@@ -26,6 +27,13 @@ const LaunchICO = (props) => {
     width
   } = props;
 
+  const demoDBvalue = {
+    companyName: '',
+    countryOfOrigin: '',
+  };
+
+
+
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
 
@@ -48,7 +56,12 @@ const LaunchICO = (props) => {
                 <img src={logoImage} className={scss['launch-logo']} alt="logo" />
                 <br/>
                 <Typography gutterBottom>Enter your ICO information here to make your ICO available to investors</Typography>
+                <Grid>
+                  <h1>
 
+                  </h1>
+                </Grid>
+                <br/>
                   <Grid>
                     <TextField
                       label="ICO Name"

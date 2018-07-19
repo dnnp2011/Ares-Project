@@ -100,7 +100,7 @@ const AsyncCryptoLocalDashboard = asyncComponent(() => import('./containers/aire
 // const AsyncIcoProjectInvestorList = asyncComponent(() => import('./containers/aires/ico-admin-pages/ico-project-investor-list/ico-project-investor-list.component'));
 // const AsyncInvestorDetail = asyncComponent(() => import('./containers/aires/ico-admin-pages/investor-detail/investor-detail.component'));
 // const AsyncIcoProjectWallet = asyncComponent(() => import('./containers/aires/ico-admin-pages/ico-project-wallet/ico-project-wallet.component'));
-// const AsyncLaunchIco = asyncComponent(() => import('./containers/aires/ico-admin-pages/launch-ico/launch-ico.component'));
+const AsyncLaunchIco = asyncComponent(() => import('./containers/aires/ico-admin-pages/launch-ico/launchICO.component'));
 // const AsyncMyIcos = asyncComponent(() => import('./containers/aires/ico-admin-pages/my-icos/my-icos.component'));
 
 /* --- Site Admin Pages --- */
@@ -245,7 +245,7 @@ export default ({ childProps, layout }) => {
       {/*<AppRoute path="/ico/investors" exact component={AsyncIcoProjectInvestorList} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/ico/investors/detail" exact component={AsyncInvestorDetail} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/ico/project/wallet" exact component={AsyncIcoProjectWallet} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/launch-ico" exact component={AsyncLaunchIco} props={childProps} layout={activeLayout}/>*/}
+      <AppRoute path="/launch-ico" exact component={AsyncLaunchIco} props={childProps} layout={activeLayout}/>
       {/*<AppRoute path="/my-icos" exact component={AsyncMyIcos} props={childProps} layout={activeLayout}/>*/}
 
       /* --- Site Admin Pages --- */
