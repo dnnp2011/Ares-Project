@@ -20,6 +20,8 @@ import scss from './launch-ico.module.scss';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
+import { fs } from '../../../../firebase';
+
 const LaunchICO = (props) => {
   const {
     classes,
