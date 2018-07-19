@@ -1,0 +1,7 @@
+"	variable	line:6
+
+"	variable	line:6
+
+"	variable	line:6
+
+switch	/home/drowsy/Projects/aires/src/routes.js	/^  switch (layout.currentLayout) {$/;"	function	line:149
