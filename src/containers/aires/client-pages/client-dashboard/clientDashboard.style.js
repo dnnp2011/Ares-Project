@@ -23,12 +23,9 @@ const styles = theme => ({
       transition: '.3s',
     }
   },
-  button1: {    background: 'url(https://iliad-solutions.com/wp-content/uploads/2016/06/Blockchain-1-y.jpg) no-repeat',
-},
-  button2: {    background: 'url(https://publichealthmatters.blog.gov.uk/wp-content/uploads/sites/33/2016/07/digital.jpg) center no-repeat',
-},
-  button3: {    background: 'url(https://www.esmt.org/sites/default/files/styles/presentation_slider/public/digital-strategy-and-business.jpg) center no-repeat',
-},
+  button1: {background: 'url(https://iliad-solutions.com/wp-content/uploads/2016/06/Blockchain-1-y.jpg) no-repeat'},
+  button2: {background: 'url(https://publichealthmatters.blog.gov.uk/wp-content/uploads/sites/33/2016/07/digital.jpg) center no-repeat'},
+  button3: {background: 'url(https://www.esmt.org/sites/default/files/styles/presentation_slider/public/digital-strategy-and-business.jpg) center no-repeat'},
   card: {
     height: '40vh',
   }
