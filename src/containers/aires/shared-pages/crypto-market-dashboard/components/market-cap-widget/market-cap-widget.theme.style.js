@@ -15,7 +15,11 @@ const styles = theme => ({
   },
   'table-cell': {
     padding: '4px 14px 4px 14px'
+  },
+  'fa-fast-backward': {
+    fontSize: '18px'
   }
 });
+
 
 export default styles;
