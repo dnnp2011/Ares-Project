@@ -27,11 +27,14 @@ import withAuthorization from '../../../../authentication/withAuthorization';
 
 import { getIsEnabled } from '../profile.component';
 
-function TabContainer({ children, dir, message }) {
+/**
+  I can pass props from ProfileTabs component to TabContainer component without any errors
+**/
+function TabContainer({ children, dir, tabContainerProp }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-      {console.log(`Tab Container Prop: ${message}`)}
       {children}
+      {console.log(`TabContainer Prop: ${tabContainerProp}`)}
     </Typography>
   );
 }
@@ -66,9 +69,9 @@ const styles = theme => ({
 class ProfileTabs extends React.Component {
   state = {
     value: 0,
-    name: 'Christos',
-    lastname: 'Pantazis',
-    email: 'info@oxygenna.com',
+    name: 'Dalton',
+    lastname: 'Pierce',
+    email: 'info@citdex.com',
     password: '',
     newpassword: '',
     confirmpassword: ''
@@ -109,14 +112,17 @@ class ProfileTabs extends React.Component {
 
   render() {
 
-    const { classes, theme, isEnabled } = this.props;
+    const { classes, theme } = this.props;
     const { name, lastname, email, password, newpassword, confirmpassword } = this.state;
     const errors = this.validate(name, lastname, email);
     const pwdErrors = this.validatePassword(password, newpassword, confirmpassword);
+    /**
+      Here, I'm trying to log the custom prop from Profile component to console
+    **/
+    console.log(`My Custom Prop: ${this.props.myCustomProp}`);
 
     return (
         <div className={classes.root}>
-          {console.log(`M1: ${this.props.callback}`)}
           <AppBar position="static" color="default">
             <Tabs
               value={this.state.value}
@@ -135,7 +141,10 @@ class ProfileTabs extends React.Component {
             index={this.state.value}
             onChangeIndex={this.handleChangeIndex}
           >
-            <TabContainer dir={theme.direction} message="Message 1">
+          /**
+            This prop passes internally correctly
+          **/
+            <TabContainer dir={theme.direction} tabContainerProp="Tab Container Prop Works Fine">
               <form className={classes.container} autoComplete="off">
                 <Grid container>
                   <Grid item sm={6} xs={12}>
@@ -201,7 +210,7 @@ class ProfileTabs extends React.Component {
                       id="website"
                       label="Website"
                       className={classes.textField}
-                      defaultValue="http://www.oxygenna.com"
+                      defaultValue="http://www.citdex.com"
                       fullWidth
                       margin="normal"
                     />
@@ -222,7 +231,7 @@ class ProfileTabs extends React.Component {
                 </Grid>
               </form>
             </TabContainer>
-            <TabContainer dir={theme.direction} message="Message 2">
+            <TabContainer dir={theme.direction}>
               <form className={classes.container} autoComplete="off">
                 <Grid container>
                   <Grid item xs={12}>
@@ -279,7 +288,7 @@ class ProfileTabs extends React.Component {
                 </Grid>
               </form>
             </TabContainer>
-            <TabContainer dir={theme.direction} message="Message 3">
+            <TabContainer dir={theme.direction}>
               <Grid
                 container
                 direction="row"

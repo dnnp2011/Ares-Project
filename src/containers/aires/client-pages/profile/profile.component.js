@@ -19,14 +19,13 @@ import scss from './profile.module.scss';
 
 import ProfileTabs from './components/profile-tabs.component';
 
-const getIsEnabled = () => {
-    return  Profile.checkIfEnabled;
-  }
-
 class Profile extends React.Component {
   constructor(props) {
     super(props);
 
+    /**
+      Tried manually binding checkIfEnabled to attempt to fix inability to pass props
+    **/
     this.checkIfEnabled.bind(this);
 
     this.state = {
@@ -53,15 +52,9 @@ class Profile extends React.Component {
     }
   }
 
-  callbackFromParent(message) {
-    console.log(`Message: ${message}`);
-  }
-
   render() {
     const { classes } = this.props;
     const { isEnabled } = this.state;
-
-    console.log(`Prop Test: ${this.props.message}`)
 
     const snackbar = (
         <Snackbar
@@ -80,7 +73,11 @@ class Profile extends React.Component {
       );
 
       return (
-        // <AuthUserContext.Consumer>
+        /**
+          Using React's Context API to pull authUser info from Firebase
+        **/
+        <AuthUserContext.Consumer>
+          {authUser =>
 
             <Grid
               container
@@ -114,7 +111,7 @@ class Profile extends React.Component {
                           <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
                           <div>
                               <Typography variant="headline" gutterBottom>
-                                Profile /
+                                Profile / {authUser.email}
                               </Typography>
                             <Typography variant="subheading" gutterBottom>
                               Edit your perfonal information, change your password and set your privacy settings here.
@@ -132,7 +129,10 @@ class Profile extends React.Component {
                       <Card className={scss.card}>
                         <CardContent className={scss['card-content']}>
                           <Grid container>
-                            <ProfileTabs callback="my Message" />
+                            /**
+                              This is where I am attempting to pass props to the child component
+                            **/
+                            <ProfileTabs isEnabled={this.checkIfEnabled} myCustomProp="Just a String" />
                           </Grid>
                         </CardContent>
                         <CardActions className={scss['card-actions']}>
@@ -147,18 +147,19 @@ class Profile extends React.Component {
               </Grid>
               {snackbar}
             </Grid>
-
-        // </AuthUserContext.Consumer>
+          }
+        </AuthUserContext.Consumer>
     );
   }
 }
 
-// Profile.propTypes = {
-//   classes: PropTypes.shape({}).isRequired
-// };
+Profile.propTypes = {
+  classes: PropTypes.shape({}).isRequired
+};
 
+/**
+  Setting a custom condition to determine if this page should be accessible to the current user
+**/
 const authCondition = (authUser) => !!authUser;
 
 export default compose(withAuthorization(authCondition), withWidth(), withStyles(themeStyles, { withTheme: true }))(Profile);
-
-export { getIsEnabled };
