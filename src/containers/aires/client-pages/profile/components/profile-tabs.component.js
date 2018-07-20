@@ -30,11 +30,10 @@ import { getIsEnabled } from '../profile.component';
 /**
   I can pass props from ProfileTabs component to TabContainer component without any errors
 **/
-function TabContainer({ children, dir, tabContainerProp }) {
+function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
       {children}
-      {console.log(`TabContainer Prop: ${tabContainerProp}`)}
     </Typography>
   );
 }
@@ -116,10 +115,6 @@ class ProfileTabs extends React.Component {
     const { name, lastname, email, password, newpassword, confirmpassword } = this.state;
     const errors = this.validate(name, lastname, email);
     const pwdErrors = this.validatePassword(password, newpassword, confirmpassword);
-    /**
-      Here, I'm trying to log the custom prop from Profile component to console
-    **/
-    console.log(`My Custom Prop: ${this.props.myCustomProp}`);
 
     return (
         <div className={classes.root}>
@@ -141,10 +136,7 @@ class ProfileTabs extends React.Component {
             index={this.state.value}
             onChangeIndex={this.handleChangeIndex}
           >
-          /**
-            This prop passes internally correctly
-          **/
-            <TabContainer dir={theme.direction} tabContainerProp="Tab Container Prop Works Fine">
+            <TabContainer dir={theme.direction}>
               <form className={classes.container} autoComplete="off">
                 <Grid container>
                   <Grid item sm={6} xs={12}>
@@ -343,10 +335,10 @@ class ProfileTabs extends React.Component {
   }
 }
 
-// ProfileTabs.propTypes = {
-//   classes: PropTypes.object.isRequired,
-//   theme: PropTypes.object.isRequired,
-// };
+ProfileTabs.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
 
 const authCondition = (authUser) => !!authUser;
 

@@ -132,7 +132,7 @@ class Profile extends React.Component {
                             /**
                               This is where I am attempting to pass props to the child component
                             **/
-                            <ProfileTabs isEnabled={this.checkIfEnabled} myCustomProp="Just a String" />
+                            <ProfileTabs isEnabled={this.checkIfEnabled} myCustomProp="props are working" />
                           </Grid>
                         </CardContent>
                         <CardActions className={scss['card-actions']}>

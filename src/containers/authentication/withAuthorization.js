@@ -28,8 +28,12 @@ import { firebase } from '../../firebase';
 //
 // export default withAuthorization;
 
-const withAuthorization = (authCondition) => (Component) => {
+const withAuthorization = (authCondition, props) => (Component) => {
   class WithAuthorization extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         if (!authCondition(authUser)) {
@@ -41,7 +45,7 @@ const withAuthorization = (authCondition) => (Component) => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser => authUser ? <Component /> : null}
+          {authUser => authUser ? <Component props={this.props} /> : null}
         </AuthUserContext.Consumer>
       );
     }
