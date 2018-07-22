@@ -1,5 +1,5 @@
 .panel {
-  animation: collect-kyc 1s forwards 1;
+  animation: launch-ico 1s forwards 1;
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
@@ -13,19 +13,19 @@
   padding: 24px;
 }
 
-.collectkyc-actions {
+.launch-actions {
   justify-content: center;
 }
 
-.collectkyc-content {
+.launch-content {
   text-align: center;
 }
 
-.collectkyc-logo {
+.launch-logo {
   height: 64px;
 }
 
-@keyframes collect-kyc {
+@keyframes launch-ico {
   0% {
     transform: translateY(20px);
     opacity: 0;

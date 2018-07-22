@@ -1,0 +1,83 @@
+Bugs:
+- Remove duplicate Forgot Password element on navbar under ICO Admin Pages
+
+Misc Improvements:
+- Link social media and website buttons to correct routes
+- Remove developer pages from navbar (late step)
+
+Crypto Market Dashboard:
+- For Most Popular and Market Cap lists, prevent columns from shifting due to length of crypto fundamentals
+- Add page number display to Most Popular and Market Cap lists
+- Improve loading time
+- Improve loading animations -- replace with material-ui variant from (Buttons & Indicators / Progress)
+
+Email Invite:
+- Change text from targeting ICOs to targeting investors to purchase coins in ICOs
+- Add additional styling, images, etc.
+- Incorporate dependencies (images) into self-contained environment
+
+ICO Detail:
+- Fix incorrect passing of props to detail page
+- Display ICO Phase state, graphs, white paper docs, description, price, etc
+
+ICO List:
+- Improve list styling, adding more elements to the page, and fine tuning the aesthetic
+
+Invest KYC:
+- Add second card to balance the view
+- Ensure cards are correctly centered
+- Fix top and bottom of form going outside bounds of background grid
+- Tune colors
+- Replace logo with new Ares logo
+
+Launch ICO:
+- Add second card to balance the view
+- Ensure cards are correctly centered
+- Fix top and bottom of form going outside bounds of background grid
+- Tune colors
+- Replace logo with new Ares logo
+
+Profile:
+- Fix prop passing bug
+- Fill inputs with info fro auth user database fields
+- Display user's name / email after title: "Profile / :user:"
+- Append user's email to url
+- Incorporate change password functionality into change pw tab
+- Tune input fields
+
+Invite Friend:
+- Improve styling - lots of empty space below input fields
+- Add additional input fields
+- Improve ICO selection option
+
+Local Market Dashboard:
+- Match functionality of crypto dash, except with ICOs only from our database
+
+ICO Admin Dashboard:
+- Display data abut ICO for the ICO admin's view.
+
+ICO Master Dashboard:
+- Display quick info on all registered ICOs within Site
+
+Site-Wide Analytics:
+- Info and statistics on user registration, logins, usage, ICO usage, etc (non financial data)
+
+Transactions Master Dash:
+- Master list of all transactions to and from ICOs / Investors
+
+--> ICO List / Detail --> Invest:
+- Input info on ICO purchase -- how many coins, fund source, etc --> Invest KYC
+
+Invest Confirm:
+- Confirm Info entered for ICO purchase and KYC info
+
+Investments:
+- List and performance of current ICO investments
+- Quick timeline with project updates from ICOs
+- Graphs on performance and price
+
+Wallet:
+- Info on fund sources (MetaMask integration)
+
+New Fund Source:
+- Input fields for external fund source data (bank account info, wallet info, target wallet address, etc)

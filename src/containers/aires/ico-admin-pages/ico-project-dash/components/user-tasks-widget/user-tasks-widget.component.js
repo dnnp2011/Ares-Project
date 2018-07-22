@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Avatar from '@material-ui/core/Avatar';
 
-import usersList from '../../../../../assets/data/dashboards/users.json';
+import usersList from '../../../../../../assets/data/dashboards/users.json';
 import themeStyles from './user-tasks-widget.theme.style';
 import scss from './user-tasks-widget.module.scss';
 

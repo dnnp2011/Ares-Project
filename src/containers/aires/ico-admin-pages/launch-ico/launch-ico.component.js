@@ -14,11 +14,13 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import themeStyles from './launchICO.theme.style';
-import scss from './launchICO.module.scss';
+import themeStyles from './launch-ico.theme.style';
+import scss from './launch-ico.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
+
+import { fs } from '../../../../firebase';
 
 const LaunchICO = (props) => {
   const {
@@ -32,6 +34,8 @@ const LaunchICO = (props) => {
   return (
     <Grid
       container
+      direction="row"
+      spacing={0}
       justify="center"
       alignItems="center"
       className={classes.background}
@@ -95,10 +99,10 @@ const LaunchICO = (props) => {
                     />
                   </Grid>
 
-
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="secondary" variant="raised">Launch ICO</Button>
+                <Button fullWidth onClick={() => fs.doSetData({name: "LiteCoin", ticker: "LTC"})} color="secondary" variant="raised">Launch ICO</Button>
+                
               </CardActions>
             </Card>
           </Grid>
