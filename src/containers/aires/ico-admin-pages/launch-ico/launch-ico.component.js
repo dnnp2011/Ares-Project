@@ -18,7 +18,8 @@ import themeStyles from './launch-ico.theme.style';
 import scss from './launch-ico.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
-import Divider from "../../../elements/divider/divider.component";
+
+import NumberInput from './components/NumberInput/NumberInput';
 
 const LaunchICO = (props) => {
   const {
@@ -31,17 +32,24 @@ const LaunchICO = (props) => {
 
   return (
     <Grid
+      // container
+      // justify="center"
+      // alignItems="center"
+      // className={classes.background}
+      // style={{display: "block"}}
       container
+      direction="row"
+      spacing={0}
       justify="center"
       alignItems="center"
       className={classes.background}
     >
-      <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
+      <Grid item sm={10} xs={12} className='panel'>
+        <Grid direction={panelDirection} container spacing={100}>
           <Grid
             item
-            sm={6}
-            xs={12}
+            sm={8}
+            xs={10}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['launch-content']}>
@@ -51,7 +59,7 @@ const LaunchICO = (props) => {
 
                   <Grid>
                     <TextField
-                      label="ICO Name"
+                      label="User Name"
                       type="text"
                       fullWidth
                     />
@@ -110,7 +118,36 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-
+                  <br/>
+                  <Grid>
+                    <TextField
+                      label="ICO Description"
+                      multiline
+                      rows="4"
+                      className={classes.textField}
+                      margin="normal"
+                      fullWidth
+                    />
+                  </Grid>
+                  <br/>
+                  <Grid>
+                <Typography gutterBottom>Please upload your whitepaper in here</Typography>
+                <br/>
+                  <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
+                    Upload Whitepaper
+                  </Button>
+                  <input
+                    style={{display:'none'}}
+                    ref={fileInput => this.fileInput =fileInput}
+                    label="Supporting Document"
+                    type="file"
+                    fullWidth
+                  />
+                </Grid>
+                {/* <Grid>
+                  <DropdownInput/>
+                </Grid> */}
+                <NumberInput />
               </CardContent>
               <CardActions>
                 <Button fullWidth href="/register" color="secondary" variant="raised">Launch ICO</Button>
