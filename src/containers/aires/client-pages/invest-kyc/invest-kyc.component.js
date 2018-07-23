@@ -74,17 +74,6 @@ const CollectKYC = (props) => {
             sm={8}
             xs={10}
           >
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['collectkyc-content']}>
 
@@ -96,7 +85,7 @@ const CollectKYC = (props) => {
                       <TextField
                       label="First Name"
                       type="text"
-                      
+
                     />
                   </Grid>
                   <Grid>

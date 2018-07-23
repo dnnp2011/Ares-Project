@@ -42,15 +42,8 @@ const AsyncSteppersExample = asyncComponent(() => import('./containers/elements/
 const AsyncButtonExample = asyncComponent(() => import('./containers/elements/button/button.component'));
 const AsyncProgressExample = asyncComponent(() => import('./containers/elements/progress/progress.component'));
 
-// NON-AUTH ROUTES
-const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-auth-pages/landing-page/landing-page.component'));
-
 // AUTHENTICATION ROUTES
-const AsyncLogin = asyncComponent(() => import('./containers/authentication/login/login.component'));
-const AsyncRegister = asyncComponent(() => import('./containers/authentication/register/register.component'));
-// const AsyncProfile = asyncComponent(() => import('./containers/authentication/profile/profile.component'));
 const AsyncLock = asyncComponent(() => import('./containers/authentication/lock/lock.component'));
-// const AsyncForgot = asyncComponent(() => import('./containers/authentication/forgot-password/forgot-password.component'));
 
 // ERROR ROUTES
 const AsyncError404 = asyncComponent(() => import('./containers/errors/404.component'));
@@ -72,11 +65,14 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 
 // CUSTOM AIRES ROUTES
 
-/* --- Shared Pages --- */
+/* --- Non Authenticated Pages --- */
+const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-auth-pages/landing-page/landing-page.component'));
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/non-auth-pages/login/login.component'));
 const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/non-auth-pages/forgot-password/forgot-password.component'));
 const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/non-auth-pages/register/register.component'));
-const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/shared-pages/register-complete/register-complete.component'));
+const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/non-auth-pages/register-complete/register-complete.component'));
+
+/* --- Shared Pages --- */
 const AsyncInviteFriend = asyncComponent(() => import('./containers/aires/shared-pages/invite-friend/invite-friend.component'));
 const AsyncCryptoMarketDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-market-dashboard/crypto-market-dashboard.component'));
 const AsyncCryptoLocalDashboard = asyncComponent(() => import('./containers/aires/shared-pages/crypto-local-dashboard/crypto-local-dashboard.component'));
@@ -108,6 +104,9 @@ const AsyncInvestorMasterDashboard = asyncComponent(() => import('./containers/a
 const AsyncSiteAnalytics = asyncComponent(() => import('./containers/aires/site-admin-pages/site-wide-analytics/site-wide-analytics.component'));
 const AsyncTransactionsMasterDashboard = asyncComponent('./containers/aires/site-admin-pages/transactions-master-dashboard/transactions-master-dashboard.component');
 
+
+const AsyncParent = asyncComponent(() => import('./containers/props-test/Parent'));
+const AsyncChild = asyncComponent(() => import('./containers/props-test/Child'));
 /* --------------------------------------------------------------------------------------------------------------------------- */
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
@@ -199,7 +198,6 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/elements/steppers" exact component={AsyncSteppersExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/buttons" exact component={AsyncButtonExample} props={childProps} layout={activeLayout} />
       <AppRoute path="/elements/progress" exact component={AsyncProgressExample} props={childProps} layout={activeLayout} />
-      // <AppRoute path="/profile" exact component={AsyncProfile} props={childProps} layout={activeLayout} />
       <AppRoute path="/lock" exact component={AsyncLock} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/404" exact component={AsyncError404} props={childProps} layout={NoLayout} />
       <AppRoute path="/errors/500" exact component={AsyncError500} props={childProps} layout={NoLayout} />
@@ -215,7 +213,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>
       <AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>
-      <AppRoute path="/register/registration-complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/register/complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>
 
       /* --- Shared Pages --- */
       <AppRoute path="/invite-friend" exact component={AsyncInviteFriend} props={childProps} layout={activeLayout}/>
@@ -245,8 +243,8 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/ico/investors" exact component={AsyncIcoProjectInvestorList} props={childProps} layout={activeLayout}/>
       <AppRoute path="/ico/investors/detail" exact component={AsyncInvestorDetail} props={childProps} layout={activeLayout}/>
       <AppRoute path="/ico/project/wallet" exact component={AsyncIcoProjectWallet} props={childProps} layout={activeLayout}/>
-
       {/*<AppRoute path="/my-icos" exact component={AsyncMyIcos} props={childProps} layout={activeLayout}/>*/}
+
 
       /* --- Site Admin Pages --- */
       <AppRoute path="/admin/dashboard/icos" exact component={AsyncIcoMasterDashboard} props={childProps} layout={activeLayout}/>
@@ -254,6 +252,9 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/admin/dashboard/transactions" exact component={AsyncTransactionsMasterDashboard} props={childProps} layout={activeLayout}/>
       <AppRoute path="/admin/analytics/site" exact component={AsyncSiteAnalytics} props={childProps} layout={activeLayout}/>
 
+
+      <AppRoute path="/child" exact component={AsyncChild} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/parent" exact component={AsyncParent} props={childProps} layout={activeLayout}/>
       /* ------------------------------------------------------------------------------------------------------------------------------------- */
       <AppRoute component={AsyncNotFound} layout={activeLayout} />
     </Switch>);

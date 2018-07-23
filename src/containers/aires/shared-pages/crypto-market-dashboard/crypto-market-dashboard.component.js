@@ -22,7 +22,7 @@ class Crypto extends React.Component {
 
         this.state = {
             tickerData: null,
-            dailyPerformanceData: null,
+            dailyPerformanceData: [],
             annualPerformanceData: null,
             mostPopularData: null,
             marketCapData: null,
@@ -34,9 +34,9 @@ class Crypto extends React.Component {
         //open up socket
         this.socketListener()
 
-        //send default filter value for daily performance data prices
+        //emit default values
         this.filterStats(1)
-
+        this.filter2(0)
     }
 
     //daily performance widget filter function
@@ -48,25 +48,26 @@ class Crypto extends React.Component {
 
         let arr = []
 
-        bitcoin.data.prices.forEach(x => {
+        bitcoin.data.prices.map(x => {
             if(arr.length === 10) {return}
-            arr.push(Math.round(x[1]))
+            else{arr.push(Math.round(x[1]))}
+
         })
 
-        ether.data.prices.forEach(x => {
+        ether.data.prices.map(x => {
             if(arr.length === 20) {return}
-             return arr.push(Math.round(x[1]))
+            else{arr.push(Math.round(x[1]))}
         })
 
-        eos.data.prices.forEach(x => {
+        eos.data.prices.map(x => {
             if(arr.length === 30) {return}
-             return arr.push(Math.round(x[1]))
+            else{arr.push(Math.round(x[1]))}
         })
 
         this.setState({
             dailyPerformanceData: arr
         })
-        // console.log('daily', this.state.dailyPerformanceData)
+        console.log('daily', this.state.dailyPerformanceData)
     }
 
 
@@ -77,7 +78,36 @@ class Crypto extends React.Component {
 
         let time = date.toLocaleDateString().replace(/\//g,'-')
 
+        // const coins = ['bitcoin','ethereum','eos','ripple','litecoin','monero','neo','cardano','dash','tron']
 
+
+        // let mainData = []
+        // let targetData = []
+
+        // let promises = coins.forEach(async x => {
+        //      fetch(`https://api.coingecko.com/api/v3/coins/${x}/history?date=${time}&localization=false`)
+        // })
+
+        // let response = await Promise.all(promises)
+        // console.log(response)
+
+
+
+        //   if(response)
+        //     {
+        //         //gather all data
+        //         mainData.push(response)
+        //     }
+        // console.log(mainData)
+
+        // mainData.forEach(x => {
+        //     x.data.market_data?
+        //         targetData.push(x.data.market_data.total_volume.usd) : targetData.push(0)
+        // })
+
+        // this.setState({
+        //         annualPerformanceData: targetData
+        // })
         const bitcoin = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${time}&localization=false`)
         const ether = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/history?date=${time}&localization=false`)
         const eos = await axios.get(`https://api.coingecko.com/api/v3/coins/eos/history?date=${time}&localization=false`)
@@ -88,7 +118,6 @@ class Crypto extends React.Component {
         const cardano = await axios.get(`https://api.coingecko.com/api/v3/coins/cardano/history?date=${time}&localization=false`)
         const dash = await axios.get(`https://api.coingecko.com/api/v3/coins/dash/history?date=${time}&localization=false`)
         const tron = await axios.get(`https://api.coingecko.com/api/v3/coins/tron/history?date=${time}&localization=false`)
-
 
 
         if(bitcoin && ether && eos && ripple && litecoin &&
@@ -112,19 +141,18 @@ class Crypto extends React.Component {
             this.setState({
                 annualPerformanceData: targetData
             })
-        }   console.log('annual', this.state.annualPerformanceData)
-    }
-
+           console.log('before pass', this.state.annualPerformanceData)
+     }
+}
 
     //watches for data from server in order to set state with sent data
     socketListener = () => {
         const socket = socketIOClient(this.state.endpoint)
-        // socket.emit('filterReq', '1')
 
         socket.on("FromAPI", (data, data2, data3) => {
 
             //if all data is found push into array and set the state
-            if(data && data2 && data3)
+            if(data || data2 || data3)
             {
                 let arr1 = []
 
@@ -132,29 +160,17 @@ class Crypto extends React.Component {
                     arr1.push(x.market_data.total_volume.usd)
                 })
 
-                // console.log('incoming!', arr1)
-
                 this.setState({
                     tickerData:  data,
-                    marketCapData: data2,
-                    annualPerformanceData: arr1
+                    marketCapData: data2
                 })
+
+                setTimeout(() => {
+                    this.setState({annualPerformanceData: arr1})
+                }, 20000)
             }
         })
     }
-
-
-    //----------for sockets disregard
-    // filterData = number => {
-    //     // this.randomizeCharts();
-    //     const socket = socketIOClient(this.state.endpoint)
-
-    //     let num = number
-    //     // this.setState({dailyFilter: num})
-    //     socket.emit('filterReq', num)
-    //     console.log(num)
-    // }
-
 
     render() {
         const { classes } = this.props;
@@ -163,7 +179,6 @@ class Crypto extends React.Component {
                                     <DailyPerformanceWidget
                                         dailyFilter={this.state.dailyPerformanceData}
                                         endpoint={this.state.endpoint}
-                                        filterData={this.filterData}
                                         filterStats={this.filterStats} />
                                     :
                                     <p>loading..</p>

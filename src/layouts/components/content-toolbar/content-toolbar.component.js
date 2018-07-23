@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import withAuthentication from '../../../containers/authentication/withAuthentication';
 import AuthUserContext from '../../../containers/authentication/AuthUserContext';
 import { withStyles } from '@material-ui/core/styles';
-import handleSignOut from '../../../containers/authentication/SignOut';
+import { auth } from '../../../firebase';
 
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
@@ -58,7 +58,8 @@ class ContentToolbar extends React.Component {
     layoutMenuEl: null,
     layoutMenuOpen: false,
     themeMenuEl: null,
-    themeMenuOpen: false
+    themeMenuOpen: false,
+    authUser: null,
   };
 
   handleOpenLayoutClick = (event) => {
@@ -100,7 +101,19 @@ class ContentToolbar extends React.Component {
   };
 
   handleSignOut = () => {
-
+    auth.doSignOut();
+    const { history } = this.props;
+    <AuthUserContext.Consumer>
+      {
+        authUser =>
+        !authUser ?
+          // Logout successful, route to non-auth login
+          history.push('/login')
+        :
+          // Lout NOT successful, do nothing, or give error message
+          alert("Logout could not be correctly processed")
+      }
+    </AuthUserContext.Consumer>
   }
 
 
@@ -191,7 +204,8 @@ class ContentToolbar extends React.Component {
         </IconButton>
 
         <AuthUserContext.Consumer>
-          { authUser => (authUser
+          { authUser =>
+             (authUser
             ? (
               <div>
                 <IconButton
@@ -203,15 +217,8 @@ class ContentToolbar extends React.Component {
                 </ IconButton>
                 <IconButton
                   color="inherit"
-                  aria-label="User Profile"
-                  onClick={() => {
-                    !authUser ?
-                      // Logout successful, route to non-auth login
-                      history.push('/login')
-                    :
-                      // Lout NOT successful, do nothing, or give error message
-                      alert("Logout could not be correctly processed")
-                  }}
+                  aria-label="Logout"
+                  onClick={this.handleSignOut}
                   >
                 <FontAwesome name="sign-out" />
                 </ IconButton>
@@ -220,7 +227,6 @@ class ContentToolbar extends React.Component {
             :
               null
           )}
-
         </AuthUserContext.Consumer>
       </Toolbar>
     );
@@ -250,7 +256,6 @@ ContentToolbar.propTypes = {
 };
 
 export default compose(
-  withAuthentication,
   withRouter,
   withWidth(),
   withTheme(),

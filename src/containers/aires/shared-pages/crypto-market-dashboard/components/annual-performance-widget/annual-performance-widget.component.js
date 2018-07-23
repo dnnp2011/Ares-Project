@@ -56,57 +56,34 @@ class AnnualPerformanceWidget extends React.Component {
   };
   }
 
-
-  componentWillMount() {
-    // const randomInterval = (3 + Math.floor(Math.random() * 4)) * 1000;
-    // const intervalId = setInterval(() => {
-    //   this.randomizeCharts();
-    // }, randomInterval);
-
-    // this.setState({ intervalId });
-  }
+    update = () => {
+        return {
+                labels: ['BTC', 'ETH', 'MAT', 'ATN', 'JLG', 'AFT', 'KOL', 'JNH', 'AAG', 'JSG', 'LLK', 'GRE'],
+          datasets: [{
+            backgroundColor: this.props.theme.palette.primary.light,
+            borderColor: this.props.theme.palette.primary.light,
+            borderWidth: '1',
+            data: this.props.marketShareData
+          }]
+        }
+    }
 
   componentWillReceiveProps(props) {
-    console.log('props', props.marketShareData)
-    const oldEthDataSet = this.state.barChartData.datasets[0];
-    const newEthDataSet = { ...oldEthDataSet };
-    newEthDataSet.borderColor = props.theme.palette.primary.light;
-    newEthDataSet.backgroundColor = props.theme.palette.primary.light;
+    console.log('annualperformance', props.marketShareData)
+    // if(props.marketShareData !== this.state.barChartData){return}
 
+    //set new props
     const newChartData = {
       ...this.state.barChartData,
-      datasets: [newEthDataSet]
-    };
+      datasets: props.marketShareData
+    }
 
-    this.setState({ barChartData: newChartData });
+    //set new state
+    this.setState({ barChartData: newChartData })
   }
 
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-  }
-
-  onItemClick = () => {
-    // this.randomizeCharts();
-  };
-
-  // randomizeCharts = () => {
-  //   const ethDataSet = this.state.barChartData.datasets[0];
-  //   const newEthData = [...ethDataSet.data];
-  //   newEthData.push(20 + Math.floor(Math.random() * 30));
-  //   newEthData.splice(0, 1);
-  //   const newEthDataSet = { ...ethDataSet };
-  //   newEthDataSet.data = newEthData;
-
-  //   const newChartData = {
-  //     ...this.state.barChartData,
-  //     datasets: [newEthDataSet]
-  //   };
-
-  //   this.setState({ barChartData: newChartData });
-  // }
-
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
+  handleClick = (e) => {
+    this.setState({ anchorEl: e.currentTarget });
   };
 
   handleClose = () => {
@@ -134,7 +111,7 @@ class AnnualPerformanceWidget extends React.Component {
         />
         <CardContent className={classes['portal-annual-performance-widget__chart']}>
           <HorizontalBar
-            data={this.state.barChartData}
+            data={this.update()}
             options={this.state.barChartOptions}
             legend={legendOptions}
           />
@@ -145,7 +122,7 @@ class AnnualPerformanceWidget extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem key={1} onClick={e => this.props.filter2(0)}>Day</MenuItem>
+          <MenuItem key={1} onClick={e => this.props.filter2(0)}>Today</MenuItem>
           <MenuItem key={2} onClick={e => this.props.filter2(7)}>Week</MenuItem>
           <MenuItem key={3} onClick={e => this.props.filter2(30)}>Month</MenuItem>
           <MenuItem key={4} onClick={e => this.props.filter2(365)}>Annual</MenuItem>
