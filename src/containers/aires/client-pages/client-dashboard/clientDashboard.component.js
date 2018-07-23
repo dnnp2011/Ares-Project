@@ -21,9 +21,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import LineChartWidget from './chart-widget.component';
 import Button from '@material-ui/core/Button';
 import {Pie} from 'react-chartjs-2';
+import Web3 from 'web3';
 
 import axios from 'axios'
 import styles from './clientDashboard.style';
+
+    // var web3 = Web3();
 
 // import FontAwesome from 'react-fontawesome';
 
@@ -32,7 +35,23 @@ import styles from './clientDashboard.style';
 class clientDashboard extends Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            isConnected: false
+        };
+
     }
+
+    componentDidMount() {
+        if (typeof web3 !== 'undefined') {
+          this.web3 = new Web3(window.web3.currentProvider);
+                    console.log('connected!!!')
+
+        } else {
+          console.log('ifnekrvhbkwebvjehbvwhbw')
+        }
+    }
+
 
     render() {
           const { classes } = this.props;
@@ -51,8 +70,8 @@ class clientDashboard extends Component {
                 '#FFCE56'
                 ],
                 hoverBackgroundColor: [
-                '#FF6384',
                 '#36A2EB',
+                '#FFCE56',
                 '#FFCE56'
                 ]
             }]
@@ -174,6 +193,8 @@ class clientDashboard extends Component {
                         </Card>
 
                       </Grid>
+
+
 
 
                     </Grid>

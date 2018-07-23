@@ -8,6 +8,8 @@ import compose from 'recompose/compose';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -20,7 +22,7 @@ import Switch from '@material-ui/core/Switch';
 import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
-
+import Web3 from 'web3'
 // Actions
 import { updateLayout, toggleSidenav, toggleNotifications } from '../../../actions/layout.actions';
 import { changeTheme, changeThemeDirection } from '../../../actions/theme.actions';
@@ -52,8 +54,22 @@ class ContentToolbar extends React.Component {
     layoutMenuEl: null,
     layoutMenuOpen: false,
     themeMenuEl: null,
-    themeMenuOpen: false
+    themeMenuOpen: false,
+    connected: false
   };
+
+   componentDidMount() {
+        if(typeof web3 !== 'undefined')
+        {
+          this.web3 = new Web3(window.web3.currentProvider);
+
+          this.setState({connected: true},console.log('connected!!!'))
+        }
+        else
+        {
+          console.log('ifnekrvhbkwebvjehbvwhbw')
+        }
+    }
 
   handleOpenLayoutClick = (event) => {
     this.setState({ layoutMenuEl: event.currentTarget, layoutMenuOpen: true });
@@ -173,6 +189,13 @@ class ContentToolbar extends React.Component {
         >
           <NotificationsIcon />
         </IconButton>
+
+        {this.state.connected?
+           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
+            :
+           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
+
+          }
       </Toolbar>
     );
   }
