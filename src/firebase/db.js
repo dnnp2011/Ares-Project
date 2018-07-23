@@ -17,23 +17,7 @@ export const doSetAdditionalInfo = (uid, country='', state='', city='') =>
     city,
   });
 
-export const doSetNewCoin = (collect, doc, name, start, end, ticker, description) =>{
-  db.collection(collec).doc(doc).set({
-    name: name,
-    start: start,
-    end: end,
-    ticker: ticker,
-    description: description
-  });
-  /*
-price number
-start and end is timestamp
-name string
-ticker string
-description string
-  */
 
-}
 export const onceGetUsers = () =>
   db.ref(`users`).once(`value`);
 
