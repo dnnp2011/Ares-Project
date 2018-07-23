@@ -9,7 +9,7 @@ export const doSetData = (data) =>
   }
 
   export const doGetCoin = (name) =>{
-    var cityRef = db.collection('icos').doc(name);
+    var cityRef = fs.collection('icos').doc(name);
   var getDoc = cityRef.get()
       .then(doc => {
         if (!doc.exists) {
