@@ -248,7 +248,10 @@ children: [{
 {
 title: 'Client Pages',
 icon: <PersonIcon style={iconStyle}/>,
-children: [{
+children: [  {
+    title: 'Client Dashboard',
+    href: '/dashboard'
+  },{
   title: 'Profile',
   href: '/profile:user'
 },{

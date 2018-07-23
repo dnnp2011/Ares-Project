@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 // import socketIOClient from "socket.io-client";
+import axios from "axios";
 
 import themeStyles from './gdax-ticker-widget.theme.style';
 
@@ -12,7 +13,8 @@ class GdaxTickerWidget extends React.Component {
 
         this.state = {
             // products: null,
-            endpoint: "http://127.0.0.1:4001"
+            endpoint: "http://127.0.0.1:4001",
+            data: null
         }
 
         this.setMarqueeRef = (element) => {
@@ -33,12 +35,17 @@ class GdaxTickerWidget extends React.Component {
         this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+
+        const results = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=1`)
+
+        this.setState({data: results.data})
+
 
         setTimeout(() => {
             const startPosition = this.strip.getBoundingClientRect();
             this.startOffsetX = startPosition.x;
-            this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
+            this.animationCallback = window.requestAnimationFrame(() => this.animate());
         }, 1000);
     }
 
@@ -54,7 +61,7 @@ class GdaxTickerWidget extends React.Component {
         const stripPos = this.strip.getBoundingClientRect();
         if(stripPos.x < (-stripPos.width + this.startOffsetX)) {this.offsetX = 0}
 
-        this.animationCallback = window.requestAnimationFrame(this.animate.bind(this));
+        this.animationCallback = window.requestAnimationFrame(() => this.animate());
     }
 
   render() {
@@ -73,7 +80,20 @@ class GdaxTickerWidget extends React.Component {
                     </div>
                 })
                 :
-                <h1>loading...</h1>
+                this.state.data?
+                this.state.data.map((x,i) => {
+                   return <div className={classes['ticker-item']} key={i}>
+                      <div className={classes['ticker-item__name']}>
+                        <img src={x.image.thumb} alt="coin" />
+                        <Typography component="h1">{x.symbol}</Typography>
+                        <Typography component="h5">USD ${parseFloat(x.market_data.current_price.usd).toFixed(2)}</Typography>
+                        <Typography component="h5">EUR ${parseFloat(x.market_data.current_price.eur).toFixed(2)}</Typography>
+                        <Typography component="h5">BTC {parseFloat(x.market_data.current_price.btc).toFixed(2)}</Typography>
+                      </div>
+                    </div>
+                })
+                :
+                <h1> incoming...</h1>
 
 
     return (

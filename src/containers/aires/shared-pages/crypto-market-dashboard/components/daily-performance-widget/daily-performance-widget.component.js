@@ -135,40 +135,6 @@ class DailySalesWidget extends React.Component {
         this.setState({ lineChartData: newChartData });
     }
 
-    // componentWillUnmount() {
-    //     clearInterval(this.state.intervalId);
-    // }
-
-
-  // randomizeCharts = () => {
-  //   const ethDataSet = this.state.lineChartData.datasets[0];
-  //   const newEthData = [...ethDataSet.data];
-  //   newEthData.push(Math.floor(Math.random() * 30));
-  //   newEthData.splice(0, 1);
-  //   const newEthDataSet = { ...ethDataSet };
-  //   newEthDataSet.data = newEthData;
-
-  //   const oldBtcDataSet = this.state.lineChartData.datasets[1];
-  //   const newBtcData = [...oldBtcDataSet.data];
-
-  //   const newBtcDataSet = { ...oldBtcDataSet };
-  //   newBtcDataSet.data = newBtcData;
-
-  //   const oldMscDataSet = this.state.lineChartData.datasets[2];
-  //   const newMscData = [...oldMscDataSet.data];
-  //   newMscData.push(70 + Math.floor(Math.random() * 30));
-  //   newMscData.splice(0, 1);
-  //   const newMscDataSet = { ...oldMscDataSet };
-  //   newMscDataSet.data = newMscData;
-
-  //   const newChartData = {
-  //     ...this.state.lineChartData,
-  //     datasets: [newEthDataSet, newBtcDataSet, newMscDataSet]
-  //   };
-
-  //   this.setState({ lineChartData: newChartData });
-  // }
-
   handleClick = (e) => {
         e.preventDefault();
 

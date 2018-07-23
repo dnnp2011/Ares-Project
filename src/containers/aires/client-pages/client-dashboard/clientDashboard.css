@@ -1,0 +1,42 @@
+/*.MuiTypography-caption-684 {
+  color: unset;
+}*/
+
+/*.LineChartWidget-portal-line-chart-widget__text-1058 {
+  text-decoration: none;
+      color: dimgrey;
+    display: flex;
+    padding: 24px;
+    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+*/
+/*.clientDashboard-portalWidgetContent-965 {
+    transition: .3s;
+
+  text-align: center;
+}*/
+
+/*.LineChartWidget-portal-line-chart-widget__text-1057:hover {
+  background: black;
+  color: yellow;
+  transition: .3s;
+}
+*/
+/*.MuiCardContent-root-771:last-child {
+  height: 500px;
+}*/
+
+/*.clientDashboard-portalWidgetContent-921 {
+
+  transition: .3s;
+}
+.clientDashboard-portalWidgetContent-921:hover {
+  background: darkslategrey;
+  color: yellow;
+  transition: .3s;
+}
+
+*/
