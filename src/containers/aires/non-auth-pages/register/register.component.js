@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { auth, db } from '../../../../firebase';
+import { auth, fs } from '../../../../firebase';
 
 import themeStyles from './register.theme.style';
 import scss from './register.module.scss';
@@ -50,7 +50,7 @@ const {
 } = this.state;
 auth.doCreateUserWithEmailAndPassword(email, passOne)
 .then(authUser => {
-  db.doCreateUser(authUser.user.uid, firstName, lastName, email)
+  fs.doCreateUser(authUser.user.uid, email, firstName, lastName)
   .then(() => {
     this.setState(() => ({...INIT_STATE}));
     // Push to login page if registration successful
