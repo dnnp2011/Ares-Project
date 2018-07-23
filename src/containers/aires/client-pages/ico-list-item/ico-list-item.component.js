@@ -12,8 +12,9 @@ import withWidth from '@material-ui/core/withWidth';
 import compose from 'recompose/compose';
 import  { Route } from 'react-router-dom';
 import Detail from '../ico-detail/ico-detail.component';
-
+import { fs } from '../../../../firebase'
 class Ico extends React.Component {
+
 
 render() {
   const {
@@ -26,7 +27,7 @@ const { name, price, start, end, phase } = this.props;
       return(
           <div>
           <Link to={{pathname: `/browse-icos/details/`, name: name}} style={{ textDecoration: 'none' }}>
-          <Card className={classNames(scss.card, classes['primary-card'])}>
+          <Card className={classNames(scss.card, classes['primary-card'])} onClick={()=>fs.doGetCoin('bitcoin')}>
           <Typography className={scss.coin} variant="display1" gutterBottom>
             &nbsp;  {name}
           </Typography>
@@ -58,6 +59,8 @@ const { name, price, start, end, phase } = this.props;
       )
     }
   }
+
+
 
   Ico.propTypes = {
     classes: PropTypes.shape({}).isRequired,
