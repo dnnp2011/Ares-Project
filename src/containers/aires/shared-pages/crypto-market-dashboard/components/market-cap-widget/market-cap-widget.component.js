@@ -14,46 +14,64 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import axios from 'axios'
+
+// import FontAwesome from 'react-fontawesome';
 
 import themeStyles from './market-cap-widget.theme.style';
+import './marketCap.css'
 
 class MarketCapWidget extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            anchorEl: null
+            page: 1,
+            result: null
         }
     }
 
+    componentDidMount() {
+        this.getData()
+    }
 
-  onItemClick = () => {
-    this.setState({ data: this.state.data.reverse(), anchorEl: null });
-  };
+   async getData() {
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins?order=volume_desc&per_page=10&page=${this.state.page}`)
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+        this.setState({result: res.data}, console.log(this.state.result))
+    }
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+    nextPage = (e) => {
+        this.setState({ page: this.state.page + 1}, this.getData)
+    }
+
+    prevPage = (e) => {
+        this.setState({ page: this.state.page - 1}, this.getData)
+    }
+
+    firstPage = (e) => {
+        this.setState({page: 1}, this.getData)
+    }
 
   render() {
-    const { anchorEl } = this.state;
+    // const { anchorEl } = this.state;
     const { classes } = this.props;
 
     return (
       <Card className={classes['portal-market-cap-widget']}>
         <CardHeader
           action={
-            <IconButton
-              aria-owns={anchorEl ? 'store-menu' : null}
-              aria-haspopup="true"
-              onClick={this.handleClick}
-            >
-              <MoreVertIcon />
-            </IconButton>
+            <div>
+                <IconButton onClick={e => this.firstPage()}>
+                  <i className="fas fa-fast-backward"></i>
+                </IconButton>
+                <IconButton onClick={e => this.prevPage()}>
+                  <i className="fas fa-caret-left"></i>
+                </IconButton>
+                <IconButton onClick={e => this.nextPage()}>
+                  <i className="fas fa-caret-right"></i>
+                </IconButton>
+            </div>
           }
           title="Market Cap"
           subheader="Showing Top 10"
@@ -72,8 +90,8 @@ class MarketCapWidget extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.marketCapData?
-                this.props.marketCapData.map((item, i) => (
+              {this.state.result?
+                this.state.result.map((item, i) => (
                 <TableRow key={i}>
                   <TableCell className={classes['table-cell']}>{i+1}</TableCell>
                   <TableCell className={classes['table-cell']}>{item.name}</TableCell>
@@ -82,21 +100,13 @@ class MarketCapWidget extends React.Component {
                   <TableCell className={classes['table-cell']} numeric>${item.market_data.current_price.usd.toFixed(2)}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{item.market_data.circulating_supply}</TableCell>
                   <TableCell className={classes['table-cell']} numeric>{Number.parseFloat(item.market_data.price_change_percentage_24h).toPrecision(3)}%</TableCell>
-                </TableRow>)):<p>incoming</p>
+                </TableRow>))
+                :
+                <p>incoming</p>
               }
             </TableBody>
           </Table>
         </CardContent>
-        <Menu
-          id="store-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem key={1} onClick={this.onItemClick}>Month</MenuItem>
-          <MenuItem key={2} onClick={this.onItemClick}>Week</MenuItem>
-          <MenuItem key={3} onClick={this.onItemClick}>Day</MenuItem>
-        </Menu>
       </Card>
     );
   }

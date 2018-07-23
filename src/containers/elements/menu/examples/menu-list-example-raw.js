@@ -1,5 +1,5 @@
 /*eslint no-useless-escape: 0*/
-export default `import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
@@ -61,6 +61,7 @@ class MenuListComposition extends React.Component {
             eventsEnabled={open}
             className={classNames({ [classes.popperClose]: !open })}
           >
+          <Target>
             <ClickAwayListener onClickAway={this.handleClose}>
               <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
                 <Paper>
@@ -72,6 +73,7 @@ class MenuListComposition extends React.Component {
                 </Paper>
               </Grow>
             </ClickAwayListener>
+            </Target>
           </Popper>
         </Manager>
       </div>
@@ -84,4 +86,3 @@ MenuListComposition.propTypes = {
 };
 
 export default withStyles(styles)(MenuListComposition);
-`;

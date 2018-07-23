@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import themeStyles from './ico-list.theme.style';
 import scss from './ico-list.module.scss';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,9 +11,11 @@ import IconButton from '@material-ui/core/IconButton';
 
 import Detail from '../ico-detail/ico-detail.component';
 
+import withAuthorization from '../../../authentication/withAuthorization';
 
 
-export default class IcoList extends React.Component {
+
+class IcoList extends React.Component {
 
   render() {
 
@@ -39,16 +41,11 @@ export default class IcoList extends React.Component {
     );
   }
 }
-/*
-Forgot.propTypes = {
+
+IcoList.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
-*/
 
-// <Ico name={"Bitcoin"} start={"June 2018"} end={"June 2019"} price={"$6,345.00"} phase={"Presale"}/>
-// <Ico name={"Ethereum"} start={"Feb 2018"} end={"Feb 2019"} price={"$1,943.00"} phase={"Presale"}/>
-// <Ico name={"Ripple"} start={"May 2018"} end={"May 2019"} price={"$722.00"} phase={"Presale"}/>
-// <Ico name={"Litecoin"} start={"July 2018"} end={"July 2019"} price={"$455.00"} phase={"Presale"}/>
-// <Ico name={"Cardano"} start={"Sept 2018"} end={"Jan 2019"} price={"$6.00"} phase={"Presale"}/>
+const authCondition = (authUser) => !!authUser;
 
-// this will have a list of all the different ico's
+export default withAuthorization(authCondition)(IcoList);

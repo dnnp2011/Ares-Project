@@ -20,6 +20,8 @@ import Card from '@material-ui/core/Card';
 import themeStyles from './invest-payment.theme.style';
 import scss from './invest-payment.module.scss';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+
 
 const Payment = (props) => {
   const {
@@ -100,4 +102,16 @@ Payment.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(Payment);
+function mapStateToProps (state) {
+  return {
+  }
+};
+
+
+function mapDispatchToProps(dispatch){
+  return {
+
+  }
+};
+
+export default compose(withStyles(themeStyles, { withTheme: true }), connect(mapStateToProps, mapDispatchToProps))(Payment);

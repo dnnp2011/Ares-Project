@@ -24,6 +24,8 @@ import Dropdown from "./components/DropdownList/DropdownList";
 import NumberInput from './components/NumberInput/NumberInput';
 import DropdownInput from './components/DropdownInput/DropdownInput';
 
+import { connect } from 'react-redux';
+
 const CollectKYC = (props) => {
   const {
     classes,
@@ -55,6 +57,7 @@ const CollectKYC = (props) => {
                     fullWidth
                     label="First Name"
                     type="text"
+                    value='firstName'
                     inline
                     />
                   </Grid>
@@ -83,6 +86,7 @@ const CollectKYC = (props) => {
                       phone
                       fullWidth
                     />
+                    {props.state.kyc.ico}
                   </Grid>
                 </Grid>
                 <br/>
@@ -126,4 +130,10 @@ CollectKYC.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(CollectKYC);
+function mapStateToProps (state) {
+  return {
+    state: state
+  }
+};
+
+export default compose(withWidth(),connect(mapStateToProps) , withStyles(themeStyles, { withTheme: true }))(CollectKYC);

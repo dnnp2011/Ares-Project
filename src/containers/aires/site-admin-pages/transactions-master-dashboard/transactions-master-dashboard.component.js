@@ -11,17 +11,13 @@ import styles from './transactions-master-dashboard.theme.style';
 import scss from './transactions-master-dashboard.module.scss';
 
 const TransactionsDash = (props) => {
-  const { classes } = props;
-
-  return (
-    <div>
-      Testing
-    </div>
-  );
+  <div>
+    Testing
+  </div>
 };
 
-TransactionsDash.propTypes = {
-  classes: PropTypes.shape({}).isRequired
-};
+// TransactionsDash.propTypes = {
+//   classes: PropTypes.shape({}).isRequired
+// };
 
 export default withStyles(styles, { withTheme: true })(TransactionsDash);

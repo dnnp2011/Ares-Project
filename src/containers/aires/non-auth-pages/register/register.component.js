@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { auth } from '../../../../firebase';
+import { auth, db } from '../../../../firebase';
 
 import themeStyles from './register.theme.style';
 import scss from './register.module.scss';
@@ -31,8 +31,6 @@ const INIT_STATE = {
   error: null,
 };
 
-
-
 const byPropKey = (propName, value) => () => ({
   [propName]: value,
 });
@@ -41,21 +39,26 @@ class Register extends React.Component {
 state = {...INIT_STATE};
 
 onSubmit = (event) => {
-// const {
-//   history,
-// } = this.props;
 const {
-  username,
+  history,
+} = this.props;
+const {
   email,
+  firstName,
+  lastName,
   passOne,
 } = this.state;
 auth.doCreateUserWithEmailAndPassword(email, passOne)
 .then(authUser => {
-  this.setState(() => ({...INIT_STATE}));
-  // Push to client dashboard if login successful
-  // history.push(routes.HOME);
-  // withRouter(Register);
-  // history.push()
+  db.doCreateUser(authUser.user.uid, firstName, lastName, email)
+  .then(() => {
+    this.setState(() => ({...INIT_STATE}));
+    // Push to login page if registration successful
+    history.push('/profile:user')
+  })
+  .catch(error => {
+    this.setState(byPropKey('error', error));
+  });
 })
 .catch(error => {
   this.setState(byPropKey('error', error));
@@ -111,7 +114,7 @@ render() {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth href="/login" color="secondary" variant="raised">I'm already registered</Button>
+                  <Button fullWidth href="/login" color="secondary" variant="raised">Im already registered</Button>
                 </CardActions>
               </Card>
             </Grid>
@@ -209,4 +212,5 @@ Register.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Register);
+const RegisterWithRouter = withRouter(Register);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(RegisterWithRouter);

@@ -15,7 +15,7 @@ WebFont.load({
   }
 });
 
-const store = createStore(portalApp);
+const store = createStore(portalApp,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 // the provider component is the component responsible for the changing and loading of the websites theme
 // the app component is the component that all components stem from
