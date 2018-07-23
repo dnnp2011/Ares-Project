@@ -22,4 +22,7 @@ const auth = firebase.auth();
 const db = firebase.database();
 const fs = firebase.firestore();
 
+const settings = {timestampsInSnapshots: true};
+fs.settings(settings);
+
 export { auth, db, fs };
