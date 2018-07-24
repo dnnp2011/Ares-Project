@@ -63,11 +63,11 @@ class ContentToolbar extends React.Component {
         {
           this.web3 = new Web3(window.web3.currentProvider);
 
-          this.setState({connected: true},console.log('connected!!!'))
+          this.setState({connected: true}, console.log('connected!!!'))
         }
         else
         {
-          console.log('ifnekrvhbkwebvjehbvwhbw')
+          alert('YOU DO NOT HAVE METAMASK INSTALLED, YOU WILL NOT HAVE ANY ACCESS TO WALLET FEATURES')
         }
     }
 
@@ -194,8 +194,8 @@ class ContentToolbar extends React.Component {
            <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
             :
            <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
+        }
 
-          }
       </Toolbar>
     );
   }
