@@ -1,0 +1,38 @@
+.panel {
+  animation: invite-friend 1s forwards 1;
+  animation-delay: 0.6s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.invite-friend-actions {
+  justify-content: center;
+  // justify-content: space-between;
+}
+
+.invite-friend-content {
+  text-align: center;
+}
+
+.invite-friend-logo {
+  height: 64px;
+}
+
+@keyframes invite-friend {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

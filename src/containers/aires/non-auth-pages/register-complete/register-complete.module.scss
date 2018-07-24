@@ -1,0 +1,36 @@
+.panel {
+  animation: register-complete 1s forwards 1;
+  animation-delay: 0.6s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.register-complete-actions {
+  justify-content: space-between;
+}
+
+.register-complete-content {
+  text-align: center;
+}
+
+.register-complete-logo {
+  height: 64px;
+}
+
+@keyframes register-complete {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

@@ -1,15 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import rtl from 'jss-rtl';
-import { create } from 'jss';
-import { JssProvider } from 'react-jss';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose';
+import React from 'react';//basic react package
+import PropTypes from 'prop-types';//package
+import rtl from 'jss-rtl';//package
+import { create } from 'jss';//package
+import { JssProvider } from 'react-jss';//package
+import { withRouter } from 'react-router-dom';//package
+import { connect } from 'react-redux';//package
+import compose from 'recompose/compose';//package
+import withAuthentication from './containers/authentication/withAuthentication';
 
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
-import Routes from './routes';
+import Routes from './routes';//page which contains the location in the project of components
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const generateClassName = createGenerateClassName();
@@ -66,6 +67,7 @@ App.propTypes = {
 };
 
 export default compose(
+  withAuthentication,
   withRouter,
   connect(mapStateToProps)
 )(App);
