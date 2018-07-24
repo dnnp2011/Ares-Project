@@ -241,7 +241,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/browse-icos/invest/confirm" exact component={AsyncInvestConfirm} props={childProps} layout={activeLayout}/>
 
       /* --- ICO Admin Pages --- */
-      <AppRoute path="/launch" exact component={AsyncLaunchIco} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/launch-ico" exact component={AsyncLaunchIco} props={childProps} layout={activeLayout}/>
       <AppRoute path="/dashboard/ico/project" exact component={AsyncIcoProjectDashboard} props={childProps} layout={activeLayout}/>
       <AppRoute path="/dashboard/ico/project/analytics" exact component={AsyncIcoProjectInvestorAnalytics} props={childProps} layout={activeLayout}/>
       <AppRoute path="/ico/investors" exact component={AsyncIcoProjectInvestorList} props={childProps} layout={activeLayout}/>
