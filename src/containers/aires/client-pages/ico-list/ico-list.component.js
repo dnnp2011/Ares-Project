@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import themeStyles from './ico-list.theme.style';
 import scss from './ico-list.module.scss';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,8 +9,20 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 
-export default class IcoList extends React.Component {
+import Detail from '../ico-detail/ico-detail.component';
+
+import withAuthorization from '../../../authentication/withAuthorization';
+
+
+
+class IcoList extends React.Component {
+
   render() {
+
+    const coins = [
+      {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2019', price: '$6,345.00', phase: 'Presale'},
+      {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'June 2019', price: '$6,345.00', phase: 'Presale'},
+    ];
     return (
       <div className="IcoList">
       <AppBar position="static" className={scss.parent}>
@@ -22,21 +34,18 @@ export default class IcoList extends React.Component {
         </Toolbar>
       </AppBar>
       <br/>
-      <Ico name={"Bitcoin"} start={"June 2018"} end={"June 2019"} price={"$6,345.00"} phase={"Presale"}/>
-      <Ico name={"Ethereum"} start={"Feb 2018"} end={"Feb 2019"} price={"$1,943.00"} phase={"Presale"}/>
-      <Ico name={"Ripple"} start={"May 2018"} end={"May 2019"} price={"$722.00"} phase={"Presale"}/>
-      <Ico name={"Litecoin"} start={"July 2018"} end={"July 2019"} price={"$455.00"} phase={"Presale"}/>
-      <Ico name={"Cardano"} start={"Sept 2018"} end={"Jan 2019"} price={"$6.00"} phase={"Presale"}/>
+      {coins.map(coin =>
+        <Ico key={coin.key} name={coin.name} start={coin.start} end={coin.end} price={coin.price} phase={coin.phase} />
+      )}
       </div>
     );
   }
 }
-/*
-Forgot.propTypes = {
+
+IcoList.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
-*/
 
+const authCondition = (authUser) => !!authUser;
 
-
-// this will have a list of all the different ico's
+export default withAuthorization(authCondition)(IcoList);

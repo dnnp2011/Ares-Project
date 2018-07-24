@@ -10,8 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableFooter from '@material-ui/core/TableFooter';
 
-import genericSearchData from '../../../../../assets/data/dashboards/generic-search.json';
-import paidSearchData from '../../../../../assets/data/dashboards/paid-search.json';
+import genericSearchData from '../../../../../../assets/data/dashboards/generic-search.json';
+import paidSearchData from '../../../../../../assets/data/dashboards/paid-search.json';
 
 import scss from './table-widget.module.scss';
 

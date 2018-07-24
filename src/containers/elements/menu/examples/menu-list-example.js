@@ -7,7 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import { Manager, Target, Popper } from 'react-popper';
+import { Manager, Popper, Target } from 'react-popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const styles = {
@@ -46,7 +46,6 @@ class MenuListComposition extends React.Component {
           </MenuList>
         </Paper>
         <Manager>
-          <Target>
             <Button
               aria-owns={open ? 'menu-list' : null}
               aria-haspopup="true"
@@ -54,12 +53,12 @@ class MenuListComposition extends React.Component {
             >
               Open Menu
             </Button>
-          </Target>
           <Popper
             placement="bottom-start"
             eventsEnabled={open}
             className={classNames({ [classes.popperClose]: !open })}
           >
+          <Target>
             <ClickAwayListener onClickAway={this.handleClose}>
               <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
                 <Paper>
@@ -71,6 +70,7 @@ class MenuListComposition extends React.Component {
                 </Paper>
               </Grow>
             </ClickAwayListener>
+            </Target>
           </Popper>
         </Manager>
       </div>

@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+TabContainer	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^function TabContainer({ children, dir, message }) {$/;"	function	line:30
+TabContainer	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^function TabContainer({ children, dir, message }) {$/;"	function	line:30
+TabContainer.propTypes.children	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^TabContainer.propTypes = {$/;"	property	line:39
+class.Component.value	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  state = {$/;"	property	line:67
+class.Component.name	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    value: 0,$/;"	property	line:68
+class.Component.lastname	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    name: 'Christos',$/;"	property	line:69
+class.Component.email	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    lastname: 'Pantazis',$/;"	property	line:70
+class.Component.password	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    email: 'info@oxygenna.com',$/;"	property	line:71
+class.Component.newpassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    password: '',$/;"	property	line:72
+class.Component.confirmpassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^    newpassword: '',$/;"	property	line:73
+validate	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  validate(name, lastname, email) {$/;"	function	line:77
+validatePassword	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  validatePassword(password, newPassword, confirmPassword) {$/;"	function	line:85
+render	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^  render() {$/;"	function	line:110
+ProfileTabs.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/client-pages/profile/components/profile-tabs.component.js	/^ProfileTabs.propTypes = {$/;"	property	line:337

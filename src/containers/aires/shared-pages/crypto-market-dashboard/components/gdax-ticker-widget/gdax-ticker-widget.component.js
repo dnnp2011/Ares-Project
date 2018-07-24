@@ -72,7 +72,8 @@ class GdaxTickerWidget extends React.Component {
                       </div>
                     </div>
                 })
-                :<h1>loading...</h1>
+                :
+                <h1>loading...</h1>
 
 
     return (

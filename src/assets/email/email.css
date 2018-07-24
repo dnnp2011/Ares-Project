@@ -1,0 +1,52 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+/*   border: 1px solid black; */
+}
+
+.container {
+  background-color: #e8e8ee;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.email-body{
+  background-color: white;
+  padding: 10px;
+  margin: auto;
+  border-radius: 5px;
+  height: 90%;
+  width: 95%
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+h5{
+  text-align: center;
+}
+p{
+  padding-left: 15px;
+}
+
+ares-logo {
+  margin: 15px 0;
+  height: 5%;
+  width: auto;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4c2abe;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3b2194;
+}

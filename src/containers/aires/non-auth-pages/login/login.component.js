@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
 import themeStyles from './login.theme.style';
 import scss from './login.module.scss';
@@ -57,12 +58,13 @@ class Login extends React.Component {
 
   onSubmit = (event) => {
     const { email, password } = this.state;
-    // const { history } = this.props;
+    const { history } = this.props;
 
     auth.doSignInWithEmailAndPassword(email, password)
         .then(authUser => {
           this.setState(() => ({...INIT_STATE}));
           // Push to home
+          history.push('/');
         })
         .catch(error => {
           this.setState(byPropKey('error', error));
@@ -109,13 +111,13 @@ class Login extends React.Component {
                 <CardContent className={scss['signup-content']}>
                   <img src={logoImage} className={scss['signup-logo']} alt="logo" />
                   <Typography variant="headline" component="h2" gutterBottom>
-                    Aires Dashboard
+                    Ares Dashboard
                   </Typography>
                   <Typography component="p" gutterBottom>
-                    Welcome to Aires Dashboard. Please login using the form or register for a new account using the button below.
+                    Welcome to Ares Dashboard. Please login using the form or register for a new account using the button below.
                   </Typography>
                   <Typography component="p" gutterBottom>
-                    With Aires Dashboard, you can gain access to people looking to invest in your ICO, and manage your funds every step of the way.
+                    With Ares Dashboard, you can gain access to people looking to invest in your ICO, and manage your funds every step of the way.
                   </Typography>
                   <Typography component="p" gutterBottom>
                     As an investor, you can quickly and easily identify ICOs that are right for you, and get in on the ground floor by investing in the next game changer! Keep track of your various coin wallets, as well as your investments, all in one elegant dashboard.
@@ -173,4 +175,6 @@ Login.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Login);
+
+const LoginWithRouter = withRouter(Login);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(LoginWithRouter);

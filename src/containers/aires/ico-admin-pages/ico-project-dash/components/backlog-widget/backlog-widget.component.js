@@ -11,7 +11,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import backlogData from '../../../../../assets/data/dashboards/backlog.json';
+import backlogData from '../../../../../../assets/data/dashboards/backlog.json';
 
 import themeStyles from './backlog-widget.theme.style';
 
