@@ -12,6 +12,8 @@ import { auth } from '../../../firebase';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -26,7 +28,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
-
+import Web3 from 'web3'
 // Actions
 import { updateLayout, toggleSidenav, toggleNotifications } from '../../../actions/layout.actions';
 import { changeTheme, changeThemeDirection } from '../../../actions/theme.actions';
@@ -60,7 +62,21 @@ class ContentToolbar extends React.Component {
     themeMenuEl: null,
     themeMenuOpen: false,
     authUser: null,
+    connected: false,
   };
+
+   componentDidMount() {
+        if(typeof web3 !== 'undefined')
+        {
+          this.web3 = new Web3(window.web3.currentProvider);
+
+          this.setState({connected: true}, console.log('connected!!!'))
+        }
+        else
+        {
+          alert("You do not have MetaMask installed");
+        }
+    }
 
   handleOpenLayoutClick = (event) => {
     this.setState({ layoutMenuEl: event.currentTarget, layoutMenuOpen: true });
@@ -228,6 +244,10 @@ class ContentToolbar extends React.Component {
               null
           )}
         </AuthUserContext.Consumer>
+        {this.state.connected ?
+           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
+            :
+           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>}
       </Toolbar>
     );
   }

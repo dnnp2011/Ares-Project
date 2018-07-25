@@ -20,6 +20,7 @@ export const doSetAdditionalInfo = (uid, country='', state='', city='') =>
     city,
   });
 
+
 export const onceGetUsers = () =>
   db.ref(`users`).once(`value`);
 

@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-
+import { fs } from '../../../../firebase'
 import Detail from '../ico-detail/ico-detail.component';
 
 import withAuthorization from '../../../authentication/withAuthorization';
@@ -18,6 +18,9 @@ import withAuthorization from '../../../authentication/withAuthorization';
 class IcoList extends React.Component {
 
   render() {
+
+
+
 
     const coins = [
       {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2019', price: '$6,345.00', phase: 'Presale'},
