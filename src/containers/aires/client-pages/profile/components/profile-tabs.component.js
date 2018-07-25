@@ -66,15 +66,25 @@ const styles = theme => ({
 });
 
 class ProfileTabs extends React.Component {
-  state = {
-    value: 0,
-    name: 'Dalton',
-    lastname: 'Pierce',
-    email: 'info@citdex.com',
-    password: '',
-    newpassword: '',
-    confirmpassword: ''
-  };
+  constructor(props) {
+    super(props);
+
+    // TODO: Add additional userInfo to Firestore and profile state including URL for custom profile pic creation
+    const { firstName, lastName, email } = props.userInfo;
+    this.state = {
+        value: 0,
+        name: firstName,
+        lastname: lastName,
+        email: email,
+        location: '',
+        website: '',
+        description: '',
+        profilePicUrl: '',
+        password: '',
+        newpassword: '',
+        confirmpassword: ''
+      };
+  }
 
   validate(name, lastname, email) {
     // true means invalid, so our conditions got reversed

@@ -11,13 +11,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import withAuthorization from '../../../authentication/withAuthorization';
-import AuthUserContext from '../../../authentication/AuthUserContext';
 
 import themeStyles from './profile.theme.style';
 import scss from './profile.module.scss';
 
 import ProfileTabs from './components/profile-tabs.component';
+
+// Auth and DB imports
+import withAuthorization from '../../../authentication/withAuthorization';
+import AuthUserContext from '../../../authentication/AuthUserContext';
+import { fs, auth } from '../../../../firebase';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -29,6 +32,7 @@ class Profile extends React.Component {
     this.checkIfEnabled.bind(this);
 
     this.state = {
+      userInfo: null,
       isEnabled: true,
       snackbarOpen: false,
       snackbarMessage: ''
@@ -50,6 +54,12 @@ class Profile extends React.Component {
     } else {
       this.setState({isEnabled: false})
     }
+  }
+
+  componentWillMount() {
+    fs.doGetUser(auth.getUser().uid).then(doc =>
+      this.setState({userInfo: doc.data()})
+    )
   }
 
   render() {
@@ -132,7 +142,10 @@ class Profile extends React.Component {
                             /**
                               This is where I am attempting to pass props to the child component
                             **/
-                            <ProfileTabs isEnabled={this.checkIfEnabled} myCustomProp="props are working" />
+                            {this.state.userInfo ?
+                              <ProfileTabs isEnabled={this.checkIfEnabled} userInfo={this.state.userInfo} />
+                              :
+                              null}
                           </Grid>
                         </CardContent>
                         <CardActions className={scss['card-actions']}>
