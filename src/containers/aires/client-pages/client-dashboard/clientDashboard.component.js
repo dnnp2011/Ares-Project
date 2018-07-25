@@ -32,7 +32,7 @@ import styles from './clientDashboard.style';
 
 
 
-class clientDashboard extends Component {
+class clientDashboard extends React.Component {
     constructor(props) {
         super(props)
 
@@ -141,43 +141,14 @@ class clientDashboard extends Component {
                         </Button>
 
                       </Grid>
-            {/*
-                      <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                        <Paper className={classes.portalWidgetContent}>
-                          // <ActiveUsersWidget />
-                        </Paper>
-                      </Grid>
 
-                      <Grid item xs={12} sm={12} md={8}>
-                        <Grid container justify="center" spacing={16}>
-                          <Grid key={4} item xs={12} className={classes.portalWidget}>
-                            <Paper className={classes.portalWidgetContent}>
-                              // <DailySalesWidget />
-                            </Paper>
-                          </Grid>
-
-                          <Grid key={5} item xs={12} className={classes.portalWidget}>
-                            <Paper className={classes.portalWidgetContent}>
-                              // <TableWidget />
-                            </Paper>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-
-                      <Grid key={6} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                        <Paper className={classes.portalWidgetContent}>
-                          // <RegionSalesWidget />
-                        </Paper>
-                      </Grid>*/}
 
                       <Grid key={7} item xs={12} sm={6} md={6} className={classes.portalWidget}>
                         <Card className={classes.card}>
                             <CardContent>
                                 <Pie data={data} legend={options} />
                             </CardContent>
-                        {/*<CardActions>
-                          <Button size="small">Learn More</Button>
-                        </CardActions>*/}
+
                         </Card>
 
                       </Grid>
@@ -187,9 +158,7 @@ class clientDashboard extends Component {
                             <CardContent>
                                 <Pie data={data} legend={options} />
                             </CardContent>
-                        {/*<CardActions>
-                          <Button size="small">Learn More</Button>
-                        </CardActions>*/}
+
                         </Card>
 
                       </Grid>
@@ -211,4 +180,3 @@ clientDashboard.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(clientDashboard);
-

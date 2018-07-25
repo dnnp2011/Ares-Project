@@ -70,11 +70,11 @@ class ContentToolbar extends React.Component {
         {
           this.web3 = new Web3(window.web3.currentProvider);
 
-          this.setState({connected: true},console.log('connected!!!'))
+          this.setState({connected: true}, console.log('connected!!!'))
         }
         else
         {
-          console.log('ifnekrvhbkwebvjehbvwhbw')
+          alert("You do not have MetaMask installed");
         }
     }
 
@@ -243,13 +243,11 @@ class ContentToolbar extends React.Component {
             :
               null
           )}
-          {this.state.connected?
-             <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
-              :
-             <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
-
-            }
         </AuthUserContext.Consumer>
+        {this.state.connected ?
+           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
+            :
+           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>}
       </Toolbar>
     );
   }
