@@ -10,14 +10,26 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './transactions-master-dashboard.theme.style';
 import scss from './transactions-master-dashboard.module.scss';
 
-const TransactionsDash = (props) => {
-  <div>
-    Testing
-  </div>
-};
+class TransactionsDash extends React.Component {
+  constructor(props) {
+    super(props)
 
-// TransactionsDash.propTypes = {
-//   classes: PropTypes.shape({}).isRequired
-// };
+    this.state = {
+
+    };
+  }
+
+  render() {
+    return(
+      <div>
+        This should render
+      </div>
+    );
+  }
+}
+
+TransactionsDash.propTypes = {
+  classes: PropTypes.shape({}).isRequired
+};
 
 export default withStyles(styles, { withTheme: true })(TransactionsDash);

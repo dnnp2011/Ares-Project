@@ -102,7 +102,7 @@ const AsyncMyIcos = asyncComponent(() => import('./containers/aires/ico-admin-pa
 const AsyncIcoMasterDashboard = asyncComponent(() => import('./containers/aires/site-admin-pages/ico-master-dashboard/ico-master-dashboard.component'));
 const AsyncInvestorMasterDashboard = asyncComponent(() => import('./containers/aires/site-admin-pages/investor-master-dashboard/investor-master-dashboard.component'));
 const AsyncSiteAnalytics = asyncComponent(() => import('./containers/aires/site-admin-pages/site-wide-analytics/site-wide-analytics.component'));
-const AsyncTransactionsMasterDashboard = asyncComponent('./containers/aires/site-admin-pages/transactions-master-dashboard/transactions-master-dashboard.component');
+const AsyncTransactionsMasterDashboard = asyncComponent(() => import('./containers/aires/site-admin-pages/transactions-master-dashboard/transactions-master-dashboard.component'));
 
 
 const AsyncParent = asyncComponent(() => import('./containers/props-test/Parent'));
