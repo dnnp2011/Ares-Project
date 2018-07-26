@@ -17,7 +17,7 @@ import { withStyles } from '@material-ui/core/styles';
 import themeStyles from './launch-ico.theme.style';
 import scss from './launch-ico.module.scss';
 
-import logoImage from '../../../../assets/images/portal-logo.png';
+import logoImage from '../../../../assets/images/ares-logo.png';
 
 import NumberInput from './components/NumberInput/NumberInput';
 
@@ -48,12 +48,39 @@ const LaunchICO = (props) => {
         <Grid direction={panelDirection} container spacing={100}>
           <Grid
             item
-            sm={8}
+            sm={6}
+            xs={10}
+          >
+            <Card className={scss.card}>
+              <CardContent className={scss['launch-content']}>
+                <img src={logoImage} className={scss['launch-logo']} alt="logo" />
+                <br/>
+                <br/>
+                <Typography variant="headline" component="h1" gutterBottom>
+                  Launch ICO
+                </Typography>
+                <br/>
+                <Typography component="p" gutterBottom>Want money? Launch your ICO now!</Typography>
+                <br/>
+                <Typography component="p" gutterBottom>
+                  Already have an account? Just fill out the form to the right with the correct info, upload a whitepaper, and add a description of your ICO.
+                </Typography>
+                <br/>
+                <Typography component="p" gutterBottom>
+                  Not a part of the Ares community? <a href="/register">Sign Up</a> here.
+                </Typography>
+              </CardContent>
+            </Card>
+
+          </Grid>
+
+          <Grid
+            item
+            sm={6}
             xs={10}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['launch-content']}>
-                <img src={logoImage} className={scss['launch-logo']} alt="logo" />
                 <br/>
                 <Typography gutterBottom>Enter your ICO information here to make your ICO available to investors</Typography>
 
@@ -64,7 +91,6 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-                  <br/>
                   <Grid>
                     <TextField
                       label="Password"
@@ -72,7 +98,6 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-                  <br/>
                   <Grid>
                     <TextField
                       label="Repeat Password"
@@ -102,7 +127,6 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-                  <br/>
                   <Grid>
                     <TextField
                       label="Company Name"
@@ -110,7 +134,6 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-                  <br/>
                   <Grid>
                     <TextField
                       label="Country of Origin"
@@ -129,7 +152,6 @@ const LaunchICO = (props) => {
                       fullWidth
                     />
                   </Grid>
-                  <br/>
                   <Grid>
                 <Typography gutterBottom>Please upload your whitepaper in here</Typography>
                 <br/>
