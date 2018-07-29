@@ -19,19 +19,19 @@
   ],
   "rules": {
     "comma-dangle": [
-      "warn",
+      "off",
       "never"
     ],
     "indent": [
-      "error",
+      "warn",
       2
     ],
     "linebreak-style": [
-      "error",
+      "off",
       "unix"
     ],
     "quotes": [
-      "error",
+      "off",
       "single"
     ],
     "semi": [
@@ -47,7 +47,7 @@
     "max-len": [
       "error",
       {
-        "code": 120
+        "code": 240
       }
     ],
     "no-useless-escape": 0

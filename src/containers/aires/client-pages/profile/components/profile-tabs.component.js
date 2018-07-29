@@ -25,11 +25,6 @@ import { db, auth } from '../../../../../firebase';
 import AuthUserContext from '../../../../authentication/AuthUserContext';
 import withAuthorization from '../../../../authentication/withAuthorization';
 
-import { getIsEnabled } from '../profile.component';
-
-/**
-  I can pass props from ProfileTabs component to TabContainer component without any errors
-**/
 function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -70,12 +65,14 @@ class ProfileTabs extends React.Component {
     super(props);
 
     // TODO: Add additional userInfo to Firestore and profile state including URL for custom profile pic creation
-    const { firstName, lastName, email } = props.userInfo;
+
+    // const { email, firstName, lastName, uid} = this.props.userInfo;
+    console.log(`userInfo: ${props.userInfo}`);
     this.state = {
         value: 0,
-        name: firstName,
-        lastname: lastName,
-        email: email,
+        name: '',
+        lastname: '',
+        email: '',
         location: '',
         website: '',
         description: '',
