@@ -26,14 +26,10 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    /**
-     * Tried manually binding checkIfEnabled to attempt to fix inability to pass props
-     * */
-
     this.checkIfEnabled.bind(this);
 
     this.state = {
-      userInfo: {},
+      userInfo: [],
       isEnabled: true,
       snackbarOpen: false,
       snackbarMessage: ''
@@ -41,7 +37,19 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log(`userInfo State: ${this.state.userInfo}`);
+    fs.doGetUser(auth.getUser().uid).then((doc) => {
+      console.log(`Data: ${doc.data().firstName}`);
+      this.setState({
+        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().uid],
+      });
+      console.log(`userInfo State: ${this.state.userInfo[0]}`);
+    });
+  }
+
+  onUpdateSettings = () => {
+  //  Send data to Firestore
+    fs.doCreateCustomData(['country', 'description'], ['USA', 'This is me!'], auth.getUser().uid);
+    this.onSnackbarOpen();
   }
 
   onSnackbarOpen = () => {
@@ -116,10 +124,10 @@ class Profile extends React.Component {
                         <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
                         <div>
                           <Typography variant="headline" gutterBottom>
-                                Profile / {this.state.userInfo ? this.state.userInfo : null}
+                                Profile / {this.state.userInfo[1]} {this.state.userInfo[2]}
                           </Typography>
                           <Typography variant="subheading" gutterBottom>
-                              Edit your perfonal information, change your password and set your privacy settings here.
+                              Edit your personal information, change your password and set your privacy settings here.
                           </Typography>
                         </div>
                       </div>
@@ -134,14 +142,14 @@ class Profile extends React.Component {
                     <Card className={scss.card}>
                       <CardContent className={scss['card-content']}>
                         <Grid container>
-                          {this.state.userInfo ?
-                            <ProfileTabs isEnabled={this.checkIfEnabled} userInfo={this.state.userInfo.map(item => item)} />
+                          {this.state.userInfo[0] ?
+                            <ProfileTabs isEnabled={this.checkIfEnabled} email={this.state.userInfo[0]} firstName={this.state.userInfo[1]} lastName={this.state.userInfo[2]} uid={this.state.userInfo[3]} />
                             :
                             null}
                         </Grid>
                       </CardContent>
                       <CardActions className={scss['card-actions']}>
-                        <Button disabled={!isEnabled} variant="raised" color="secondary" onClick={() => this.onSnackbarOpen()}>
+                        <Button disabled={!isEnabled} variant="raised" color="secondary" onClick={() => this.onUpdateSettings()}>
                             Update Settings
                         </Button>
                       </CardActions>

@@ -28,7 +28,7 @@ import { firebase } from '../../firebase';
 //
 // export default withAuthorization;
 
-const withAuthorization = (authCondition, props) => (Component) => {
+const withAuthorization = (authCondition) => (Component) => {
   class WithAuthorization extends React.Component {
     constructor(props) {
       super(props);

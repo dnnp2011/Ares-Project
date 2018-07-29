@@ -19,6 +19,17 @@ export const doCreateUser = (uid, email, firstName = '', lastName = '') =>
     lastName
   });
 
+export const doCreateCustomData = (fields, values, uid) => {
+  fields.map((field) => {
+    values.map((value) => {
+      fs.collection('users').doc(uid).set({
+        field: value,
+      });
+    });
+  });
+}
+
+
   /**
   * Returns a single user document based upon the authuser's UID (User ID)
   * param-> uid: The User's unique identifier assigned upon Firebase auth registration. See firebase/auth for more info.
