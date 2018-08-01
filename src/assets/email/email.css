@@ -4,15 +4,21 @@
 /*   border: 1px solid black; */
 }
 
+h1 {
+  font-family: "Alex Brush";
+  text-align: center;
+}
+
 .container {
   background-color: #e8e8ee;
-  padding: 20px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="28" height="49" viewBox="0 0 28 49"%3E%3Cg fill-rule="evenodd"%3E%3Cg id="hexagons" fill="%239C92AC" fill-opacity="0.4" fill-rule="nonzero"%3E%3Cpath d="M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  padding: 50px 20px;
   height: 100%;
   width: 100%;
   margin: auto;
 }
 
-.email-body{
+.email-content{
   background-color: white;
   padding: 10px;
   margin: auto;
@@ -20,23 +26,43 @@
   height: 90%;
   width: 95%
 }
-
-.center {
-  display: flex;
-  justify-content: center;
+.inner-border{
+  border: 5px double #d3d3dd;
+  padding-top: 20px;
+  padding-bottom: 50px;
 }
 
-h5{
+.email-body, .email-header, .email-footer{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.email-header {
+  font-size: 1em;
+}
+
+#ares-logo {
+  margin-top: 16px;
+  height: 64px;
+}
+
+.email-footer{
   text-align: center;
+  padding: 0;
 }
+
+.email-footer h6 {
+  color: grey;
+}
+
 p{
   padding-left: 15px;
 }
 
-ares-logo {
-  margin: 15px 0;
-  height: 5%;
-  width: auto;
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 button {
@@ -49,4 +75,33 @@ button {
 
 button:hover {
   background-color: #3b2194;
+}
+
+.button-label{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+
+}
+
+.icon-container {
+  text-align: center;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+
+hr.divider {
+  width: 90%;
+  padding: 0;
+  border: none;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+  color: #333;
+  text-align: center;
 }
