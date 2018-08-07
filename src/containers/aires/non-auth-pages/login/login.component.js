@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
 import { auth } from '../../../../firebase';
-import { db } from '../../../../firebase';
 
 import withWidth from '@material-ui/core/withWidth';
 import Grid from '@material-ui/core/Grid';
@@ -35,22 +34,6 @@ const byPropKey = (propertyName, value) => () => ({
 
 
 class Login extends React.Component {
-
-  componentDidMount() {
-    db.collection('ico-list').get()
-    .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
-      });
-    })
-    .catch((err) => {
-      console.log('Error getting documents', err);
-    });
-
- // db.doc('ico-list/FnudT8n6NKmSNN7RLaQk')
- //  .get()
- //  .then(doc => alert(doc.data().icoCompanyName))
-}
 
   state = {
     ...INIT_STATE
