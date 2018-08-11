@@ -37,18 +37,22 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
+    console.log(`User: ${auth.getUser().uid}`);
     fs.doGetUser(auth.getUser().uid).then((doc) => {
+      doc.exists ? console.log("Document Found!") : console.log("Unable to find document!");
       console.log(`Data: ${doc.data().firstName}`);
       this.setState({
-        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().uid],
+        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().description, doc.data().country, doc.data().website, doc.data().uid],
       });
       console.log(`userInfo State: ${this.state.userInfo[0]}`);
+    }).catch((err) => {
+      console.log(`Error getting document: ${err}`);
     });
   }
 
   onUpdateSettings = () => {
   //  Send data to Firestore
-    fs.doCreateCustomData(['country', 'description'], ['USA', 'This is me!'], auth.getUser().uid);
+    fs.doCreateCustomData(['country', 'description', 'address'], ['USA', 'This is me!', '123 electric ave'], auth.getUser().uid);
     this.onSnackbarOpen();
   }
 
@@ -143,9 +147,19 @@ class Profile extends React.Component {
                       <CardContent className={scss['card-content']}>
                         <Grid container>
                           {this.state.userInfo[0] ?
-                            <ProfileTabs isEnabled={this.checkIfEnabled} email={this.state.userInfo[0]} firstName={this.state.userInfo[1]} lastName={this.state.userInfo[2]} uid={this.state.userInfo[3]} />
+                            <ProfileTabs
+                              isEnabled={this.checkIfEnabled}
+                              email={this.state.userInfo[0]}
+                              firstName={this.state.userInfo[1]}
+                              lastName={this.state.userInfo[2]}
+                              description={this.state.userInfo[3]}
+                              location={this.state.userInfo[4]}
+                              website={this.state.userInfo[5]}
+                              uid={this.state.userInfo[6]}
+                            />
                             :
                             null}
+                          {console.log(this.state.userInfo[0] ? "Found" : "Not Found")}
                         </Grid>
                       </CardContent>
                       <CardActions className={scss['card-actions']}>

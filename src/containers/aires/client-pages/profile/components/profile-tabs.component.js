@@ -65,15 +65,15 @@ class ProfileTabs extends React.Component {
     super(props);
     // TODO: Add additional userInfo to Firestore and profile state including URL for custom profile pic creation
 
-    const { email, firstName, lastName} = props;
+    const { email, firstName, lastName, description, location, website} = props;
     this.state = {
       value: 0,
       name: firstName,
       lastname: lastName,
       email: email,
-      location: '',
-      website: '',
-      description: '',
+      location: location,
+      website: website,
+      description: description,
       profilePicUrl: '',
       password: '',
       newpassword: '',
@@ -117,7 +117,7 @@ class ProfileTabs extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const {
-      name, lastname, email, password, newpassword, confirmpassword
+      name, lastname, email, location, website, description, password, newpassword, confirmpassword
     } = this.state;
     const errors = this.validate(name, lastname, email);
     const pwdErrors = this.validatePassword(password, newpassword, confirmpassword);
@@ -198,7 +198,9 @@ class ProfileTabs extends React.Component {
                     id="location"
                     label="Enter your location"
                     className={classes.textField}
-                    defaultValue="Sitia, Crete, Greece"
+                    value={location}
+                    onChange={this.handleChange('location')}
+                    defaultValue=""
                     fullWidth
                     margin="normal"
                   />
@@ -208,7 +210,9 @@ class ProfileTabs extends React.Component {
                     id="website"
                     label="Website"
                     className={classes.textField}
-                    defaultValue="http://www.citdex.com"
+                    value={website}
+                    onChange={this.handleChange('website')}
+                    defaultValue=""
                     fullWidth
                     margin="normal"
                   />
@@ -218,7 +222,9 @@ class ProfileTabs extends React.Component {
                     id="description"
                     label="Describe yourself in 255 characters"
                     className={classes.textField}
-                    defaultValue="We are a small creative web design agency who are passionate with our pixels."
+                    value={description}
+                    onChange={this.handleChange('description')}
+                    defaultValue=""
                     fullWidth
                     multiline
                     rowsMax="4"

@@ -4,13 +4,13 @@ import 'firebase/database';
 require('firebase/firestore');
 
 var config = {
-   apiKey: "AIzaSyDakYR2lPtsuXPCV7aZpGNXWGU24B7F5Uk",
-   authDomain: "fir-787d5.firebaseapp.com",
-   databaseURL: "https://fir-787d5.firebaseio.com",
-   projectId: "fir-787d5",
-   storageBucket: "fir-787d5.appspot.com",
-   messagingSenderId: "375136330761"
- };
+  apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",
+  authDomain: "ares-project-orchardblockchain.firebaseapp.com",
+  databaseURL: "https://ares-project-orchardblockchain.firebaseio.com",
+  projectId: "ares-project-orchardblockchain",
+  storageBucket: "ares-project-orchardblockchain.appspot.com",
+  messagingSenderId: "660326526839"
+};
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
