@@ -5,6 +5,7 @@ import { Type } from './fs';
 /**
 
 **/
+
 export const doCreateUser = (uid, firstName, lastName, email) =>
   db.ref(`users/${uid}`).set({
     uid,

@@ -68,6 +68,8 @@ const AsyncColors = asyncComponent(() => import('./containers/pages/colors.compo
 /* --- Non Authenticated Pages --- */
 const AsyncLandingPage = asyncComponent(() => import('./containers/aires/non-auth-pages/landing-page/landing-page.component'));
 const AsyncAiresLogin = asyncComponent(() => import('./containers/aires/non-auth-pages/login/login.component'));
+const AsyncAiresSiteAdminLogin = asyncComponent(() => import('./containers/aires/shared-pages/login-site-admin/login-site-admin.component'));
+const AsyncAiresICOAdminLogin = asyncComponent(() => import('./containers/aires/shared-pages/login-ico-admin/login-ico-admin.component'));
 const AsyncAiresForgotPass = asyncComponent(() => import('./containers/aires/non-auth-pages/forgot-password/forgot-password.component'));
 const AsyncAiresRegister = asyncComponent(() => import('./containers/aires/non-auth-pages/register/register.component'));
 const AsyncRegistrationComplete = asyncComponent(() => import('./containers/aires/non-auth-pages/register-complete/register-complete.component'));
@@ -212,6 +214,8 @@ export default ({ childProps, layout }) => {
       /* --- Non-Auth Pages --- */
       <AppRoute path="/" exact component={AsyncLandingPage} props={childProps} layout={activeLayout} />
       <AppRoute path="/login" exact component={AsyncAiresLogin} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/login-site-admin" exact component={AsyncAiresSiteAdminLogin} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/login-ico-admin" exact component={AsyncAiresICOAdminLogin} props={childProps} layout={activeLayout}/>
       <AppRoute path="/forgot-password" exact component={AsyncAiresForgotPass} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register" exact component={AsyncAiresRegister} props={childProps} layout={activeLayout}/>
       <AppRoute path="/register/complete" exact component={AsyncRegistrationComplete} props={childProps} layout={activeLayout}/>
@@ -238,7 +242,7 @@ export default ({ childProps, layout }) => {
       <AppRoute path="/browse-icos/invest/confirm" exact component={AsyncInvestConfirm} props={childProps} layout={activeLayout}/>
 
       /* --- ICO Admin Pages --- */
-      <AppRoute path="/launch" exact component={AsyncLaunchIco} props={childProps} layout={activeLayout}/>
+      <AppRoute path="/launch-ico" exact component={AsyncLaunchIco} props={childProps} layout={activeLayout}/>
       <AppRoute path="/dashboard/ico/project" exact component={AsyncIcoProjectDashboard} props={childProps} layout={activeLayout}/>
       <AppRoute path="/dashboard/ico/project/analytics" exact component={AsyncIcoProjectInvestorAnalytics} props={childProps} layout={activeLayout}/>
       <AppRoute path="/ico/investors" exact component={AsyncIcoProjectInvestorList} props={childProps} layout={activeLayout}/>

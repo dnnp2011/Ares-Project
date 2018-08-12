@@ -201,7 +201,25 @@ children: [{
 },{
     title: 'Shared Pages',
     icon: <PersonIcon style={iconStyle}/>,
-    children: [ {
+    children: [{
+    title: 'User Login',
+    href: '/login'
+  }, {
+    title: 'Site Admin Login',
+    href: '/login-site-admin'
+  }, {
+    title: 'ICO Admin Login',
+    href: '/login-ico-admin'
+  }, {
+    title: 'Forgot Password',
+    href: '/forgot-password'
+  }, {
+    title: 'Register',
+    href: '/register'
+  }, {
+    title: 'Registration Complete',
+    href: '/register/registration-complete'
+  }, {
     title: 'Invite Friend',
     href: '/invite-friend'
   }, {
@@ -217,7 +235,7 @@ children: [{
   icon: <HomeIcon style={iconStyle} />,
   children: [{
     title: 'Launch ICO',
-    href: '/launch'
+    href: '/launch-ico'
   },{
     title: 'Forgot Password',
     href: '/forgot-password'

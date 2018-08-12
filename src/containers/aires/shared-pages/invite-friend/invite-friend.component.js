@@ -53,13 +53,12 @@ class InviteFriend extends React.Component {
       alignItems="center"
       className={classes.background}
     >
-      <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-          >
+    <Grid item sm={6} xs={12} className={scss.panel}>
+      <Grid direction="column" container spacing={0}>
+        <Grid
+          item
+          xs={12}
+        >
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['invite-friend-content']}>
                 <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />

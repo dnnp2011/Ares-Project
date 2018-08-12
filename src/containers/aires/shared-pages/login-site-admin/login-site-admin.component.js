@@ -12,12 +12,12 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import themeStyles from './register-complete.theme.style';
-import scss from './register-complete.module.scss';
+import themeStyles from './login-site-admin.theme.style';
+import scss from './login-site-admin.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
 
-const RegisterComplete = (props) => {
+const Login = (props) => {
   const {
     classes
   } = props;
@@ -38,19 +38,32 @@ const RegisterComplete = (props) => {
             xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['register-complete-content']}>
-                <img src={logoImage} className={scss['register-complete-logo']} alt="logo" />
+              <CardContent className={scss['login-content']}>
+                <img src={logoImage} className={scss['login-logo']} alt="logo" />
                 <Typography variant="headline" component="h2" gutterBottom>
-                  Registration Complete
+                  Aires Dashboard
                 </Typography>
                 <Typography component="p" gutterBottom>
-                  You have successfully registered your account.
+                  Welcome to Aires Dashboard. Please use the form below to login as a site administrator.
                 </Typography>
               </CardContent>
             </Card>
             <Card className={scss.card}>
-              <CardActions className={scss['register-complete-actions']}>
-                <Button fullWidth href="/login" color="secondary" variant="raised">Return To Login</Button>
+              <CardContent>
+                <TextField
+                  label="Email Address"
+                  fullWidth
+                />
+                <TextField
+                  label="Password"
+                  fullWidth
+                  margin="normal"
+                  type="password"
+                />
+              </CardContent>
+              <CardActions className={scss['login-actions']}>
+                <Button href="/login-site-admin" color="primary" variant="raised">LOGIN</Button>
+                <Button href="/forgot-password">FORGOT PASSWORD</Button>
               </CardActions>
             </Card>
           </Grid>
@@ -60,8 +73,8 @@ const RegisterComplete = (props) => {
   );
 };
 
-RegisterComplete.propTypes = {
+Login.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-export default withStyles(themeStyles, { withTheme: true })(RegisterComplete);
+export default withStyles(themeStyles, { withTheme: true })(Login);
