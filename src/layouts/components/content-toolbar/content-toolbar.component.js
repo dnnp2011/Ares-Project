@@ -28,7 +28,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
-import Web3 from 'web3';
+import Web3 from 'web3'
 // Actions
 import { updateLayout, toggleSidenav, toggleNotifications } from '../../../actions/layout.actions';
 import { changeTheme, changeThemeDirection } from '../../../actions/theme.actions';
@@ -55,28 +55,28 @@ function setTitle(items, currentPath) {
   return null;
 }
 
-function isConnected(value) {
-  this.setState({ connected: value }, console.log('connected!!!'));
-}
-
 class ContentToolbar extends React.Component {
   state = {
     layoutMenuEl: null,
     layoutMenuOpen: false,
     themeMenuEl: null,
     themeMenuOpen: false,
-    authUser: null,
     connected: false,
+    authUser: null,
   };
 
-  componentDidMount() {
-    if (typeof web3 !== 'undefined') {
-      this.web3 = new Web3(window.web3.currentProvider);
-      isConnected(true);
-    } else {
-      console.log("Unable to connect to MetaMask");
+   componentDidMount() {
+        if(typeof web3 !== 'undefined')
+        {
+          this.web3 = new Web3(window.web3.currentProvider);
+
+          this.setState({connected: true}, console.log('connected!!!'))
+        }
+        else
+        {
+          alert('YOU DO NOT HAVE METAMASK INSTALLED, YOU WILL NOT HAVE ANY ACCESS TO WALLET FEATURES')
+        }
     }
-  }
 
   handleOpenLayoutClick = (event) => {
     this.setState({ layoutMenuEl: event.currentTarget, layoutMenuOpen: true });
@@ -121,10 +121,16 @@ class ContentToolbar extends React.Component {
     const { history } = this.props;
     <AuthUserContext.Consumer>
       {
-        authUser => (!authUser ? history.push("/login") : alert("Logout could not be correctly processed"))
+        authUser =>
+        !authUser ?
+          // Logout successful, route to non-auth login
+          history.push('/login')
+        :
+          // Lout NOT successful, do nothing, or give error message
+          alert("Logout could not be correctly processed")
       }
-    </AuthUserContext.Consumer>;
-  };
+    </AuthUserContext.Consumer>
+  }
 
 
   render() {
@@ -215,33 +221,36 @@ class ContentToolbar extends React.Component {
 
         <AuthUserContext.Consumer>
           { authUser =>
-            (authUser
-              ? (
-                <div>
-                  <IconButton
-                    color="inherit"
-                    aria-label="User Profile"
-                    onClick={this.handleOpenProfile}
+             (authUser
+            ? (
+              <div>
+                <IconButton
+                  color="inherit"
+                  aria-label="User Profile"
+                  onClick={this.handleOpenProfile}
                   >
-                    <PersonIcon />
-                  </IconButton>
-                  <IconButton
-                    color="inherit"
-                    aria-label="Logout"
-                    onClick={this.handleSignOut}
+                  <PersonIcon />
+                </ IconButton>
+                <IconButton
+                  color="inherit"
+                  aria-label="Logout"
+                  onClick={this.handleSignOut}
                   >
-                    <FontAwesome name="sign-out" />
-                  </IconButton>
-                </div>
-              )
-              :
+                <FontAwesome name="sign-out" />
+                </ IconButton>
+              </div>
+            )
+            :
               null
-            )}
+          )}
         </AuthUserContext.Consumer>
-        {this.state.connected ?
-          <h3 style={{ fontFamily: 'Barlow', color: 'yellow', fontWeight: 'bold' }}>LIVE</h3>
-          :
-          <h3 style={{ fontFamily: 'Barlow', color: 'black', fontWeight: 'bold' }}>LIVE</h3>}
+
+        {this.state.connected?
+           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
+            :
+           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
+        }
+
       </Toolbar>
     );
   }
