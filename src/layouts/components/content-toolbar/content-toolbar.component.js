@@ -28,7 +28,10 @@ import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
+
+//blockchain wallet connection
 import Web3 from 'web3'
+
 // Actions
 import { updateLayout, toggleSidenav, toggleNotifications } from '../../../actions/layout.actions';
 import { changeTheme, changeThemeDirection } from '../../../actions/theme.actions';
@@ -66,16 +69,18 @@ class ContentToolbar extends React.Component {
   };
 
    componentDidMount() {
-        if(typeof web3 !== 'undefined')
-        {
-          this.web3 = new Web3(window.web3.currentProvider);
+        // if(typeof web3 !== 'undefined')
+        // {
+        //   this.web3 = new Web3(window.web3.currentProvider);
 
-          this.setState({connected: true}, console.log('connected!!!'))
-        }
-        else
-        {
-          alert('YOU DO NOT HAVE METAMASK INSTALLED, YOU WILL NOT HAVE ANY ACCESS TO WALLET FEATURES')
-        }
+        //   this.setState({connected: true}, console.log('connected!!!'))
+        // }
+        // else
+        // {
+        //   // this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+        //   alert('YOU DO NOT HAVE METAMASK INSTALLED, YOU WILL NOT HAVE ANY ACCESS TO WALLET FEATURES')
+        // }
     }
 
   handleOpenLayoutClick = (event) => {
@@ -241,14 +246,14 @@ class ContentToolbar extends React.Component {
               </div>
             )
             :
-              null
+            null
           )}
         </AuthUserContext.Consumer>
 
         {this.state.connected?
-           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
+           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>METAMASK</h3>
             :
-           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
+           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>METAMASK</h3>
         }
 
       </Toolbar>

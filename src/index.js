@@ -8,6 +8,7 @@ import { createStore } from 'redux';//package
 import portalApp from './reducers';//location of code that changes the website's theme
 import registerServiceWorker from './registerServiceWorker';//location of code which loads components of the website from the cache
 import WebFont from 'webfontloader';//package that loads a font package from the web
+
 //loads the Barlow font which is the default font for the website
 WebFont.load({
   google: {

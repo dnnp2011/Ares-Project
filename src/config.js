@@ -272,7 +272,7 @@ children: [{
   href: '/browse-icos'
 }, {
   title: 'Invest',
-  href: 'browse-icos/invest'
+  href: '/browse-icos/invest'
 }, {
   title: 'Invest Confirm',
   href: '/browse-icos/invest/confirm'

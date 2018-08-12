@@ -49,9 +49,12 @@ class Profile extends React.Component {
 
   // We need all required fields to NOT be empty for the button to be enabled.
   checkIfEnabled = (name, lastname, email) => {
-    if (name && lastname && email) {
+    if (name && lastname && email)
+    {
       this.setState({isEnabled: true});
-    } else {
+    }
+    else
+    {
       this.setState({isEnabled: false})
     }
   }

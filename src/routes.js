@@ -239,13 +239,13 @@ export default ({ childProps, layout }) => {
 
       /* --- Client Pages --- */
       {<AppRoute path="/my-dashboard" exact component={AsyncClientDashboard} props={childProps} layout={activeLayout}/>}
-      {/*<AppRoute path="/my-wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>*/}
+      {<AppRoute path="/wallet" exact component={AsyncWallet} props={childProps} layout={activeLayout}/>}
       {/*<AppRoute path="/my-wallet/new-fund-source" exact component={AsyncNewFundSource} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/my-investments" exact component={AsyncInvestments} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/my-investments/details" exact component={AsyncInvestmentDetail} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/browse-icos" exact component={AsyncIcoList} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/browse-icos/details" exact component={AsyncIcoDetail} props={childProps} layout={activeLayout}/>*/}
-      {/*<AppRoute path="/browse-icos/invest" exact component={AsyncInvest} props={childProps} layout={activeLayout}/>*/}
+      {<AppRoute path="/browse-icos/invest" exact component={AsyncInvest} props={childProps} layout={activeLayout}/>}
       {/*<AppRoute path="/browse-icos/invest/kyc" exact component={AsyncInvestKyc} props={childProps} layout={activeLayout}/>*/}
       {/*<AppRoute path="/browse-icos/invest/confirm" exact component={AsyncInvestConfirm} props={childProps} layout={activeLayout}/>*/}
 
