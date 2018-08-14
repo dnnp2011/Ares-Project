@@ -5,6 +5,8 @@ import scss from './ico-list-item.module.scss';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import logoImage from '../../../../assets/images/portal-logo.png';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -22,43 +24,44 @@ render() {
      width
   } = this.props;
 
-const { name, price, start, end, phase } = this.props;
+  const { name, price, start, end, phase } = this.props;
 
-      return(
-          <div>
-          <Link to={{pathname: `/browse-icos/details/`, name: name}} style={{ textDecoration: 'none' }}>
-          <Card className={classNames(scss.card, classes['primary-card'])} onClick={()=>fs.doGetCoin('bitcoin')}>
-          <Typography className={scss.coin} variant="display1" gutterBottom>
-            &nbsp;  {name}
-          </Typography>
+  return(
+      // <div className={scss.container}>
+        <Card className={scss.card}>
+          <Link to={{pathname: `/browse-icos/details/`, name: {name}}} style={{ textDecoration: 'none' }}>
+            <Typography className={scss.coin} variant="headline" gutterBottom>
+              &nbsp;  {name}
+              <img src={logoImage} className={scss.logo} alt="logo" />
+            </Typography>
+            <CardContent>
+              <br/>
 
-          <Typography className={scss.center} variant="display1">
-           Price: {price}
-          </Typography>
-          <br/>
-          <br/>
-           <CardContent>
-        <div className={scss.parent}>
+              <Typography className={scss.center} variant="title">
+               Price: ${price}
+              </Typography>
+              <br/>
+              <br/>
 
-        <Typography className={scss.first}>
-        Start: {start}  |  End: {end}
-        </Typography>
+              <div className={scss.parent}>
 
+                <Typography className={scss.dates}>
+                  Start: {start}  |  End: {end}
+                  <br/>
+                </Typography>
+                <Typography className={scss.phase}>
+                  Phase: {phase}
+                </Typography>
 
-
-        <Typography className={scss.second}>
-        Phase: {phase}
-        </Typography>
-
-        </div>
-        </CardContent>
-         </Card>
-         </ Link>
-         <br/>
-        </div>
-      )
-    }
+              </div>
+            </CardContent>
+          </Link>
+        </Card>
+      //   <br/>
+      // </div>
+    );
   }
+}
 
 
 

@@ -1,41 +1,66 @@
+.container {
+  border: 1px solid black;
+}
+
 .coin{
   color: #000000;
   font-weight: 600;
-  margin-top: -30px;
+  font-size: 1.1rem;
 }
-.first{
 
-  display:inline-block;
-  float: left;
-  font-size: 18px;
+.dates{
+  // display:inline-block;
+  // float: left;
+  text-align: center;
+  font-size: 0.8rem;
   font-weight: 400;
 }
 
 .center{
-text-align: center;
-font-weight: 600;
-font-size: 40px;
-color: #000000;
+  text-align: center;
+  font-weight: 600;
+  font-size: 28px;
+  color: #000000;
 }
-.second{
-float:right;
-  display:inline-block;
-font-size: 18px;
-font-weight: 400;
+.phase{
+  // float:right;
+  // display:inline-block;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 
 .parent{
- white-space: nowrap;
- overflow-x: visible;
- bottom: -500px;
+   white-space: nowrap;
+   overflow-x: visible;
+   bottom: -500px;
+   text-align: center;
 }
 
 .card {
-  height: 140px;
-  width: 70%;
-  display: block;
-  margin: auto;
-  flex-direction: column;
+  box-sizing: border-box;
+  height: 300px;
+  width: 270px;
+  display: inline-block;
+  margin: 10px;
+  flex-direction: row;
   justify-content: space-between;
   padding: 24px;
+  border: 1.5px solid #e8e8e8;
+  box-shadow: 2px 2px grey;
+}
+
+.card:hover {
+  background-color: #e8e8e8;
+  box-shadow: none;
+}
+
+.card-heading {
+  display: inline-block;
+}
+
+.logo {
+  height: 30px;
+  margin-left: 5px;
+  float: left;
 }
