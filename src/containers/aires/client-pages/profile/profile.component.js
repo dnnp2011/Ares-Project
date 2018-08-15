@@ -32,7 +32,8 @@ class Profile extends React.Component {
       userInfo: [],
       isEnabled: true,
       snackbarOpen: false,
-      snackbarMessage: ''
+      snackbarMessage: '',
+      updateValid: false,
     };
   }
 
@@ -40,19 +41,25 @@ class Profile extends React.Component {
     console.log(`User: ${auth.getUser().uid}`);
     fs.doGetUser(auth.getUser().uid).then((doc) => {
       doc.exists ? console.log("Document Found!") : console.log("Unable to find document!");
-      console.log(`Data: ${doc.data().firstName}`);
+      console.log(`Location: ${doc.data().location}`);
       this.setState({
-        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().description, doc.data().country, doc.data().website, doc.data().uid],
+        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().description, doc.data().location, doc.data().website, doc.data().uid],
       });
-      console.log(`userInfo State: ${this.state.userInfo[0]}`);
     }).catch((err) => {
       console.log(`Error getting document: ${err}`);
     });
   }
 
+  onUpdateValid = (value) => {
+    this.setState({
+      updateValid: value,
+    });
+  }
+
   onUpdateSettings = () => {
   //  Send data to Firestore
-    fs.doCreateCustomData(['country', 'description', 'address'], ['USA', 'This is me!', '123 electric ave'], auth.getUser().uid);
+  //  Get updated props to here to pass in function
+    fs.doCreateCustomData(['location', 'description', 'address'], ['USA', 'This is me!', '123 electric ave'], auth.getUser().uid);
     this.onSnackbarOpen();
   }
 
@@ -66,7 +73,7 @@ class Profile extends React.Component {
 
   // We need all required fields to NOT be empty for the button to be enabled.
   checkIfEnabled = (name, lastname, email) => {
-    if (name && lastname && email) {
+    if (name && lastname && email && this.state.updateValid) {
       this.setState({ isEnabled: true });
     } else {
       this.setState({ isEnabled: false });
@@ -156,10 +163,11 @@ class Profile extends React.Component {
                               location={this.state.userInfo[4]}
                               website={this.state.userInfo[5]}
                               uid={this.state.userInfo[6]}
+                              updateValid={value => this.onUpdateValid(value)}
                             />
                             :
                             null}
-                          {console.log(this.state.userInfo[0] ? "Found" : "Not Found")}
+                          {/*{console.log(this.state.userInfo[0] ? "Found" : "Not Found")}*/}
                         </Grid>
                       </CardContent>
                       <CardActions className={scss['card-actions']}>

@@ -66,6 +66,7 @@ class ProfileTabs extends React.Component {
     // TODO: Add additional userInfo to Firestore and profile state including URL for custom profile pic creation
 
     const { email, firstName, lastName, description, location, website} = props;
+    console.log(`Location from props: ${props.location}`);
     this.state = {
       value: 0,
       name: firstName,
@@ -77,7 +78,8 @@ class ProfileTabs extends React.Component {
       profilePicUrl: '',
       password: '',
       newpassword: '',
-      confirmpassword: ''
+      confirmpassword: '',
+      updateValid: false,
     };
   }
 
@@ -98,8 +100,9 @@ class ProfileTabs extends React.Component {
     };
   }
   handleChange = name => (event) => {
+    this.props.updateValid(true);
     this.setState({
-      [name]: event.target.value
+      [name]: event.target.value,
     }, () => {
       // Using the callback to make sure that the child state has been updated before updating the parent state
       this.props.isEnabled(this.state.name, this.state.lastname, this.state.email);
@@ -119,6 +122,7 @@ class ProfileTabs extends React.Component {
     const {
       name, lastname, email, location, website, description, password, newpassword, confirmpassword
     } = this.state;
+    console.log(`Location from State tabs: ${this.state.location}`);
     const errors = this.validate(name, lastname, email);
     const pwdErrors = this.validatePassword(password, newpassword, confirmpassword);
 
@@ -198,7 +202,7 @@ class ProfileTabs extends React.Component {
                     id="location"
                     label="Enter your location"
                     className={classes.textField}
-                    value={location}
+                    value={this.state.location}
                     onChange={this.handleChange('location')}
                     defaultValue=""
                     fullWidth
@@ -346,11 +350,6 @@ class ProfileTabs extends React.Component {
     );
   }
 }
-
-ProfileTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-};
 
 const authCondition = authUser => !!authUser;
 
