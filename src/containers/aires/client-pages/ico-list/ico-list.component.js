@@ -20,11 +20,34 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import withAuthorization from '../../../authentication/withAuthorization';
 
-
 class IcoList extends React.Component {
-  state = {
-    anchorEl: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null,
+      coins: [
+          {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2020', price: '6,345.00', phase: 'Presale'},
+          {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'July 2019', price: '6,845.00', phase: 'Presale'},
+          {key: 3, name: 'Bthereum', start: 'Feb 2017', end: 'Jan 2019', price: '7,345.00', phase: 'Presale'},
+          {key: 4, name: 'Zethereum', start: 'Jan 2017', end: 'Jan 2020', price: '5,345.00', phase: 'Presale'},
+          {key: 5, name: 'Methereum', start: 'June 2018', end: 'Dec 2019', price: '6,355.00', phase: 'Presale'},
+          {key: 6, name: 'Elthereum', start: 'Aug 2018', end: 'Nov 2019', price: '6,805.00', phase: 'Presale'},
+          {key: 7, name: 'Ethereum', start: 'May 2018', end: 'Feb 2019', price: '2,345.00', phase: 'Presale'},
+          {key: 8, name: 'Ethereum', start: 'July 2018', end: 'June 2019', price: '9,345.00', phase: 'Presale'},
+          {key: 9, name: 'Ethereum', start: 'May 2017', end: 'June 2019', price: '6,545.00', phase: 'Presale'},
+      ],
+      orderBy: 'key'
+    };
+
+    this.handleSort = this.handleSort.bind(this);
+    this.handleSortByName = this.handleSortByName.bind(this);
+    this.handleSortByNameReverse = this.handleSortByNameReverse.bind(this);
+    this.handleSortByPriceDecreasing = this.handleSortByPriceDecreasing.bind(this);
+    this.handleSortByPriceIncreasing = this.handleSortByPriceIncreasing.bind(this);
+    this.handleSortByStartDate = this.handleSortByStartDate.bind(this);
+    this.handleSortByEndDate = this.handleSortByEndDate.bind(this);
+
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -34,21 +57,79 @@ class IcoList extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  render() {
-    const { anchorEl } = this.state;
-    const { classes } = this.props;
+  sortData(sortBy, coinsArray) {
+    const coins = coinsArray;
+    const sort_by = function(field, reverse, primer){
+      const key = primer ?
+          function(x) {return primer(x[field])} :
+          function(x) {return x[field]};
 
-    const coins = [
-      {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2020', price: '6,345.00', phase: 'Presale'},
-      {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'July 2019', price: '6,845.00', phase: 'Presale'},
-      {key: 3, name: 'Bthereum', start: 'Feb 2017', end: 'Jan 2019', price: '7,345.00', phase: 'Presale'},
-      {key: 4, name: 'Zethereum', start: 'Jan 2017', end: 'Jan 2020', price: '5,345.00', phase: 'Presale'},
-      {key: 5, name: 'Methereum', start: 'June 2018', end: 'Dec 2019', price: '6,355.00', phase: 'Presale'},
-      {key: 6, name: 'Elthereum', start: 'Aug 2018', end: 'Nov 2019', price: '6,805.00', phase: 'Presale'},
-      {key: 7, name: 'Ethereum', start: 'May 2018', end: 'Feb 2019', price: '2,345.00', phase: 'Presale'},
-      {key: 8, name: 'Ethereum', start: 'July 2018', end: 'June 2019', price: '9,345.00', phase: 'Presale'},
-      {key: 9, name: 'Ethereum', start: 'May 2017', end: 'June 2019', price: '6,545.00', phase: 'Presale'},
-    ];
+      reverse = !reverse ? 1 : -1;
+
+      return function (a, b) {
+        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+      }
+    };
+
+    switch(sortBy) {
+      case 'name':
+        return coins.sort(sort_by('name', false, function(a){return a.toUpperCase()}));
+      case 'reverse':
+        return coins.sort(sort_by('name', true, function(a){return a.toUpperCase()}));
+      case 'price increasing':
+        return coins.sort(sort_by('price'), true, function(a){
+          var b = a.split(",");
+          return parseFloat(b.join());
+        });
+      case 'price decreasing':
+        return coins.sort(sort_by('price'), true, function(a){
+          var b = a.split(",");
+          return parseFloat(b.join());
+        }).reverse();
+      case 'start':
+        return coins.sort(function(a, b) {
+          return new Date(a.start) - new Date(b.start);
+        });
+      case 'end':
+        return coins.sort(function(a, b) {
+          return new Date(a.end) - new Date(b.end);
+        });
+      default:
+        return coins;
+    }
+  };
+
+  handleSort= function(orderBy) {
+    var coins = this.state.coins;
+    this.setState({
+      coins: this.sortData(orderBy, coins),
+      orderBy: orderBy
+    });
+  };
+
+  handleSortByName = function() {
+    this.handleSort('name');
+    this.handleClose;
+  };
+  handleSortByNameReverse = function() {
+    this.handleSort('reverse');
+  };
+  handleSortByPriceIncreasing = function() {
+    this.handleSort('price increasing');
+  };
+  handleSortByPriceDecreasing = function() {
+    this.handleSort('price decreasing');
+  };
+  handleSortByStartDate = function() {
+    this.handleSort('start');
+  };
+  handleSortByEndDate = function() {
+    this.handleSort('end');
+  };
+
+  render() {
+    const { anchorEl, coins } = this.state;
+    const { classes } = this.props;
 
     return (
       <div className="IcoList">
@@ -72,12 +153,12 @@ class IcoList extends React.Component {
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Name: A-Z</MenuItem>
-                <MenuItem onClick={this.handleClose}>Name: Z-A</MenuItem>
-                <MenuItem onClick={this.handleClose}>Price: Highest to Lowest</MenuItem>
-                <MenuItem onClick={this.handleClose}>Price: Lowest to Highest</MenuItem>
-                <MenuItem onClick={this.handleClose}>Start Date</MenuItem>
-                <MenuItem onClick={this.handleClose}>End Date</MenuItem>
+                <MenuItem onClick={this.handleSortByName}>Name: A-Z</MenuItem>
+                <MenuItem onClick={this.handleSortByNameReverse}>Name: Z-A</MenuItem>
+                <MenuItem onClick={this.handleSortByPriceDecreasing}>Price: Highest to Lowest</MenuItem>
+                <MenuItem onClick={this.handleSortByPriceIncreasing}>Price: Lowest to Highest</MenuItem>
+                <MenuItem onClick={this.handleSortByStartDate}>Start Date</MenuItem>
+                <MenuItem onClick={this.handleSortByEndDate}>End Date</MenuItem>
               </Menu>
             </div>
           </Toolbar>
