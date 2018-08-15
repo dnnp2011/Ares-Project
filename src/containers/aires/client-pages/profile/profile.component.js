@@ -32,8 +32,8 @@ class Profile extends React.Component {
       userInfo: [],
       isEnabled: true,
       snackbarOpen: false,
-      snackbarMessage: '',
-      updateValid: false,
+      snackbarMessage: "",
+      updateValid: false
     };
   }
 
@@ -41,60 +41,73 @@ class Profile extends React.Component {
     console.log(`User: ${auth.getUser().uid}`);
     fs.doGetUser(auth.getUser().uid).then((doc) => {
       doc.exists ? console.log("Document Found!") : console.log("Unable to find document!");
-      console.log(`Location: ${doc.data().location}`);
       this.setState({
-        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().description, doc.data().location, doc.data().website, doc.data().uid],
+        userInfo: [doc.data().email, doc.data().firstName, doc.data().lastName, doc.data().description, doc.data().country, doc.data().website, doc.data().uid],
+        newUserInfo: [],
       });
     }).catch((err) => {
       console.log(`Error getting document: ${err}`);
     });
   }
 
-  onUpdateValid = (value) => {
-    this.setState({
-      updateValid: value,
-    });
-  }
-
   onUpdateSettings = () => {
-  //  Send data to Firestore
-  //  Get updated props to here to pass in function
-    fs.doCreateCustomData(['location', 'description', 'address'], ['USA', 'This is me!', '123 electric ave'], auth.getUser().uid);
+    //  Send data to Firestore
+    //  Get updated props to here to pass in function
+    fs.doCreateCustomData([...Object.keys(this.state.newUserInfo)], [...Object.values(this.state.newUserInfo)], auth.getUser().uid);
     this.onSnackbarOpen();
-  }
+  };
 
   onSnackbarOpen = () => {
     this.setState({ snackbarOpen: true });
-  }
+  };
 
   onSnackbarClose = () => {
     this.setState({ snackbarOpen: false });
+  };
+
+  onUpdateInfo = (firstName, lastName, email, country, description) => {
+    this.setState({
+      newUserInfo: {
+        firstName,
+        lastName,
+        email,
+        country,
+        description,
+      },
+    });
   }
+
+  onUpdateValid = (value) => {
+    this.setState({
+      updateValid: value
+    });
+    return this.state.updateValid;
+  };
 
   // We need all required fields to NOT be empty for the button to be enabled.
   checkIfEnabled = (name, lastname, email) => {
-    if (name && lastname && email && this.state.updateValid) {
+    if (name && lastname && email) {
       this.setState({ isEnabled: true });
     } else {
       this.setState({ isEnabled: false });
     }
-  }
+  };
 
   render() {
     const { classes } = this.props;
-    const { isEnabled } = this.state;
+    const { isEnabled, updateValid } = this.state;
 
     const snackbar = (
       <Snackbar
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center'
+          vertical: "bottom",
+          horizontal: "center"
         }}
         open={this.state.snackbarOpen}
         autoHideDuration={3000}
         onClose={this.onSnackbarClose}
         ContentProps={{
-          'aria-describedby': 'message-id'
+          "aria-describedby": "message-id"
         }}
         message={<span id="message-id">Settings Updated</span>}
       />
@@ -110,7 +123,7 @@ class Profile extends React.Component {
             justify="center"
             alignItems="center"
             className={classNames(
-              scss['portal-profile'],
+              scss["portal-profile"],
               classes.background
             )}
           >
@@ -131,14 +144,15 @@ class Profile extends React.Component {
                       item
                       xs={12}
                     >
-                      <div className={scss['portal-profile__header']}>
-                        <img alt="avatar" src="assets/images/avatars/male/16.jpg" className={scss['portal-profile__header-avatar']} />
+                      <div className={scss["portal-profile__header"]}>
+                        <img alt="avatar" src="assets/images/avatars/male/16.jpg"
+                             className={scss["portal-profile__header-avatar"]}/>
                         <div>
                           <Typography variant="headline" gutterBottom>
-                                Profile / {this.state.userInfo[1]} {this.state.userInfo[2]}
+                            Profile / {this.state.userInfo[1]} {this.state.userInfo[2]}
                           </Typography>
                           <Typography variant="subheading" gutterBottom>
-                              Edit your personal information, change your password and set your privacy settings here.
+                            Edit your personal information, change your password and set your privacy settings here.
                           </Typography>
                         </div>
                       </div>
@@ -149,9 +163,9 @@ class Profile extends React.Component {
                   item
                   xs={12}
                 >
-                  <div className={scss['portal-profile__content']}>
+                  <div className={scss["portal-profile__content"]}>
                     <Card className={scss.card}>
-                      <CardContent className={scss['card-content']}>
+                      <CardContent className={scss["card-content"]}>
                         <Grid container>
                           {this.state.userInfo[0] ?
                             <ProfileTabs
@@ -160,19 +174,21 @@ class Profile extends React.Component {
                               firstName={this.state.userInfo[1]}
                               lastName={this.state.userInfo[2]}
                               description={this.state.userInfo[3]}
-                              location={this.state.userInfo[4]}
+                              country={this.state.userInfo[4]}
                               website={this.state.userInfo[5]}
                               uid={this.state.userInfo[6]}
                               updateValid={value => this.onUpdateValid(value)}
+                              updateInfo={(firstName, lastName, email, country, description) => this.onUpdateInfo(firstName, lastName, email, country, description)}
                             />
                             :
                             null}
                           {/*{console.log(this.state.userInfo[0] ? "Found" : "Not Found")}*/}
                         </Grid>
                       </CardContent>
-                      <CardActions className={scss['card-actions']}>
-                        <Button disabled={!isEnabled} variant="raised" color="secondary" onClick={() => this.onUpdateSettings()}>
-                            Update Settings
+                      <CardActions className={scss["card-actions"]}>
+                        <Button disabled={!updateValid || !isEnabled} variant="raised" color="secondary"
+                                onClick={() => this.onUpdateSettings()}>
+                          Update Settings
                         </Button>
                       </CardActions>
                     </Card>

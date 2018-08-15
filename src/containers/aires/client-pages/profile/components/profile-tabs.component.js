@@ -65,14 +65,13 @@ class ProfileTabs extends React.Component {
     super(props);
     // TODO: Add additional userInfo to Firestore and profile state including URL for custom profile pic creation
 
-    const { email, firstName, lastName, description, location, website} = props;
-    console.log(`Location from props: ${props.location}`);
+    const { email, firstName, lastName, description, country, website} = props;
     this.state = {
       value: 0,
-      name: firstName,
-      lastname: lastName,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
-      location: location,
+      country: country,
       website: website,
       description: description,
       profilePicUrl: '',
@@ -83,11 +82,11 @@ class ProfileTabs extends React.Component {
     };
   }
 
-  validate(name, lastname, email) {
+  validate(firstName, lastName, email) {
     // true means invalid, so our conditions got reversed
     return {
-      name: name.length === 0,
-      lastname: lastname.length === 0,
+      firstName: firstName.length === 0,
+      lastName: lastName.length === 0,
       email: email.length === 0
     };
   }
@@ -99,14 +98,22 @@ class ProfileTabs extends React.Component {
       confirmPassword: confirmPassword.length === 0
     };
   }
-  handleChange = name => (event) => {
-    this.props.updateValid(true);
+  handleChange = inputName => (event) => {
+    if (!this.state.updateValid) {
+      this.setState({
+        updateValid: this.props.updateValid(true)
+      });
+    }
+
     this.setState({
-      [name]: event.target.value,
+      [inputName]: event.target.value,
     }, () => {
       // Using the callback to make sure that the child state has been updated before updating the parent state
-      this.props.isEnabled(this.state.name, this.state.lastname, this.state.email);
+      this.props.isEnabled(this.state.firstName, this.state.lastName, this.state.email);
     });
+
+    const { firstName, lastName, email, country, description } = this.state;
+    this.props.updateInfo(firstName != null ? firstName : '', lastName != null ? lastName : '', email != null ? email : '', country != null ? country : '', description != null ? description : '');
   };
 
   handleTabChange = (event, value) => {
@@ -120,10 +127,9 @@ class ProfileTabs extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const {
-      name, lastname, email, location, website, description, password, newpassword, confirmpassword
+      firstName, lastName, email, country, website, description, password, newpassword, confirmpassword
     } = this.state;
-    console.log(`Location from State tabs: ${this.state.location}`);
-    const errors = this.validate(name, lastname, email);
+    const errors = this.validate(firstName, lastName, email);
     const pwdErrors = this.validatePassword(password, newpassword, confirmpassword);
 
     return (
@@ -151,34 +157,34 @@ class ProfileTabs extends React.Component {
               <Grid container>
                 <Grid item sm={6} xs={12}>
                   <TextField
-                    id="name"
-                    label="Enter your first name"
+                    id="firstName"
+                    label="Enter your first firstName"
                     className={classes.textField}
-                    error={errors.name}
-                    value={name}
-                    onChange={this.handleChange('name', this.props.isEnabled)}
+                    error={errors.firstName}
+                    value={firstName}
+                    onChange={this.handleChange('firstName', this.props.isEnabled)}
                     fullWidth
                     required
                     margin="normal"
                   />
-                  { errors.name &&
+                  { errors.firstName &&
                     <FormHelperText error>This is a required field</FormHelperText>
                   }
                 </Grid>
                 <Grid item sm={6} xs={12}>
                   <TextField
-                    id="lastname"
-                    label="Enter your last name"
+                    id="lastName"
+                    label="Enter your last firstName"
                     className={classes.textField}
-                    error={errors.lastname}
-                    value={lastname}
-                    onChange={this.handleChange('lastname')}
+                    error={errors.lastName}
+                    value={lastName}
+                    onChange={this.handleChange('lastName')}
                     fullWidth
                     required
                     margin="normal"
                   />
-                  { errors.lastname &&
-                    <FormHelperText error>We also need your last name</FormHelperText>
+                  { errors.lastName &&
+                    <FormHelperText error>We also need your last firstName</FormHelperText>
                   }
                 </Grid>
                 <Grid item xs={12}>
@@ -198,12 +204,13 @@ class ProfileTabs extends React.Component {
                   }
                 </Grid>
                 <Grid item xs={12}>
+                  {/* TODO: Add country dropdown / autocompete */}
                   <TextField
-                    id="location"
-                    label="Enter your location"
+                    id="country"
+                    label="Enter your country"
                     className={classes.textField}
-                    value={this.state.location}
-                    onChange={this.handleChange('location')}
+                    value={country}
+                    onChange={this.handleChange('country')}
                     defaultValue=""
                     fullWidth
                     margin="normal"
