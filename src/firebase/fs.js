@@ -42,3 +42,18 @@ export const doGetUser = (uid) =>
 export const doGetAllUsers = () => {
 
 }
+
+export const doCreateNewTransaction= (sender, recipient, amount, date) => {
+  fs.collection('transaction').doc().set({
+    sender: sender,
+    recipient: recipient,
+    amount: amount,
+    date: date
+  })
+
+}
+
+export const doGetTransaction= (tid) => {
+  return fs.collection('transaction').get()
+
+}

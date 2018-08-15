@@ -4,12 +4,12 @@ import 'firebase/database';
 require('firebase/firestore');
 
 const config = {
-  apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",
-  authDomain: "ares-project-orchardblockchain.firebaseapp.com",
-  databaseURL: "https://ares-project-orchardblockchain.firebaseio.com",
-  projectId: "ares-project-orchardblockchain",
-  storageBucket: "",
-  messagingSenderId: "660326526839"
+    apiKey: "AIzaSyAWuW3f6wlmWWQKgaKo0bel8F3UYTkMxcQ",
+    authDomain: "aresproject-c9fb4.firebaseapp.com",
+    databaseURL: "https://aresproject-c9fb4.firebaseio.com",
+    projectId: "aresproject-c9fb4",
+    storageBucket: "",
+    messagingSenderId: "556290486483"
 };
 
 if (!firebase.apps.length) {
