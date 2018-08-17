@@ -42,3 +42,18 @@ export const doGetUser = (uid) =>
 export const doGetAllUsers = () => {
 
 }
+
+// Launch ICO functions
+export const getICOdata = (name) =>
+  fs.collection('ico-list').doc(name).get();
+
+export const doSetIcoData = (icoName, startDate, endDate, founderName, companyName, countryOfOrigin) => {
+  fs.collection('ico-list').doc(icoName).set({
+    icoName: icoName,
+    startDate: startDate,
+    endDate: endDate,
+    founderName: founderName,
+    companyName: companyName,
+    countryOfOrigin: countryOfOrigin,
+  });
+}
