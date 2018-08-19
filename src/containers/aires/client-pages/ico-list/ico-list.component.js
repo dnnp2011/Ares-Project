@@ -16,20 +16,32 @@ import withAuthorization from '../../../authentication/withAuthorization';
 
 class IcoList extends React.Component {
   state={
+    collection: [],
     icos: [],
   };
 
   componentWillMount() {
-    fs.doGetAllIcos().then(snapshot =>
-      this.setState({
-        icos: snapshot.docs,
-      }, console.log(`Setting State As: ${[snapshot.docs]}`))
-    );
+    fs.doGetAllIcos().then((snapshot) => {
+      let icosList = [];
+      let collectionList = snapshot.docs;
 
-    console.log(this.state.icos);
+      collectionList.map((ico) => {
+        // console.log(ico.data().price);
+        icosList.push({ [ico.id]: ico.data() });
+      });
+      this.setState({
+        icos: icosList,
+        collection: collectionList,
+      });
+
+      console.log(this.state.icos[0]);
+    });
   }
 
   render() {
+    // this.state.icos.map((ico) => {
+    //   console.log(`${Object.keys(ico)} : ${Object.values(ico)}`);
+    // });
     const coins = [
       {
         key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2019', price: '$6,345.00', phase: 'Presale'
@@ -49,8 +61,8 @@ class IcoList extends React.Component {
           </Toolbar>
         </AppBar>
         <br />
-        {coins.map(coin =>
-          <Ico key={coin.key} name={coin.name} start={coin.start} end={coin.end} price={coin.price} phase={coin.phase} />)}
+        {!this.state.icos ? null : this.state.icos.map(ico =>
+          <Ico {...Object.values(ico)} />)}
       </div>
     );
   }

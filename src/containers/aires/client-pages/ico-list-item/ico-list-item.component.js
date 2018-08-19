@@ -10,62 +10,62 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import compose from 'recompose/compose';
-import  { Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Detail from '../ico-detail/ico-detail.component';
-import { fs } from '../../../../firebase'
+import { fs } from '../../../../firebase';
+
 class Ico extends React.Component {
+  render() {
+    const {
+      classes,
+      width
+    } = this.props;
 
+    const {
+      name, price, start, end, phase
+    } = this.props;
 
-render() {
-  const {
-     classes,
-     width
-  } = this.props;
+    console.log(`Props: ${this.props}`);
+    return (
+      <div>
+        <Link to={{ pathname: `/browse-icos/details/`, name }} style={{ textDecoration: 'none' }}>
+          <Card className={classNames(scss.card, classes['primary-card'])}>
+            <Typography className={scss.coin} variant="display1" gutterBottom>
+              {name}
+            </Typography>
 
-const { name, price, start, end, phase } = this.props;
-
-      return(
-          <div>
-          <Link to={{pathname: `/browse-icos/details/`, name: name}} style={{ textDecoration: 'none' }}>
-          <Card className={classNames(scss.card, classes['primary-card'])} onClick={()=>fs.doGetCoin('bitcoin')}>
-          <Typography className={scss.coin} variant="display1" gutterBottom>
-            &nbsp;  {name}
-          </Typography>
-
-          <Typography className={scss.center} variant="display1">
+            <Typography className={scss.center} variant="display1">
            Price: {price}
-          </Typography>
-          <br/>
-          <br/>
-           <CardContent>
-        <div className={scss.parent}>
+            </Typography>
+            <br />
+            <br />
+            <CardContent>
+              <div className={scss.parent}>
 
-        <Typography className={scss.first}>
+                <Typography className={scss.first}>
         Start: {start}  |  End: {end}
-        </Typography>
+                </Typography>
 
 
-
-        <Typography className={scss.second}>
+                <Typography className={scss.second}>
         Phase: {phase}
-        </Typography>
+                </Typography>
 
-        </div>
-        </CardContent>
-         </Card>
-         </ Link>
-         <br/>
-        </div>
-      )
-    }
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
+        <br />
+      </div>
+    );
   }
+}
 
 
-
-  Ico.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
-    width: PropTypes.string.isRequired
-  };
+Ico.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired
+};
 
 
 export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Ico);
