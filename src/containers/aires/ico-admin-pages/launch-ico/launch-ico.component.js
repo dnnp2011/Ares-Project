@@ -17,28 +17,50 @@ import { withStyles } from '@material-ui/core/styles';
 import themeStyles from './launch-ico.theme.style';
 import scss from './launch-ico.module.scss';
 
-import logoImage from '../../../../assets/images/ares-logo.png';
-
-import NumberInput from './components/NumberInput/NumberInput';
+import logoImage from '../../../../assets/images/portal-logo.png';
+import Divider from "../../../elements/divider/divider.component";
 
 import { fs } from '../../../../firebase';
 
-const LaunchICO = (props) => {
+const INIT_STATE = {
+  icoName: '',
+  startDate: '',
+  endDate: '',
+  founderName: '',
+  companyName: '',
+  countryOfOrigin: '',
+};
+
+class LaunchICO extends React.Component {
+
+  state = {
+    ...INIT_STATE
+  };
+
+  onSubmit() {
+    console.log(`Form Submitted, State: ${this.state.icoName}`);
+    fs.doSetIcoData(this.state.icoName, this.state.startDate, this.state.endDate, this.state.founderName, this.state.companyName, this.state.countryOfOrigin)
+  }
+
+  onChange(field, value) {
+    this.setState({
+      [field] : value
+    });
+  }
+
+render() {
+
   const {
     classes,
     width
-  } = props;
+  } = this.props;
 
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
 
   return (
+
     <Grid
-      // container
-      // justify="center"
-      // alignItems="center"
-      // className={classes.background}
-      // style={{display: "block"}}
       container
       direction="row"
       spacing={0}
@@ -46,143 +68,106 @@ const LaunchICO = (props) => {
       alignItems="center"
       className={classes.background}
     >
-      <Grid item sm={10} xs={12} className='panel'>
-        <Grid direction={panelDirection} container spacing={100}>
+      <Grid item sm={10} xs={12} className={scss.panel}>
+        <Grid direction={panelDirection} container spacing={0}>
           <Grid
             item
             sm={6}
-            xs={10}
-          >
-            <Card className={scss.card}>
-              <CardContent className={scss['launch-content']}>
-                <img src={logoImage} className={scss['launch-logo']} alt="logo" />
-                <br/>
-                <br/>
-                <Typography variant="headline" component="h1" gutterBottom>
-                  Launch ICO
-                </Typography>
-                <br/>
-                <Typography component="p" gutterBottom>Want money? Launch your ICO now!</Typography>
-                <br/>
-                <Typography component="p" gutterBottom>
-                  Already have an account? Just fill out the form to the right with the correct info, upload a whitepaper, and add a description of your ICO.
-                </Typography>
-                <br/>
-                <Typography component="p" gutterBottom>
-                  Not a part of the Ares community? <a href="/register">Sign Up</a> here.
-                </Typography>
-              </CardContent>
-            </Card>
-
-          </Grid>
-
-          <Grid
-            item
-            sm={6}
-            xs={10}
+            xs={12}
           >
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['launch-content']}>
-                <br/>
-                <Typography gutterBottom>Enter your ICO information here to make your ICO available to investors</Typography>
-
-                  <Grid>
-                    <TextField
-                      label="User Name"
-                      type="text"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid>
-                    <TextField
-                      label="Password"
-                      type="password"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid>
-                    <TextField
-                      label="Repeat Password"
-                      type="password"
-                      fullWidth
-                    />
-                  </Grid>
-                  <br/>
-                  <Grid>
-                    <Typography gutterBottom>Start Date</Typography>
-                    <TextField
-                      type="date"
-                      fullwidth
-                    />
-
-                    <Typography gutterBottom>End Date</Typography>
-                    <TextField
-                      type="date"
-                      fullwidth
-                    />
-                  </Grid>
-                  <br/>
-                  <Grid>
-                    <TextField
-                      label="Founder Name"
-                      type="text"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid>
-                    <TextField
-                      label="Company Name"
-                      type="text"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid>
-                    <TextField
-                      label="Country of Origin"
-                      type="dropdown"
-                      fullWidth
-                    />
-                  </Grid>
-                  <br/>
-                  <Grid>
-                    <TextField
-                      label="ICO Description"
-                      multiline
-                      rows="4"
-                      className={classes.textField}
-                      margin="normal"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid>
-                <Typography gutterBottom>Please upload your whitepaper in here</Typography>
-                <br/>
-                  <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
-                    Upload Whitepaper
-                  </Button>
-                  <input
-                    style={{display:'none'}}
-                    ref={fileInput => this.fileInput =fileInput}
-                    label="Supporting Document"
-                    type="file"
+                <img src={logoImage} className={scss['launch-logo']} alt="logo" />
+                <Typography variant="headline" component="h2" gutterBottom>
+                  Launch ICO
+                </Typography>
+                <Typography component="p" gutterBottom>
+                  Enter your ICO information here to make your ICO available to investors
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+          >
+          <Card className={scss.card}>
+            <CardContent>
+                <Grid>
+                  <TextField
+                    label="ICO Name"
+                    value={this.state.icoName}
+                    onChange={(e) => this.onChange("icoName", e.target.value)}
                     fullWidth
                   />
                 </Grid>
-                {/* <Grid>
-                  <DropdownInput/>
-                </Grid> */}
-                <NumberInput />
-              </CardContent>
-              <CardActions>
-                <Button fullWidth onClick={() => fs.doSetData({name: "LiteCoin", ticker: "LTC"})} color="secondary" variant="raised">Launch ICO</Button>
-                
-              </CardActions>
-            </Card>
+                <br/>
+                <Grid>
+                  <TextField
+                    type="date"
+                    label="Start Date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={this.state.startDate}
+                    onChange={(e) => this.onChange("startDate", e.target.value)}
+                    fullWidth
+                  />
+                  </Grid>
+                  <br/>
+                  <Grid>
+                  <TextField
+                    type="date"
+                    label="End Date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={this.state.endDate}
+                    onChange={(e) => this.onChange("endDate", e.target.value)}
+                    fullWidth
+                  />
+                </Grid>
+                <br/>
+                <Grid>
+                  <TextField
+                    label="Founder Name"
+                    value={this.state.founderName}
+                    onChange={(e) => this.onChange("founderName", e.target.value)}
+                    fullWidth
+                  />
+                </Grid>
+                <br/>
+                <Grid>
+                  <TextField
+                    label="Company Name"
+                    value={this.state.companyName}
+                    onChange={(e) => this.onChange("companyName", e.target.value)}
+                    fullWidth
+                  />
+                </Grid>
+                <br/>
+                <Grid>
+                  <TextField
+                    label="Country of Origin"
+                    value={this.state.countryOfOrigin}
+                    onChange={(e) => this.onChange("countryOfOrigin", e.target.value)}
+                    fullWidth
+                  />
+                </Grid>
+
+            </CardContent>
+            <CardActions>
+              <Button fullWidth onClick={() => this.onSubmit()} color="secondary" variant="raised">Launch ICO</Button>
+            </CardActions>
+          </Card>
           </Grid>
         </Grid>
       </Grid>
     </Grid>
+
   );
+};
 };
 
 LaunchICO.propTypes = {
