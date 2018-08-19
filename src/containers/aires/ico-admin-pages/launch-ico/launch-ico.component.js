@@ -18,7 +18,6 @@ import themeStyles from './launch-ico.theme.style';
 import scss from './launch-ico.module.scss';
 
 import logoImage from '../../../../assets/images/portal-logo.png';
-import Divider from "../../../elements/divider/divider.component";
 
 import { fs } from '../../../../firebase';
 
@@ -32,143 +31,141 @@ const INIT_STATE = {
 };
 
 class LaunchICO extends React.Component {
-
   state = {
     ...INIT_STATE
   };
 
   onSubmit() {
     console.log(`Form Submitted, State: ${this.state.icoName}`);
-    fs.doSetIcoData(this.state.icoName, this.state.startDate, this.state.endDate, this.state.founderName, this.state.companyName, this.state.countryOfOrigin)
+    fs.doSetIcoData(this.state.icoName, this.state.startDate, this.state.endDate, this.state.founderName, this.state.companyName, this.state.countryOfOrigin);
   }
 
   onChange(field, value) {
     this.setState({
-      [field] : value
+      [field]: value
     });
   }
 
-render() {
+  render() {
+    const {
+      classes,
+      width
+    } = this.props;
 
-  const {
-    classes,
-    width
-  } = this.props;
+    // Flip container to column on mobile screens.
+    const panelDirection = width === 'xs' ? 'column' : 'row';
 
-  // Flip container to column on mobile screens.
-  const panelDirection = width === 'xs' ? 'column' : 'row';
+    return (
 
-  return (
-
-    <Grid
-      container
-      direction="row"
-      spacing={0}
-      justify="center"
-      alignItems="center"
-      className={classes.background}
-    >
-      <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction={panelDirection} container spacing={0}>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-          >
-            <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['launch-content']}>
-                <img src={logoImage} className={scss['launch-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+      <Grid
+        container
+        direction="row"
+        spacing={0}
+        justify="center"
+        alignItems="center"
+        className={classes.background}
+      >
+        <Grid item sm={10} xs={12} className={scss.panel}>
+          <Grid direction={panelDirection} container spacing={0}>
+            <Grid
+              item
+              sm={6}
+              xs={12}
+            >
+              <Card className={classNames(scss.card, classes['primary-card'])}>
+                <CardContent className={scss['launch-content']}>
+                  <img src={logoImage} className={scss['launch-logo']} alt="logo" />
+                  <Typography variant="headline" component="h2" gutterBottom>
                   Launch ICO
-                </Typography>
-                <Typography component="p" gutterBottom>
+                  </Typography>
+                  <Typography component="p" gutterBottom>
                   Enter your ICO information here to make your ICO available to investors
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-          >
-          <Card className={scss.card}>
-            <CardContent>
-                <Grid>
-                  <TextField
-                    label="ICO Name"
-                    value={this.state.icoName}
-                    onChange={(e) => this.onChange("icoName", e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
-                <br/>
-                <Grid>
-                  <TextField
-                    type="date"
-                    label="Start Date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    value={this.state.startDate}
-                    onChange={(e) => this.onChange("startDate", e.target.value)}
-                    fullWidth
-                  />
-                  </Grid>
-                  <br/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid
+              item
+              sm={6}
+              xs={12}
+            >
+              <Card className={scss.card}>
+                <CardContent>
                   <Grid>
-                  <TextField
-                    type="date"
-                    label="End Date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    value={this.state.endDate}
-                    onChange={(e) => this.onChange("endDate", e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
-                <br/>
-                <Grid>
-                  <TextField
-                    label="Founder Name"
-                    value={this.state.founderName}
-                    onChange={(e) => this.onChange("founderName", e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
-                <br/>
-                <Grid>
-                  <TextField
-                    label="Company Name"
-                    value={this.state.companyName}
-                    onChange={(e) => this.onChange("companyName", e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
-                <br/>
-                <Grid>
-                  <TextField
-                    label="Country of Origin"
-                    value={this.state.countryOfOrigin}
-                    onChange={(e) => this.onChange("countryOfOrigin", e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
+                    <TextField
+                      label="ICO Name"
+                      value={this.state.icoName}
+                      onChange={e => this.onChange("icoName", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      type="date"
+                      label="Start Date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      value={this.state.startDate}
+                      onChange={e => this.onChange("startDate", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      type="date"
+                      label="End Date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      value={this.state.endDate}
+                      onChange={e => this.onChange("endDate", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      label="Founder Name"
+                      value={this.state.founderName}
+                      onChange={e => this.onChange("founderName", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      label="Company Name"
+                      value={this.state.companyName}
+                      onChange={e => this.onChange("companyName", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      label="Country of Origin"
+                      value={this.state.countryOfOrigin}
+                      onChange={e => this.onChange("countryOfOrigin", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
 
-            </CardContent>
-            <CardActions>
-              <Button fullWidth onClick={() => this.onSubmit()} color="secondary" variant="raised">Launch ICO</Button>
-            </CardActions>
-          </Card>
+                </CardContent>
+                <CardActions>
+                  <Button fullWidth onClick={() => this.onSubmit()} color="secondary" variant="raised">Launch ICO</Button>
+                </CardActions>
+              </Card>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
 
-  );
-};
-};
+    );
+  }
+}
 
 LaunchICO.propTypes = {
   classes: PropTypes.shape({}).isRequired,
