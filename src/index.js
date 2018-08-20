@@ -1,14 +1,14 @@
-import React from 'react';//basic react package
-import ReactDOM from 'react-dom';//basic react package
-import { BrowserRouter as Router } from 'react-router-dom';//package
-import './index.css';//css that covers the website in general as opposed to any specific components
-import App from './app.component';//the location of the component from which all other components stem
-import { Provider } from 'react-redux';//package
-import { createStore } from 'redux';//package
-import portalApp from './reducers';//location of code that changes the website's theme
-import registerServiceWorker from './registerServiceWorker';//location of code which loads components of the website from the cache
-import WebFont from 'webfontloader';//package that loads a font package from the web
-//loads the Barlow font which is the default font for the website
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+import App from './app.component';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import portalApp from './reducers';
+import registerServiceWorker from './registerServiceWorker';
+import WebFont from 'webfontloader';
+
 WebFont.load({
   google: {
     families: ['Barlow:300,400,400i,500,600,700']

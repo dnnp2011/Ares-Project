@@ -35,6 +35,7 @@ class Detail extends React.Component {
       </AppBar>
       Name: {this.props.match.name}
         </div>
+        
     );
   }
 }
