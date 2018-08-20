@@ -17,14 +17,12 @@ WebFont.load({
 
 const store = createStore(portalApp);
 
-// the provider component is the component responsible for the changing and loading of the websites theme
-// the app component is the component that all components stem from
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App />
     </Router>
   </Provider>,
-  document.getElementById('root') // attaches the app component to the website HTML located at index.html
+  document.getElementById('root')
 );
-registerServiceWorker();//runs code involved in loading website compoments from the cache
+registerServiceWorker();
