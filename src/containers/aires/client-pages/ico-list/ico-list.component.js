@@ -22,26 +22,24 @@ class IcoList extends React.Component {
 
   componentWillMount() {
     fs.doGetAllIcos().then((snapshot) => {
-      let icosList = [];
-      let collectionList = snapshot.docs;
+      const icosList = [];
+      const collectionList = snapshot.docs;
 
-      collectionList.map((ico) => {
-        // console.log(ico.data().price);
-        icosList.push({ [ico.id]: ico.data() });
-      });
+      collectionList.map(ico =>
+        icosList.push({ [ico.id]: ico.data() }));
       this.setState({
         icos: icosList,
-        collection: collectionList,
+        collection: collectionList
       });
 
-      console.log(this.state.icos[0]);
+      console.log(this.state.icos);
     });
   }
 
   render() {
-    // this.state.icos.map((ico) => {
-    //   console.log(`${Object.keys(ico)} : ${Object.values(ico)}`);
-    // });
+    this.state.icos.map((ico) => {
+      console.log(`${Object.keys(ico)} : ${Object.values(ico)}`);
+    });
     const coins = [
       {
         key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2019', price: '$6,345.00', phase: 'Presale'
@@ -61,8 +59,7 @@ class IcoList extends React.Component {
           </Toolbar>
         </AppBar>
         <br />
-        {!this.state.icos ? null : this.state.icos.map(ico =>
-          <Ico {...Object.values(ico)} />)}
+        {this.state.icos ? this.state.icos.map(ico => <Ico name={ico.name} />) : null}
       </div>
     );
   }

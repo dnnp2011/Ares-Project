@@ -15,6 +15,7 @@ import Detail from '../ico-detail/ico-detail.component';
 import { fs } from '../../../../firebase';
 
 class Ico extends React.Component {
+
   render() {
     const {
       classes,
@@ -25,7 +26,6 @@ class Ico extends React.Component {
       name, price, start, end, phase
     } = this.props;
 
-    console.log(`Props: ${this.props}`);
     return (
       <div>
         <Link to={{ pathname: `/browse-icos/details/`, name }} style={{ textDecoration: 'none' }}>
