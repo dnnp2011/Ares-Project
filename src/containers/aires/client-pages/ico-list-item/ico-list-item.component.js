@@ -23,12 +23,13 @@ class Ico extends React.Component {
 
     const {
       name, price, start, end, phase
-    } = this.props;
-
-    console.log(`Props: ${this.props}`);
+    } = this.props[0];
+    console.log(`Props: ${name}, ${price}, ${start}, ${end}, ${phase}`);
     return (
       <div>
+
         <Link to={{ pathname: `/browse-icos/details/`, name }} style={{ textDecoration: 'none' }}>
+
           <Card className={classNames(scss.card, classes['primary-card'])}>
             <Typography className={scss.coin} variant="display1" gutterBottom>
               {name}

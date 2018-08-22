@@ -22,9 +22,11 @@ import logoImage from '../../../../assets/images/portal-logo.png';
 import { fs } from '../../../../firebase';
 
 const INIT_STATE = {
-  icoName: '',
-  startDate: '',
-  endDate: '',
+  name: '',
+  start: '',
+  end: '',
+  phase: '',
+  price: '',
   founderName: '',
   companyName: '',
   countryOfOrigin: '',
@@ -36,8 +38,8 @@ class LaunchICO extends React.Component {
   };
 
   onSubmit() {
-    console.log(`Form Submitted, State: ${this.state.icoName}`);
-    fs.doSetIcoData(this.state.icoName, this.state.startDate, this.state.endDate, this.state.founderName, this.state.companyName, this.state.countryOfOrigin);
+    console.log(`Form Submitted, State: ${this.state.name}`);
+    fs.doSetIcoData(this.state.name, this.state.start, this.state.end, this.state.founderName, this.state.companyName, this.state.countryOfOrigin, this.state.phase, this.state.price);
   }
 
   onChange(field, value) {
@@ -94,8 +96,8 @@ class LaunchICO extends React.Component {
                   <Grid>
                     <TextField
                       label="ICO Name"
-                      value={this.state.icoName}
-                      onChange={e => this.onChange("icoName", e.target.value)}
+                      value={this.state.name}
+                      onChange={e => this.onChange("name", e.target.value)}
                       fullWidth
                     />
                   </Grid>
@@ -107,8 +109,8 @@ class LaunchICO extends React.Component {
                       InputLabelProps={{
                         shrink: true,
                       }}
-                      value={this.state.startDate}
-                      onChange={e => this.onChange("startDate", e.target.value)}
+                      value={this.state.start}
+                      onChange={e => this.onChange("start", e.target.value)}
                       fullWidth
                     />
                   </Grid>
@@ -120,8 +122,26 @@ class LaunchICO extends React.Component {
                       InputLabelProps={{
                         shrink: true,
                       }}
-                      value={this.state.endDate}
-                      onChange={e => this.onChange("endDate", e.target.value)}
+                      value={this.state.end}
+                      onChange={e => this.onChange("end", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      label="Phase"
+                      value={this.state.phase}
+                      onChange={e => this.onChange("phase", e.target.value)}
+                      fullWidth
+                    />
+                  </Grid>
+                  <br />
+                  <Grid>
+                    <TextField
+                      label="Price"
+                      value={this.state.price}
+                      onChange={e => this.onChange("price", e.target.value)}
                       fullWidth
                     />
                   </Grid>

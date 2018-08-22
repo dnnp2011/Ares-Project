@@ -3,13 +3,23 @@ import 'firebase/auth';
 import 'firebase/database';
 require('firebase/firestore');
 
+// var config = {
+//   apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",
+//   authDomain: "ares-project-orchardblockchain.firebaseapp.com",
+//   databaseURL: "https://ares-project-orchardblockchain.firebaseio.com",
+//   projectId: "ares-project-orchardblockchain",
+//   storageBucket: "ares-project-orchardblockchain.appspot.com",
+//   messagingSenderId: "660326526839"
+// };
+
+//development config variable
 var config = {
-  apiKey: "AIzaSyDnoLsLqejG5dMXO24lZSTqhxTgEFD18Sk",
-  authDomain: "ares-project-orchardblockchain.firebaseapp.com",
-  databaseURL: "https://ares-project-orchardblockchain.firebaseio.com",
-  projectId: "ares-project-orchardblockchain",
-  storageBucket: "ares-project-orchardblockchain.appspot.com",
-  messagingSenderId: "660326526839"
+  apiKey: "AIzaSyCusbnlqqtfHIybSzDziR1HbKlUCppT6D8",
+  authDomain: "ares-practice-database.firebaseapp.com",
+  databaseURL: "https://ares-practice-database.firebaseio.com",
+  projectId: "ares-practice-database",
+  storageBucket: "ares-practice-database.appspot.com",
+  messagingSenderId: "570364030397"
 };
 
 if (!firebase.apps.length) {
