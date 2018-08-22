@@ -28,7 +28,7 @@ class Ico extends React.Component {
     return (
       <div>
 
-        <Link to={{ pathname: `/browse-icos/details/`, name }} style={{ textDecoration: 'none' }}>
+        <Link to={{ pathname: `/browse-icos/details/`, name, price, start, end, phase }} style={{ textDecoration: 'none' }}>
 
           <Card className={classNames(scss.card, classes['primary-card'])}>
             <Typography className={scss.coin} variant="display1" gutterBottom>

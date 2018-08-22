@@ -35,6 +35,14 @@ class Detail extends React.Component {
         </Toolbar>
       </AppBar>
       Name: {this.props.location.name}
+      <br/>
+      Price: {this.props.location.price}
+      <br/>
+      Start: {this.props.location.start}
+      <br/>
+      End: {this.props.location.end}
+      <br/>
+      Phase: {this.props.location.phase}
         </div>
 
     );
