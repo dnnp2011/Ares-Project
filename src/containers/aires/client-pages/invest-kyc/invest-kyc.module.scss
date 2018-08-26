@@ -8,10 +8,17 @@
   width: 100%;
 }
 
+.Button{
+  display:inline-block;
+  self-align: center;
+}
 .card {
-  height: 100%;
-  display: block;
-  padding: 7px;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 24px;
 }
 
 .collectkyc-actions {

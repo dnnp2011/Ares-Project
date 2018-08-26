@@ -4,10 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
-import compose from 'recompose/compose';
-import { connect } from 'react-redux';
-import { saveInfo } from '../../../../../../actions/KYC.actions';
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -25,16 +21,16 @@ const styles = theme => ({
 
 const icos = [
   {
-    value: 'SolarCity',
-    label: '$'
+    value: 'Credit Card',
+    label: 'CC - Credit Card'
   },
   {
     value: 'Bitcoin',
-    label: '€'
+    label: '€ - Bitcoin'
   },
   {
-    value: 'Ethereum',
-    label: '฿'
+    value: 'Bank Account',
+    label: '฿ - Bank Account'
   },
 ];
 
@@ -58,16 +54,16 @@ class TextFields extends React.Component {
         <TextField
           id="select-ICO"
           select
-          label="Select ICO"
+          label="Payment Method"
           className={classes.textField}
           value={this.state.icos}
-          onChange={ event => this.props.saveInfo({ ico: event.target.value })}
+          onChange={this.handleChange('icos')}
           SelectProps={{
             MenuProps: {
               className: classes.menu,
             },
           }}
-          helperText="Please select your desired ICO"
+          helperText="Please select your payment method"
           margin="normal"
         >
           {icos.map(option => (
@@ -84,4 +80,4 @@ TextFields.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default compose(withStyles(styles),connect(null,{ saveInfo }))(TextFields);
+export default withStyles(styles)(TextFields);

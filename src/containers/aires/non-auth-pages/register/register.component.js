@@ -114,7 +114,7 @@ render() {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth href="/login" color="secondary" variant="raised">I'm already registered</Button>
+                  <Button fullWidth href="/login" color="secondary" variant="raised">Im already registered</Button>
                 </CardActions>
               </Card>
             </Grid>

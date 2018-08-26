@@ -25,6 +25,13 @@ import themes from './themes';
 
 export const configuredTheme = themes[0].theme;
 
+export const configuredKYC = {
+  first : '',
+  last : '',
+  ico: '',
+  amount:''
+};
+
 export const configuredLayout = {
   currentLayout: 'classic',
   notificationsOpen: false
@@ -287,6 +294,9 @@ children: [  {
 }, {
   title: 'Invest KYC',
   href: '/browse-icos/invest/kyc'
+}, {
+  title: 'Invest payment',
+  href: '/browse-icos/invest/payment'
 }, {
   title: 'Investment Detail',
   href: '/my-investments/details'
