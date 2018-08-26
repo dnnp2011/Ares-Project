@@ -295,7 +295,7 @@ children: [  {
   title: 'Invest KYC',
   href: '/browse-icos/invest/kyc'
 }, {
-  title: 'Invest payment',
+  title: 'Invest Payment',
   href: '/browse-icos/invest/payment'
 }, {
   title: 'Investment Detail',
