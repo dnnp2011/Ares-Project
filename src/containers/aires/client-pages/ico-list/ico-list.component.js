@@ -5,7 +5,7 @@ import scss from './ico-list.module.scss';
 
 import withWidth from '@material-ui/core/withWidth';
 import compose from 'recompose/compose';
-
+import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles';
 import Ico from '../ico-list-item/ico-list-item.component';
 import Typography from '@material-ui/core/Typography';
@@ -25,6 +25,17 @@ class IcoList extends React.Component {
     super(props);
     this.state = {
       anchorEl: null,
+      originalCoins: [
+          {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2020', price: '6,345.00', phase: 'Presale'},
+          {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'July 2019', price: '6,845.00', phase: 'Presale'},
+          {key: 3, name: 'Bthereum', start: 'Feb 2017', end: 'Jan 2019', price: '7,345.00', phase: 'Presale'},
+          {key: 4, name: 'Zethereum', start: 'Jan 2017', end: 'Jan 2020', price: '5,345.00', phase: 'Presale'},
+          {key: 5, name: 'Methereum', start: 'June 2018', end: 'Dec 2019', price: '6,355.00', phase: 'Presale'},
+          {key: 6, name: 'Elthereum', start: 'Aug 2018', end: 'Nov 2019', price: '6,805.00', phase: 'Presale'},
+          {key: 7, name: 'Ethereum', start: 'May 2018', end: 'Feb 2019', price: '2,345.00', phase: 'Presale'},
+          {key: 8, name: 'Ethereum', start: 'July 2018', end: 'June 2019', price: '9,345.00', phase: 'Presale'},
+          {key: 9, name: 'Ethereum', start: 'May 2017', end: 'June 2019', price: '6,545.00', phase: 'Presale'},
+      ],
       coins: [
           {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2020', price: '6,345.00', phase: 'Presale'},
           {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'July 2019', price: '6,845.00', phase: 'Presale'},
@@ -46,7 +57,7 @@ class IcoList extends React.Component {
     this.handleSortByPriceIncreasing = this.handleSortByPriceIncreasing.bind(this);
     this.handleSortByStartDate = this.handleSortByStartDate.bind(this);
     this.handleSortByEndDate = this.handleSortByEndDate.bind(this);
-
+    this.filterList = this.filterList.bind(this);
   }
 
   handleClick = event => {
@@ -103,13 +114,13 @@ class IcoList extends React.Component {
     var coins = this.state.coins;
     this.setState({
       coins: this.sortData(orderBy, coins),
-      orderBy: orderBy
+      orderBy: orderBy,
+      anchorEl: null
     });
   };
 
   handleSortByName = function() {
     this.handleSort('name');
-    this.handleClose;
   };
   handleSortByNameReverse = function() {
     this.handleSort('reverse');
@@ -127,39 +138,57 @@ class IcoList extends React.Component {
     this.handleSort('end');
   };
 
+  filterList= function(event){
+    var updatedList = this.state.originalCoins;
+    updatedList = updatedList.filter(function(item){
+      return item.name.toLowerCase().search(
+        event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({coins: updatedList});
+  }
+
   render() {
     const { anchorEl, coins } = this.state;
     const { classes } = this.props;
 
     return (
-      <div className="IcoList">
-        <AppBar position="static" className={scss.parent}>
+      <div className={classes.background}>
+        <AppBar position="static" color="secondary" className={scss.parent}>
           <Toolbar>
             <div className={scss.tool}>
               <Typography className={scss.text} variant="title">
                 Pick your crypto
               </Typography>
-              <Button
-                aria-owns={anchorEl ? 'simple-menu' : null}
-                aria-haspopup="true"
-                onClick={this.handleClick}
-                className={scss.menu}
-              >
-                Sort By  <FontAwesome name="caret-down" className={scss.icon}></FontAwesome>
-              </Button>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={this.handleClose}
-              >
-                <MenuItem onClick={this.handleSortByName}>Name: A-Z</MenuItem>
-                <MenuItem onClick={this.handleSortByNameReverse}>Name: Z-A</MenuItem>
-                <MenuItem onClick={this.handleSortByPriceDecreasing}>Price: Highest to Lowest</MenuItem>
-                <MenuItem onClick={this.handleSortByPriceIncreasing}>Price: Lowest to Highest</MenuItem>
-                <MenuItem onClick={this.handleSortByStartDate}>Start Date</MenuItem>
-                <MenuItem onClick={this.handleSortByEndDate}>End Date</MenuItem>
-              </Menu>
+              <div className={scss.menu}>
+                <Input
+                  placeholder="Filter..."
+                  className={scss.filter}
+                  inputProps={{
+                    'aria-label': 'Description',
+                  }}
+                  onChange={this.filterList}
+                />
+                <Button
+                  aria-owns={anchorEl ? 'simple-menu' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                >
+                  Sort By  <FontAwesome name="caret-down" className={scss.icon}></FontAwesome>
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleSortByName}>Name: A-Z</MenuItem>
+                  <MenuItem onClick={this.handleSortByNameReverse}>Name: Z-A</MenuItem>
+                  <MenuItem onClick={this.handleSortByPriceDecreasing}>Price: Highest to Lowest</MenuItem>
+                  <MenuItem onClick={this.handleSortByPriceIncreasing}>Price: Lowest to Highest</MenuItem>
+                  <MenuItem onClick={this.handleSortByStartDate}>Start Date</MenuItem>
+                  <MenuItem onClick={this.handleSortByEndDate}>End Date</MenuItem>
+                </Menu>
+              </div>
             </div>
           </Toolbar>
         </AppBar>
@@ -171,7 +200,6 @@ class IcoList extends React.Component {
           spacing={0}
           justify="center"
           alignItems="center"
-          className={classes.background}
         >
           {coins.map(coin =>
             <Ico key={coin.key} name={coin.name} start={coin.start} end={coin.end} price={coin.price} phase={coin.phase} />
