@@ -1,23 +1,34 @@
 //import actions from actions families
 import { SAVE_INFO } from '../actions/KYC.actions';
+import { connect } from 'react-redux';
+
 
 
 const initialState = {
-  ico: 'None',
-  amount:'0'
+  first : 'Redux initial State',
+  last : 'Redux initial State',
+  ico: '',
+  amount:''
 }
-const KYCReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "SAVE_INFO":
-      let newState = {...state};
-      newState.ico = action.ico;
-      newState.amount = action.amount;
-      return newState;
 
-    default:
-      return state;
+const portalData = JSON.parse(sessionStorage.getItem('portalData'));
 
+const defaultKYC = portalData && portalData.kyc ? portalData.kyc : initialState;
+
+
+const KYCReducer = (state = defaultKYC, action) => {
+    switch (action.type) {
+      case "SAVE_INFO":
+        return {...state,
+            first : action.values.first,
+            last : action.values.last
+          }
+
+      default:
+        return state;
   }
 }
+
+
 
 export default KYCReducer;

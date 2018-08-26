@@ -25,6 +25,13 @@ import themes from './themes';
 
 export const configuredTheme = themes[0].theme;
 
+export const configuredKYC = {
+  first : '',
+  last : '',
+  ico: '',
+  amount:''
+};
+
 export const configuredLayout = {
   currentLayout: 'classic',
   notificationsOpen: false

@@ -4,6 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
+import { saveInfo } from '../../../../../../actions/KYC.actions';
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -57,7 +61,7 @@ class TextFields extends React.Component {
           label="Select ICO"
           className={classes.textField}
           value={this.state.icos}
-          onChange={this.handleChange('icos')}
+          onChange={ event => this.props.saveInfo({ ico: event.target.value })}
           SelectProps={{
             MenuProps: {
               className: classes.menu,
@@ -80,4 +84,4 @@ TextFields.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TextFields);
+export default compose(withStyles(styles),connect(null,{ saveInfo }))(TextFields);

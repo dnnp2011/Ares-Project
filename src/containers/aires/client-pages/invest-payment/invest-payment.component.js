@@ -77,6 +77,7 @@ const Payment = (props) => {
                       email
                       fullWidth
                     />
+                    {props.state.kyc.first}
                   </Grid>
                   <Grid item sm={6} xs={12}>
                   </Grid>
@@ -102,8 +103,9 @@ Payment.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-function mapStateToProps (state) {
+function mapStateToProps (reduxState) {
   return {
+    state : reduxState
   }
 };
 
