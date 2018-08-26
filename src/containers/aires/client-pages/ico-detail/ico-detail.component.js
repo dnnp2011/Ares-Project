@@ -3,11 +3,12 @@ import React from 'react';
 import themeStyles from './ico-detail.theme.style';
 import scss from './ico-detail.module.scss';
 import { withStyles } from '@material-ui/core/styles';
-
+import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
-
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import withWidth from '@material-ui/core/withWidth';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -22,11 +23,25 @@ import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
 class Detail extends React.Component {
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  handleChangeIndex = index => {
+    this.setState({ value: index });
+  };
+
   render() {
-    const { classes } = this.props;
+    const { classes, width } = this.props;
+    const { value } = this.state;
+    const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-        <div>
+        <div className={classes.background}>
           <AppBar position="static">
             <Toolbar>
               <Typography variant="title" color="inherit">
@@ -37,43 +52,67 @@ class Detail extends React.Component {
           <Grid
             container
             direction="row"
-            spacing={0}
+            spacing={16}
             justify="center"
             alignItems="center"
             classNames={classes.background}
           >
-            <Grid item sm={10} xs={12}>
-              <Card className={scss.card}>
-                <div className={scss.center}><img src={logoImage} alt="logo image" /></div>
-                <Typography variant="headline" className={scss.center} gutterBottom>
-                  Name: {this.props.match.name}
-                </Typography>
-                <br/>
+          <Grid item sm={10} xs={12} className={scss.panel}>
+            <Grid direction={panelDirection} container spacing={0.5}>
+              <Grid item sm={4} xs={6}>
+                <Paper className={scss.card}>
+                  <div className={scss.logo}><img src={logoImage} alt="logo image" /></div>
+                  <Typography variant="title" className={scss.name} gutterBottom>
+                    Bitcoin
+                  </Typography>
+                  <Typography variant="body2" className={scss.price} gutterBottom>
+                    Price: $1635.00
+                  </Typography>
+                  <Typography gutterBottom>
+                    Start Date: Jan 2018
+                  </Typography>
+                  <Typography gutterBottom>
+                    End Date: Sept 2018
+                  </Typography>
+                  <Button variant="contained" color="primary"  className={scss.button}>Invest</Button>
+                </Paper>
+              </Grid>
 
-                <Typography className={scss.details} gutterBottom>
-                  Lorem ipsum a imperdiet non tincidunt aenean euismod, aenean commodo molestie facilisis himenaeos ad, morbi ut rhoncus porta sem mollis placerat etiam rhoncus arcu aptent mi blandit diam proin netus integer vestibulum quisque, mollis quis consectetur nunc lectus tempus suscipit turpis libero ullamcorper ligula vel eleifend aliquam auctor lacus dolor ad ornare ad conubia ultrices urna est.
-                </Typography>
-                <br/>
-
-                <Typography className={scss.details} gutterBottom>
-                  Cursus fusce venenatis neque scelerisque orci nullam iaculis sem dui eros blandit nulla, libero nulla facilisis ut metus facilisis semper sed semper per mi, elementum congue volutpat eros condimentum ac nulla turpis non mauris taciti eros taciti vulputate class nunc risus aliquam blandit auctor, nam justo diam nisi commodo proin dui, mollis euismod ultrices consectetur mauris ornare varius.
-                </Typography>
-                <br/>
-
-                <Typography className={scss.details} gutterBottom>
-                  Purus curabitur habitasse aenean integer id eget, eu sodales sed bibendum phasellus porttitor, adipiscing inceptos etiam commodo duis placerat turpis mi per blandit nisl condimentum, sagittis id imperdiet platea dictumst curae donec, lacinia neque nulla donec quisque.
-                </Typography>
-                <br/>
-
-                <Typography className={scss.details} gutterBottom>
-                  Egestas torquent convallis sapien turpis aenean curae justo luctus suspendisse, ligula class etiam accumsan purus scelerisque ad accumsan, arcu pretium conubia mollis pretium integer condimentum gravida velit primis aliquet enim suspendisse donec diam ornare enim nisl nulla pulvinar vitae.
-                </Typography>
-                <br/>
-
-                <Typography className={scss.details} gutterBottom>
-                  Urna feugiat bibendum mattis iaculis proin vitae egestas placerat, curabitur mattis justo massa etiam erat cursus donec, cras sem libero lectus luctus egestas nam lacinia ultrices gravida senectus fusce congue magna commodo euismod, imperdiet diam turpis laoreet ultricies quisque proin cubilia, aptent integer nam imperdiet donec fusce arcu.
-                </Typography>
-              </Card>
+              <Grid item sm={8} xs={12}>
+                <Card>
+                </Card>
+                <Card className={scss["details-card"]}>
+                  <AppBar position="static" color="default">
+                    <Tabs
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                      className={scss.tabs}
+                      centered
+                      fullWidth
+                    >
+                      <Tab label="Item One" />
+                      <Tab label="Item Two" />
+                      <Tab label="Item Three" />
+                    </Tabs>
+                  </AppBar>
+                  {value === 0 &&
+                    <Typography className={scss.details}>
+                      Lorem ipsum a imperdiet non tincidunt aenean euismod, aenean commodo molestie facilisis himenaeos ad, morbi ut rhoncus porta sem mollis placerat etiam rhoncus arcu aptent mi blandit diam proin netus integer vestibulum quisque, mollis quis consectetur nunc lectus tempus suscipit turpis libero ullamcorper ligula vel eleifend aliquam auctor lacus dolor ad ornare ad conubia ultrices urna est.
+                    </Typography>
+                  }
+                  {value === 1 &&
+                    <Typography className={scss.details}>
+                      Egestas torquent convallis sapien turpis aenean curae justo luctus suspendisse, ligula class etiam accumsan purus scelerisque ad accumsan, arcu pretium conubia mollis pretium integer condimentum gravida velit primis aliquet enim suspendisse donec diam ornare enim nisl nulla pulvinar vitae.
+                    </Typography>
+                  }
+                  {value === 2 &&
+                    <Typography className={scss.details}>
+                      Cursus fusce venenatis neque scelerisque orci nullam iaculis sem dui eros blandit nulla, libero nulla facilisis ut metus facilisis semper sed semper per mi, elementum congue volutpat eros condimentum ac nulla turpis non mauris taciti eros taciti vulputate class nunc risus aliquam blandit auctor, nam justo diam nisi commodo proin dui, mollis euismod ultrices consectetur mauris ornare varius.
+                    </Typography>
+                  }
+                </Card>
+              </Grid>
+            </Grid>
             </Grid>
           </Grid>
         </div>
