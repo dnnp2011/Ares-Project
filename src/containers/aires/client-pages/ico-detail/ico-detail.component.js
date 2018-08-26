@@ -24,6 +24,7 @@ import Divider from "../../../elements/divider/divider.component";
 class Detail extends React.Component {
 
   render() {
+    console.log(this.props.location.name);
     return (
         <div>
         <AppBar position="static">
@@ -33,8 +34,9 @@ class Detail extends React.Component {
           </Typography>
         </Toolbar>
       </AppBar>
-      Name: {this.props.match.name}
+      Name: {this.props.location.name}
         </div>
+
     );
   }
 }
