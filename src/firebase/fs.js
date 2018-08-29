@@ -20,23 +20,21 @@ export const doCreateUser = (uid, email, firstName = '', lastName = '') =>
   });
 
 export const doCreateCustomData = (fields, values, uid) => {
-  fields.map((field) => {
-    values.map((value) => {
-      fs.collection('users').doc(uid).set({
-        field: value,
-      });
-    });
+  fields.map((field, element) => {
+    fs.collection('users').doc(uid).set({
+      [field]: values[element]
+    }, { merge: true });
   });
-}
+};
 
 
-  /**
+/**
   * Returns a single user document based upon the authuser's UID (User ID)
   * param-> uid: The User's unique identifier assigned upon Firebase auth registration. See firebase/auth for more info.
   * return-> The user document if found, else the error string
   * */
 export const doGetUser = uid =>
-  fs.doc(`users/${uid}`).get();
+  fs.collection('users').doc(uid).get();
 
 //  .then(doc => {
 //   if(!doc.exists) {
@@ -52,4 +50,24 @@ export const doGetUser = uid =>
 
 export const doGetAllUsers = () => {
 
+};
+
+// Launch ICO functions
+export const doGetICOdata = name =>
+  fs.collection('icos').doc(name).get();
+
+export const doGetAllIcos = () =>
+  fs.collection('icos').get();
+
+export const doSetIcoData = (name, start, end, founderName, companyName, countryOfOrigin, phase, price) => {
+  fs.collection('icos').doc(name).set({
+    name,
+    start,
+    end,
+    founderName,
+    companyName,
+    countryOfOrigin,
+    phase,
+    price,
+  });
 };

@@ -41,7 +41,7 @@ class Detail extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-        <div className={classes.background}>
+        <div>
           <AppBar position="static">
             <Toolbar>
               <Typography variant="title" color="inherit">
@@ -63,16 +63,16 @@ class Detail extends React.Component {
                 <Paper className={scss.card}>
                   <div className={scss.logo}><img src={logoImage} alt="logo image" /></div>
                   <Typography variant="title" className={scss.name} gutterBottom>
-                    Bitcoin
+                    {this.props.location.name}
                   </Typography>
                   <Typography variant="body2" className={scss.price} gutterBottom>
-                    Price: $1635.00
+                    Price: {this.props.location.price}
                   </Typography>
                   <Typography gutterBottom>
-                    Start Date: Jan 2018
+                    Start Date: {this.props.location.start}
                   </Typography>
                   <Typography gutterBottom>
-                    End Date: Sept 2018
+                    End Date: {this.props.location.end}
                   </Typography>
                   <Button variant="contained" color="primary"  className={scss.button}>Invest</Button>
                 </Paper>

@@ -47,6 +47,8 @@ class IcoList extends React.Component {
           {key: 8, name: 'Ethereum', start: 'July 2018', end: 'June 2019', price: '9,345.00', phase: 'Presale'},
           {key: 9, name: 'Ethereum', start: 'May 2017', end: 'June 2019', price: '6,545.00', phase: 'Presale'},
       ],
+      collection: [],
+      icos: [],
       orderBy: 'key'
     };
 
@@ -59,6 +61,24 @@ class IcoList extends React.Component {
     this.handleSortByEndDate = this.handleSortByEndDate.bind(this);
     this.filterList = this.filterList.bind(this);
   }
+
+  componentWillMount() {
+fs.doGetAllIcos().then((snapshot) => {
+  let icosList = [];
+  let collectionList = snapshot.docs;
+
+  collectionList.map((ico) => {
+    // console.log(ico.data().price);
+    icosList.push({ [ico.id]: ico.data() });
+  });
+  this.setState({
+    icos: icosList,
+    collection: collectionList,
+  });
+
+  console.log(this.state.icos[0]);
+});
+}
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -201,9 +221,8 @@ class IcoList extends React.Component {
           justify="center"
           alignItems="center"
         >
-          {coins.map(coin =>
-            <Ico key={coin.key} name={coin.name} start={coin.start} end={coin.end} price={coin.price} phase={coin.phase} />
-          )}
+          {!this.state.icos ? null : this.state.icos.map(ico =>
+          <Ico {...Object.values(ico)} />)}
           </Grid>
         </div>
       </div>

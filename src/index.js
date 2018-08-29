@@ -25,6 +25,6 @@ ReactDOM.render(
       <App />
     </Router>
   </Provider>,
-  document.getElementById('root') // attaches the app component to the website HTML located at index.html
+  document.getElementById('root')
 );
-registerServiceWorker();//runs code involved in loading website compoments from the cache
+registerServiceWorker();
