@@ -27,7 +27,7 @@ export const configuredTheme = themes[0].theme;
 
 export const configuredKYC = {
   first : '',
-  last : '',
+  last : 'Configured initial state',
   ico: '',
   amount:''
 };
