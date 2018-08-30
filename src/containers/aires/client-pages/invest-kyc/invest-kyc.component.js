@@ -27,20 +27,26 @@ import DropdownInput from './components/DropdownInput/DropdownInput';
 import { connect } from 'react-redux';
 import { saveInfo } from '../../../../actions/KYC.actions';
 
+import  { Link } from 'react-router-dom';
+
 class CollectKYC extends React.Component {
   constructor(props){
     super(props);
     this.state= {
-      firstName:'Local Initial State',
-      lastName:'Local Initial State',
-      ico:'',
-      numberOfIco: 6
+      firstName:'',
+      lastName:'',
+      email: '',
+      phoneNo: ''
     };
   };
 
   handleSubmit = (e) => {
-    this.props.saveInfo({first : this.state.firstName, last: this.state.lastName});
-    e.preventDefault();
+    this.props.saveInfo({
+      first : this.state.firstName,
+      last: this.state.lastName,
+      email: this.state.email,
+      phoneNo: this.state.phoneNo
+    });
   };
 
 
@@ -77,9 +83,10 @@ class CollectKYC extends React.Component {
                       fullWidth
                       label="First Name"
                       type="text"
-                      // value={firstName}
+                      placeholder = {this.props.reduxState.kyc.first}
                       inline
                       onChange={ event => this.setState({firstName : event.target.value })}
+                      value = {this.state.ico}
                       />
                     </Grid>
                     <Grid item sm={6} xs={12}>
@@ -88,6 +95,7 @@ class CollectKYC extends React.Component {
                       label="Last Name"
                       type="text"
                       inline
+                      placeholder = {this.props.reduxState.kyc.last}
                       onChange={ event => this.setState({lastName : event.target.value })}
                       />
                     </Grid>
@@ -99,7 +107,8 @@ class CollectKYC extends React.Component {
                         type="email"
                         email
                         fullWidth
-                        value = {this.state.firstName}
+                        placeholder = {this.props.reduxState.kyc.email}
+                        onChange={ event => this.setState({email : event.target.value })}
                       />
                     </Grid>
                     <Grid item sm={6} xs={12}>
@@ -108,8 +117,8 @@ class CollectKYC extends React.Component {
                         type="phone number"
                         phone
                         fullWidth
-                        value = {this.props.reduxState.kyc.last}
-
+                        placeholder = {this.props.reduxState.kyc.phoneNo}
+                        onChange={ event => this.setState({phoneNo : event.target.value })}
                       />
                     </Grid>
                   </Grid>
@@ -129,7 +138,8 @@ class CollectKYC extends React.Component {
                     />
                   </Grid>
                   <Grid>
-                    <DropdownInput onChange={ event => this.props.saveInfo({ico : event.target.value })} />
+                    <DropdownInput />
+                    {this.state.ico}
                   </Grid>
                   <NumberInput numberOfIco={this.state.numberOfIco}/>
                   <Grid>
@@ -138,7 +148,9 @@ class CollectKYC extends React.Component {
                 </CardContent>
                 <CardActions>
                   <Grid>
-                    <Button href="/browse-icos/invest/payment" onClick={ (e) =>this.handleSubmit(e)} color="secondary" variant="raised" className={classes.button}>Submit KYC</Button>
+                    <Link to={{pathname: `/browse-icos/invest/payment`}} style={{ textDecoration: 'none' }}>
+                      <Button href="#" onClick={ (e) =>this.handleSubmit(e)} color="secondary" variant="raised" className={classes.button}>Submit KYC</Button>
+                    </Link>
                   </Grid>
                 </CardActions>
               </Card>

@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
-import { saveInfo } from '../../../../../../actions/KYC.actions';
+import { saveIcoInfo } from '../../../../../../actions/KYC.actions';
 
 const styles = theme => ({
   container: {
@@ -39,29 +39,33 @@ const icos = [
 ];
 
 class TextFields extends React.Component {
-  state = {
-     name: 'Cat in the Hat',
-     age: '',
-     multiline: 'Controlled',
-     icos: 'Bitcoin',
-   };
+  constructor(props){
+    super(props);
+    this.state= {
+      icos: 'SolarCity'
+    };
+  };
+
+
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      [name]: event.target.value
     });
+    this.props.saveIcoInfo({ico: this.state.icos})
   };
 
   render() {
     const { classes } = this.props;
 
     return (
+      <div>
         <TextField
           id="select-ICO"
           select
           label="Select ICO"
           className={classes.textField}
           value={this.state.icos}
-          onChange={ event => this.props.saveInfo({ ico: event.target.value })}
+          onChange={this.handleChange('icos')}
           SelectProps={{
             MenuProps: {
               className: classes.menu,
@@ -76,6 +80,8 @@ class TextFields extends React.Component {
             </MenuItem>
           ))}
         </TextField>
+      </div>
+
     );
   }
 }
@@ -84,4 +90,4 @@ TextFields.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default compose(withStyles(styles),connect(null,{ saveInfo }))(TextFields);
+export default compose(withStyles(styles),connect(null,{ saveIcoInfo }))(TextFields);
