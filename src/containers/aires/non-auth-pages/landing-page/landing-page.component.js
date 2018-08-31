@@ -24,7 +24,7 @@ const LandingPage = (props) => {
     width
   } = props;
 
-  // Flip container to column on mobile screens.
+	// Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
 
   return (
@@ -43,7 +43,7 @@ const LandingPage = (props) => {
           <CardContent className={scss['landing-page-content']}>
             <img src={logoImage} className={scss['landing-page-logo']} alt="logo" />
             <Typography variant='headline' gutterBottom>Welcome!</Typography>
-            <Typography>Aires Dashboard is a tool to connect investors with opportunities to invest in the next big crypto revolution!</Typography>
+            <Typography>Ares Dashboard is a tool to connect investors with opportunities to invest in the next big crypto revolution!</Typography>
           </CardContent>
         </Paper>
       </Grid>
