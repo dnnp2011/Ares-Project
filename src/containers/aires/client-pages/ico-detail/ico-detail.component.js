@@ -12,8 +12,7 @@ import Tab from '@material-ui/core/Tab';
 import withWidth from '@material-ui/core/withWidth';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -21,6 +20,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
+
+import ProjectStatesWidget from './components/project-states-widget/project-states.component';
+import DailySalesWidget from './components/daily-sales-widget/daily-sales-widget.component';
+import TabbedChartWidget from './components/tabbed-chart-widget/tabbed-chart-widget.component';
 
 class Detail extends React.Component {
   state = {
@@ -41,46 +44,71 @@ class Detail extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-        <div className={classes.background}>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="title" color="inherit">
-                ICO Detail
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Grid
-            container
-            direction="row"
-            spacing={16}
-            justify="center"
-            alignItems="center"
-            classNames={classes.background}
-          >
-          <Grid item sm={10} xs={12} className={scss.panel}>
-            <Grid direction={panelDirection} container spacing={0.5}>
-              <Grid item sm={4} xs={6}>
-                <Paper className={scss.card}>
-                  <div className={scss.logo}><img src={logoImage} alt="logo image" /></div>
-                  <Typography variant="title" className={scss.name} gutterBottom>
-                    Bitcoin
-                  </Typography>
-                  <Typography variant="body2" className={scss.price} gutterBottom>
-                    Price: $1635.00
-                  </Typography>
-                  <Typography gutterBottom>
-                    Start Date: Jan 2018
-                  </Typography>
-                  <Typography gutterBottom>
-                    End Date: Sept 2018
-                  </Typography>
-                  <Button variant="contained" color="primary"  className={scss.button}>Invest</Button>
+      <div>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              ICO Detail
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Grid container spacing={16} justify="center" alignContent="center"  className={scss.background}>
+
+          <Grid item sm={12} xs={12} md={12} className={scss.line}>
+            <Grid container spacing={8} justify="center">
+              <Grid item sm={12} xs={12} md={9}>
+                <Paper className={scss["project-status"]}>
+                  <ProjectStatesWidget />
                 </Paper>
               </Grid>
 
-              <Grid item sm={8} xs={12}>
-                <Card>
-                </Card>
+              <Grid item sm={12} xs={12} md={3}>
+                <Paper className={scss.marketing}>
+                  <Typography>
+                    Lorem ipsum a imperdiet euismod, aenean facilisis himenaeos ad, morbi ut rhoncus porta sem mollis placerat etiam rhoncus arcu aptent mi blandit diam proin netus integer vestibulum quisque, mollis quis consectetur nunc lectus tempus suscipit turpis libero.
+                  </Typography>
+                </Paper>
+              </Grid>
+
+            </Grid>
+          </Grid>
+
+          <Grid item sm={12} xs={12} md={12}>
+            <Grid container spacing={16} justify="center">
+
+              <Grid item sm={10} xs={10} md={3} className={scss.line}>
+                <Grid container spacing={16} alignContent="center" justify="center" >
+                  <Grid item xs={12} sm={12} md={12}>
+                    <Paper className={scss["basic-info"]}>
+                      <img src={logoImage} alt="logo image" className={scss.logo} />
+                      <Typography variant="title" className={scss.name} gutterBottom>
+                        Bitcoin
+                      </Typography>
+                      <Typography variant="body2" className={scss.price} gutterBottom>
+                        Price: $1635.00
+                      </Typography>
+                      <Typography>
+                        Start Date: Jan 2018
+                      </Typography>
+                      <Typography>
+                        End Date: Sept 2018
+                      </Typography>
+                      <br/>
+                    </Paper>
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={12}>
+                    <Paper>
+                      <Button fullWidth variant="contained" color="primary">Invest</Button>
+                    </Paper>
+                    <Paper>
+                      <Button fullWidth color="secondary">View Whitepaper</Button>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={9}>
                 <Card className={scss["details-card"]}>
                   <AppBar position="static" color="default">
                     <Tabs
@@ -90,9 +118,9 @@ class Detail extends React.Component {
                       centered
                       fullWidth
                     >
-                      <Tab label="Item One" />
-                      <Tab label="Item Two" />
-                      <Tab label="Item Three" />
+                      <Tab label="Details" />
+                      <Tab label="Daily Sales" />
+                      <Tab label="Monthly Sales" />
                     </Tabs>
                   </AppBar>
                   {value === 0 &&
@@ -101,21 +129,22 @@ class Detail extends React.Component {
                     </Typography>
                   }
                   {value === 1 &&
-                    <Typography className={scss.details}>
-                      Egestas torquent convallis sapien turpis aenean curae justo luctus suspendisse, ligula class etiam accumsan purus scelerisque ad accumsan, arcu pretium conubia mollis pretium integer condimentum gravida velit primis aliquet enim suspendisse donec diam ornare enim nisl nulla pulvinar vitae.
-                    </Typography>
+                    <Paper className={classes.portalWidgetContent, scss.charts}>
+                      <DailySalesWidget />
+                    </Paper>
                   }
                   {value === 2 &&
-                    <Typography className={scss.details}>
-                      Cursus fusce venenatis neque scelerisque orci nullam iaculis sem dui eros blandit nulla, libero nulla facilisis ut metus facilisis semper sed semper per mi, elementum congue volutpat eros condimentum ac nulla turpis non mauris taciti eros taciti vulputate class nunc risus aliquam blandit auctor, nam justo diam nisi commodo proin dui, mollis euismod ultrices consectetur mauris ornare varius.
-                    </Typography>
+                    <Paper className={classes.portalWidgetContent, scss.charts}>
+                      <TabbedChartWidget />
+                    </Paper>
                   }
                 </Card>
               </Grid>
-            </Grid>
+
             </Grid>
           </Grid>
-        </div>
+        </Grid>
+      </div>
     );
   }
 }
