@@ -70,11 +70,11 @@ class ContentToolbar extends React.Component {
         {
           this.web3 = new Web3(window.web3.currentProvider);
 
-          this.setState({connected: true}, console.log('connected!!!'))
+          this.setState({connected: true}, console.log('Meta-Mask Connected!'));
         }
         else
         {
-          alert('YOU DO NOT HAVE METAMASK INSTALLED, YOU WILL NOT HAVE ANY ACCESS TO WALLET FEATURES')
+          console.warn("You do not hav Meta-Mask installed, you will not have access to all its features!");
         }
     }
 
@@ -245,11 +245,11 @@ class ContentToolbar extends React.Component {
           )}
         </AuthUserContext.Consumer>
 
-        {this.state.connected?
-           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
-            :
-           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
-        }
+        {this.state.connected ?
+          <h3 title="MetaMask detected and running" style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>METAMASK LIVE</h3>
+          :
+          <h3 title="MetaMask not found, are you sure you have it installed?" style={{ fontFamily: 'Barlow', color: 'black', fontWeight: 'bold' }}>NOT INSTALLED</h3>}
+
 
       </Toolbar>
     );
