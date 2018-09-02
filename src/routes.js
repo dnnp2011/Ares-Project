@@ -49,7 +49,7 @@ const AsyncLock = asyncComponent(() => import('./containers/authentication/lock/
 const AsyncError404 = asyncComponent(() => import('./containers/errors/404.component'));
 const AsyncError500 = asyncComponent(() => import('./containers/errors/500.component'));
 
-const AsyncNotFound = asyncComponent(() => import('./containers/not-found/not-found.component'));
+const AsyncNotFound = asyncComponent(() => import('./containers/errors/404.component'));
 
 // PAGES ROUTES
 const AsyncTypography = asyncComponent(() => import('./containers/pages/typography.component'));
