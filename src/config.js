@@ -275,7 +275,7 @@ title: 'Client Pages',
 icon: <PersonIcon style={iconStyle}/>,
 children: [  {
     title: 'Client Dashboard',
-    href: '/dashboard'
+    href: '/client-dashboard'
   },{
   title: 'Profile',
   href: '/profile:user'
