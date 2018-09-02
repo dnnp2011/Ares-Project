@@ -245,10 +245,10 @@ class ContentToolbar extends React.Component {
           )}
         </AuthUserContext.Consumer>
 
-        {this.state.connected?
-           <h3 style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>LIVE</h3>
-            :
-           <h3 style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>LIVE</h3>
+        {this.state.connected ?
+          <h3 title="MetaMask detected and live" style={{fontFamily: 'Barlow', color:'yellow', fontWeight:'bold'}}>METAMASK LIVE</h3>
+          :
+          <h3 title="MetaMask not detected -- do you have it installed?" style={{fontFamily: 'Barlow', color:'black', fontWeight:'bold'}}>METAMASK NOT INSTALLED</h3>
         }
 
       </Toolbar>
