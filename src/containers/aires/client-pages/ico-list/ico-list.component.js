@@ -152,7 +152,7 @@ class IcoList extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div > {/*  */}
+      <div>
         <AppBar position="static" color="secondary" className={scss.parent}>
           <Toolbar>
             <div className={scss.tool}>

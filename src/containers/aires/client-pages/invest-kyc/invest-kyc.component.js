@@ -24,142 +24,116 @@ import Dropdown from "./components/DropdownList/DropdownList";
 import NumberInput from './components/NumberInput/NumberInput';
 import DropdownInput from './components/DropdownInput/DropdownInput';
 
-import { connect } from 'react-redux';
-import { saveInfo } from '../../../../actions/KYC.actions';
+const CollectKYC = (props) => {
+  const {
+    classes,
+    width
+  } = props;
 
-class CollectKYC extends React.Component {
-  constructor(props){
-    super(props);
-    this.state= {
-      firstName:'Local Initial State',
-      lastName:'Local Initial State',
-      ico:'',
-      numberOfIco: 6
-    };
-  };
+  // state = {
+  //   ico: 'SolarCity',
+  // };
 
-  handleSubmit = (e) => {
-    this.props.saveInfo({first : this.state.firstName, last: this.state.lastName});
-    e.preventDefault();
-  };
+  // Flip container to column on mobile screens.
+  const panelDirection = width === 'xs' ? 'column' : 'row';
+  //
+  // const icos = [
+  //   {
+  //     value: 'SolarCity',
+  //     label: '$'
+  //   },
+  //   {
+  //     value: 'Bitcoin',
+  //     label: '€'
+  //   },
+  //   {
+  //     value: 'Ethereum',
+  //     label: '฿'
+  //   },
+  // ];
 
+  // handleChange = name => (event) => {
+  //   this.setState({
+  //     [name]: event.target.value
+  //   });
+  // };
 
-  render(){
-
-    const {
-      classes,
-      width
-    } = this.props;
-
-
-
-
-    const panelDirection = width === 'xs' ? 'column' : 'row';
-    return (
+  return (
+    <div className={classes.background}>
       <Grid
         container
-        direction="column"
-        spacing={0}
+        spacing={16}
         justify="center"
         alignItems="center"
-        className={classes.background}
+        className={scss.container}
       >
-        <Grid item sm={8} xs={12} className='panel'>
-          <Grid direction={panelDirection} container spacing={0}>
-            <Grid item>
-              <Card className={classNames(scss.card, classes['primary-card'])}>
-                <CardContent className={scss['collectkyc-content']}>
-                  <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
-                  <Typography gutterBottom>Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).</Typography>
-                  <Grid container>
-                    <Grid item sm={6} xs={12}>
-                      <TextField
-                      fullWidth
-                      label="First Name"
-                      type="text"
-                      // value={firstName}
-                      inline
-                      onChange={ event => this.setState({firstName : event.target.value })}
-                      />
-                    </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <TextField
-                      fullWidth
-                      label="Last Name"
-                      type="text"
-                      inline
-                      onChange={ event => this.setState({lastName : event.target.value })}
-                      />
-                    </Grid>
-                  </Grid>
-                  <Grid container>
-                    <Grid item sm={6} xs={12}>
-                      <TextField
-                        label="Email Address"
-                        type="email"
-                        email
-                        fullWidth
-                        value = {this.state.firstName}
-                      />
-                    </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <TextField
-                        label="Phone Number"
-                        type="phone number"
-                        phone
-                        fullWidth
-                        value = {this.props.reduxState.kyc.last}
+        <Grid item sm={7} xs={12} className={scss.panel}>
+          <Card className={classNames(scss.card, classes['primary-card'])}>
 
-                      />
-                    </Grid>
-                  </Grid>
-                  <br/>
-                  <Grid>
-                    <Typography gutterBottom>For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill</Typography>
-                    <br/>
-                    <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
-                      Upload Supporting Documents
-                    </Button>
-                    <input
-                      style={{display:'none'}}
-                      ref={fileInput => this.fileInput =fileInput}
-                      label="Supporting Document"
-                      type="file"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid>
-                    <DropdownInput onChange={ event => this.props.saveInfo({ico : event.target.value })} />
-                  </Grid>
-                  <NumberInput numberOfIco={this.state.numberOfIco}/>
-                  <Grid>
-                    <Dropdown classes={this.props.classes} width={this.props.width}/>
-                  </Grid>
-                </CardContent>
-                <CardActions>
-                  <Grid>
-                    <Button href="/browse-icos/invest/payment" onClick={ (e) =>this.handleSubmit(e)} color="secondary" variant="raised" className={classes.button}>Submit KYC</Button>
-                  </Grid>
-                </CardActions>
-              </Card>
-            </Grid>
-          </Grid>
+            <CardContent className={scss['collectkyc-content']}>
+              <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
+              <Typography gutterBottom>
+                Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).
+              </Typography>
+
+              <TextField
+                label="First Name"
+                type="text"
+                fullWidth
+              />
+              <TextField
+                label="Last Name"
+                type="text"
+                fullWidth
+              />
+              <TextField
+                label="Email Address"
+                type="email"
+                email
+                fullWidth
+              />
+              <TextField
+                label="Phone Number"
+                type="phone number"
+                phone
+                fullWidth
+              />
+              <br/>
+              <br/>
+
+              <Typography>
+                For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill
+              </Typography>
+              <br/>
+              <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
+                Upload Supporting Documents
+              </Button>
+              <input
+                style={{display:'none'}}
+                ref={fileInput => this.fileInput =fileInput}
+                label="Supporting Document"
+                type="file"
+                fullWidth
+              />
+              <br/>
+
+              <DropdownInput/><br/>
+              <NumberInput /><br/>
+              <Dropdown /><br/>
+            </CardContent>
+            <CardActions>
+              <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
-    );
-  };
+    </div>
+  );
 };
-
 
 CollectKYC.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
 };
 
-function mapStateToProps (state) {
-  return {
-    reduxState: state
-  }
-};
-
-export default compose(withWidth(),connect(mapStateToProps, { saveInfo }) , withStyles(themeStyles, { withTheme: true }))(CollectKYC);
+export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(CollectKYC);
