@@ -35,7 +35,7 @@ class GdaxTickerWidget extends React.Component {
         this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
 
         const results = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=1`)
 
