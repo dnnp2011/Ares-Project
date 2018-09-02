@@ -70,11 +70,11 @@ class ContentToolbar extends React.Component {
         {
           this.web3 = new Web3(window.web3.currentProvider);
 
-          this.setState({connected: true}, console.log('connected!!!'))
+          this.setState({connected: true}, console.log('connected!!!'));
         }
         else
         {
-          alert('YOU DO NOT HAVE METAMASK INSTALLED, YOU WILL NOT HAVE ANY ACCESS TO WALLET FEATURES')
+          console.warn("You do not hav Meta-Mask installed, you will not have access to all its features!");
         }
     }
 
