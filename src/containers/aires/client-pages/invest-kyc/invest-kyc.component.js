@@ -59,93 +59,75 @@ const CollectKYC = (props) => {
   // };
 
   return (
-    <Grid
-      container
-      direction="row"
-      spacing={0}
-      justify="center"
-      alignItems="center"
-      className={classes.background}
-    >
-      <Grid item sm={10} xs={12} className='panel'>
-        <Grid direction={panelDirection} container spacing={100}>
-          <Grid
-            item
-            sm={8}
-            xs={10}
-          >
-            <Card className={classNames(scss.card, classes['primary-card'])}>
-              <CardContent className={scss['collectkyc-content']}>
+    <div className={classes.background}>
+      <Grid
+        container
+        spacing={16}
+        justify="center"
+        alignItems="center"
+        className={scss.container}
+      >
+        <Grid item sm={7} xs={12} className={scss.panel}>
+          <Card className={classNames(scss.card, classes['primary-card'])}>
 
-                <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
+            <CardContent className={scss['collectkyc-content']}>
+              <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
+              <Typography gutterBottom>
+                Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).
+              </Typography>
 
-                <Typography gutterBottom>Depending on your country of origin, federal regulations require we collect certain information about investors. This is called KYC (Know Your Client).</Typography>
+              <TextField
+                label="First Name"
+                type="text"
+                fullWidth
+              />
+              <TextField
+                label="Last Name"
+                type="text"
+                fullWidth
+              />
+              <TextField
+                label="Email Address"
+                type="email"
+                email
+                fullWidth
+              />
+              <TextField
+                label="Phone Number"
+                type="phone number"
+                phone
+                fullWidth
+              />
+              <br/>
+              <br/>
 
-                  <Grid>
-                      <TextField
-                      label="First Name"
-                      type="text"
+              <Typography>
+                For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill
+              </Typography>
+              <br/>
+              <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
+                Upload Supporting Documents
+              </Button>
+              <input
+                style={{display:'none'}}
+                ref={fileInput => this.fileInput =fileInput}
+                label="Supporting Document"
+                type="file"
+                fullWidth
+              />
+              <br/>
 
-                    />
-                  </Grid>
-                  <Grid>
-                    <TextField
-                      label="Last Name"
-                      type="text"
-                      fullwidth
-                    />
-                  </Grid>
-
-                <br/>
-                <Grid>
-                  <TextField
-                    label="Email Address"
-                    type="email"
-                    email
-                    fullWidth
-                  />
-                </Grid>
-                <br/>
-                <Grid>
-                  <TextField
-                    label="Phone Number"
-                    type="phone number"
-                    phone
-                    fullWidth
-                  />
-                </Grid>
-                <br/>
-                <Grid>
-                <Typography gutterBottom>For Identity verification purposes, please upload a supporting document as passport,state ID or a utility bill</Typography>
-                <br/>
-                  <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
-                    Upload Supporting Documents
-                  </Button>
-                  <input
-                    style={{display:'none'}}
-                    ref={fileInput => this.fileInput =fileInput}
-                    label="Supporting Document"
-                    type="file"
-                    fullWidth
-                  />
-                </Grid>
-
-                <Grid>
-                  <DropdownInput/>
-                </Grid>
-                <NumberInput />
-                <Grid>
-                  <Dropdown />
-                </Grid>
-              </CardContent>
-              <CardActions>
-                <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>
-              </CardActions>
-            </Card>
-          </Grid>
+              <DropdownInput/><br/>
+              <NumberInput /><br/>
+              <Dropdown /><br/>
+            </CardContent>
+            <CardActions>
+              <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
