@@ -56,7 +56,6 @@ class LaunchICO extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-
       <Grid
         container
         direction="row"
@@ -67,11 +66,7 @@ class LaunchICO extends React.Component {
       >
         <Grid item sm={10} xs={12} className={scss.panel}>
           <Grid direction={panelDirection} container spacing={0}>
-            <Grid
-              item
-              sm={6}
-              xs={12}
-            >
+            <Grid item sm={6} xs={12}>
               <Card className={classNames(scss.card, classes['primary-card'])}>
                 <CardContent className={scss['launch-content']}>
                   <img src={logoImage} className={scss['launch-logo']} alt="logo" />
@@ -84,75 +79,59 @@ class LaunchICO extends React.Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid
-              item
-              sm={6}
-              xs={12}
-            >
+
+            <Grid item sm={6} xs={12}>
               <Card className={scss.card}>
                 <CardContent>
-                  <Grid>
-                    <TextField
-                      label="ICO Name"
-                      value={this.state.icoName}
-                      onChange={e => this.onChange("icoName", e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-                  <br />
-                  <Grid>
-                    <TextField
-                      type="date"
-                      label="Start Date"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      value={this.state.startDate}
-                      onChange={e => this.onChange("startDate", e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-                  <br />
-                  <Grid>
-                    <TextField
-                      type="date"
-                      label="End Date"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      value={this.state.endDate}
-                      onChange={e => this.onChange("endDate", e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-                  <br />
-                  <Grid>
-                    <TextField
-                      label="Founder Name"
-                      value={this.state.founderName}
-                      onChange={e => this.onChange("founderName", e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-                  <br />
-                  <Grid>
-                    <TextField
-                      label="Company Name"
-                      value={this.state.companyName}
-                      onChange={e => this.onChange("companyName", e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-                  <br />
-                  <Grid>
-                    <TextField
-                      label="Country of Origin"
-                      value={this.state.countryOfOrigin}
-                      onChange={e => this.onChange("countryOfOrigin", e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-
+                  <TextField
+                    label="ICO Name"
+                    value={this.state.icoName}
+                    onChange={e => this.onChange("icoName", e.target.value)}
+                    fullWidth
+                  />
+                  <br/>
+                  <TextField
+                    type="date"
+                    label="Start Date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={this.state.startDate}
+                    onChange={e => this.onChange("startDate", e.target.value)}
+                    fullWidth
+                  />
+                  <br/>
+                  <TextField
+                    type="date"
+                    label="End Date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={this.state.endDate}
+                    onChange={e => this.onChange("endDate", e.target.value)}
+                    fullWidth
+                  />
+                  <br/>
+                  <TextField
+                    label="Founder Name"
+                    value={this.state.founderName}
+                    onChange={e => this.onChange("founderName", e.target.value)}
+                    fullWidth
+                  />
+                  <br/>
+                  <TextField
+                    label="Company Name"
+                    value={this.state.companyName}
+                    onChange={e => this.onChange("companyName", e.target.value)}
+                    fullWidth
+                  />
+                  <br/>
+                  <TextField
+                    label="Country of Origin"
+                    value={this.state.countryOfOrigin}
+                    onChange={e => this.onChange("countryOfOrigin", e.target.value)}
+                    fullWidth
+                  />
                 </CardContent>
                 <CardActions>
                   <Button fullWidth onClick={() => this.onSubmit()} color="secondary" variant="raised">Launch ICO</Button>

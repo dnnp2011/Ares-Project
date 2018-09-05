@@ -3,14 +3,17 @@
   animation-delay: 0.6s;
   transform: translateY(20px);
   opacity: 0;
+  padding: 15px;
+  margin: 10px;
 }
 
 .card {
   height: 100%;
   display: block;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding: 24px;
+  margin-bottom: 15px;
 }
 
 .launch-actions {
