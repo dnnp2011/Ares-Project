@@ -195,7 +195,10 @@ children: [{
   },{
   title: 'Login',
   href: '/login'
-}, {
+},{
+  title: 'ICO Admin Login',
+  href: '/login-ico-admin'
+},{
   title: 'Forgot Password',
   href: '/forgot-password'
 }, {
@@ -209,21 +212,6 @@ children: [{
     title: 'Shared Pages',
     icon: <PersonIcon style={iconStyle}/>,
     children: [{
-    title: 'User Login',
-    href: '/login'
-  }, {
-    title: 'Site Admin Login',
-    href: '/login-site-admin'
-  }, {
-    title: 'ICO Admin Login',
-    href: '/login-ico-admin'
-  }, {
-    title: 'Forgot Password',
-    href: '/forgot-password'
-  }, {
-    title: 'Register',
-    href: '/register'
-  }, {
     title: 'Registration Complete',
     href: '/register/registration-complete'
   }, {
@@ -244,11 +232,8 @@ children: [{
     title: 'Launch ICO',
     href: '/launch-ico'
   },{
-    title: 'Forgot Password',
-    href: '/forgot-password'
-  }, {
-    title: 'Investor KYC',
-    href: '/investorKYC'
+    title: 'ICO Project Dashboard',
+    href: '/dashboard/ico'
   }]},
 {
   title: 'Site Admin Pages',
@@ -279,18 +264,12 @@ children: [  {
   },{
   title: 'Profile',
   href: '/profile:user'
-},{
-  title: 'ICO Detail',
-  href: '/browse-icos/details'
 }, {
   title: 'ICO List',
   href: '/browse-icos'
 }, {
-  title: 'Invest',
-  href: 'browse-icos/invest'
-}, {
-  title: 'Invest Confirm',
-  href: '/browse-icos/invest/confirm'
+  title: 'ICO Detail',
+  href: '/browse-icos/details'
 }, {
   title: 'Invest KYC',
   href: '/browse-icos/invest/kyc'
@@ -298,17 +277,20 @@ children: [  {
   title: 'Invest Payment',
   href: '/browse-icos/invest/payment'
 }, {
-  title: 'Investment Detail',
-  href: '/my-investments/details'
+  title: 'Invest Confirm',
+  href: '/browse-icos/invest/confirm'
 }, {
   title: 'Investments',
   href: '/my-investments'
 }, {
-  title: 'New Fund Source',
-  href: '/my-wallet/new-fund-source'
+  title: 'Investment Detail',
+  href: '/my-investments/details'
 }, {
   title: 'Wallet',
   href: '/wallet'
+}, {
+  title: 'New Fund Source',
+  href: '/my-wallet/new-fund-source'
 }]}]}
 ,{
 title: 'Errors',

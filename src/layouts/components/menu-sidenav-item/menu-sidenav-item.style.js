@@ -15,11 +15,10 @@ const styles = theme => ({
     display: 'flex',
     paddingTop: 0,
     paddingBottom: 0,
-    width: '100%',
     minHeight: 48,
     alignItems: 'center',
     boxSizing: 'border-box',
-    paddingLeft: 16,
+    paddingLeft: '9%',
     paddingRight: 16
   },
   listItemActive: {
