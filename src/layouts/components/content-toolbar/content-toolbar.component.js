@@ -230,14 +230,14 @@ class ContentToolbar extends React.Component {
                   onClick={this.handleOpenProfile}
                   >
                   <PersonIcon />
-                </ IconButton>
+                </IconButton>
                 <IconButton
                   color="inherit"
                   aria-label="Logout"
                   onClick={this.handleSignOut}
                   >
-                <FontAwesome name="sign-out" />
-                </ IconButton>
+                <FontAwesome name="sign-out" size="1x" />
+                </IconButton>
               </div>
             )
             :
