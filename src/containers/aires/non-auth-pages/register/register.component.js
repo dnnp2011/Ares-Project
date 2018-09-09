@@ -110,7 +110,7 @@ render() {
                     Register
                   </Typography>
                   <Typography component="p" gutterBottom>
-                    Creating an account with Aires Dashboard is easy! Simply fill out the form and click the register button below.
+                    Creating an account with Ares Dashboard is easy! Simply fill out the form and click the register button below.
                   </Typography>
                 </CardContent>
                 <CardActions>
