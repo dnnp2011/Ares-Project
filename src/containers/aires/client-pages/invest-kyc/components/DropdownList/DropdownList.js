@@ -1,63 +1,87 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
-import './DropdownList.css';
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  menu: {
+    width: 200,
+  },
+});
 
+const fundSource = [
+  {
+    value: 'FirstCard',
+    label: 'First Card'
+  },
+  {
+    value: 'SecondCard',
+    label: 'Second Card'
+  },
+  {
+    value: 'CheckingAccount',
+    label: 'Checking Account'
+  },
+  {
+    value: 'SavingsAccount',
+    label: 'Savings Account'
+  },
+];
 
 class Dropdown extends React.Component {
-constructor(){
- super();
-
- this.state = {
-       displayMenu: false,
-     };
-
-  this.showDropdownMenu = this.showDropdownMenu.bind(this);
-  this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
-
-};
-
-showDropdownMenu(event) {
-    event.preventDefault();
-    this.setState({ displayMenu: true }, () => {
-    document.addEventListener('click', this.hideDropdownMenu);
+  state = {
+     name: 'Cat in the Hat',
+     age: '',
+     multiline: 'Controlled',
+     fundSource: 'FirstCard',
+   };
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
     });
-  }
-
-  hideDropdownMenu() {
-    this.setState({ displayMenu: false }, () => {
-      document.removeEventListener('click', this.hideDropdownMenu);
-    });
-
-  }
+  };
 
   render() {
-    return (
-        <div  className="dropdown" style = {{width:"300px"}} >
-         <Button variant="raised" color="secondary" className='button' color='secondary' onClick={this.showDropdownMenu}> fund source </Button>
+    const { classes } = this.props;
 
-          { this.state.displayMenu ? (
-          <ul>
-           <li><a className="active" href="#">First Card</a></li>
-           <li><a href="#">Second Card</a></li>
-           <li><a href="#">Checking Account</a></li>
-           <li><a href="#">Savings Account</a></li>
-          </ul>
-        ):
-        (
-          null
-        )
-        }
-       </div>
+    return (
+        <TextField
+          id="fund-source"
+          select
+          label="Fund Source"
+          className={classes.textField}
+          value={this.state.fundSource}
+          onChange={this.handleChange('fundSource')}
+          SelectProps={{
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
+          helperText="Please select your fund source"
+          margin="normal"
+        >
+          {fundSource.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
     );
   }
 }
 
 Dropdown.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
-export default Dropdown;
+export default withStyles(styles)(Dropdown);

@@ -106,8 +106,14 @@ const CollectKYC = (props) => {
               </Typography>
               <br/>
               <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
-                Upload Supporting Documents
+                Upload Government ID / Passport
               </Button>
+              <br/>
+              <br/>
+              <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
+                Upload Utility Bill
+              </Button>
+
               <input
                 style={{display:'none'}}
                 ref={fileInput => this.fileInput =fileInput}
@@ -116,9 +122,7 @@ const CollectKYC = (props) => {
                 fullWidth
               />
               <br/>
-
-              <DropdownInput/><br/>
-              <NumberInput /><br/>
+              <br/>
               <Dropdown /><br/>
             </CardContent>
             <CardActions>
