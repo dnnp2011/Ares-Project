@@ -12,6 +12,7 @@ import MostPopularWidget from './components/most-popular-widget/most-popular-wid
 import MarketCapWidget from './components/market-cap-widget/market-cap-widget.component';
 import socketIOClient from 'socket.io-client';
 import axios from "axios";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import styles from './crypto-market-dashboard.style';
 
@@ -25,16 +26,14 @@ class Crypto extends React.Component {
             dailyPerformanceData: [],
             annualPerformanceData: null,
             mostPopularData: null,
-            marketCapData: null,
-            endpoint: "http://127.0.0.1:4001"
-        }
+            marketCapData: null,        }
     }
 
     componentDidMount() {
-        //open up socket
+        //open up socket for data from server
         this.socketListener()
 
-        //emit default values
+        //emit default values for client data
         this.filterStats(1)
         this.filter2(1)
     }
@@ -175,58 +174,59 @@ class Crypto extends React.Component {
     render() {
         const { classes } = this.props;
 
-        let DailyPerformance = this.state.dailyPerformanceData?
+        let DailyPerformance = this.state.dailyPerformanceData&&
                                     <DailyPerformanceWidget
                                         dailyFilter={this.state.dailyPerformanceData}
                                         endpoint={this.state.endpoint}
                                         filterStats={this.filterStats} />
-                                    :
-                                    <p>loading..</p>
 
-        let AnnualPerformance = this.state.annualPerformanceData?
+        let AnnualPerformance = this.state.annualPerformanceData&&
                                     <AnnualPerformanceWidget
                                         marketShareData={this.state.annualPerformanceData}
                                         filter2={this.filter2} />
-                                    :
-                                    <p>loading..</p>
 
-        return (
-            [
-              /* -- Control grid layout, spacing, and breakpoints here -- */
+        let main = (this.state.dailyPerformanceData && this.state.annualPerformanceData)?
 
-              <Grid key={1} item>
-              <Paper key={1} className={classes.portalWidgetContent}>
-                <GdaxTickerWidget products={this.state.tickerData} />
-              </Paper></Grid>,
-              <div key={2} className={classes.portalDashboardPageWrapper}>
+                  (<div>
+                      <Grid key={1} item>
+                        <Paper key={1} className={classes.portalWidgetContent}>
+                          <GdaxTickerWidget products={this.state.tickerData} />
+                        </Paper>
+                      </Grid>
 
-                <Grid item xs={12}>
-                  <Grid container justify="center" spacing={16}>
+                      <div key={2} className={classes.portalDashboardPageWrapper}>
 
-                    <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-                      <Paper className={classes.portalWidgetContent}>
-                        {DailyPerformance}
-                      </Paper>
-                    </Grid>
+                        <Grid item xs={12}>
+                          <Grid container justify="center" spacing={16}>
 
-                    <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                        {AnnualPerformance}
-                    </Grid>
+                            <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
+                              <Paper className={classes.portalWidgetContent}>
+                                {DailyPerformance}
+                              </Paper>
+                            </Grid>
 
-                    <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
-                      <MostPopularWidget popularData={this.state.tickerData} filterStats={this.filterStats} />
-                    </Grid>
+                            <Grid key={2} item xs={12} sm={12} md={4} className={classes.portalWidget}>
+                              {AnnualPerformance}
+                            </Grid>
 
-                    <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>
-                      <MarketCapWidget marketCapData={this.state.marketCapData} />
-                    </Grid>
+                            <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
+                              <MostPopularWidget popularData={this.state.tickerData} filterStats={this.filterStats} />
+                            </Grid>
 
-                  </Grid>
-                </Grid>
-              </div>
-            ]
-        )
-    }
+                            <Grid key={4} item xs={12} sm={12} md={8} className={classes.portalWidget}>
+                              <MarketCapWidget marketCapData={this.state.marketCapData} />
+                            </Grid>
+
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </div>)
+                :
+                <CircularProgress className={classes.loading} size={80} />
+    return (
+          [main]
+    )
+  }
 }
 
 Crypto.propTypes = {

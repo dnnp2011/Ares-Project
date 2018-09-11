@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import themeStyles from './daily-performance-widget.theme.style';
-// import socketIOClient from "socket.io-client";
 
 const legendOptions = {
   display: true,
@@ -117,26 +116,24 @@ class DailySalesWidget extends React.Component {
         }
     }
 
-    componentWillReceiveProps(props) {
+  componentWillReceiveProps(props) {
 
-      if(props.dailyFilter == []){return}
-      if(props.dailyFilter.length !== 30){return}
+    if(props.dailyFilter == []){return}
+    if(props.dailyFilter.length !== 30){return}
 
-      // console.log('dailyfilter', props.dailyFilter)
-
-        //when new props are received, set the new state with the props
-        const newChartData = {
-            ...this.state.lineChartData,
-            datasets: [{data: props.dailyFilter.splice(9,19)},
-                       {data: props.dailyFilter.splice(0,9)},
-                       {data: props.dailyFilter.splice(19,29)}]
-        }
-
-        this.setState({ lineChartData: newChartData });
+      //when new props are received, set the new state with the props
+    const newChartData = {
+        ...this.state.lineChartData,
+        datasets: [{data: props.dailyFilter.splice(9,19)},
+                   {data: props.dailyFilter.splice(0,9)},
+                   {data: props.dailyFilter.splice(19,29)}]
     }
 
+    this.setState({ lineChartData: newChartData });
+  }
+
   handleClick = (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
     this.setState({ anchorEl: e.currentTarget });
   };

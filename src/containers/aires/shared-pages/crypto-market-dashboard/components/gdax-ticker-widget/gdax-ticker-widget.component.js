@@ -12,8 +12,6 @@ class GdaxTickerWidget extends React.Component {
         super(props);
 
         this.state = {
-            // products: null,
-            endpoint: "http://127.0.0.1:4001",
             data: null
         }
 
@@ -31,8 +29,6 @@ class GdaxTickerWidget extends React.Component {
         this.offsetX = 0;
         this.speed = 1;
         this.animationCallback = null;
-
-        this.coinApiKey = 'BCDF3444-F13E-467C-A043-33E55BF4F69D';
     }
 
     async componentDidMount() {
@@ -40,7 +36,6 @@ class GdaxTickerWidget extends React.Component {
         const results = await axios.get(`https://api.coingecko.com/api/v3/coins?per_page=10&page=1`)
 
         this.setState({data: results.data})
-
 
         setTimeout(() => {
             const startPosition = this.strip.getBoundingClientRect();
@@ -51,17 +46,20 @@ class GdaxTickerWidget extends React.Component {
 
     componentWillUnmount() {
         window.cancelAnimationFrame(this.animationCallback);
-        // this.ws.close();
     }
 
     animate = () => {
-        this.offsetX -= 1 * this.speed;
-        this.marquee.style.transform = `translate(${this.offsetX}px, 0) translateZ(0)`;
+        this.offsetX -= 1 * this.speed
+        this.marquee.style.transform = `translate(${this.offsetX}px, 0) translateZ(0)`
 
-        const stripPos = this.strip.getBoundingClientRect();
-        if(stripPos.x < (-stripPos.width + this.startOffsetX)) {this.offsetX = 0}
+        const stripPos = this.strip.getBoundingClientRect()
 
-        this.animationCallback = window.requestAnimationFrame(() => this.animate());
+        if(stripPos.x < (-stripPos.width + this.startOffsetX))
+        {
+          this.offsetX = 0
+        }
+
+        this.animationCallback = window.requestAnimationFrame(() => this.animate())
     }
 
   render() {
@@ -80,7 +78,7 @@ class GdaxTickerWidget extends React.Component {
                     </div>
                 })
                 :
-                this.state.data?
+                this.state.data&&
                 this.state.data.map((x,i) => {
                    return <div className={classes['ticker-item']} key={i}>
                       <div className={classes['ticker-item__name']}>
@@ -92,8 +90,6 @@ class GdaxTickerWidget extends React.Component {
                       </div>
                     </div>
                 })
-                :
-                <h1> incoming...</h1>
 
 
     return (
@@ -110,7 +106,6 @@ class GdaxTickerWidget extends React.Component {
         </div>
       </div>
     )
-
   }
 }
 
