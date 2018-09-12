@@ -20,43 +20,14 @@ import scss from './invest-kyc.module.scss';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
-import Dropdown from "./components/DropdownList/DropdownList";
-import NumberInput from './components/NumberInput/NumberInput';
-import DropdownInput from './components/DropdownInput/DropdownInput';
-
 const CollectKYC = (props) => {
   const {
     classes,
     width
   } = props;
 
-  // state = {
-  //   ico: 'SolarCity',
-  // };
-
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
-  //
-  // const icos = [
-  //   {
-  //     value: 'SolarCity',
-  //     label: '$'
-  //   },
-  //   {
-  //     value: 'Bitcoin',
-  //     label: '€'
-  //   },
-  //   {
-  //     value: 'Ethereum',
-  //     label: '฿'
-  //   },
-  // ];
-
-  // handleChange = name => (event) => {
-  //   this.setState({
-  //     [name]: event.target.value
-  //   });
-  // };
 
   return (
     <div className={classes.background}>
@@ -106,8 +77,14 @@ const CollectKYC = (props) => {
               </Typography>
               <br/>
               <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
-                Upload Supporting Documents
+                Upload Government ID / Passport
               </Button>
+              <br/>
+              <br/>
+              <Button onClick={() =>this.fileInput.click()} variant="raised" color="secondary" className={classes.button}>
+                Upload Utility Bill
+              </Button>
+
               <input
                 style={{display:'none'}}
                 ref={fileInput => this.fileInput =fileInput}
@@ -116,10 +93,7 @@ const CollectKYC = (props) => {
                 fullWidth
               />
               <br/>
-
-              <DropdownInput/><br/>
-              <NumberInput /><br/>
-              <Dropdown /><br/>
+              <br/>
             </CardContent>
             <CardActions>
               <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>

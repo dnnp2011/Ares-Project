@@ -24,7 +24,7 @@ const Project = (props) => {
 
           <Grid key={1} item xs={12} sm={12} md={9} className={classes.portalWidget}>
             <Typography variant="subheading" className={classes.portalWidgetHeading}>
-              Project States
+              Project Goals
             </Typography>
             <Paper className={classes.portalWidgetContent}>
               <ICOProjectStatesWidget />
@@ -33,7 +33,7 @@ const Project = (props) => {
 
           <Grid key={2} item xs={12} sm={12} md={3} className={classes.portalWidget}>
             <Typography variant="subheading" className={classes.portalWidgetHeading}>
-              Weekly Issues
+              Activity
             </Typography>
             <Paper className={classes.portalWidgetContent}>
               <WeeklyIssuesWidget />
@@ -46,7 +46,7 @@ const Project = (props) => {
             <Grid container justify="center" spacing={16}>
               <Grid key={4} item xs={12} className={classes.portalWidget}>
               <Typography variant="subheading" className={classes.portalWidgetHeading}>
-                Issues Status
+                Investor Activity
               </Typography>
                 <Paper className={classes.portalWidgetContent}>
                   <IssuesStatusWidget />
@@ -55,7 +55,7 @@ const Project = (props) => {
 
               <Grid key={5} item xs={12} className={classes.portalWidget}>
                 <Typography variant="subheading" className={classes.portalWidgetHeading}>
-                  Backlog
+                  Funds
                 </Typography>
                 <Paper className={classes.portalWidgetContent}>
                   <BacklogWidget />
@@ -66,7 +66,7 @@ const Project = (props) => {
 
           <Grid key={6} item xs={12} sm={12} md={4} className={classes.portalWidget}>
             <Typography variant="subheading" className={classes.portalWidgetHeading}>
-              Tasks by User
+              Investors
             </Typography>
             <Paper className={classes.portalWidgetContent}>
               <UserTasksWidget />

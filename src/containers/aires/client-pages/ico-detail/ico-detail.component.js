@@ -45,6 +45,7 @@ class Detail extends React.Component {
 
     return (
       <div className={classes.background}>
+        {/**
         <AppBar position="static">
           <Toolbar>
             <Typography variant="title" color="inherit">
@@ -52,6 +53,7 @@ class Detail extends React.Component {
             </Typography>
           </Toolbar>
         </AppBar>
+        **/}
         <Grid container spacing={16} justify="center" alignContent="center"  className={scss.background}>
 
           <Grid item sm={12} xs={12} md={12} className={scss.line}>

@@ -58,7 +58,6 @@ class LaunchICO extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-
       <Grid
         container
         direction="row"
@@ -69,11 +68,7 @@ class LaunchICO extends React.Component {
       >
         <Grid item sm={10} xs={12} className={scss.panel}>
           <Grid direction={panelDirection} container spacing={0}>
-            <Grid
-              item
-              sm={6}
-              xs={12}
-            >
+            <Grid item sm={6} xs={12}>
               <Card className={classNames(scss.card, classes['primary-card'])}>
                 <CardContent className={scss['launch-content']}>
                   <img src={logoImage} className={scss['launch-logo']} alt="logo" />
@@ -86,11 +81,8 @@ class LaunchICO extends React.Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid
-              item
-              sm={6}
-              xs={12}
-            >
+
+            <Grid item sm={6} xs={12}>
               <Card className={scss.card}>
                 <CardContent>
                   <Grid>
