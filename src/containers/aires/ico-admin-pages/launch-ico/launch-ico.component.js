@@ -85,7 +85,6 @@ class LaunchICO extends React.Component {
             <Grid item sm={6} xs={12}>
               <Card className={scss.card}>
                 <CardContent>
-<<<<<<< HEAD
                   <Grid>
                     <TextField
                       label="ICO Name"
@@ -166,57 +165,6 @@ class LaunchICO extends React.Component {
                     />
                   </Grid>
 
-=======
-                  <TextField
-                    label="ICO Name"
-                    value={this.state.icoName}
-                    onChange={e => this.onChange("icoName", e.target.value)}
-                    fullWidth
-                  />
-                  <br/>
-                  <TextField
-                    type="date"
-                    label="Start Date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    value={this.state.startDate}
-                    onChange={e => this.onChange("startDate", e.target.value)}
-                    fullWidth
-                  />
-                  <br/>
-                  <TextField
-                    type="date"
-                    label="End Date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    value={this.state.endDate}
-                    onChange={e => this.onChange("endDate", e.target.value)}
-                    fullWidth
-                  />
-                  <br/>
-                  <TextField
-                    label="Founder Name"
-                    value={this.state.founderName}
-                    onChange={e => this.onChange("founderName", e.target.value)}
-                    fullWidth
-                  />
-                  <br/>
-                  <TextField
-                    label="Company Name"
-                    value={this.state.companyName}
-                    onChange={e => this.onChange("companyName", e.target.value)}
-                    fullWidth
-                  />
-                  <br/>
-                  <TextField
-                    label="Country of Origin"
-                    value={this.state.countryOfOrigin}
-                    onChange={e => this.onChange("countryOfOrigin", e.target.value)}
-                    fullWidth
-                  />
->>>>>>> 90db56293cc06c43037929268486fa5b0c5dfe21
                 </CardContent>
                 <CardActions>
                   <Button fullWidth onClick={() => this.onSubmit()} color="secondary" variant="raised">Launch ICO</Button>

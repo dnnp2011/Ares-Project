@@ -1,10 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
-=======
 
 import Paper from '@material-ui/core/Paper';
->>>>>>> 90db56293cc06c43037929268486fa5b0c5dfe21
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -30,12 +27,6 @@ import {
 
 import styles from './investor-master-dashboard.theme.style';
 
-<<<<<<< HEAD
-
-
-const INVDash = (props) => {
-  const { classes } = props;
-=======
 class InvestorDash extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -43,7 +34,7 @@ class InvestorDash extends React.PureComponent {
       columns: [
         { name: 'userId', title: 'User ID' },
         { name: 'firstName', title: 'First Name' },
-        { name: 'lastName', title: 'Last Name' }, 
+        { name: 'lastName', title: 'Last Name' },
         { name: 'currentInvestments', title: 'Current Investments' },
         { name: 'recentTransaction', title: 'Most Recent Transaction' },
       ],
@@ -97,7 +88,6 @@ class InvestorDash extends React.PureComponent {
 
   render() {
     const { columns, rows } = this.state;
->>>>>>> 90db56293cc06c43037929268486fa5b0c5dfe21
 
     return (
       <Paper>
