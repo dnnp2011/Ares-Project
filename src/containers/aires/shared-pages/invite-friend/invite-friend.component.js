@@ -53,19 +53,25 @@ class InviteFriend extends React.Component {
       alignItems="center"
       className={classes.background}
     >
-    <Grid item sm={6} xs={12} className={scss.panel}>
-      <Grid direction="column" container spacing={0}>
-        <Grid
-          item
-          xs={12}
-        >
+      <Grid item sm={10} xs={12} className={scss.panel}>
+        <Grid direction="row" container spacing={0}>
+          <Grid item sm={6} xs={12}>
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['invite-friend-content']}>
                 <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />
                 <Typography variant="headline" component="h4" gutterBottom>
                   Invite a friend
                 </Typography>
+                <Typography>
+                  Tell your friends about us plz ;_;
+                </Typography>
                 <br/>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item sm={6} xs={12}>
+            <Card className={scss.card}>
+              <CardContent>
                   <Grid>
                     <TextField
                       label="Friend Name"
@@ -74,7 +80,6 @@ class InviteFriend extends React.Component {
                     />
                   </Grid>
                   <br/>
-
                   <Grid>
                     <TextField
                       label="Friend Email"
@@ -82,21 +87,7 @@ class InviteFriend extends React.Component {
                       fullWidth
                     />
                   </Grid>
-
-
-              </CardContent>
-              <CardActions className={scss['invite-friend-actions']}>
-                <Button href="/" color="secondary" variant="raised">Invite Friend</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-          >
-            <Card className={scss.card}>
-              <CardContent>
+                  <br/>
                 <FormControl className={classes.formControl}>
                   <InputLabel htmlFor="ico">ICO</InputLabel>
                   <Select
@@ -115,14 +106,19 @@ class InviteFriend extends React.Component {
                     <MenuItem value="Dogecoin">Dogecoin</MenuItem>
                   </Select>
                 </FormControl>
-
                 <TextField
                   label="Personal Message"
                   type="text"
                   fullWidth
                   multiline
+                  rows="5"
                 />
-
+                <br/>
+                <Grid container direction="column" justify="bottom">
+                  <CardActions className={scss['invite-friend-actions']}>
+                    <Button href="/" color="secondary" variant="raised">Invite Friend</Button>
+                  </CardActions>
+                </Grid>
               </CardContent>
             </Card>
           </Grid>
