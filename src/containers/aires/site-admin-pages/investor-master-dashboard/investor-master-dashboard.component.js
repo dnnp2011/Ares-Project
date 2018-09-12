@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-
+import styles from './investor-master-dashboard.theme.style';
 import {
   Grid,
   Table,
@@ -24,8 +22,6 @@ import {
   FilteringState
 } from '@devexpress/dx-react-grid';
 
-
-import styles from './investor-master-dashboard.theme.style';
 
 class InvestorDash extends React.PureComponent {
   constructor(props) {
@@ -112,18 +108,11 @@ class InvestorDash extends React.PureComponent {
         </Grid>
       </Paper>
     );
-
-<<<<<<< HEAD
-    </div>
-  );
-}
-=======
   }
-};
->>>>>>> 90db56293cc06c43037929268486fa5b0c5dfe21
+}
 
-INVDash.propTypes = {
+InvestorDash.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(INVDash);
+export default withStyles(styles, { withTheme: true })(InvestorDash);
