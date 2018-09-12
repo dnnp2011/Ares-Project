@@ -230,14 +230,15 @@ class ContentToolbar extends React.Component {
                   onClick={this.handleOpenProfile}
                   >
                   <PersonIcon />
-                </ IconButton>
+                </IconButton>
                 <IconButton
                   color="inherit"
                   aria-label="Logout"
                   onClick={this.handleSignOut}
-                  >
-                <FontAwesome name="sign-out" />
-                </ IconButton>
+								>
+									{/*Explicitly size font awesome fonts to be 24px or they'll shrink on the landing page*/}
+									<FontAwesome name="sign-out" style={{fontSize: '24px'}}/>
+							</IconButton>
               </div>
             )
             :
