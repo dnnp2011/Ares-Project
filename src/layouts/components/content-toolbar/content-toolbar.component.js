@@ -236,9 +236,9 @@ class ContentToolbar extends React.Component {
                   aria-label="Logout"
                   onClick={this.handleSignOut}
 								>
-									{/*A hacky fix for the sign out font-awesome button from being too small on the landing page.*/}
-									{( location.pathname == "/" ? (<FontAwesome name="sign-out" style={{fontSize: '24px'}}/>) : (<FontAwesome name="sign-out" size="1x" />) )}
-                </IconButton>
+									{/*Explicitly size font awesome fonts to be 24px or they'll shrink on the landing page*/}
+									<FontAwesome name="sign-out" style={{fontSize: '24px'}}/>
+							</IconButton>
               </div>
             )
             :
