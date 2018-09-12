@@ -235,8 +235,9 @@ class ContentToolbar extends React.Component {
                   color="inherit"
                   aria-label="Logout"
                   onClick={this.handleSignOut}
-                  >
-                <FontAwesome name="sign-out" size="1x" />
+								>
+									{/*A hacky fix for the sign out font-awesome button from being too small on the landing page.*/}
+									{( location.pathname == "/" ? (<FontAwesome name="sign-out" style={{fontSize: '24px'}}/>) : (<FontAwesome name="sign-out" size="1x" />) )}
                 </IconButton>
               </div>
             )
