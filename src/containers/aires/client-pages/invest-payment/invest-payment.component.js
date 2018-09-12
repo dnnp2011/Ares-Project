@@ -14,8 +14,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import logoImage from '../../../../assets/images/portal-logo.png';
-import DropdownInput from './components/DropdownInput/DropdownInput';
-import NumberInput from './components/NumberInput/NumberInput';
 
 import Card from '@material-ui/core/Card';
 import themeStyles from './invest-payment.theme.style';
@@ -42,6 +40,28 @@ class Payment extends React.Component {
   state = {
       tokens: 0,
       fundSource: 'USD',
+      totalCost: '',
+  };
+
+  getTotal = function(tokens, fundSource) {
+    var source = '';
+    var total = 0;
+    switch(fundSource) {
+      case 'Bitcoin':
+        source = '฿ ';
+        total = tokens * 5;
+        break;
+      case 'Ethereum':
+        source = '€ ';
+        total = tokens * 2;
+        break;
+      default:
+        source = '$ ';
+        total = tokens * 11.99;
+        break;
+    };
+    console.log(source + total);
+    return source + total;
   };
 
   handleChange = name => event => {
@@ -79,7 +99,7 @@ class Payment extends React.Component {
             <Grid item>
               <Card className={classNames(scss.card, classes['primary-card'])} >
                 <CardContent className={scss['collectkyc-content']}>
-                  <Typography variant="display1" className={scss["ico-name"]} gutterBottom>Buying {icoName}</Typography>
+                  <Typography variant="headline" className={scss["ico-name"]} gutterBottom>Buying {icoName}</Typography>
                   {
                     // <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
                   }
@@ -127,10 +147,7 @@ class Payment extends React.Component {
                     Total Cost in Fund Source:
                   </Typography>
                   <Typography className={scss.total} gutterBottom>
-                    { fundSource === 'USD' && '$ ' }
-                    { fundSource === 'Bitcoin' && '฿ ' }
-                    { fundSource === 'Ethereum' && '€ ' }
-                    { tokens * 17 }
+                    { this.getTotal(tokens, fundSource) }
                   </Typography>
                   <br/>
                   {

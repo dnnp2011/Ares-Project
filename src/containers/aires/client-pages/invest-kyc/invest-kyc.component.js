@@ -85,6 +85,16 @@ const CollectKYC = (props) => {
                 Upload Utility Bill
               </Button>
 
+              {
+                // <Button
+                //   variant="raised"
+                //   containerElement='label' // <-- Just add me!
+                //   label='Upload Government ID / Passport'>
+                //     <input type="file" />
+                // </Button>
+                //
+              }
+
               <input
                 style={{display:'none'}}
                 ref={fileInput => this.fileInput =fileInput}
@@ -96,7 +106,7 @@ const CollectKYC = (props) => {
               <br/>
             </CardContent>
             <CardActions>
-              <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>
+              <Button fullWidth href="/browse-icos/invest/payment" color="secondary" variant="raised">Submit KYC</Button>
             </CardActions>
           </Card>
         </Grid>
