@@ -233,7 +233,7 @@ children: [{
     href: '/launch-ico'
   },{
     title: 'ICO Project Dashboard',
-    href: '/dashboard/ico'
+    href: '/dashboard/ico/project'
   }]},
 {
   title: 'Site Admin Pages',
