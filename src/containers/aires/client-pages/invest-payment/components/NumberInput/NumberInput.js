@@ -6,9 +6,8 @@ import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   }
 });
 
@@ -25,8 +24,8 @@ class TextFields extends React.Component {
 
     return (
         <TextField
-          id="number of ICOs"
-          label="Number of ICOs - Previous page"
+          id="number-of-ICOs"
+          label="Number of ICOs"
           value={this.props.age}
           onChange={this.handleChange('age')}
           type="number"
@@ -34,6 +33,7 @@ class TextFields extends React.Component {
           InputLabelProps={{
             shrink: true,
           }}
+          fullWidth
           margin="normal"
         />
     );

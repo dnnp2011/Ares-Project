@@ -4,6 +4,7 @@ const styles = theme => ({
     width: 'auto',
     height: '100%',
     display: 'flex',
+    overflow: 'auto'
   },
   'primary-card': {
     background: theme.palette.primary.light,
