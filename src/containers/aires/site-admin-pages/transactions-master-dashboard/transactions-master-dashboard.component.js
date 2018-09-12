@@ -1,6 +1,6 @@
 
 import {fs} from '../../../../firebase'
-import * as React from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import {
   Grid,
@@ -43,87 +43,87 @@ export default class transactionList extends React.PureComponent {
           titleto: 'yourICO',
           amount: 2,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Third',
           titleto: 'OurICO',
           amount: 3,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Fourth',
           titleto: 'myICO',
           amount: 4,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Fifth',
           titleto: 'myICO',
           amount: 5,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Sixth',
           titleto: 'myICO',
           amount: 6,
           date:'2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Senventh',
           titleto: 'myICO',
           amount: 7,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Eighth',
           titleto: 'myICO',
           amount: 13,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Nineth',
           titleto: 'myICO',
           amount: 24,
           date: '2014/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Tenth',
           titleto: 'myICO',
           amount: 10,
           date: '2013/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Eleventh',
           titleto: 'myICO',
           amount: 11,
           date: '2017/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Twelfth',
           titleto: 'myICO',
           amount: 12,
           date: '2016/12/25 12:00:00'
-    
+
         },
         {
           titlefrom: 'Thirteenth',
           titleto: 'myICO',
           amount: 9,
           date: '2015/12/25 12:00:00'
-    
+
         },
       ],
-      
+
     };
   }
   render() {
@@ -134,6 +134,8 @@ export default class transactionList extends React.PureComponent {
     //     console.log(doc);
     //   }
     // });
+
+    /* Fetch transactions here */
     const a = fs.doGetTransaction();
     console.log(a);
 

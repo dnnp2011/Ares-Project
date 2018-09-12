@@ -20,43 +20,14 @@ import scss from './invest-kyc.module.scss';
 import logoImage from '../../../../assets/images/portal-logo.png';
 import Divider from "../../../elements/divider/divider.component";
 
-import Dropdown from "./components/DropdownList/DropdownList";
-import NumberInput from './components/NumberInput/NumberInput';
-import DropdownInput from './components/DropdownInput/DropdownInput';
-
 const CollectKYC = (props) => {
   const {
     classes,
     width
   } = props;
 
-  // state = {
-  //   ico: 'SolarCity',
-  // };
-
   // Flip container to column on mobile screens.
   const panelDirection = width === 'xs' ? 'column' : 'row';
-  //
-  // const icos = [
-  //   {
-  //     value: 'SolarCity',
-  //     label: '$'
-  //   },
-  //   {
-  //     value: 'Bitcoin',
-  //     label: '€'
-  //   },
-  //   {
-  //     value: 'Ethereum',
-  //     label: '฿'
-  //   },
-  // ];
-
-  // handleChange = name => (event) => {
-  //   this.setState({
-  //     [name]: event.target.value
-  //   });
-  // };
 
   return (
     <div className={classes.background}>
@@ -123,7 +94,6 @@ const CollectKYC = (props) => {
               />
               <br/>
               <br/>
-              <Dropdown /><br/>
             </CardContent>
             <CardActions>
               <Button fullWidth href="/investorKYC/confirm" color="secondary" variant="raised">Submit KYC</Button>
