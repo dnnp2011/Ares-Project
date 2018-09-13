@@ -59,11 +59,11 @@ class InviteFriend extends React.Component {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['invite-friend-content']}>
                 <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />
-                <Typography variant="headline" component="h4" gutterBottom>
+                <Typography variant="headline" component="h2" gutterBottom>
                   Invite a friend
 								</Typography>
 								{/*TODO: Improve the following message*/}
-                <Typography>
+                <Typography component="p" gutterBottom>
                   Everything's better with friends! Tell a friend about our services here.
                 </Typography>
                 <br/>
@@ -112,15 +112,12 @@ class InviteFriend extends React.Component {
                   type="text"
                   fullWidth
                   multiline
-                  rows="5"
+                  rows="3"
                 />
-                <br/>
-                <Grid container direction="column" justify="bottom">
-                  <CardActions className={scss['invite-friend-actions']}>
-                    <Button href="/" color="secondary" variant="raised">Invite Friend</Button>
+                </CardContent>
+                  <CardActions>
+                    <Button fullWidth href="/" color="secondary" variant="raised">Invite Friend</Button>
                   </CardActions>
-                </Grid>
-              </CardContent>
             </Card>
           </Grid>
         </Grid>
