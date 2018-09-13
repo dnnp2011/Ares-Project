@@ -54,16 +54,17 @@ class InviteFriend extends React.Component {
       className={classes.background}
     >
       <Grid item sm={10} xs={12} className={scss.panel}>
-        <Grid direction="row" container spacing={0}>
+        <Grid direction={panelDirection} container spacing={0}>
           <Grid item sm={6} xs={12}>
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['invite-friend-content']}>
                 <img src={logoImage} className={scss['invite-friend-logo']} alt="logo" />
                 <Typography variant="headline" component="h4" gutterBottom>
                   Invite a friend
-                </Typography>
+								</Typography>
+								{/*TODO: Improve the following message*/}
                 <Typography>
-                  Tell your friends about us plz ;_;
+                  Everything's better with friends! Tell a friend about our services here.
                 </Typography>
                 <br/>
               </CardContent>
