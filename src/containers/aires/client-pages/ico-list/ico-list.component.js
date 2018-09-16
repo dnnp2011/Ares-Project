@@ -25,28 +25,8 @@ class IcoList extends React.Component {
     super(props);
     this.state = {
       anchorEl: null,
-      originalCoins: [
-          {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2020', price: '6,345.00', phase: 'Presale'},
-          {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'July 2019', price: '6,845.00', phase: 'Presale'},
-          {key: 3, name: 'Bthereum', start: 'Feb 2017', end: 'Jan 2019', price: '7,345.00', phase: 'Presale'},
-          {key: 4, name: 'Zethereum', start: 'Jan 2017', end: 'Jan 2020', price: '5,345.00', phase: 'Presale'},
-          {key: 5, name: 'Methereum', start: 'June 2018', end: 'Dec 2019', price: '6,355.00', phase: 'Presale'},
-          {key: 6, name: 'Elthereum', start: 'Aug 2018', end: 'Nov 2019', price: '6,805.00', phase: 'Presale'},
-          {key: 7, name: 'Ethereum', start: 'May 2018', end: 'Feb 2019', price: '2,345.00', phase: 'Presale'},
-          {key: 8, name: 'Ethereum', start: 'July 2018', end: 'June 2019', price: '9,345.00', phase: 'Presale'},
-          {key: 9, name: 'Ethereum', start: 'May 2017', end: 'June 2019', price: '6,545.00', phase: 'Presale'},
-      ],
-      coins: [
-          {key: 1, name: 'Bitcoin', start: 'June 2018', end: 'June 2020', price: '6,345.00', phase: 'Presale'},
-          {key: 2, name: 'Ethereum', start: 'Feb 2018', end: 'July 2019', price: '6,845.00', phase: 'Presale'},
-          {key: 3, name: 'Bthereum', start: 'Feb 2017', end: 'Jan 2019', price: '7,345.00', phase: 'Presale'},
-          {key: 4, name: 'Zethereum', start: 'Jan 2017', end: 'Jan 2020', price: '5,345.00', phase: 'Presale'},
-          {key: 5, name: 'Methereum', start: 'June 2018', end: 'Dec 2019', price: '6,355.00', phase: 'Presale'},
-          {key: 6, name: 'Elthereum', start: 'Aug 2018', end: 'Nov 2019', price: '6,805.00', phase: 'Presale'},
-          {key: 7, name: 'Ethereum', start: 'May 2018', end: 'Feb 2019', price: '2,345.00', phase: 'Presale'},
-          {key: 8, name: 'Ethereum', start: 'July 2018', end: 'June 2019', price: '9,345.00', phase: 'Presale'},
-          {key: 9, name: 'Ethereum', start: 'May 2017', end: 'June 2019', price: '6,545.00', phase: 'Presale'},
-      ],
+      originalCoins: [],
+      coins: [],
       collection: [],
       icos: [],
       orderBy: 'key'
@@ -63,20 +43,29 @@ class IcoList extends React.Component {
   }
 
   componentWillMount() {
-fs.doGetAllIcos().then((snapshot) => {
-  let icosList = [];
-  let collectionList = snapshot.docs;
+    fs.doGetAllIcos().then((snapshot) => {
+      let icosListForProps = [];
+      let icosList = [];
+      let collectionList = snapshot.docs;
 
   collectionList.map((ico) => {
-    // console.log(ico.data().price);
-    icosList.push({ [ico.id]: ico.data() });
+    icosListForProps.push({ [ico.id]: ico.data()});
+    icosList.push(ico.data());
   });
+
   this.setState({
-    icos: icosList,
+    icos: icosListForProps,
+    coins: icosList,
+    originalCoins: icosList,
     collection: collectionList,
   });
 
-  console.log(this.state.icos[0]);
+  //console.log(this.state.icos[0]);
+  console.log(this.state.coins);
+  console.log(this.state.coins[0]);
+  //console.log(this.state.icos[0].DavidCoin.companyName);
+  console.log(this.state.coins[0].companyName);
+
 });
 }
 
@@ -160,6 +149,7 @@ fs.doGetAllIcos().then((snapshot) => {
 
   filterList= function(event){
     var updatedList = this.state.originalCoins;
+    console.log(updatedList);
     updatedList = updatedList.filter(function(item){
       return item.name.toLowerCase().search(
         event.target.value.toLowerCase()) !== -1;
