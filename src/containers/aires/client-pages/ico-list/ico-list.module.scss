@@ -1,8 +1,35 @@
 .tool{
-  float: right;
+  width: 100%;
+  height: auto;
+  display: inline-block;
 }
 
 .parent{
- white-space: nowrap;
- overflow-x: visible;
+   white-space: nowrap;
+   overflow-x: visible;
+}
+
+.container{
+  padding: 10px;
+  padding-left: 20px;
+  overflow: auto;
+}
+
+.menu {
+  float: right;
+}
+
+.filter {
+  margin-right: 10px;
+}
+
+.text {
+  float: left;
+  margin-top: auto;
+  margin-bottom: auto;
+  // border: 1px solid black;
+}
+
+.icon{
+  margin-left: 5px;
 }
