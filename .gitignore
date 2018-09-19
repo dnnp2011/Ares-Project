@@ -21,7 +21,13 @@ yarn-debug.log*
 yarn-error.log*
 
 # editor configs
-/.idea
-.idea
-*.vscode
-*/.vscode
+/.idea*
+.idea*
+*.vscode*
+*/.vscode*
+*.editorconfig*
+*.env*
+
+# atom package files
+*.eslint*
+*.tag*
