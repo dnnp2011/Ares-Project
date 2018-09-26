@@ -1,5 +1,5 @@
 
-import {fs} from '../../../../firebase'
+//import {fs} from '../../../../firebase'
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -132,7 +132,7 @@ class TransactionList extends React.Component {
   }
   render() {
     const { rows, columns } = this.state;
-    fs.doCreateNewTransaction('jane','citdex',3,Date.now());
+		//fs.doCreateNewTransaction('jane','citdex',3,Date.now());
     // fs.doGetTransaction('').then((docs) => {
     //   for (var doc in docs) {
     //     console.log(doc);
@@ -140,8 +140,8 @@ class TransactionList extends React.Component {
     // });
 
     /* Fetch transactions here */
-    const a = fs.doGetTransaction();
-    console.log(a);
+		// const a = fs.doGetTransaction();
+		//console.log(a);
 
     return (
       <Paper>
