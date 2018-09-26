@@ -2,6 +2,10 @@
 import {fs} from '../../../../firebase'
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+//import styles from './investor-master-dashboard.theme.style';
+
 import {
   Grid,
   Table,
@@ -20,7 +24,7 @@ import {
 } from '@devexpress/dx-react-grid';
 
 
-export default class transactionList extends React.PureComponent {
+class TransactionList extends React.Component {
   constructor(props) {
     super(props);
     // var d = new Date();
@@ -164,3 +168,5 @@ export default class transactionList extends React.PureComponent {
     );
   }
 }
+
+export default withStyles( { withTheme: true })(TransactionList);
