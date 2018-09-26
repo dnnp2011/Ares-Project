@@ -1,11 +1,11 @@
 
 //import {fs} from '../../../../firebase'
-import React from 'react';
+//import styles from './investor-master-dashboard.theme.style';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-//import styles from './investor-master-dashboard.theme.style';
-
 import {
   Grid,
   Table,
@@ -27,7 +27,6 @@ import {
 class TransactionList extends React.Component {
   constructor(props) {
     super(props);
-    // var d = new Date();
     this.state = {
       columns: [
         { name: 'titlefrom', title: 'From' },
@@ -145,7 +144,6 @@ class TransactionList extends React.Component {
 
     return (
       <Paper>
-        {/* <Grid>Hello</Grid> */}
         <Grid
           rows={rows}
           columns={columns}
@@ -169,4 +167,8 @@ class TransactionList extends React.Component {
   }
 }
 
-export default withStyles( { withTheme: true })(TransactionList);
+TransactionList.propTypes = {
+  classes: PropTypes.shape({}).isRequired
+};
+
+export default withStyles({ withTheme: true })(TransactionList);
