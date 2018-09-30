@@ -24,7 +24,7 @@ class App extends React.Component {
 
   render() {
     const childProps = {};
-    const { themeConfig, layoutConfig } = this.props;
+    const { themeConfig, layoutConfig, KYCConfig } = this.props;
 
     sessionStorage.setItem(
       'portalData',
@@ -34,6 +34,9 @@ class App extends React.Component {
         },
         layout: {
           ...layoutConfig
+        },
+        kyc: {
+          ...KYCConfig
         }
       })
     );
@@ -53,7 +56,8 @@ class App extends React.Component {
 function mapStateToProps(state) {
   return {
     themeConfig: state.theme,
-    layoutConfig: state.layout
+    layoutConfig: state.layout,
+    KYCConfig: state.kyc
   };
 }
 
@@ -63,7 +67,8 @@ App.propTypes = {
       direction: PropTypes.string.isRequired
     }).isRequired
   }).isRequired,
-  layoutConfig: PropTypes.shape({}).isRequired
+  layoutConfig: PropTypes.shape({}).isRequired,
+  KYCConfig: PropTypes.shape({}).isRequired
 };
 
 export default compose(

@@ -26,10 +26,10 @@ import themes from './themes';
 export const configuredTheme = themes[0].theme;
 
 export const configuredKYC = {
-  first : '',
-  last : '',
+  first: '',
+  last: 'Configured initial state',
   ico: '',
-  amount:''
+  amount: ''
 };
 
 export const configuredLayout = {
@@ -185,7 +185,7 @@ export const menuItems = [{
   }]}
   , {
   title: 'Ares',
-  icon: <PersonIcon style={iconStyle}/>,
+  icon: <PersonIcon style={iconStyle} />,
 children: [{
   title: 'Non Auth Pages',
   icon: <HomeIcon style={iconStyle} />,
@@ -197,7 +197,7 @@ children: [{
   href: '/login'
 },{
   title: 'ICO Admin Login',
-  href: '/login-ico-admin'
+  href: '/login/ico-admin'
 },{
   title: 'Forgot Password',
   href: '/forgot-password'
