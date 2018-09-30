@@ -257,11 +257,11 @@ children: [{
   }]},
 {
 title: 'Client Pages',
-icon: <PersonIcon style={iconStyle}/>,
-children: [  {
+icon: <PersonIcon style={iconStyle} />,
+children: [{
     title: 'Client Dashboard',
     href: '/client-dashboard'
-  },{
+  }, {
   title: 'Profile',
   href: '/profile:user'
 }, {
