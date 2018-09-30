@@ -43,13 +43,13 @@ class clientDashboard extends React.Component {
     }
 
     componentDidMount() {
-        if (typeof web3 !== 'undefined') {
-          this.web3 = new Web3(window.web3.currentProvider);
-                    console.log('connected!!!')
+        // if (typeof web3 !== 'undefined') {
+        //   this.web3 = new Web3(window.web3.currentProvider);
+        //             console.log('connected!!!')
 
-        } else {
-          console.log('ifnekrvhbkwebvjehbvwhbw')
-        }
+        // } else {
+        //   console.log('ifnekrvhbkwebvjehbvwhbw')
+        // }
     }
 
 
@@ -94,83 +94,109 @@ class clientDashboard extends React.Component {
     }
 
 
-        return (
-            <div className={classes.portalDashboardPageWrapper}>
-                  <Grid item xs={12}>
-                    <Grid container justify="center" spacing={16}>
-                      <Grid key={1} item xs={12} sm={6} md={3} lg={3} xl={3} className={classes.portalWidget}>
-                        <Button variant='raised' className={[classes.portalWidgetContent, classes.button1]} component={Link} to="/dashboard/crypto-market">
-                          Recent Investments
-                        </Button>
-                      </Grid>
+  return (
+    <div className={classes.portalDashboardPageWrapper}>
+      <Grid item xs={12}>
+        <Grid container justify="center" spacing={16}>
+          <Grid key={1} item xs={12} sm={6} md={3} lg={3} xl={3} className={classes.portalWidget}>
+            <Button variant='raised' className={[classes.portalWidgetContent, classes.button1]} component={Link} to="/dashboard/crypto-market">
+              Recent Investments
+            </Button>
+          </Grid>
 
-                      <Grid key={2} item xs={12} sm={6} md={3} className={classes.portalWidget}>
+          <Grid key={2} item xs={12} sm={6} md={3} className={classes.portalWidget}>
 
-                        <Button variant='raised' className={[classes.portalWidgetContent, classes.button2]} component={Link} to="/dashboard/crypto-market">
-                          Portfolio
-                        </Button>
-                      </Grid>
+            <Button variant='raised' className={[classes.portalWidgetContent, classes.button2]} component={Link} to="/dashboard/crypto-market">
+              Portfolio
+            </Button>
+          </Grid>
 
-                      <Grid key={3} item xs={12} sm={6} md={3} className={classes.portalWidget}>
+          <Grid key={3} item xs={12} sm={6} md={3} className={classes.portalWidget}>
 
-                        <Button variant='raised' className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
-                          Top Crypto analytics
-                        </Button>
-                      </Grid>
+            <Button variant='raised' className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
+              Top Crypto analytics
+            </Button>
+          </Grid>
 
-                      <Grid key={4} item xs={12} sm={6} md={3} className={classes.portalWidget}>
+          <Grid key={4} item xs={12} sm={6} md={3} className={classes.portalWidget}>
 
-                        <Button  variant='raised'className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
-                         Messages
-                        </Button>
+            <Button  variant='raised'className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
+             Messages
+            </Button>
 
-                      </Grid>
+          </Grid>
 
-                       <Grid key={5} item xs={12} sm={6} md={6} className={classes.portalWidget}>
+           <Grid key={5} item xs={12} sm={6} md={6} className={classes.portalWidget}>
 
-                        <Button  variant='raised'className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
-                         Messages
-                        </Button>
+            <Button  variant='raised'className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
+             Messages
+            </Button>
 
-                      </Grid>
+          </Grid>
 
-                      <Grid key={6} item xs={12} sm={6} md={6} className={classes.portalWidget}>
+          <Grid key={6} item xs={12} sm={6} md={6} className={classes.portalWidget}>
 
-                        <Button  variant='raised'className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
-                         Messages
-                        </Button>
+            <Button  variant='raised'className={classes.portalWidgetContent} component={Link} to="/dashboard/crypto-market">
+             Messages
+            </Button>
 
-                      </Grid>
+          </Grid>
+{/*
+          <Grid key={3} item xs={12} sm={12} md={4} className={classes.portalWidget}>
+            <Paper className={classes.portalWidgetContent}>
+              // <ActiveUsersWidget />
+            </Paper>
+          </Grid>
 
+          <Grid item xs={12} sm={12} md={8}>
+            <Grid container justify="center" spacing={16}>
+              <Grid key={4} item xs={12} className={classes.portalWidget}>
+                <Paper className={classes.portalWidgetContent}>
+                  // <DailySalesWidget />
+                </Paper>
+              </Grid>
 
-                      <Grid key={7} item xs={12} sm={6} md={6} className={classes.portalWidget}>
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Pie data={data} legend={options} />
-                            </CardContent>
+              <Grid key={5} item xs={12} className={classes.portalWidget}>
+                <Paper className={classes.portalWidgetContent}>
+                  // <TableWidget />
+                </Paper>
+              </Grid>
+            </Grid>
+          </Grid>
 
-                        </Card>
+          <Grid key={6} item xs={12} sm={12} md={4} className={classes.portalWidget}>
+            <Paper className={classes.portalWidgetContent}>
+              // <RegionSalesWidget />
+            </Paper>
+          </Grid>*/}
 
-                      </Grid>
+          <Grid key={7} item xs={12} sm={6} md={6} className={classes.portalWidget}>
+            <Card className={classes.card}>
+                <CardContent>
+                    <Pie data={data} legend={options} />
+                </CardContent>
+            {/*<CardActions>
+              <Button size="small">Learn More</Button>
+            </CardActions>*/}
+            </Card>
 
-                      <Grid key={8} item xs={12} sm={6} md={6} className={classes.portalWidget}>
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Pie data={data} legend={options} />
-                            </CardContent>
+          </Grid>
 
-                        </Card>
-
-                      </Grid>
-
-
-
-
-                    </Grid>
-                  </Grid>
-            </div>
-        )
-    }
+          <Grid key={8} item xs={12} sm={6} md={6} className={classes.portalWidget}>
+            <Card className={classes.card}>
+                <CardContent>
+                    <Pie data={data} legend={options} />
+                </CardContent>
+            {/*<CardActions>
+              <Button size="small">Learn More</Button>
+            </CardActions>*/}
+            </Card>
+          </Grid>
+        </Grid>
+      </Grid>
+    </div>
+  )
+  }
 }
 
 

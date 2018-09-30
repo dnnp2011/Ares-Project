@@ -14,7 +14,8 @@ const styles = theme => ({
     overflowX: 'auto'
   },
   'table-cell': {
-    padding: '4px 14px 4px 14px'
+    padding: '4px 14px 4px 14px',
+    width: '30px'
   }
 });
 
