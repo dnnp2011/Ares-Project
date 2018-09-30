@@ -12,7 +12,8 @@ import Tab from '@material-ui/core/Tab';
 import withWidth from '@material-ui/core/withWidth';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -44,47 +45,42 @@ class Detail extends React.Component {
     const panelDirection = width === 'xs' ? 'column' : 'row';
 
     return (
-      <div className={classes.background}>
-        {/**
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              ICO Detail
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        **/}
-        <Grid container spacing={16} justify="center" alignContent="center"  className={scss.background}>
-
-          <Grid item sm={12} xs={12} md={12} className={scss.line}>
-                <Paper className={scss["project-status"]}>
-                  <ProjectStatesWidget />
+        <div>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="title" color="inherit">
+                ICO Detail
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Grid
+            container
+            direction="row"
+            spacing={16}
+            justify="center"
+            alignItems="center"
+            classNames={classes.background}
+          >
+          <Grid item sm={10} xs={12} className={scss.panel}>
+            <Grid direction={panelDirection} container spacing={0.5}>
+              <Grid item sm={4} xs={6}>
+                <Paper className={scss.card}>
+                  <div className={scss.logo}><img src={logoImage} alt="logo image" /></div>
+                  <Typography variant="title" className={scss.name} gutterBottom>
+                    {this.props.location.name}
+                  </Typography>
+                  <Typography variant="body2" className={scss.price} gutterBottom>
+                    Price: {this.props.location.price}
+                  </Typography>
+                  <Typography gutterBottom>
+                    Start Date: {this.props.location.start}
+                  </Typography>
+                  <Typography gutterBottom>
+                    End Date: {this.props.location.end}
+                  </Typography>
+                  <Button variant="contained" color="primary"  className={scss.button}>Invest</Button>
                 </Paper>
-          </Grid>
-
-          <Grid item sm={12} xs={12} md={12}>
-            <Grid container spacing={16} justify="center">
-
-              <Grid item sm={10} xs={10} md={3} className={scss.line}>
-                <Grid container spacing={16} alignContent="center" justify="center" >
-                  <Grid item xs={12} sm={12} md={12}>
-                    <Paper className={scss["basic-info"]}>
-                      <img src={logoImage} alt="logo image" className={scss.logo} />
-                      <Typography variant="title" className={scss.name} gutterBottom>
-                        Bitcoin
-                      </Typography>
-                      <Typography variant="body2" className={scss.price} gutterBottom>
-                        Price: $1635.00
-                      </Typography>
-                      <Typography>
-                        Start Date: Jan 2018
-                      </Typography>
-                      <Typography>
-                        End Date: Sept 2018
-                      </Typography>
-                      <br/>
-                    </Paper>
-                  </Grid>
+              </Grid>
 
                   <Grid item xs={12} sm={12} md={12}>
                     <Paper>
@@ -129,7 +125,6 @@ class Detail extends React.Component {
                   }
                 </Card>
               </Grid>
-
             </Grid>
           </Grid>
         </Grid>

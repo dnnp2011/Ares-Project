@@ -17,19 +17,18 @@ import Detail from '../ico-detail/ico-detail.component';
 import { fs } from '../../../../firebase'
 class Ico extends React.Component {
 
-
 render() {
   const {
      classes,
      width
   } = this.props;
 
-  const { name, price, start, end, phase } = this.props;
+  const { name, price, start, end, phase } = this.props[0];
 
   return(
       // <div className={scss.container}>
         <Card className={scss.card}>
-          <Link to={{pathname: `/browse-icos/details/`, name: {name}}} style={{ textDecoration: 'none' }}>
+          <Link to={{pathname: `/browse-icos/details/`, name, price, start, end, phase}} style={{ textDecoration: 'none' }}>
             <Typography className={scss.coin} variant="headline" gutterBottom>
               &nbsp;  {name}
               <img src={logoImage} className={scss.logo} alt="logo" />
@@ -59,11 +58,10 @@ render() {
         </Card>
       //   <br/>
       // </div>
+>>>>>>>>> Temporary merge branch 2
     );
   }
 }
-
-
 
   Ico.propTypes = {
     classes: PropTypes.shape({}).isRequired,
