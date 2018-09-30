@@ -1,10 +1,11 @@
 
+//import {fs} from '../../../../firebase'
+//import styles from './investor-master-dashboard.theme.style';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './investor-master-dashboard.theme.style';
 import {
   Grid,
   Table,
@@ -23,7 +24,7 @@ import {
 } from '@devexpress/dx-react-grid';
 
 
-class TransactionList extends React.PureComponent {
+class TransactionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,7 +131,16 @@ class TransactionList extends React.PureComponent {
   }
   render() {
     const { rows, columns } = this.state;
+		//fs.doCreateNewTransaction('jane','citdex',3,Date.now());
+    // fs.doGetTransaction('').then((docs) => {
+    //   for (var doc in docs) {
+    //     console.log(doc);
+    //   }
+    // });
 
+    /* Fetch transactions here */
+		// const a = fs.doGetTransaction();
+		//console.log(a);
 
     return (
       <Paper>
@@ -161,4 +171,4 @@ TransactionList.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(TransactionList);
+export default withStyles({ withTheme: true })(TransactionList);
