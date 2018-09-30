@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   container: {
@@ -10,9 +11,8 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   menu: {
     width: 200,
@@ -21,16 +21,16 @@ const styles = theme => ({
 
 const icos = [
   {
-    value: 'Credit Card',
-    label: 'CC - Credit Card'
+    value: 'USD',
+    label: '$ - USD'
   },
   {
     value: 'Bitcoin',
     label: '€ - Bitcoin'
   },
   {
-    value: 'Bank Account',
-    label: '฿ - Bank Account'
+    value: 'Ethereum',
+    label: '฿ - Ethereum'
   },
 ];
 
@@ -39,8 +39,9 @@ class TextFields extends React.Component {
      name: 'Cat in the Hat',
      age: '',
      multiline: 'Controlled',
-     icos: 'Bitcoin',
-   };
+     icos: 'USD',
+  };
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
@@ -54,7 +55,7 @@ class TextFields extends React.Component {
         <TextField
           id="select-ICO"
           select
-          label="Payment Method"
+          label="Fund Source"
           className={classes.textField}
           value={this.state.icos}
           onChange={this.handleChange('icos')}
@@ -65,6 +66,7 @@ class TextFields extends React.Component {
           }}
           helperText="Please select your payment method"
           margin="normal"
+          fullWidth
         >
           {icos.map(option => (
             <MenuItem key={option.value} value={option.value}>

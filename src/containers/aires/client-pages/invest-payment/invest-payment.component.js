@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Divider from "../../../elements/divider/divider.component";
+import MenuItem from '@material-ui/core/MenuItem';
 
 import React from 'react';
 
@@ -13,8 +14,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import logoImage from '../../../../assets/images/portal-logo.png';
-import DropdownInput from './components/DropdownInput/DropdownInput';
-import NumberInput from './components/NumberInput/NumberInput';
 
 import Card from '@material-ui/core/Card';
 import themeStyles from './invest-payment.theme.style';
@@ -22,79 +21,149 @@ import scss from './invest-payment.module.scss';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
+const icos = [
+  {
+    value: 'USD',
+    label: '$ - USD'
+  },
+  {
+    value: 'Bitcoin',
+    label: '฿ - Bitcoin'
+  },
+  {
+    value: 'Ethereum',
+    label: '€ - Ethereum'
+  },
+];
 
-const Payment = (props) => {
-  const {
-    classes,
-    width
-  } = props;
+class Payment extends React.Component {
+  state = {
+      tokens: 0,
+      fundSource: 'USD',
+      totalCost: '',
+  };
 
-  const panelDirection = width === 'xs' ? 'column' : 'row';
+  getTotal = function(tokens, fundSource) {
+    var source = '';
+    var total = 0;
+    switch(fundSource) {
+      case 'Bitcoin':
+        source = '฿ ';
+        total = tokens * 5;
+        break;
+      case 'Ethereum':
+        source = '€ ';
+        total = tokens * 2;
+        break;
+      default:
+        source = '$ ';
+        total = tokens * 11.99;
+        break;
+    };
+    console.log(source + total);
+    return source + total;
+  };
 
-  return (
-    <Grid
-      container
-      direction="column"
-      spacing={0}
-      justify="center"
-      alignItems="center"
-      className={classes.background}
-    >
-      <Grid item sm={8} xs={12} className='panel'>
-        <Grid direction={panelDirection} container spacing={0}>
-          <Grid item>
-            <Card className={classNames(scss.card, classes['primary-card'])} >
-              <CardContent className={scss['collectkyc-content']}>
-                <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
-                <br/>
-                <Grid>
-                  <NumberInput />
-                  <DropdownInput/>
-                </Grid>
-                <Grid container>
-                  <Grid item sm={6} xs={12}>
-                    <TextField
+  handleChange = name => event => {
+    console.log(event.target.value);
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
+  render() {
+    const {
+      classes,
+      width,
+      icoName
+    } = this.props;
+
+    const {
+      tokens,
+      fundSource,
+    } = this.state;
+
+    const panelDirection = width === 'xs' ? 'column' : 'row';
+
+    return (
+      <Grid
+        container
+        direction="column"
+        spacing={0}
+        justify="center"
+        alignItems="center"
+        className={classes.background}
+      >
+        <Grid item sm={8} xs={12} className='panel'>
+          <Grid direction={panelDirection} container spacing={0}>
+            <Grid item>
+              <Card className={classNames(scss.card, classes['primary-card'])} >
+                <CardContent className={scss['collectkyc-content']}>
+                  <Typography variant="headline" className={scss["ico-name"]} gutterBottom>Buying {icoName}</Typography>
+                  {
+                    // <img src={logoImage} className={scss['collectkyc-logo']} alt="logo" />
+                  }
+                  <br/>
+
+                  <TextField
                     fullWidth
-                    label="Amount in USD"
+                    id="number-of-tokens"
+                    label="Tokens to buy"
                     type="number"
-                    inline
-                    />
-                  </Grid>
-                  <Grid item sm={6} xs={12}>
-                    <TextField
+                    defaultValue="0"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={this.handleChange('tokens')}
+                    margin="normal"
+                  />
+
+                  <TextField
+                    id="fund-source"
+                    select
+                    label="Fund Source"
+                    className={classes.textField}
+                    value={this.state.fundSource}
+                    onChange={this.handleChange('fundSource')}
+                    SelectProps={{
+                      MenuProps: {
+                        className: classes.menu,
+                      },
+                    }}
+                    helperText="Please select your payment method"
+                    margin="normal"
                     fullWidth
-                    label="Amount in {Payment method funds}"
-                    type="number"
-                    inline
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container>
-                  <Grid item sm={6} xs={12}>
-                    <TextField
-                      label="Total charges including fees"
-                      type="number"
-                      email
-                      fullWidth
-                    />
-                    {props.state.kyc.first}
-                  </Grid>
-                  <Grid item sm={6} xs={12}>
-                  </Grid>
-                </Grid>
-              </CardContent>
-              <CardActions>
-              <Grid item sm={8} xs={12}></Grid>
-                <Grid item sm={4} xs={12}>
-                  <Button href="#" color="secondary" variant="raised" className={classes.button}>Next</Button>
-                </Grid>
-              </CardActions>
-            </Card>
+                  >
+                    {icos.map(option => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                  <br/>
+                  <br/>
+
+                  <Typography className={scss.total} gutterBottom>
+                    Total Cost in Fund Source:
+                  </Typography>
+                  <Typography className={scss.total} gutterBottom>
+                    { this.getTotal(tokens, fundSource) }
+                  </Typography>
+                  <br/>
+                  {
+                    // props.state.kyc.first
+                  }
+                </CardContent>
+                <CardActions>
+                  <Button href="/browse-icos/invest/confirm" color="secondary" variant="raised" size="large" className={classes.button} fullWidth>Next</Button>
+                </CardActions>
+              </Card>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 };
 
 
@@ -103,17 +172,19 @@ Payment.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-function mapStateToProps (reduxState) {
-  return {
-    state : reduxState
-  }
-};
+// function mapStateToProps (reduxState) {
+//   return {
+//     state : reduxState
+//   }
+// };
+//
+//
+// function mapDispatchToProps(dispatch){
+//   return {
+//
+//   }
+// };
 
+// export default compose(withStyles(themeStyles, { withTheme: true }), connect(mapStateToProps, mapDispatchToProps))(Payment);
 
-function mapDispatchToProps(dispatch){
-  return {
-
-  }
-};
-
-export default compose(withStyles(themeStyles, { withTheme: true }), connect(mapStateToProps, mapDispatchToProps))(Payment);
+export default withStyles(themeStyles, {withTheme: true})(Payment);
