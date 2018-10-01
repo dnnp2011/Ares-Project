@@ -49,7 +49,7 @@ class Detail extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="title" color="inherit">
-              ICO Detail
+              {this.props.location.name} Details
             </Typography>
           </Toolbar>
         </AppBar>
@@ -103,9 +103,9 @@ class Detail extends React.Component {
                   centered
                   fullWidth
                 >
-                  <Tab label="Details" />
-                  <Tab label="Daily Sales" />
-                  <Tab label="Monthly Sales" />
+                  <Tab label="Details"/>
+                  <Tab label="Daily Sales"/>
+                  <Tab label="Monthly Sales"/>
                 </Tabs>
               </AppBar>
               {value === 0 &&
@@ -118,12 +118,12 @@ class Detail extends React.Component {
               }
               {value === 1 &&
               <Paper className={classes.portalWidgetContent, scss.charts}>
-                <DailySalesWidget />
+                <DailySalesWidget/>
               </Paper>
               }
               {value === 2 &&
               <Paper className={classes.portalWidgetContent, scss.charts}>
-                <TabbedChartWidget />
+                <TabbedChartWidget/>
               </Paper>
               }
             </Card>
