@@ -45,7 +45,7 @@ class Detail extends React.Component {
     const panelDirection = width === "xs" ? "column" : "row";
 
     return (
-      <div>
+      <div className={classes.background}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="title" color="inherit">
@@ -53,83 +53,88 @@ class Detail extends React.Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Grid
-          container
-          direction="row"
-          spacing={16}
-          justify="center"
-          alignItems="center"
-          classNames={classes.background}
-        >
-          <Grid item sm={10} xs={12} className={scss.panel}>
-            <Grid direction={panelDirection} container spacing={0.5}>
-              <Grid item sm={4} xs={6}>
-                <Paper className={scss.card}>
-                  <div className={scss.logo}><img src={logoImage} alt="logo image"/></div>
-                  <Typography variant="title" className={scss.name} gutterBottom>
-                    {this.props.location.name}
-                  </Typography>
-                  <Typography variant="body2" className={scss.price} gutterBottom>
-                    Price: {this.props.location.price}
-                  </Typography>
-                  <Typography gutterBottom>
-                    Start Date: {this.props.location.start}
-                  </Typography>
-                  <Typography gutterBottom>
-                    End Date: {this.props.location.end}
-                  </Typography>
-                  <Button variant="contained" color="primary" className={scss.button}>Invest</Button>
-                </Paper>
-              </Grid>
 
-              <Grid item xs={12} sm={12} md={12}>
-                <Paper>
-                  <Button fullWidth variant="contained" color="primary">Invest</Button>
+        <Grid container spacing={16} justify="center" alignContent="center"  className={scss.background}>
+
+          <Grid item sm={12} xs={12} md={12} className={scss.line}>
+                <Paper className={scss["project-status"]}>
+                  <ProjectStatesWidget />
                 </Paper>
-                <Paper>
-                  <Button fullWidth color="secondary">View Whitepaper</Button>
-                </Paper>
-              </Grid>
-            </Grid>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={9}>
-            <Card className={scss["details-card"]}>
-              <AppBar position="static" color="default">
-                <Tabs
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                  className={scss.tabs}
-                  centered
-                  fullWidth
-                >
-                  <Tab label="Details"/>
-                  <Tab label="Daily Sales"/>
-                  <Tab label="Monthly Sales"/>
-                </Tabs>
-              </AppBar>
-              {value === 0 &&
-              <Typography className={scss.details}>
-                Lorem ipsum a imperdiet non tincidunt aenean euismod, aenean commodo molestie facilisis himenaeos ad,
-                morbi ut rhoncus porta sem mollis placerat etiam rhoncus arcu aptent mi blandit diam proin netus integer
-                vestibulum quisque, mollis quis consectetur nunc lectus tempus suscipit turpis libero ullamcorper ligula
-                vel eleifend aliquam auctor lacus dolor ad ornare ad conubia ultrices urna est.
-              </Typography>
-              }
-              {value === 1 &&
-              <Paper className={classes.portalWidgetContent, scss.charts}>
-                <DailySalesWidget/>
-              </Paper>
-              }
-              {value === 2 &&
-              <Paper className={classes.portalWidgetContent, scss.charts}>
-                <TabbedChartWidget/>
-              </Paper>
-              }
-            </Card>
+          <Grid item sm={12} xs={12} md={12}>
+            <Grid container spacing={16} justify="center">
+
+              <Grid item sm={10} xs={10} md={3} className={scss.line}>
+                <Grid container spacing={16} alignContent="center" justify="center" >
+                  <Grid item xs={12} sm={12} md={12}>
+                    <Paper className={scss["basic-info"]}>
+                    <div className={scss.logo}><img src={logoImage} alt="logo image"/></div>
+                      <Typography variant="title" className={scss.name} gutterBottom>
+                        {this.props.location.name}
+                      </Typography>
+                      <Typography variant="body2" className={scss.price} gutterBottom>
+                        Price: {this.props.location.price}
+                      </Typography>
+                      <Typography gutterBottom>
+                        Start Date: {this.props.location.start}
+                      </Typography>
+                      <Typography gutterBottom>
+                        End Date: {this.props.location.end}
+                      </Typography>
+                      <br/>
+                    </Paper>
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={12}>
+                    <Paper>
+                      <Button fullWidth variant="contained" color="primary">Invest</Button>
+                    </Paper>
+                    <Paper>
+                      <Button fullWidth color="secondary">View Whitepaper</Button>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={9}>
+                <Card className={scss["details-card"]}>
+                  <AppBar position="static" color="default">
+                    <Tabs
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                      className={scss.tabs}
+                      centered
+                      fullWidth
+                    >
+                      <Tab label="Details" />
+                      <Tab label="Daily Sales" />
+                      <Tab label="Monthly Sales" />
+                    </Tabs>
+                  </AppBar>
+                  {value === 0 &&
+                    <Typography className={scss.details}>
+                      Lorem ipsum a imperdiet non tincidunt aenean euismod, aenean commodo molestie facilisis himenaeos ad, morbi ut rhoncus porta sem mollis placerat etiam rhoncus arcu aptent mi blandit diam proin netus integer vestibulum quisque, mollis quis consectetur nunc lectus tempus suscipit turpis libero ullamcorper ligula vel eleifend aliquam auctor lacus dolor ad ornare ad conubia ultrices urna est.
+                    </Typography>
+                  }
+                  {value === 1 &&
+                    <Paper className={classes.portalWidgetContent, scss.charts}>
+                      <DailySalesWidget />
+                    </Paper>
+                  }
+                  {value === 2 &&
+                    <Paper className={classes.portalWidgetContent, scss.charts}>
+                      <TabbedChartWidget />
+                    </Paper>
+                  }
+                </Card>
+              </Grid>
+
+            </Grid>
           </Grid>
         </Grid>
       </div>
+
     );
   }
 }
