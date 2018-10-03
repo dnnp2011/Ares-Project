@@ -42,11 +42,10 @@ class Detail extends React.Component {
   render() {
     const { classes, width } = this.props;
     const { value } = this.state;
-    const panelDirection = width === "xs" ? "column" : "row";
 
     return (
       <div className={classes.background}>
-        <AppBar position="static">
+        <AppBar position="static" className={scss.header}>
           <Toolbar>
             <Typography variant="title" color="inherit">
               {this.props.location.name} Details

@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+.header {
+  width: 100%;
+}
+
 .line,
 .project-status,
 .marketing {
@@ -24,6 +28,7 @@
 
 .basic-info {
   text-align: center;
+  height: 280px;
   padding: 15px;
 }
 
