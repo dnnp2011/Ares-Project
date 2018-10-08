@@ -24,12 +24,12 @@ class Ico extends React.Component {
       width
     } = this.props;
 
-    const { name, price, start, end, phase } = this.props[0];
+    const { name, price, start, end, phase, lengthOfTime, softCap, hardCap, contributions } = this.props[0];
 
     return (
       // <div className={scss.container}>
       <Card className={scss.card}>
-        <Link to={{ pathname: `/tokens/details`, name, price, start, end, phase }}
+        <Link to={{ pathname: `/tokens/details`, name, price, start, end, phase, lengthOfTime, softCap, hardCap, contributions }}
               style={{ textDecoration: "none" }}>
           <Typography className={scss.coin} variant="headline" gutterBottom>
             &nbsp;  {name}

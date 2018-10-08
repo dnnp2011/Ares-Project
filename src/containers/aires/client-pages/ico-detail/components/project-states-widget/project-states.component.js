@@ -8,8 +8,17 @@ import themeStyles from './project-states.theme.style';
 
 import scss from './project-states.module.scss';
 
-const ProjectStatesWidget = (props) => {
-  const { classes } = props;
+class ProjectStatesWidget extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  render() {
+
+  const { classes } = this.props;
 
   return (
     <div className={scss['portal-project-stepper']}>
@@ -18,7 +27,7 @@ const ProjectStatesWidget = (props) => {
       </div>
       <div className={classNames(scss['portal-project-stepper__step'], scss['portal-project-stepper__step--done'])}>
         <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
-          Phase 01
+          PreSale
         </h3>
         <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
           In this phase initial research will be required. Also the framework and the assets to be used have to be decided.
@@ -26,7 +35,7 @@ const ProjectStatesWidget = (props) => {
       </div>
       <div className={classNames(scss['portal-project-stepper__step'], scss['portal-project-stepper__step--done'])}>
         <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
-          Phase 02
+          Soft Cap
         </h3>
         <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
           In this phase the design process will take place. All components will be created as HTML and CSS working prototypes.
@@ -34,7 +43,7 @@ const ProjectStatesWidget = (props) => {
       </div>
       <div className={scss['portal-project-stepper__step']}>
         <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
-          Phase 03
+          Hard Cap
         </h3>
         <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
           In the final stage the prototype will be tested on various devices including desktop computer and mobile devices.
@@ -42,6 +51,7 @@ const ProjectStatesWidget = (props) => {
       </div>
     </div>
   );
+}
 }
 
 ProjectStatesWidget.propTypes = {
