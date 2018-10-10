@@ -7,51 +7,57 @@ import classNames from 'classnames';
 import themeStyles from './project-states.theme.style';
 
 import scss from './project-states.module.scss';
+import { Typography } from '@material-ui/core';
 
 class ProjectStatesWidget extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      dotWidth: '45%',
     };
+
   }
 
   render() {
 
-  const { classes } = this.props;
+    const { classes } = this.props;
+    const { phase, lengthOfTime, softCap, hardCap, contributions } = this.props;
 
-  return (
-    <div className={scss['portal-project-stepper']}>
-      <div role="progressbar" className={classes['portal-project-stepper__progress']}>
-        <div className={classNames(scss['portal-project-stepper__progress-bar'], classes['portal-project-stepper__progress-bar--background'])}></div>
-      </div>
-      <div className={classNames(scss['portal-project-stepper__step'], scss['portal-project-stepper__step--done'])}>
-        <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
-          PreSale
-        </h3>
-        <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
-          In this phase initial research will be required. Also the framework and the assets to be used have to be decided.
+    return (
+      <div className={scss['portal-project-stepper']}>
+        <div role="progressbar" className={classes['portal-project-stepper__progress']}>
+          <div style={{ width: '90%' }} className={classNames(scss['portal-project-stepper__progress-bar'], classes['portal-project-stepper__progress-bar--background'])}>
+
+          </div>
+        </div>
+        <div className={classNames(scss['portal-project-stepper__step'], scss['portal-project-stepper__step--done'])}>
+          <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
+            PreSale
+          </h3>
+          <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
+            In this phase initial research will be required. Also the framework and the assets to be used have to be decided.
         </p>
-      </div>
-      <div className={classNames(scss['portal-project-stepper__step'], scss['portal-project-stepper__step--done'])}>
-        <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
-          Soft Cap
+        </div>
+        <div className={classNames(scss['portal-project-stepper__step'], scss['portal-project-stepper__step--done'])}>
+          <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
+            Soft Cap
         </h3>
-        <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
-          In this phase the design process will take place. All components will be created as HTML and CSS working prototypes.
+          <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
+            In this phase the design process will take place. All components will be created as HTML and CSS working prototypes.
         </p>
-      </div>
-      <div className={scss['portal-project-stepper__step']}>
-        <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
-          Hard Cap
+        </div>
+        <div className={scss['portal-project-stepper__step']}>
+          <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
+            Hard Cap
         </h3>
-        <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
-          In the final stage the prototype will be tested on various devices including desktop computer and mobile devices.
+          <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>
+            In the final stage the prototype will be tested on various devices including desktop computer and mobile devices.
         </p>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 ProjectStatesWidget.propTypes = {
