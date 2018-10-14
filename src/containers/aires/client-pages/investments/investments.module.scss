@@ -1,0 +1,55 @@
+.container {
+  padding-top: 15px;
+}
+
+.row {
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  padding: 15px;
+  padding-top: 25px;
+  justify-content: center;
+  text-align: center;
+  text-justify: center;
+}
+
+.sm-md {
+  display: none;
+}
+
+.title {
+  text-align: center;
+  margin: auto;
+}
+
+.total {
+  font-size: 18px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.phase {
+  width: 250px;
+}
+
+@media screen and (max-width: 450px) {
+  .logo {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 600px ) and (max-width: 1280px) {
+  .sm-md {
+    display: block;
+  }
+
+  .xs-lg {
+    display: none;
+  }
+}
