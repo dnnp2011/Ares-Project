@@ -41,17 +41,17 @@ const Forgot = (props) => {
             <Grid item sm={11} xs={11}>
               <Paper className={scss.row}>
                 <Grid container direction={panelDirection} spacing={8} alignContent="center" justify="center">
-                  <Grid item sm={4} xs={11} md={4} lg={1}>
+                  <Grid item sm={4} xs={11} md={1} lg={1}>
                     <img src={logoImage} alt="logo image"  className={scss.logo}/>
                   </Grid>
-                  <Grid item sm={4} xs={11} md={4} lg={2}>
+                  <Grid item sm={4} xs={11} md={2} lg={2}>
                     <br/>
                     <br/>
                     <Typography gutterBottom  alignCenter variant="title" className={scss.title}>
                       {row.tokenName}
                     </Typography>
                   </Grid>
-                  <Grid item sm={4} md={4} className={scss["sm-md"]}>
+                  <Grid item sm={4} md={4} className={scss.sm}>
                     <Typography gutterBottom>
                       Total Contribution:
                     </Typography>
@@ -60,13 +60,13 @@ const Forgot = (props) => {
                       {row.totalContribution}
                     </Typography>
                   </Grid>
-                  <Grid item sm={12} xs={11} md={10} lg={7} className={scss.line}>
+                  <Grid item sm={12} xs={11} md={7} lg={7} className={scss.line}>
                     <Typography>
                       Progress:
                     </Typography>
                     <ProjectStatesWidget className={scss.project} />
                   </Grid>
-                  <Grid item xs={11} lg={2} className={scss["xs-lg"]}>
+                  <Grid item xs={11} md={2} lg={2} className={scss["xs-md-lg"]}>
                     <Typography gutterBottom>
                       Total Contribution:
                     </Typography>
