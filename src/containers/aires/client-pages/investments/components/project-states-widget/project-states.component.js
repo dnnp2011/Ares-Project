@@ -31,7 +31,7 @@ const ProjectStatesWidget = (props) => {
         </p>
       </div>
       <div className={scss['portal-project-stepper__step']}>
-        <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium'])}>
+        <h3 className={classNames(scss['portal-project-stepper__step__heading'], scss['portal-text-medium3'])}>
           Phase 03
         </h3>
         <p className={classNames(scss['portal-project-stepper__step__content'], scss['mdc-typography--body1'])}>

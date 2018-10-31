@@ -22,7 +22,7 @@
   font-size: 0.75rem;
   line-height: 1;
   margin: 0;
-  padding: 16px;
+  padding: 12px;
 }
 
 .portal-project-stepper__step__content {
@@ -56,6 +56,11 @@
   }
 }
 
+@media screen and (min-width: 960px) and (max-width: 1159px) {
+  .portal-text-medium3 {
+    display: none;
+  }
+}
 
 @keyframes portal-project-stepper__progress-bar-animation {
   0% {
