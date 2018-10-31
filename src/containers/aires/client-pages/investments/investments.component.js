@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 import themeStyles from './investments.theme.style';
 import scss from './investments.module.scss';
@@ -39,6 +39,8 @@ const Forgot = (props) => {
       <Grid container direction="row" spacing={16} justify="center" alignItems="center" className={scss.container}>
           {rows.map(row=>
             <Grid item sm={11} xs={11}>
+            <Link to={{ pathname: `/contributions/details` }} 
+                  style={{ textDecoration: "none" }}>
               <Paper className={scss.row}>
                 <Grid container direction={panelDirection} spacing={8} alignContent="center" justify="center">
                   <Grid item sm={4} xs={11} md={1} lg={1}>
@@ -77,6 +79,7 @@ const Forgot = (props) => {
                   </Grid>
                 </Grid>
               </Paper>
+              </Link>
             </Grid>
           )}
       </Grid>
