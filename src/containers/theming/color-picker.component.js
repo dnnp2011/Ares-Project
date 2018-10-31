@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { SwatchesPicker } from 'react-color';
+import React from "react";
+import PropTypes from "prop-types";
+import { SwatchesPicker } from "react-color";
 
-import withTheme from '@material-ui/core/styles/withTheme';
+import withTheme from "@material-ui/core/styles/withTheme";
 
-import scss from './color-picker.module.scss';
+import scss from "./color-picker.module.scss";
 
 class ColorPicker extends React.Component {
   state = {
@@ -28,16 +28,16 @@ class ColorPicker extends React.Component {
 
     return (
       <div
-        className={scss['color-picker-outer']}
+        className={scss["color-picker-outer"]}
         onClick={this.handleOpenPicker}
       >
         <div
-          className={scss['color-picker-inner']}
+          className={scss["color-picker-inner"]}
           style={{ background: color }}
         >
           {this.state.displayColorPicker ?
             <SwatchesPicker
-              className={scss['color-picker']}
+              className={scss["color-picker"]}
               color={this.state.color}
               onChange={this.handleColorChange}
             />

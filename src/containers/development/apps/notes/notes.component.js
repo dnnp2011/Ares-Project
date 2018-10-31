@@ -16,7 +16,7 @@ import Note from './note/note.component';
 import themeStyles from './notes.theme.style';
 import scss from './notes.module.scss';
 
-import notes from '../../../assets/data/apps/notes/notes.json';
+import notes from '../../../../assets/data/apps/notes/notes.json';
 
 class Notes extends React.Component {
   state = {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
-import AuthUserContext from './AuthUserContext';
-import { firebase } from '../../firebase';
+import AuthUserContext from "./AuthUserContext";
+import { firebase } from "../../firebase";
 
 // const withAuthorization = (authCondition) => (Component) => {
 //   class WithAuthorization extends React.Component {
@@ -37,7 +37,7 @@ const withAuthorization = (authCondition) => (Component) => {
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         if (!authCondition(authUser)) {
-          this.props.history.push('/login');
+          this.props.history.push("/login");
         }
       });
     }
@@ -52,6 +52,6 @@ const withAuthorization = (authCondition) => (Component) => {
   }
 
   return withRouter(WithAuthorization);
-}
+};
 
 export default withAuthorization;

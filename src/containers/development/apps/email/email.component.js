@@ -13,12 +13,12 @@ import SendIcon from '@material-ui/icons/Send';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import EmailIcon from '@material-ui/icons/Email';
 
-import inboxList from '../../../assets/data/apps/email/inbox.json';
-import draftsList from '../../../assets/data/apps/email/drafts.json';
-import importantList from '../../../assets/data/apps/email/important.json';
-import contactsList from '../../../assets/data/apps/email/contacts.json';
-import sentList from '../../../assets/data/apps/email/sent.json';
-import starredList from '../../../assets/data/apps/email/starred.json';
+import inboxList from '../../../../assets/data/apps/email/inbox.json';
+import draftsList from '../../../../assets/data/apps/email/drafts.json';
+import importantList from '../../../../assets/data/apps/email/important.json';
+import contactsList from '../../../../assets/data/apps/email/contacts.json';
+import sentList from '../../../../assets/data/apps/email/sent.json';
+import starredList from '../../../../assets/data/apps/email/starred.json';
 
 import EmailCategoriesNav from './email-categories/email-categories.component';
 import EmailList from './email-list/email-list.component';

@@ -89,8 +89,8 @@ const AsyncTokenDetails = asyncComponent(() => import('./containers/user/token-d
 const AsyncInvestorKyc = asyncComponent(() => import('./containers/user/kyc-contribution/invest-kyc.component'));
 const AsyncInvestorPayment = asyncComponent(() => import('./containers/user/contribution-payment/contribution-payment.component'));
 const AsyncInvestorConfirmation = asyncComponent(() => import('./containers/user/contribution-confirm/contribution-confirm.component'));
-const AsyncContributions = asyncComponent(() => import('./containers/user/investments/investments.component'));
-const AsyncContributionDetails = asyncComponent(() => import('./containers/user/investment-detail/investment-detail.component'));
+const AsyncContributions = asyncComponent(() => import('./containers/user/contributions/contributions.component'));
+const AsyncContributionDetails = asyncComponent(() => import('./containers/user/contribution-details/contribution-details.component'));
 
 /* --- ICO Admin Pages --- */
 

@@ -6,7 +6,7 @@ import ChatList from './chat-list/chat-list.component';
 import NoMessages from './no-messages/no-messages.component';
 import ChatMessages from './chat-messages/chat-messages.component';
 
-import recentChats from '../../../assets/data/apps/chat/recent.json';
+import recentChats from '../../../../assets/data/apps/chat/recent.json';
 
 import scss from './chat.module.scss';
 

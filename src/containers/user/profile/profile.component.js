@@ -96,6 +96,12 @@ class Profile extends React.Component {
     const { classes } = this.props;
     const { isEnabled, updateValid } = this.state;
 
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let avatarNum = getRandomInt(0, 9);
+
     const snackbar = (
       <Snackbar
         anchorOrigin={{
@@ -144,7 +150,8 @@ class Profile extends React.Component {
                       xs={12}
                     >
                       <div className={scss["portal-profile__header"]}>
-                        <img alt="avatar" src="../../.."
+                        {/*<img alt="avatar" src="assets/images/avatars/male/16.jpg"*/}
+                        <img alt="avatar" src={`assets/images/avatars/avatar-${avatarNum}.png`}
                              className={scss["portal-profile__header-avatar"]}/>
                         <div>
                           <Typography variant="headline" gutterBottom>
