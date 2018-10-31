@@ -1,4 +1,4 @@
-LaunchICO.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/ico-admin-pages/launch-ico/launch-ico.component.js	/^LaunchICO.propTypes = {$/;"	property	line:112
+LaunchICO.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/ico-admin-pages/launch-ico/launch-token.component.js	/^LaunchICO.propTypes = {$/;"	property	line:112
 CollectKYC.propTypes.classes	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.component.js	/^CollectKYC.propTypes = {$/;"	property	line:152
 .panel	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.panel {$/;"	function	line:1
 .card	/home/drowsy/Projects/aires/src/containers/aires/client-pages/invest-kyc/invest-kyc.module.scss	/^.card {$/;"	function	line:11
