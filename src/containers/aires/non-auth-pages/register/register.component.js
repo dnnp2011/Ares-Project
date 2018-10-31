@@ -74,7 +74,8 @@ this.setState(byPropKey(event.target.name, event.target.value))
 render() {
   const {
     classes,
-    width
+    width,
+    testProp
   } = this.props;
 
   const { email, passOne, passTwo, error, firstName, lastName } = this.state;
@@ -111,6 +112,7 @@ render() {
                   </Typography>
                   <Typography component="p" gutterBottom>
                     Creating an account with Ares Dashboard is easy! Simply fill out the form and click the register button below.
+                    { testProp ? testProp.toString() : "No Test Prop Found" }
                   </Typography>
                 </CardContent>
                 <CardActions>

@@ -15,6 +15,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
+import Register from '../register/register.component';
 
 import themeStyles from './login.theme.style';
 import scss from './login.module.scss';
@@ -63,7 +64,8 @@ class Login extends React.Component {
   render() {
     const {
       classes,
-      width
+      width,
+      history,
     } = this.props;
 
     // Flip container to column on mobile screens.
@@ -107,7 +109,7 @@ class Login extends React.Component {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth href="/register" color="secondary" variant="raised">Create an account</Button>
+                  <Button fullWidth onClick={() => history.push('/register')} color="secondary" variant="raised">Create an account</Button>
                 </CardActions>
               </Card>
             </Grid>

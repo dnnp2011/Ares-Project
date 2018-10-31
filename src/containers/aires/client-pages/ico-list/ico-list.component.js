@@ -48,9 +48,9 @@ class IcoList extends React.Component {
       let icosList = [];
       let collectionList = snapshot.docs;
 
-  collectionList.map((ico) => {
-    icosListForProps.push({ [ico.id]: ico.data()});
-    icosList.push(ico.data());
+    collectionList.map((ico) => {
+      icosListForProps.push({ [ico.id]: ico.data()});
+      icosList.push(ico.data());
   });
 
   this.setState({
@@ -167,7 +167,7 @@ class IcoList extends React.Component {
           <Toolbar>
             <div className={scss.tool}>
               <Typography className={scss.text} variant="title">
-                Pick your crypto
+                Browse Token Offerings
               </Typography>
               <div className={scss.menu}>
                 <Input
@@ -183,7 +183,7 @@ class IcoList extends React.Component {
                   aria-haspopup="true"
                   onClick={this.handleClick}
                 >
-                  Sort By  <FontAwesome name="caret-down" className={scss.icon}></FontAwesome>
+                  Sort By <FontAwesome name="caret-down" className={scss.icon}></FontAwesome>
                 </Button>
                 <Menu
                   id="simple-menu"
