@@ -36,55 +36,85 @@ class Detail extends React.Component {
   render() {
     const { classes, width } = this.props;
     const { value } = this.state;
+    const {
+      name,
+      price,
+      start,
+      end,
+      phase,
+      lengthOfTime,
+      softCap,
+      hardCap,
+      contributions
+    } = this.props.location;
 
     return (
       <div className={classes.background}>
         <AppBar position="static" className={scss.header}>
           <Toolbar>
             <Typography variant="title" color="inherit">
-              {this.props.location.name} Details
+              {name} Details
             </Typography>
           </Toolbar>
         </AppBar>
 
-        <Grid container spacing={16} justify="center" alignContent="center"  className={scss.background}>
-
+        <Grid
+          container
+          spacing={16}
+          justify="center"
+          alignContent="center"
+          className={scss.background}
+        >
           <Grid item sm={12} xs={12} md={12} className={scss.line}>
-                <Paper className={scss["project-status"]}>
-                  <ProjectStatesWidget />
-                </Paper>
+            <Paper className={scss["project-status"]}>
+              <ProjectStatesWidget phase={phase} lengthOfTime={lengthOfTime} softCap={softCap} hardCap={hardCap} contributions={contributions} />
+            </Paper>
           </Grid>
 
           <Grid item sm={12} xs={12} md={12}>
             <Grid container spacing={16} justify="center">
-
               <Grid item sm={10} xs={10} md={3} className={scss.line}>
-                <Grid container spacing={16} alignContent="center" justify="center" >
+                <Grid
+                  container
+                  spacing={16}
+                  alignContent="center"
+                  justify="center"
+                >
                   <Grid item xs={12} sm={12} md={12}>
                     <Paper className={scss["basic-info"]}>
-                    <div className={scss.logo}><img src={logoImage} alt="logo image"/></div>
-                      <Typography variant="title" className={scss.name} gutterBottom>
-                        {this.props.location.name}
+                      <div className={scss.logo}>
+                        <img src={logoImage} alt="logo image" />
+                      </div>
+                      <Typography
+                        variant="title"
+                        className={scss.name}
+                        gutterBottom
+                      >
+                        {name}
                       </Typography>
-                      <Typography variant="body2" className={scss.price} gutterBottom>
-                        Price: {this.props.location.price}
+                      <Typography
+                        variant="body2"
+                        className={scss.price}
+                        gutterBottom
+                      >
+                        Price: {price}
                       </Typography>
-                      <Typography gutterBottom>
-                        Start Date: {this.props.location.start}
-                      </Typography>
-                      <Typography gutterBottom>
-                        End Date: {this.props.location.end}
-                      </Typography>
-                      <br/>
+                      <Typography gutterBottom>Start Date: {start}</Typography>
+                      <Typography gutterBottom>End Date: {end}</Typography>
+                      <br />
                     </Paper>
                   </Grid>
 
                   <Grid item xs={12} sm={12} md={12}>
                     <Paper>
-                      <Button fullWidth variant="contained" color="primary">Invest</Button>
+                      <Button fullWidth variant="contained" color="primary">
+                        Invest
+                      </Button>
                     </Paper>
                     <Paper>
-                      <Button fullWidth color="secondary">View Whitepaper</Button>
+                      <Button fullWidth color="secondary">
+                        View Whitepaper
+                      </Button>
                     </Paper>
                   </Grid>
                 </Grid>
@@ -105,29 +135,38 @@ class Detail extends React.Component {
                       <Tab label="Monthly Sales" />
                     </Tabs>
                   </AppBar>
-                  {value === 0 &&
+                  {value === 0 && (
                     <Typography className={scss.details}>
-                      Lorem ipsum a imperdiet non tincidunt aenean euismod, aenean commodo molestie facilisis himenaeos ad, morbi ut rhoncus porta sem mollis placerat etiam rhoncus arcu aptent mi blandit diam proin netus integer vestibulum quisque, mollis quis consectetur nunc lectus tempus suscipit turpis libero ullamcorper ligula vel eleifend aliquam auctor lacus dolor ad ornare ad conubia ultrices urna est.
+                      Lorem ipsum a imperdiet non tincidunt aenean euismod,
+                      aenean commodo molestie facilisis himenaeos ad, morbi ut
+                      rhoncus porta sem mollis placerat etiam rhoncus arcu
+                      aptent mi blandit diam proin netus integer vestibulum
+                      quisque, mollis quis consectetur nunc lectus tempus
+                      suscipit turpis libero ullamcorper ligula vel eleifend
+                      aliquam auctor lacus dolor ad ornare ad conubia ultrices
+                      urna est.
                     </Typography>
-                  }
-                  {value === 1 &&
-                    <Paper className={classes.portalWidgetContent, scss.charts}>
+                  )}
+                  {value === 1 && (
+                    <Paper
+                      className={(classes.portalWidgetContent, scss.charts)}
+                    >
                       <DailySalesWidget />
                     </Paper>
-                  }
-                  {value === 2 &&
-                    <Paper className={classes.portalWidgetContent, scss.charts}>
+                  )}
+                  {value === 2 && (
+                    <Paper
+                      className={(classes.portalWidgetContent, scss.charts)}
+                    >
                       <TabbedChartWidget />
                     </Paper>
-                  }
+                  )}
                 </Card>
               </Grid>
-
             </Grid>
           </Grid>
         </Grid>
       </div>
-
     );
   }
 }
@@ -137,5 +176,8 @@ Forgot.propTypes = {
   classes: PropTypes.shape({}).isRequired
 };
 */
-export default compose(withWidth(), withStyles(themeStyles, { withTheme: true }))(Detail);
+export default compose(
+  withWidth(),
+  withStyles(themeStyles, { withTheme: true })
+)(Detail);
 /* this will be th emain display page*/
