@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import scss from "./token-list.module.scss";
 import Input from "@material-ui/core/Input";
-import Ico from "../token-list-item/ico-list-item.component";
+import Ico from "../token-list-item/token-list-item.component";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import themeStyles from "./ico-list-item.theme.style";
-import scss from "./ico-list-item.module.scss";
+import themeStyles from "./token-list-item.theme.style";
+import scss from "./token-list-item.module.scss";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
