@@ -9,7 +9,7 @@ import classNames from "classnames";
 import themeStyles from '../../user/contributions/contributions.theme.style';
 import scss from './contributions.module.scss';
 import { withStyles } from '@material-ui/core/styles';
-import logoImage from "./components/portal-logo.png";
+import logoImage from "../../../assets/images/portal-logo.png";
 import ProjectStatesWidget from "./components/project-states-widget/project-states.component";
 
 const Forgot = (props) => {
@@ -19,23 +19,15 @@ const Forgot = (props) => {
   } = props;
 
   const rows = [
-    {key: 1, logo: "./components/portal-logo.png", tokenName: 'Bitcoin', phase: '', totalContribution: '$200.00' },
-    {key: 2, logo: "./components/portal-logo.png", tokenName: 'Ethereum', phase: '', totalContribution: '$20.00'},
-    {key: 2, logo: "./components/portal-logo.png", tokenName: 'Ethereum', phase: '', totalContribution: '$20.00'}
+    {key: 1, logo: logoImage, tokenName: 'Bitcoin', phase: '', totalContribution: '$200.00' },
+    {key: 2, logo: logoImage, tokenName: 'Ethereum', phase: '', totalContribution: '$20.00'},
+    {key: 2, logo: logoImage, tokenName: 'Litecoin', phase: '', totalContribution: '$20.00'}
   ];
 
   const panelDirection = width === "xs" ? "column" : "row";
 
   return (
     <div className={classes.background}>
-      <AppBar position="static" color="secondary" className={scss.header}>
-        <Toolbar>
-          <Typography variant="title" color="inherit">
-            My Contributions
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
       <Grid container direction="row" spacing={16} justify="center" alignItems="center" className={scss.container}>
           {rows.map(row=>
             <Grid item sm={11} xs={11}>

@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import themeStyles from "./contribution-details.theme.style";
 import scss from "./contribution-details.module.scss";
 import { withStyles } from "@material-ui/core/styles";
-import logoImage from "../contributions/components/portal-logo.png";
+import logoImage from "../../../assets/images/portal-logo.png";
 
 
 const Forgot = (props) => {
@@ -45,14 +45,6 @@ const Forgot = (props) => {
 
   return (
     <div className={classes.background}>
-      <AppBar position="static" color="secondary" className={scss.header}>
-        <Toolbar>
-          <Typography variant="title" color="inherit">
-            Contribution Details
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
       <Grid container spacing={16} justify="center" alignContent="center" className={scss["content-container"]}>
         <Grid item sm={10} xs={12}>
           <Paper className={scss["photo-container"]}>
